@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twomiah IckApp — Know What's In Your Food</title>
+<meta name="description" content="Scan any food barcode and instantly get a health score, harmful ingredient warnings, and cleaner alternatives.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--fire:#FF3D00;--ember:#FF6D00;--gold:#FFAB00;--dark:#0D0D0D;--charcoal:#1A1A1A;--ash:#555;--bone:#F5F0EB;--white:#FFF;--grad:linear-gradient(135deg,#FFAB00,#FF6D00,#FF3D00);--green:#28C840;--red-dim:rgba(255,61,0,0.12);--green-dim:rgba(40,200,64,0.12)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:var(--green)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(13,13,13,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-icon{width:30px;height:30px}
+.nav-wordmark{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.12em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-back{color:rgba(255,255,255,0.3)!important;font-size:11px!important}
+.nav-cta{background:var(--green)!important;color:var(--dark)!important;padding:8px 18px;border-radius:3px!important;font-weight:700!important}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:140px 80px 80px;position:relative;overflow:hidden;max-width:1400px;margin:0 auto}
+.hero-glow{position:absolute;right:-80px;top:50%;transform:translateY(-50%);width:500px;height:500px;background:radial-gradient(ellipse,rgba(40,200,64,0.1) 0%,transparent 70%);pointer-events:none}
+.hero-left{position:relative;z-index:1}
+.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--green);margin-bottom:24px;animation:fadeUp 0.8s 0.1s both}
+.hero-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,5.5vw,80px);line-height:0.9;letter-spacing:0.02em;margin-bottom:24px;animation:fadeUp 0.8s 0.2s both}
+.green-line{background:linear-gradient(135deg,#28C840,#4FC3F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:16px;line-height:1.8;color:rgba(255,255,255,0.55);margin-bottom:36px;animation:fadeUp 0.8s 0.3s both}
+.hero-sub em{color:var(--bone);font-style:normal;font-weight:600}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;animation:fadeUp 0.8s 0.4s both}
+.badge{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:600;color:rgba(255,255,255,0.6)}
+.badge-icon{font-size:14px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp 0.8s 0.5s both}
+.btn-green{background:var(--green);color:var(--dark);padding:14px 30px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;transition:all 0.2s;box-shadow:0 4px 20px rgba(40,200,64,0.25)}
+.btn-green:hover{background:#32e84a;transform:translateY(-2px)}
+.btn-ghost{border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.65);padding:14px 30px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.4);color:var(--white);transform:translateY(-2px)}
+
+/* PHONE MOCKUP */
+.hero-right{position:relative;z-index:1;display:flex;justify-content:center;animation:fadeUp 0.8s 0.4s both}
+.phone-wrap{position:relative;width:260px}
+.phone{background:#111;border:2px solid rgba(255,255,255,0.12);border-radius:32px;padding:16px;box-shadow:0 32px 80px rgba(0,0,0,0.7)}
+.phone-screen{background:#0d0d0d;border-radius:20px;overflow:hidden;min-height:480px;display:flex;flex-direction:column}
+.phone-status{display:flex;justify-content:space-between;align-items:center;padding:12px 16px 4px;font-size:10px;color:rgba(255,255,255,0.3)}
+.phone-topbar{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:8px}
+.phone-app-name{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:0.1em;background:linear-gradient(135deg,#28C840,#4FC3F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.phone-body{padding:16px;flex:1;display:flex;flex-direction:column;gap:12px}
+.score-ring-wrap{text-align:center;padding:8px 0}
+.score-ring{width:100px;height:100px;margin:0 auto;position:relative;display:flex;align-items:center;justify-content:center}
+.score-ring svg{position:absolute;top:0;left:0;transform:rotate(-90deg)}
+.score-num{font-family:'Bebas Neue',sans-serif;font-size:36px;line-height:1;color:var(--green)}
+.score-lbl{font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;text-transform:uppercase;text-align:center;margin-top:2px}
+.phone-product-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;text-align:center;color:rgba(255,255,255,0.8)}
+.phone-section-title{font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:4px}
+.ingredient-row{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:rgba(255,255,255,0.04);border-radius:6px;margin-bottom:4px}
+.ingredient-name{font-size:11px;color:rgba(255,255,255,0.65)}
+.badge-harm{font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px}
+.harm-high{background:rgba(255,61,0,0.15);color:var(--fire)}
+.harm-med{background:rgba(255,171,0,0.15);color:var(--gold)}
+.harm-low{background:rgba(40,200,64,0.12);color:var(--green)}
+.swap-card{background:rgba(40,200,64,0.06);border:1px solid rgba(40,200,64,0.15);border-radius:8px;padding:10px;display:flex;align-items:center;gap:8px}
+.swap-icon{font-size:16px}
+.swap-text{font-size:11px;color:rgba(255,255,255,0.6)}.swap-text strong{color:var(--green);display:block;font-size:12px}
+
+section{padding:100px 48px}
+.inner{max-width:1200px;margin:0 auto}
+.section-label{display:flex;align-items:center;gap:10px;font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--green);margin-bottom:16px}
+.section-label::after{content:'';flex:0 0 36px;height:1px;background:var(--green);opacity:0.4}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,5vw,72px);letter-spacing:0.04em;line-height:1;margin-bottom:16px}
+.section-sub{font-size:16px;line-height:1.8;color:rgba(255,255,255,0.5);max-width:580px}
+
+/* FEATURES */
+#features{background:var(--charcoal)}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px;background:rgba(255,255,255,0.04)}
+.feat{background:var(--charcoal);padding:36px 30px;border:1px solid transparent;transition:all 0.2s}
+.feat:hover{background:#1f1f1f;border-color:rgba(40,200,64,0.1)}
+.feat-icon{font-size:28px;margin-bottom:14px}
+.feat-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px}
+.feat-desc{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.45)}
+
+/* INGREDIENTS EXPLAINER */
+#ingredients{text-align:center}
+.ing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.ing-card{padding:28px 20px;border-radius:4px;border:1px solid rgba(255,255,255,0.06)}
+.ing-card.danger{background:rgba(255,61,0,0.05);border-color:rgba(255,61,0,0.15)}
+.ing-card.warning{background:rgba(255,171,0,0.05);border-color:rgba(255,171,0,0.15)}
+.ing-card.safe{background:rgba(40,200,64,0.05);border-color:rgba(40,200,64,0.15)}
+.ing-label{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px}
+.danger .ing-label{color:var(--fire)}
+.warning .ing-label{color:var(--gold)}
+.safe .ing-label{color:var(--green)}
+.ing-examples{display:flex;flex-direction:column;gap:6px}
+.ing-ex{font-size:13px;color:rgba(255,255,255,0.55);padding:6px 10px;background:rgba(255,255,255,0.04);border-radius:4px}
+
+/* PRICING */
+#pricing{background:var(--charcoal)}
+.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:740px;margin-top:56px}
+.price-card{background:var(--dark);border:1px solid rgba(255,255,255,0.08);padding:40px 32px;border-radius:4px;position:relative}
+.price-card.featured{border-color:rgba(40,200,64,0.3);background:#0d120d}
+.featured-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--green);color:var(--dark);font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:4px 14px;border-radius:20px}
+.price-tier{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+.price-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.06em;margin-bottom:8px}
+.price-amount{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:1;margin-bottom:4px}
+.price-free{font-family:'Bebas Neue',sans-serif;font-size:56px;color:var(--green);line-height:1;margin-bottom:4px}
+.price-per{font-size:12px;color:rgba(255,255,255,0.3);margin-bottom:24px}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:28px}
+.price-features li{font-size:13px;color:rgba(255,255,255,0.5);display:flex;gap:8px}
+.price-features li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.price-cta{display:block;text-align:center;padding:12px;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.2s}
+.cta-green{background:var(--green);color:var(--dark)}.cta-green:hover{background:#32e84a}
+.cta-outline{border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6)}.cta-outline:hover{border-color:rgba(255,255,255,0.35);color:var(--white)}
+
+#cta-band{text-align:center;padding:100px 48px;position:relative;overflow:hidden}
+#cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(40,200,64,0.07) 0%,transparent 70%);pointer-events:none}
+.cta-inner{position:relative;z-index:1;max-width:560px;margin:0 auto}
+.cta-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7vw,88px);line-height:0.95;margin-bottom:20px}
+.cta-sub{font-size:17px;line-height:1.7;color:rgba(255,255,255,0.5);margin-bottom:40px}
+
+footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40px 48px 20px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-links{display:flex;gap:22px;flex-wrap:wrap}
+.footer-links a{color:rgba(255,255,255,0.3);text-decoration:none;font-size:13px;transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.18)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:1024px){.hero{grid-template-columns:1fr;padding:120px 24px 60px}.hero-right{display:none}.features-grid{grid-template-columns:repeat(2,1fr)}.pricing-grid{grid-template-columns:1fr}.ing-grid{grid-template-columns:1fr}nav,section,#cta-band{padding-left:24px;padding-right:24px}}
+@media(max-width:640px){.features-grid{grid-template-columns:1fr}.nav-links{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-icon" viewBox="0 0 120 120" fill="none">
+      <defs><linearGradient id="ng" x1="0" y1="120" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FFAB00"/><stop offset="50%" stop-color="#FF6D00"/><stop offset="100%" stop-color="#FF3D00"/></linearGradient><filter id="nglow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <path d="M42 96 L20 48 L42 60 L52 24 L62 52 L75 40 L60 96 Z" fill="url(#ng)" opacity="0.65"/>
+      <path d="M78 96 L56 44 L68 58 L78 18 L88 50 L104 36 L96 96 Z" fill="url(#ng)" filter="url(#nglow)"/>
+      <rect x="16" y="96" width="88" height="3" rx="1.5" fill="url(#ng)" opacity="0.45"/>
+    </svg>
+    <span class="nav-wordmark">TWOMIAH</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-back">← All Products</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#" class="nav-cta">Download App</a></li>
+  </ul>
+</nav>
+
+<div style="max-width:1400px;margin:0 auto">
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-left">
+    <p class="hero-eyebrow">Food Scanner App</p>
+    <h1 class="hero-headline">You Deserve to Know<br><span class="green-line">What's In Your Food.</span></h1>
+    <p class="hero-sub">Scan any barcode. Get an <em>instant science-based health score</em>, see exactly what harmful ingredients are hiding in the label, and find cleaner alternatives you can actually buy.</p>
+    <div class="hero-badges">
+      <div class="badge"><span class="badge-icon">📱</span>iOS & Android</div>
+      <div class="badge"><span class="badge-icon">🔍</span>3M+ products</div>
+      <div class="badge"><span class="badge-icon">🆓</span>Free to scan</div>
+      <div class="badge"><span class="badge-icon">🚫</span>No ads. Ever.</div>
+    </div>
+    <div class="hero-actions">
+      <a href="#" class="btn-green">Download Free</a>
+      <a href="#features" class="btn-ghost">See Features</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-status"><span>9:41</span><span>●●●</span></div>
+          <div class="phone-topbar"><span class="phone-app-name">ICKAPP</span></div>
+          <div class="phone-body">
+            <div class="score-ring-wrap">
+              <div class="score-ring">
+                <svg width="100" height="100" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(40,200,64,0.1)" stroke-width="8"/>
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#28C840" stroke-width="8" stroke-dasharray="251" stroke-dashoffset="63" stroke-linecap="round"/>
+                </svg>
+                <div><div class="score-num">75</div></div>
+              </div>
+              <div class="score-lbl">Health Score</div>
+            </div>
+            <div class="phone-product-name">Granola Bar — Original</div>
+            <div>
+              <div class="phone-section-title">Flagged Ingredients</div>
+              <div class="ingredient-row"><span class="ingredient-name">High Fructose Corn Syrup</span><span class="badge-harm harm-high">High</span></div>
+              <div class="ingredient-row"><span class="ingredient-name">Artificial Flavors</span><span class="badge-harm harm-med">Medium</span></div>
+              <div class="ingredient-row"><span class="ingredient-name">Soy Lecithin</span><span class="badge-harm harm-low">Low</span></div>
+            </div>
+            <div class="swap-card">
+              <div class="swap-icon">🔄</div>
+              <div class="swap-text"><strong>Cleaner Alternative Found</strong>Kind Bar Dark Chocolate — Score: 88</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<section id="features">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">More Than a<br>Label Reader.</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feat reveal"><div class="feat-icon">📊</div><div class="feat-title">Health Score</div><p class="feat-desc">Every product gets a 0-100 score based on nutrition, additives, and organic status — backed by real nutritional science, not opinions.</p></div>
+      <div class="feat reveal"><div class="feat-icon">⚠️</div><div class="feat-title">Additive Warnings</div><p class="feat-desc">Harmful ingredients flagged with severity levels — High, Medium, Low — and links to the scientific studies behind every rating.</p></div>
+      <div class="feat reveal"><div class="feat-icon">🔄</div><div class="feat-title">Swap Suggestions</div><p class="feat-desc">For every flagged product, we suggest cleaner alternatives you can actually buy at your grocery store. Side-by-side score comparison included.</p></div>
+      <div class="feat reveal"><div class="feat-icon">👨‍👩‍👧</div><div class="feat-title">Family Profiles</div><p class="feat-desc">Create profiles for each family member with their specific allergens. Every scan shows personalized warnings — especially for kids.</p></div>
+      <div class="feat reveal"><div class="feat-icon">🥫</div><div class="feat-title">Pantry Tracker</div><p class="feat-desc">Scan your pantry and see your household health score at a glance. Velocity tracking predicts when you'll run out of staples.</p></div>
+      <div class="feat reveal"><div class="feat-icon">🧾</div><div class="feat-title">Receipt Scanner</div><p class="feat-desc">Take a photo of any grocery receipt and auto-populate your pantry. GPT-4 vision reads the receipt and does the work for you.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="ingredients">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-label">How We Rate</div>
+      <h2 class="section-title">We Grade Every<br>Ingredient.</h2>
+      <p class="section-sub">Not all additives are equal. IckApp breaks them down so you know exactly what you're looking at.</p>
+    </div>
+    <div class="ing-grid">
+      <div class="ing-card danger reveal">
+        <div class="ing-label">🔴 High Concern</div>
+        <div class="ing-examples">
+          <div class="ing-ex">High Fructose Corn Syrup</div>
+          <div class="ing-ex">Sodium Nitrate</div>
+          <div class="ing-ex">BHA / BHT</div>
+          <div class="ing-ex">Potassium Bromate</div>
+        </div>
+      </div>
+      <div class="ing-card warning reveal">
+        <div class="ing-label">🟡 Worth Watching</div>
+        <div class="ing-examples">
+          <div class="ing-ex">Artificial Colors</div>
+          <div class="ing-ex">Carrageenan</div>
+          <div class="ing-ex">Artificial Flavors</div>
+          <div class="ing-ex">Maltodextrin</div>
+        </div>
+      </div>
+      <div class="ing-card safe reveal">
+        <div class="ing-label">🟢 Generally Safe</div>
+        <div class="ing-examples">
+          <div class="ing-ex">Citric Acid</div>
+          <div class="ing-ex">Soy Lecithin</div>
+          <div class="ing-ex">Ascorbic Acid</div>
+          <div class="ing-ex">Xanthan Gum</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Free to Scan.<br>Premium to Optimize.</h2>
+      <p class="section-sub">Unlimited barcode scanning is always free. No daily limits, no account required to start.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-tier">Always Free</div>
+        <div class="price-name">Scanner</div>
+        <div class="price-free">FREE</div>
+        <div class="price-per">forever · no registration required</div>
+        <ul class="price-features">
+          <li>Unlimited barcode scanning</li>
+          <li>Health scores</li>
+          <li>Ingredient breakdown</li>
+          <li>Swap suggestions</li>
+          <li>No ads. Ever.</li>
+        </ul>
+        <a href="#" class="price-cta cta-green">Download Free</a>
+      </div>
+      <div class="price-card featured reveal">
+        <div class="featured-badge">Go Further</div>
+        <div class="price-tier">Premium</div>
+        <div class="price-name">Household</div>
+        <div class="price-amount"><span style="font-size:18px;color:rgba(255,255,255,0.4);font-family:'Barlow',sans-serif;vertical-align:top;margin-top:8px;display:inline-block">$</span>6.99</div>
+        <div class="price-per">/ month per household</div>
+        <ul class="price-features">
+          <li>Everything in Free</li>
+          <li>Family profiles + allergen alerts</li>
+          <li>Pantry tracking</li>
+          <li>Receipt scanner (GPT-4)</li>
+          <li>Pantry health audit</li>
+          <li>Smart shopping lists</li>
+        </ul>
+        <a href="#" class="price-cta cta-green">Try Premium</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta-band">
+  <div class="cta-inner reveal">
+    <div class="section-label" style="justify-content:center">Download Now</div>
+    <h2 class="cta-title">Stop Guessing.<br>Start Knowing.</h2>
+    <p class="cta-sub">Free forever. No login required to start scanning. Just point your camera at any barcode.</p>
+    <div class="hero-actions" style="justify-content:center">
+      <a href="#" class="btn-green">Download Free — iOS & Android</a>
+      <a href="index.html" class="btn-ghost">← Back to Twomiah</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span class="nav-wordmark">TWOMIAH</span>
+    <div class="footer-links">
+      <a href="index.html">Home</a><a href="factory.html">Factory</a><a href="build.html">Build</a><a href="care.html">Care</a><a href="cardshop.html">Card Shop</a><a href="mailto:hello@twomiah.com">Contact</a>
+    </div>
+    <span class="footer-copy">© 2026 Twomiah</span>
+  </div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting)setTimeout(()=>el.target.classList.add('visible'),i*70)})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
