@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twomiah Vision — AI Home Design for Contractors</title>
+<meta name="description" content="Your competitors show samples. You show their actual house. AI-powered home visualization that lives on your website with your branding.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dark:#0A0A0A;--charcoal:#141414;--panel:#1C1C1C;
+  --border:rgba(255,255,255,0.07);--white:#FFF;
+  --muted:rgba(255,255,255,0.42);--dim:rgba(255,255,255,0.16);
+  --fire:#FF3D00;--ember:#FF6D00;--gold:#E8B84B;
+  --amber:#D97706;--amber-light:#FCD34D;
+  --grad:linear-gradient(135deg,#FFAB00,#FF6D00,#FF3D00);
+  --amber-grad:linear-gradient(135deg,#FCD34D,#D97706,#92400E);
+  --amber-dim:rgba(217,119,6,0.1);--amber-border:rgba(217,119,6,0.25);
+  --green:#22C55E;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:var(--amber)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(10,10,10,0.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-icon{width:30px;height:30px}
+.nav-wordmark{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.12em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-back{color:var(--dim)!important;font-size:11px!important}
+.nav-cta{background:var(--amber)!important;color:var(--dark)!important;padding:8px 18px;border-radius:3px!important;font-weight:700!important}
+.nav-cta:hover{background:#e5a005!important}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:140px 80px 80px;position:relative;overflow:hidden;max-width:1400px;margin:0 auto}
+.hero-glow{position:absolute;right:-80px;top:50%;transform:translateY(-50%);width:600px;height:600px;background:radial-gradient(ellipse,rgba(217,119,6,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;animation:fadeUp 0.7s 0.1s both}
+.hero-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,5.5vw,82px);line-height:0.9;letter-spacing:0.02em;margin-bottom:20px;animation:fadeUp 0.7s 0.2s both}
+.amber-line{background:var(--amber-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:16px;line-height:1.8;color:var(--muted);margin-bottom:32px;animation:fadeUp 0.7s 0.3s both}
+.hero-sub em{color:rgba(255,255,255,0.82);font-style:normal;font-weight:600}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp 0.7s 0.4s both}
+.btn-amber{background:var(--amber);color:var(--dark);padding:14px 30px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;transition:all 0.2s;box-shadow:0 4px 20px rgba(217,119,6,0.25)}
+.btn-amber:hover{background:#e5a005;transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--border);color:var(--muted);padding:14px 30px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.3);color:var(--white)}
+.hero-note{font-size:12px;color:var(--dim);margin-top:14px;animation:fadeUp 0.7s 0.5s both}
+
+/* BEFORE/AFTER MOCK */
+.hero-visual{position:relative;z-index:1;animation:fadeUp 0.7s 0.35s both}
+.ba-card{background:var(--panel);border:1px solid var(--amber-border);border-radius:10px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.5)}
+.ba-header{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.ba-dot{width:8px;height:8px;border-radius:50%}
+.ba-title{font-size:12px;font-weight:600;color:var(--muted);margin-left:4px;letter-spacing:0.06em}
+.ba-images{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border)}
+.ba-img{aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.ba-before{background:linear-gradient(135deg,#2a2a2a 0%,#1a1a1a 100%)}
+.ba-after{background:linear-gradient(135deg,#1a0f00 0%,#2d1a00 50%,#3d2800 100%)}
+.ba-house{font-size:64px;opacity:0.4}
+.ba-house-after{font-size:64px;filter:sepia(1) saturate(2) hue-rotate(20deg);opacity:0.8}
+.ba-label{position:absolute;bottom:10px;left:10px;font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:3px 8px;border-radius:3px}
+.label-before{background:rgba(0,0,0,0.6);color:var(--dim)}
+.label-after{background:rgba(217,119,6,0.8);color:var(--dark)}
+.ba-footer{padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+.ba-product{font-size:12px;color:var(--muted)}
+.ba-product strong{color:rgba(255,255,255,0.8);display:block;font-size:13px}
+.ba-share{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--amber);padding:6px 14px;border:1px solid var(--amber-border);border-radius:3px}
+
+/* HOW IT WORKS */
+#how{background:var(--charcoal);padding:96px 48px}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:56px;background:var(--border)}
+.how-step{background:var(--charcoal);padding:36px 28px;position:relative}
+.how-num{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:1;background:var(--amber-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;display:block}
+.how-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px}
+.how-desc{font-size:14px;line-height:1.7;color:var(--muted)}
+.how-arrow{position:absolute;top:36px;right:-10px;font-size:18px;color:rgba(217,119,6,0.25);z-index:1}
+
+/* VS HOVER */
+#comparison{background:var(--dark);padding:96px 48px}
+.comp-inner{max-width:900px;margin:0 auto}
+.comp-table{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-top:48px}
+.comp-header{display:grid;grid-template-columns:1.2fr 1fr 1fr;background:var(--panel);border-bottom:1px solid var(--border)}
+.comp-col-head{padding:16px 20px;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)}
+.comp-col-head.us{color:var(--amber)}
+.comp-row{display:grid;grid-template-columns:1.2fr 1fr 1fr;border-bottom:1px solid var(--border)}
+.comp-row:last-child{border-bottom:none}
+.comp-cell{padding:13px 20px;font-size:13px;color:var(--muted)}
+.comp-cell.label{color:rgba(255,255,255,0.6);font-weight:500}
+.comp-cell.us{color:var(--amber);font-weight:600}
+.comp-cell.bad{color:rgba(255,255,255,0.2)}
+
+/* PRICING */
+#pricing{background:var(--charcoal);padding:96px 48px}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:820px;margin-top:56px}
+.price-card{background:var(--dark);border:1px solid var(--border);padding:36px 28px;border-radius:6px;position:relative}
+.price-card.featured{border-color:var(--amber-border);background:#0d0900}
+.featured-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--amber);color:var(--dark);font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:4px 14px;border-radius:20px;white-space:nowrap}
+.price-tier{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.price-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.06em;margin-bottom:8px}
+.price-amount{font-family:'Bebas Neue',sans-serif;font-size:60px;line-height:1;margin-bottom:2px}
+.price-amount sup{font-size:20px;font-family:'Barlow',sans-serif;font-weight:400;color:var(--muted);vertical-align:top;margin-top:12px;display:inline-block}
+.price-per{font-size:12px;color:var(--dim);margin-bottom:22px}
+.price-note{font-size:12px;color:var(--muted);margin-bottom:22px;line-height:1.6}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:26px}
+.price-features li{font-size:13px;color:rgba(255,255,255,0.5);display:flex;gap:8px;align-items:flex-start}
+.check-amber::before{content:'✓';color:var(--amber);font-weight:700;flex-shrink:0}
+.check-green::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.price-cta{display:block;text-align:center;padding:12px;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.2s}
+.cta-amber{background:var(--amber);color:var(--dark)}.cta-amber:hover{background:#e5a005}
+.cta-outline{border:1px solid var(--dim);color:var(--muted)}.cta-outline:hover{border-color:rgba(255,255,255,0.3);color:var(--white)}
+.price-sub{font-size:11px;color:var(--dim);text-align:center;margin-top:10px}
+
+/* FEATURES */
+#features{padding:96px 48px}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px;background:var(--border)}
+.feat{background:var(--dark);padding:32px 28px}
+.feat-icon{font-size:24px;margin-bottom:14px}
+.feat-title{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
+.feat-desc{font-size:14px;line-height:1.7;color:var(--muted)}
+
+/* EMBED */
+#embed{background:var(--charcoal);padding:96px 48px}
+.embed-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
+.embed-code{background:#060606;border:1px solid var(--border);border-radius:6px;padding:24px;font-family:'Courier New',monospace;font-size:13px;color:rgba(255,255,255,0.6);line-height:1.8;position:relative}
+.embed-code .comment{color:rgba(255,255,255,0.2)}
+.embed-code .tag{color:var(--amber)}
+.embed-code .attr{color:rgba(96,165,250,0.9)}
+.embed-code .val{color:rgba(134,239,172,0.9)}
+.code-label{position:absolute;top:10px;right:14px;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--dim);font-family:'Barlow',sans-serif}
+
+/* CTA */
+#cta{text-align:center;padding:96px 48px;position:relative;overflow:hidden}
+#cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(217,119,6,0.06) 0%,transparent 70%);pointer-events:none}
+.cta-inner{position:relative;z-index:1;max-width:580px;margin:0 auto}
+.cta-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7vw,88px);line-height:0.95;letter-spacing:0.04em;margin-bottom:18px}
+.cta-sub{font-size:17px;line-height:1.7;color:var(--muted);margin-bottom:40px}
+.cta-dual{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+footer{background:#060606;border-top:1px solid var(--border);padding:40px 48px 20px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-links{display:flex;gap:22px;flex-wrap:wrap}
+.footer-links a{color:var(--dim);text-decoration:none;font-size:13px;transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.15)}
+
+.section-label{display:flex;align-items:center;gap:10px;font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.section-label::after{content:'';flex:0 0 32px;height:1px;background:var(--amber);opacity:0.4}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,66px);letter-spacing:0.04em;line-height:1;margin-bottom:14px}
+.section-sub{font-size:16px;line-height:1.8;color:var(--muted);max-width:560px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:1024px){.hero{grid-template-columns:1fr;padding:120px 24px 60px}.hero-visual{display:none}.how-grid{grid-template-columns:repeat(2,1fr)}.features-grid{grid-template-columns:repeat(2,1fr)}.pricing-grid{grid-template-columns:1fr}.embed-inner{grid-template-columns:1fr}nav,#how,#comparison,#pricing,#features,#embed,#cta{padding-left:24px;padding-right:24px}}
+@media(max-width:640px){.how-grid{grid-template-columns:1fr}.features-grid{grid-template-columns:1fr}.nav-links{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-icon" viewBox="0 0 120 120" fill="none"><defs><linearGradient id="ng" x1="0" y1="120" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FFAB00"/><stop offset="50%" stop-color="#FF6D00"/><stop offset="100%" stop-color="#FF3D00"/></linearGradient><filter id="nglow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="M42 96 L20 48 L42 60 L52 24 L62 52 L75 40 L60 96 Z" fill="url(#ng)" opacity="0.65"/><path d="M78 96 L56 44 L68 58 L78 18 L88 50 L104 36 L96 96 Z" fill="url(#ng)" filter="url(#nglow)"/><rect x="16" y="96" width="88" height="3" rx="1.5" fill="url(#ng)" opacity="0.45"/></svg>
+    <span class="nav-wordmark">TWOMIAH</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-back">← All Products</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="https://home-visualizer.onrender.com/demo" class="nav-cta">Try It Free</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="position:relative;overflow:hidden">
+  <div class="hero-glow"></div>
+  <div class="hero" style="position:relative;z-index:1">
+    <div>
+      <p class="hero-eyebrow">AI Home Visualization</p>
+      <h1 class="hero-headline">Your Competitors<br>Show Samples.<br><span class="amber-line">You Show Their<br>Actual House.</span></h1>
+      <p class="hero-sub">AI-powered visualization that lives on <em>your website</em> with <em>your branding</em>. Homeowners upload a photo, pick from 450+ real products, and see a photorealistic before/after in seconds. Every render becomes a qualified lead.</p>
+      <div class="hero-actions">
+        <a href="https://home-visualizer.onrender.com/demo" class="btn-amber">Try It Free →</a>
+        <a href="https://home-visualizer.onrender.com/signup" class="btn-ghost">Get Started · $49/mo</a>
+      </div>
+      <p class="hero-note">No credit card required · 14-day free trial · Embeds on any website</p>
+    </div>
+    <div class="hero-visual">
+      <div class="ba-card">
+        <div class="ba-header">
+          <div class="ba-dot" style="background:#FF5F56"></div>
+          <div class="ba-dot" style="background:#FFBD2E;margin-left:5px"></div>
+          <div class="ba-dot" style="background:#27C93F;margin-left:5px"></div>
+          <span class="ba-title">Twomiah Vision — Visualization Preview</span>
+        </div>
+        <div class="ba-images">
+          <div class="ba-img ba-before">
+            <div class="ba-house">🏠</div>
+            <span class="ba-label label-before">Before</span>
+          </div>
+          <div class="ba-img ba-after">
+            <div class="ba-house-after">🏡</div>
+            <span class="ba-label label-after">After · AI Render</span>
+          </div>
+        </div>
+        <div class="ba-footer">
+          <div class="ba-product">
+            <strong>Timberline HDZ — Pewter Gray</strong>
+            GAF · 30-year architectural shingle
+          </div>
+          <div class="ba-share">Share ↗</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="reveal">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">A Closed Job in<br>Four Steps.</h2>
+      <p class="section-sub">From photo upload to signed contract — Twomiah Vision turns your website into your best salesperson.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-step reveal"><span class="how-num">01</span><div class="how-title">Homeowner Uploads a Photo</div><p class="how-desc">They visit your website, upload a photo of their home, and pick what they want to change — roofing, siding, windows, doors, or paint.</p><div class="how-arrow">→</div></div>
+      <div class="how-step reveal"><span class="how-num">02</span><div class="how-title">AI Renders the Result</div><p class="how-desc">In seconds, they see a photorealistic before/after with your real products applied to their actual house. 450+ products. 12 architectural styles.</p><div class="how-arrow">→</div></div>
+      <div class="how-step reveal"><span class="how-num">03</span><div class="how-title">They Share & Save</div><p class="how-desc">They save the render, share it with their spouse, post it online — and submit a lead form to get a quote. You get notified instantly.</p><div class="how-arrow">→</div></div>
+      <div class="how-step reveal"><span class="how-num">04</span><div class="how-title">You Close the Job</div><p class="how-desc">You show up to a pre-sold prospect who already knows what they want and has seen it on their own house. Close rates double. Arguments end.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="reveal">
+      <div class="section-label">What's Included</div>
+      <h2 class="section-title">Everything You Need.<br>Nothing You Don't.</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feat reveal"><div class="feat-icon">🎨</div><div class="feat-title">Your Brand, Your Colors</div><p class="feat-desc">Logo, color scheme, and domain — fully white-labeled. Homeowners see your company, not ours.</p></div>
+      <div class="feat reveal"><div class="feat-icon">🏠</div><div class="feat-title">450+ Real Products</div><p class="feat-desc">GAF, CertainTeed, James Hardie, Andersen, Pella — actual products from actual manufacturers, not generic swatches.</p></div>
+      <div class="feat reveal"><div class="feat-icon">⚡</div><div class="feat-title">Results in Seconds</div><p class="feat-desc">AI renders are fast. No waiting room, no loading spinner. Upload a photo, see the result in under 10 seconds.</p></div>
+      <div class="feat reveal"><div class="feat-icon">📋</div><div class="feat-title">Built-In Lead Capture</div><p class="feat-desc">Every visualization ends with a lead form. Name, email, phone, project type — sent straight to you by email and SMS.</p></div>
+      <div class="feat reveal"><div class="feat-icon">📊</div><div class="feat-title">Analytics Dashboard</div><p class="feat-desc">See which products homeowners choose most, where they drop off, and what's driving your best leads.</p></div>
+      <div class="feat reveal"><div class="feat-icon">🔌</div><div class="feat-title">One-Line Embed</div><p class="feat-desc">One script tag and it's live on any website — WordPress, Wix, Squarespace, Webflow, or custom. No developer needed.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VS HOVER -->
+<section id="comparison">
+  <div class="comp-inner reveal">
+    <div class="section-label">Why Vision</div>
+    <h2 class="section-title">Half the Cost.<br>None of the Per-Job Fees.</h2>
+    <p class="section-sub">HOVER charges $25–$50 per project on top of their subscription. You're paying for every render. We charge flat monthly — render as much as you want.</p>
+    <div class="comp-table">
+      <div class="comp-header">
+        <div class="comp-col-head">Feature</div>
+        <div class="comp-col-head us">Twomiah Vision</div>
+        <div class="comp-col-head">HOVER</div>
+      </div>
+      <div class="comp-row"><div class="comp-cell label">Monthly base price</div><div class="comp-cell us">$49/mo flat</div><div class="comp-cell bad">$999/yr ($83/mo)</div></div>
+      <div class="comp-row"><div class="comp-cell label">Per-render fee</div><div class="comp-cell us">None — unlimited</div><div class="comp-cell bad">$25–$50 per project</div></div>
+      <div class="comp-row"><div class="comp-cell label">Contractor doing 20 jobs/mo</div><div class="comp-cell us">$49</div><div class="comp-cell bad">$583–$1,083</div></div>
+      <div class="comp-row"><div class="comp-cell label">Lives on your website</div><div class="comp-cell us">✓ One-line embed</div><div class="comp-cell bad">✗ Their platform only</div></div>
+      <div class="comp-row"><div class="comp-cell label">Your branding</div><div class="comp-cell us">✓ Fully white-labeled</div><div class="comp-cell bad">✗ HOVER brand</div></div>
+      <div class="comp-row"><div class="comp-cell label">Own it outright (one-time)</div><div class="comp-cell us">✓ $1,497 one-time</div><div class="comp-cell bad">✗ Not offered</div></div>
+      <div class="comp-row"><div class="comp-cell label">Lead capture built in</div><div class="comp-cell us">✓ Included</div><div class="comp-cell bad">Limited</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="reveal">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">One Extra Closed Job<br>Pays for the Whole Year.</h2>
+      <p class="section-sub">Or buy it once and own it forever. Both get you the full platform.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card featured reveal">
+        <div class="featured-badge">Most Popular</div>
+        <div class="price-tier">Monthly SaaS</div>
+        <div class="price-name">We Host Everything</div>
+        <div class="price-amount"><sup>$</sup>49</div>
+        <div class="price-per">/ month · 200 renders included</div>
+        <ul class="price-features">
+          <li class="check-amber">Your branding, logo & colors</li>
+          <li class="check-amber">450+ real products · 12 styles</li>
+          <li class="check-amber">200 AI renders / month</li>
+          <li class="check-amber">Lead capture + email alerts</li>
+          <li class="check-amber">Analytics dashboard</li>
+          <li class="check-amber">CRM webhook (Zapier, Jobber)</li>
+          <li class="check-amber">Before/after social sharing</li>
+          <li class="check-amber">One-line embed — any website</li>
+          <li class="check-amber">Priority support</li>
+        </ul>
+        <a href="https://home-visualizer.onrender.com/signup" class="price-cta cta-amber">Start 14-Day Free Trial →</a>
+        <p class="price-sub">No credit card required. Cancel anytime.</p>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-tier">One-Time License</div>
+        <div class="price-name">Own It Forever</div>
+        <div class="price-amount"><sup>$</sup>1,497</div>
+        <div class="price-per">one-time · ~$0.05/render direct to OpenAI</div>
+        <p class="price-note" style="color:var(--muted);background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.12);border-radius:4px;padding:10px 12px;font-size:12px">Pays for itself vs. $49/mo in about 31 months — then it's free forever.</p>
+        <ul class="price-features">
+          <li class="check-green">Everything in Monthly — forever</li>
+          <li class="check-green">Full source code</li>
+          <li class="check-green">Deploy on your own server</li>
+          <li class="check-green">You own the code & data 100%</li>
+          <li class="check-green">No monthly fees ever</li>
+          <li class="check-green">We deploy it for you (included)</li>
+          <li class="check-green">90 days email support</li>
+        </ul>
+        <a href="https://home-visualizer.onrender.com/signup?model=license" class="price-cta cta-outline">Buy License →</a>
+        <p class="price-sub">Secure one-time payment via Stripe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMBED -->
+<section id="embed">
+  <div class="embed-inner">
+    <div class="reveal">
+      <div class="section-label">Embed</div>
+      <h2 class="section-title">Live on Your Site<br>in 60 Seconds.</h2>
+      <p class="section-sub" style="margin-bottom:28px">One script tag. Paste it anywhere — WordPress, Wix, Squarespace, Webflow, or custom HTML. It just works.</p>
+      <p style="font-size:14px;line-height:1.8;color:var(--muted)">Your homeowners never leave your site. Your leads stay yours. Your brand is front and center the entire time.</p>
+    </div>
+    <div class="reveal">
+      <div class="embed-code">
+        <span class="code-label">HTML</span>
+        <span class="comment">&lt;!-- Paste anywhere on your site --&gt;</span><br>
+        <span class="tag">&lt;script</span><br>
+        &nbsp;&nbsp;<span class="attr">src</span>=<span class="val">"https://home-visualizer.onrender.com/embed.js"</span><br>
+        &nbsp;&nbsp;<span class="attr">data-tenant</span>=<span class="val">"your-company-slug"</span><br>
+        &nbsp;&nbsp;<span class="attr">data-color</span>=<span class="val">"#d97706"</span><br>
+        <span class="tag">&gt;&lt;/script&gt;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-inner reveal">
+    <div class="section-label" style="justify-content:center">Get Started</div>
+    <h2 class="cta-title">Show Them<br>Their House.</h2>
+    <p class="cta-sub">Try it free for 14 days. No credit card. No commitment. Just more closed jobs.</p>
+    <div class="cta-dual">
+      <a href="https://home-visualizer.onrender.com/demo" class="btn-amber">Try the Demo →</a>
+      <a href="https://home-visualizer.onrender.com/signup" class="btn-ghost">Start Free Trial</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span class="nav-wordmark">TWOMIAH</span>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="factory.html">Factory</a>
+      <a href="build.html">Build</a>
+      <a href="care.html">Care</a>
+      <a href="cardshop.html">Card Shop</a>
+      <a href="ickapp.html">IckApp</a>
+      <a href="mailto:hello@twomiah.com">Contact</a>
+    </div>
+    <span class="footer-copy">© 2026 Twomiah</span>
+  </div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting)setTimeout(()=>el.target.classList.add('visible'),i*70)})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
