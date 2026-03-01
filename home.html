@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOME — The Vision Behind Twomiah</title>
+<meta name="description" content="Twomiah software is building toward something bigger. HOME is a self-sustaining community campus built for the people the system has failed.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--fire:#FF3D00;--ember:#FF6D00;--gold:#FFAB00;--dark:#0D0D0D;--charcoal:#1A1A1A;--smoke:#2A2A2A;--ash:#555;--muted:#888;--bone:#F5F0EB;--white:#FFFFFF;--grad:linear-gradient(135deg,#FFAB00,#FF6D00,#FF3D00);
+/* HOME palette */
+--sage:#7A9E7E;--warm:#C4956A;--home-gold:#E8C870;--river:#5B8FA8;--earth:#2C3E2D}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:var(--fire);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(13,13,13,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-icon{width:32px;height:32px}
+.nav-wordmark{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.12em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--fire)!important;color:var(--white)!important;padding:8px 18px;border-radius:3px!important;transition:background 0.2s!important}
+.nav-cta:hover{background:var(--ember)!important}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:140px 40px 100px;text-align:center}
+.hero-glow{position:absolute;bottom:-80px;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(122,158,126,0.12) 0%,transparent 70%);pointer-events:none}
+.hero-glow-2{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(232,200,112,0.06) 0%,transparent 70%);pointer-events:none}
+.hero-wm{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(120px,28vw,320px);color:rgba(255,255,255,0.018);letter-spacing:0.1em;white-space:nowrap;pointer-events:none;top:50%;left:50%;transform:translate(-50%,-50%);user-select:none}
+.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--sage);margin-bottom:28px;animation:fadeUp 0.8s 0.1s both}
+.four-words{display:flex;gap:clamp(16px,3vw,48px);justify-content:center;margin-bottom:32px;flex-wrap:wrap;animation:fadeUp 0.8s 0.2s both}
+.word{display:flex;flex-direction:column;align-items:center;gap:6px}
+.word-text{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,8vw,96px);letter-spacing:0.08em;line-height:1}
+.word-text.w1{color:var(--home-gold)}
+.word-text.w2{color:var(--sage)}
+.word-text.w3{color:var(--warm)}
+.word-text.w4{color:var(--river)}
+.word-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.15)}
+.hero-sub{font-size:clamp(15px,1.8vw,20px);line-height:1.8;color:rgba(255,255,255,0.45);max-width:580px;margin:0 auto 20px;animation:fadeUp 0.8s 0.4s both}
+.hero-sub em{color:var(--bone);font-style:normal;font-weight:600}
+.hero-divider{width:48px;height:1px;background:var(--home-gold);opacity:0.4;margin:32px auto;animation:fadeUp 0.8s 0.5s both}
+.hero-founding{font-size:14px;color:rgba(255,255,255,0.25);letter-spacing:0.08em;font-style:italic;animation:fadeUp 0.8s 0.6s both}
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.2);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;animation:fadeUp 1s 1.2s both}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,transparent,var(--sage));animation:scrollP 2s ease-in-out infinite}
+@keyframes scrollP{0%,100%{opacity:0.3}50%{opacity:1}}
+
+/* SHARED */
+.section-label{display:flex;align-items:center;gap:10px;font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--ember);margin-bottom:16px}
+.section-label::after{content:'';flex:0 0 36px;height:1px;background:var(--ember);opacity:0.5}
+.section-label.sage{color:var(--sage)}
+.section-label.sage::after{background:var(--sage)}
+.section-label.gold{color:var(--home-gold)}
+.section-label.gold::after{background:var(--home-gold)}
+
+/* THE ORIGIN */
+#origin{padding:120px 48px;position:relative;overflow:hidden}
+#origin::before{content:'';position:absolute;top:0;right:-10%;width:50%;height:100%;background:radial-gradient(ellipse at right,rgba(122,158,126,0.04) 0%,transparent 60%);pointer-events:none}
+.origin-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:400px 1fr;gap:90px;align-items:start}
+.origin-left{}
+.origin-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,5.5vw,80px);line-height:0.95;letter-spacing:0.04em;margin-bottom:24px}
+.origin-title .hl{color:var(--home-gold)}
+.origin-quote{font-size:18px;line-height:1.8;color:rgba(255,255,255,0.35);font-style:italic;border-left:2px solid var(--sage);padding-left:20px;margin-top:32px}
+.origin-right{display:flex;flex-direction:column;gap:24px}
+.origin-p{font-size:16px;line-height:1.9;color:rgba(255,255,255,0.58)}
+.origin-p strong{color:var(--bone);font-weight:600}
+.origin-p .fire{color:var(--home-gold)}
+
+/* MISSION STRIP */
+.mission-strip{background:var(--charcoal);padding:64px 48px;border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04)}
+.mission-strip-inner{max-width:1200px;margin:0 auto;text-align:center}
+.mission-strip-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,3vw,42px);letter-spacing:0.08em;color:rgba(255,255,255,0.25);margin-bottom:24px}
+.mission-statement{font-size:clamp(16px,2vw,22px);line-height:1.8;color:rgba(255,255,255,0.55);max-width:800px;margin:0 auto}
+.mission-statement strong{color:var(--bone)}
+.mission-statement .home-word{color:var(--home-gold)}
+
+/* CAMPUS OVERVIEW */
+#campus{padding:120px 48px;background:var(--charcoal)}
+.campus-inner{max-width:1200px;margin:0 auto}
+.campus-header{margin-bottom:64px}
+.campus-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,5.5vw,76px);letter-spacing:0.04em;line-height:1;margin-top:12px}
+.campus-title span{color:var(--home-gold)}
+.campus-sub{font-size:16px;line-height:1.8;color:rgba(255,255,255,0.45);max-width:620px;margin-top:16px}
+
+/* Campus SVG map */
+.campus-map-wrap{position:relative;margin:0 auto 64px;max-width:700px}
+.campus-map-wrap svg{width:100%;height:auto}
+.map-tabs{display:flex;gap:0;margin-bottom:24px;border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);width:fit-content}
+.map-tab{padding:9px 24px;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;font-weight:700;font-family:'Barlow',sans-serif;cursor:pointer;background:rgba(255,255,255,0.02);color:rgba(255,255,255,0.35);border:none;transition:all 0.2s}
+.map-tab.active{background:rgba(122,158,126,0.15);color:var(--sage)}
+.map-level{display:none}
+.map-level.active{display:block}
+
+/* NEIGHBORHOODS GRID */
+.neighborhoods{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,0.04);margin-top:2px}
+.nbhd{background:var(--dark);padding:36px 32px;position:relative;overflow:hidden;transition:background 0.25s;border:1px solid transparent}
+.nbhd::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform 0.35s cubic-bezier(0.22,1,0.36,1)}
+.nbhd:hover{background:#141414}
+.nbhd:hover::before{transform:scaleX(1)}
+.nbhd.c-sage::before{background:var(--sage)}
+.nbhd.c-warm::before{background:var(--warm)}
+.nbhd.c-gold::before{background:var(--home-gold)}
+.nbhd.c-river::before{background:var(--river)}
+.nbhd.c-purple::before{background:#A08CC8}
+.nbhd.c-red::before{background:#C87878}
+.nbhd.c-fire::before{background:var(--grad)}
+.nbhd-zone{font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:14px}
+.nbhd.c-sage .nbhd-zone{color:var(--sage)}
+.nbhd.c-warm .nbhd-zone{color:var(--warm)}
+.nbhd.c-gold .nbhd-zone{color:var(--home-gold)}
+.nbhd.c-river .nbhd-zone{color:var(--river)}
+.nbhd.c-purple .nbhd-zone{color:#A08CC8}
+.nbhd.c-red .nbhd-zone{color:#C87878}
+.nbhd.c-fire .nbhd-zone{color:var(--gold)}
+.nbhd-name{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:14px}
+.nbhd-desc{font-size:13px;line-height:1.75;color:rgba(255,255,255,0.42)}
+.nbhd-features{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.nbhd-tag{font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;border-radius:2px;border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.3)}
+.nbhd.full{grid-column:1/-1}
+
+/* THE UNDERGROUND */
+#underground{padding:120px 48px;position:relative;overflow:hidden}
+#underground::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(196,149,106,0.04) 0%,transparent 70%);pointer-events:none}
+.underground-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.underground-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,5.5vw,76px);letter-spacing:0.04em;line-height:0.95;margin-bottom:24px}
+.underground-title span{color:var(--warm)}
+.underground-copy{font-size:16px;line-height:1.9;color:rgba(255,255,255,0.5);margin-bottom:24px}
+.underground-copy strong{color:var(--bone)}
+.underground-points{display:flex;flex-direction:column;gap:14px;margin-top:32px}
+.u-point{display:flex;gap:16px;align-items:flex-start}
+.u-dot{width:6px;height:6px;border-radius:50%;background:var(--warm);flex-shrink:0;margin-top:7px}
+.u-text{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.45)}
+.u-text strong{color:var(--bone)}
+.underground-visual{background:var(--charcoal);border-radius:6px;padding:32px;border:1px solid rgba(255,255,255,0.06)}
+
+/* SUSTAINABILITY */
+#sustain{padding:120px 48px;background:var(--charcoal)}
+.sustain-inner{max-width:1200px;margin:0 auto}
+.sustain-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,5.5vw,76px);letter-spacing:0.04em;line-height:1;margin:12px 0 48px}
+.sustain-title span{color:var(--sage)}
+.sustain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,255,255,0.04)}
+.sustain-block{background:var(--charcoal);padding:32px 28px;border:1px solid transparent;transition:background 0.2s}
+.sustain-block:hover{background:#1e1e1e}
+.sustain-icon{font-size:28px;margin-bottom:16px}
+.sustain-name{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;color:var(--sage)}
+.sustain-desc{font-size:13px;line-height:1.75;color:rgba(255,255,255,0.4)}
+
+/* VISITOR ECONOMY */
+#visitors{padding:120px 48px}
+.visitors-inner{max-width:1200px;margin:0 auto}
+.visitors-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,5.5vw,76px);letter-spacing:0.04em;line-height:1;margin:12px 0 20px}
+.visitors-title span{color:var(--home-gold)}
+.visitors-sub{font-size:16px;line-height:1.8;color:rgba(255,255,255,0.45);max-width:620px;margin-bottom:56px}
+.visitors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,0.04)}
+.visitor-card{background:var(--dark);padding:36px 32px;border:1px solid transparent;transition:background 0.2s}
+.visitor-card:hover{background:#141414;border-color:rgba(232,200,112,0.08)}
+.visitor-icon{font-size:28px;margin-bottom:16px}
+.visitor-name{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;color:var(--home-gold);margin-bottom:10px}
+.visitor-desc{font-size:13px;line-height:1.75;color:rgba(255,255,255,0.4)}
+
+/* THE PATH */
+#path{padding:120px 48px;background:var(--charcoal)}
+.path-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:400px 1fr;gap:90px;align-items:start}
+.path-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,5.5vw,80px);letter-spacing:0.04em;line-height:0.95;margin-bottom:20px}
+.path-title span{color:var(--home-gold)}
+.path-sub{font-size:15px;line-height:1.8;color:rgba(255,255,255,0.4)}
+.chapters{display:flex;flex-direction:column;gap:0}
+.chapter{display:flex;gap:24px;align-items:flex-start;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.chapter:last-child{border-bottom:none}
+.chapter-num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:rgba(255,255,255,0.08);flex-shrink:0;line-height:1;width:36px}
+.chapter-content{}
+.chapter-title{font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--bone);margin-bottom:4px}
+.chapter-desc{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.38)}
+.chapter.active .chapter-num{color:var(--home-gold)}
+.chapter.active .chapter-title{color:var(--home-gold)}
+
+/* BIGGER IDEA */
+#bigger{padding:120px 48px;text-align:center;position:relative;overflow:hidden}
+#bigger::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(122,158,126,0.06) 0%,transparent 70%);pointer-events:none}
+.bigger-inner{position:relative;z-index:1;max-width:720px;margin:0 auto}
+.bigger-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,8vw,100px);line-height:0.9;letter-spacing:0.04em;margin-bottom:32px}
+.bigger-title .hl{color:var(--home-gold)}
+.bigger-copy{font-size:18px;line-height:1.9;color:rgba(255,255,255,0.5);margin-bottom:24px}
+.bigger-copy strong{color:var(--bone)}
+.bigger-sign{font-size:13px;color:rgba(255,255,255,0.2);letter-spacing:0.12em;font-style:italic;margin-top:48px}
+
+/* FOOTER */
+footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56px 48px 28px}
+.footer-top{max-width:1200px;margin:0 auto 40px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px}
+.footer-brand .nav-wordmark{display:block;margin-bottom:14px;font-size:20px}
+.footer-tagline{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.3);max-width:260px}
+.footer-col h5{font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--ember);margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-col ul a{color:rgba(255,255,255,0.35);text-decoration:none;font-size:13px;transition:color 0.2s}
+.footer-col ul a:hover{color:var(--white)}
+.footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.05);padding-top:20px;display:flex;justify-content:space-between;align-items:center}
+.footer-copy,.footer-loc{font-size:11px;color:rgba(255,255,255,0.18);letter-spacing:0.04em}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .origin-inner,.underground-inner,.path-inner{grid-template-columns:1fr;gap:48px}
+  .neighborhoods,.visitors-grid{grid-template-columns:repeat(2,1fr)}
+  .sustain-grid{grid-template-columns:repeat(2,1fr)}
+  nav{padding:16px 24px}
+  #origin,#campus,#underground,#sustain,#visitors,#path,#bigger{padding:80px 24px}
+  .mission-strip{padding:48px 24px}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .neighborhoods,.visitors-grid,.sustain-grid{grid-template-columns:1fr}
+  .nbhd.full{grid-column:1}
+  .four-words{gap:12px}
+  .word-text{font-size:clamp(36px,12vw,64px)}
+  .footer-top{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-icon" viewBox="0 0 120 120" fill="none">
+      <defs><linearGradient id="ng" x1="0" y1="120" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FFAB00"/><stop offset="50%" stop-color="#FF6D00"/><stop offset="100%" stop-color="#FF3D00"/></linearGradient><filter id="nglow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <path d="M42 96 L20 48 L42 60 L52 24 L62 52 L75 40 L60 96 Z" fill="url(#ng)" opacity="0.65"/>
+      <path d="M78 96 L56 44 L68 58 L78 18 L88 50 L104 36 L96 96 Z" fill="url(#ng)" filter="url(#nglow)"/>
+      <rect x="16" y="96" width="88" height="3" rx="1.5" fill="url(#ng)" opacity="0.45"/>
+    </svg>
+    <span class="nav-wordmark">TWOMIAH</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#products">Products</a></li>
+    <li><a href="index.html#mission">Why Twomiah</a></li>
+    <li><a href="index.html#story">Our Story</a></li>
+    <li><a href="build.html" class="nav-cta">Launch App</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-wm">HOME</div>
+
+  <p class="hero-eyebrow">The Vision Behind Twomiah</p>
+
+  <div class="four-words">
+    <div class="word"><span class="word-text w1">HOME</span><span class="word-dot"></span></div>
+    <div class="word"><span class="word-text w2">SAFE</span><span class="word-dot"></span></div>
+    <div class="word"><span class="word-text w3">LOVE</span><span class="word-dot"></span></div>
+    <div class="word"><span class="word-text w4">HAPPY</span><span class="word-dot"></span></div>
+  </div>
+
+  <p class="hero-sub">Every customer who uses Twomiah software is part of this journey.<br><em>Every dollar of recurring revenue is a brick in something that doesn't exist yet — but will.</em></p>
+
+  <div class="hero-divider"></div>
+  <p class="hero-founding">A self-sustaining community campus · Arizona · Founded by Jeremiah Andson</p>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>The story</span>
+  </div>
+</section>
+
+<!-- ORIGIN -->
+<section id="origin">
+  <div class="origin-inner">
+    <div class="origin-left reveal">
+      <div class="section-label sage">Where it starts</div>
+      <h2 class="origin-title">The<br><span class="hl">Junkyard<br>Bike</span></h2>
+      <blockquote class="origin-quote">"That man didn't have money. He had time, ingenuity, and enough love to see what a kid needed."</blockquote>
+    </div>
+    <div class="origin-right reveal">
+      <p class="origin-p">My earliest memory is of police lights reflecting off a house. My mom left when I was 3. I spent a year in foster care with my sister when I was 8. My foster father went to the junkyard and built me a bike from spare parts so I could ride with my best friend.</p>
+      <p class="origin-p">That bike changed something in me. Not because it was a bike. <strong>Because someone gave a damn without being asked.</strong></p>
+      <p class="origin-p">HOME exists because of that bike. Because of every kid in the system who got separated from their sibling. Because of every person sleeping outside who just needs a door they can call their own. Because of every family one bad month from losing everything.</p>
+      <p class="origin-p">Because no program, no policy, and no institution has ever consistently delivered the thing people actually need. <span class="fire">Four words. That's the whole mission.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION STRIP -->
+<div class="mission-strip">
+  <div class="mission-strip-inner reveal">
+    <p class="mission-strip-title">The Mission</p>
+    <p class="mission-statement"><strong>Until we don't have homeless people unless it is a choice.</strong> Until children are safe in foster care because the right people are caring for them. Until the door that needs to be open at 3am <span class="home-word">is open at 3am.</span> Until every kid grows up somewhere that communicates wonder instead of danger.</p>
+  </div>
+</div>
+
+<!-- CAMPUS -->
+<section id="campus">
+  <div class="campus-inner">
+    <div class="campus-header reveal">
+      <div class="section-label gold">The campus</div>
+      <h2 class="campus-title">A Circle.<br><span>Everyone Faces<br>The Center.</span></h2>
+      <p class="campus-sub">Circular layout. Car-free surface. The Commons at the center, equidistant from every neighborhood. A natural creek winding through. Native desert trees lining every walking path. No hierarchy. No top or bottom. Just a center that belongs to everyone equally.</p>
+    </div>
+
+    <!-- Mini campus diagram -->
+    <div class="campus-map-wrap reveal">
+      <div class="map-tabs">
+        <button class="map-tab active" onclick="showMap('above',this)">Above Ground</button>
+        <button class="map-tab" onclick="showMap('below',this)">Below Ground</button>
+      </div>
+
+      <div class="map-level active" id="map-above">
+      <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="ts"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <pattern id="eh" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+            <rect width="8" height="8" fill="#3D2E1A"/>
+            <circle cx="2" cy="3" r="1" fill="#4A3820" opacity="0.5"/>
+          </pattern>
+        </defs>
+        <circle cx="300" cy="300" r="265" fill="#141A14" stroke="rgba(122,158,126,0.1)" stroke-width="1.5"/>
+        <!-- Zones -->
+        <path d="M 300 300 L 163 120 A 200 200 0 0 1 437 120 Z" fill="rgba(196,149,106,0.18)" stroke="rgba(196,149,106,0.3)" stroke-width="1"/>
+        <path d="M 300 300 L 163 120 A 200 200 0 0 1 437 120 Z" fill="url(#eh)" opacity="0.2"/>
+        <path d="M 300 300 L 72 200 A 200 200 0 0 1 163 120 Z" fill="rgba(91,143,168,0.18)" stroke="rgba(91,143,168,0.28)" stroke-width="1"/>
+        <path d="M 300 300 L 66 364 A 200 200 0 0 1 72 200 Z" fill="rgba(160,140,200,0.18)" stroke="rgba(160,140,200,0.28)" stroke-width="1"/>
+        <path d="M 300 300 L 163 480 A 200 200 0 0 1 66 364 Z" fill="rgba(122,158,126,0.2)" stroke="rgba(122,158,126,0.3)" stroke-width="1"/>
+        <path d="M 300 300 L 437 480 A 200 200 0 0 1 163 480 Z" fill="rgba(232,200,112,0.18)" stroke="rgba(232,200,112,0.28)" stroke-width="1"/>
+        <path d="M 300 300 L 528 364 A 200 200 0 0 1 437 480 Z" fill="rgba(200,120,120,0.18)" stroke="rgba(200,120,120,0.28)" stroke-width="1"/>
+        <path d="M 300 300 L 437 120 A 200 200 0 0 1 528 364 Z" fill="rgba(91,143,168,0.1)" stroke="rgba(91,143,168,0.2)" stroke-width="1"/>
+        <!-- Perimeter road -->
+        <circle cx="300" cy="300" r="252" fill="none" stroke="rgba(196,149,106,0.18)" stroke-width="7"/>
+        <!-- Creek -->
+        <path d="M 437 480 C 400 434, 350 418, 328 392 C 306 366, 298 344, 282 328 C 266 312, 248 316, 232 334 C 216 352, 202 386, 163 480" fill="none" stroke="rgba(91,143,168,0.6)" stroke-width="6" stroke-linecap="round"/>
+        <path d="M 437 480 C 400 434, 350 418, 328 392 C 306 366, 298 344, 282 328 C 266 312, 248 316, 232 334 C 216 352, 202 386, 163 480" fill="none" stroke="rgba(168,200,216,0.3)" stroke-width="2.5" stroke-dasharray="8,5" stroke-linecap="round"/>
+        <!-- Trees -->
+        <circle cx="210" cy="218" r="10" fill="rgba(70,110,65,0.55)" filter="url(#ts)"/>
+        <circle cx="184" cy="196" r="9" fill="rgba(80,120,70,0.5)" filter="url(#ts)"/>
+        <circle cx="158" cy="298" r="10" fill="rgba(70,110,65,0.55)" filter="url(#ts)"/>
+        <circle cx="148" cy="330" r="9" fill="rgba(80,120,70,0.5)" filter="url(#ts)"/>
+        <circle cx="210" cy="382" r="10" fill="rgba(70,110,65,0.55)" filter="url(#ts)"/>
+        <circle cx="258" cy="416" r="11" fill="rgba(80,120,70,0.5)" filter="url(#ts)"/>
+        <circle cx="342" cy="416" r="10" fill="rgba(70,110,65,0.55)" filter="url(#ts)"/>
+        <circle cx="390" cy="382" r="10" fill="rgba(80,120,70,0.5)" filter="url(#ts)"/>
+        <circle cx="444" cy="330" r="9" fill="rgba(70,110,65,0.5)" filter="url(#ts)"/>
+        <circle cx="440" cy="218" r="10" fill="rgba(80,120,70,0.5)" filter="url(#ts)"/>
+        <circle cx="300" cy="220" r="9" fill="rgba(70,110,65,0.45)" filter="url(#ts)"/>
+        <!-- Commons -->
+        <circle cx="300" cy="300" r="78" fill="#1A2B1B" stroke="rgba(232,200,112,0.4)" stroke-width="1.5"/>
+        <circle cx="300" cy="300" r="72" fill="rgba(44,62,45,0.9)"/>
+        <!-- Canopy indicators -->
+        <circle cx="290" cy="288" r="14" fill="rgba(232,200,112,0.06)" stroke="rgba(232,200,112,0.2)" stroke-width="1" stroke-dasharray="2,2"/>
+        <circle cx="312" cy="288" r="12" fill="rgba(232,200,112,0.06)" stroke="rgba(232,200,112,0.15)" stroke-width="1" stroke-dasharray="2,2"/>
+        <circle cx="300" cy="308" r="13" fill="rgba(232,200,112,0.06)" stroke="rgba(232,200,112,0.15)" stroke-width="1" stroke-dasharray="2,2"/>
+        <text x="300" y="297" text-anchor="middle" font-family="serif" font-size="10" fill="#E8C870" font-style="italic">Commons</text>
+        <text x="300" y="309" text-anchor="middle" font-family="sans-serif" font-size="6" fill="rgba(232,200,112,0.45)" letter-spacing="1.5">CENTER</text>
+        <!-- Zone labels -->
+        <text x="300" y="90" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(196,149,106,0.7)" font-weight="bold">THE PLANT</text>
+        <text x="132" y="155" text-anchor="middle" font-family="sans-serif" font-size="8" fill="rgba(91,143,168,0.7)">DIGNITY</text>
+        <text x="110" y="310" text-anchor="middle" font-family="sans-serif" font-size="8" fill="rgba(160,140,200,0.7)">STAFF</text>
+        <text x="134" y="452" text-anchor="middle" font-family="sans-serif" font-size="8" fill="rgba(122,158,126,0.7)">SIBLING</text>
+        <text x="300" y="484" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(232,200,112,0.7)" font-weight="bold">FAMILY &amp; FRIENDS</text>
+        <text x="466" y="452" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(200,120,120,0.7)">ALWAYS</text>
+        <text x="466" y="462" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(200,120,120,0.7)">OPEN</text>
+        <text x="468" y="155" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(91,143,168,0.6)">TRANSITION</text>
+        <!-- Green roof plant -->
+        <path d="M 192 138 A 152 152 0 0 1 408 138" fill="rgba(122,158,126,0.1)" stroke="rgba(122,158,126,0.25)" stroke-width="1"/>
+        <text x="300" y="132" text-anchor="middle" font-family="sans-serif" font-size="6" fill="rgba(122,158,126,0.45)" letter-spacing="1">GREEN ROOF · SOLAR</text>
+        <!-- No cars -->
+        <text x="108" y="298" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(196,149,106,0.3)">🚫🚗</text>
+      </svg>
+      </div>
+
+      <div class="map-level" id="map-below">
+      <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="300" cy="300" r="265" fill="#0E120E" stroke="rgba(196,149,106,0.15)" stroke-width="1.5"/>
+        <!-- Underground ring road -->
+        <circle cx="300" cy="300" r="200" fill="none" stroke="rgba(196,149,106,0.45)" stroke-width="16"/>
+        <circle cx="300" cy="300" r="200" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="14"/>
+        <text x="300" y="98" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(196,149,106,0.45)" letter-spacing="1.5">UNDERGROUND RING ROAD</text>
+        <!-- Spokes -->
+        <line x1="300" y1="224" x2="300" y2="108" stroke="rgba(196,149,106,0.4)" stroke-width="12"/>
+        <line x1="234" y1="260" x2="142" y2="170" stroke="rgba(196,149,106,0.35)" stroke-width="10"/>
+        <line x1="214" y1="300" x2="108" y2="300" stroke="rgba(196,149,106,0.35)" stroke-width="10"/>
+        <line x1="234" y1="340" x2="142" y2="432" stroke="rgba(196,149,106,0.35)" stroke-width="10"/>
+        <line x1="270" y1="370" x2="228" y2="456" stroke="rgba(196,149,106,0.35)" stroke-width="10"/>
+        <line x1="330" y1="370" x2="372" y2="456" stroke="rgba(196,149,106,0.35)" stroke-width="10"/>
+        <line x1="366" y1="340" x2="458" y2="432" stroke="rgba(196,149,106,0.35)" stroke-width="10"/>
+        <line x1="386" y1="300" x2="492" y2="300" stroke="rgba(196,149,106,0.35)" stroke-width="10"/>
+        <line x1="366" y1="260" x2="458" y2="170" stroke="rgba(196,149,106,0.35)" stroke-width="10"/>
+        <!-- Emergency lane -->
+        <circle cx="300" cy="300" r="200" fill="none" stroke="rgba(200,80,80,0.15)" stroke-width="4" stroke-dasharray="16,8"/>
+        <!-- Plant logistics -->
+        <rect x="218" y="108" width="164" height="44" rx="4" fill="rgba(196,149,106,0.15)" stroke="rgba(196,149,106,0.4)" stroke-width="1"/>
+        <text x="300" y="127" text-anchor="middle" font-family="sans-serif" font-size="8" fill="rgba(196,149,106,0.8)" font-weight="bold">PLANT LOGISTICS</text>
+        <text x="300" y="141" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(196,149,106,0.45)">shipping · receiving · fleet</text>
+        <!-- Commons loading -->
+        <circle cx="300" cy="300" r="62" fill="rgba(44,62,35,0.5)" stroke="rgba(232,200,112,0.2)" stroke-width="1"/>
+        <text x="300" y="295" text-anchor="middle" font-family="sans-serif" font-size="8" fill="rgba(232,200,112,0.65)" font-weight="bold">COMMONS</text>
+        <text x="300" y="307" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(232,200,112,0.4)">loading docks below</text>
+        <!-- Garage blocks -->
+        <rect x="100" y="158" width="60" height="34" rx="3" fill="rgba(91,143,168,0.18)" stroke="rgba(91,143,168,0.4)" stroke-width="1"/>
+        <text x="130" y="173" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(91,143,168,0.8)">GARAGES</text>
+        <text x="130" y="184" text-anchor="middle" font-family="sans-serif" font-size="6" fill="rgba(91,143,168,0.5)">↑ stairs up</text>
+        <rect x="66" y="272" width="60" height="34" rx="3" fill="rgba(160,140,200,0.18)" stroke="rgba(160,140,200,0.4)" stroke-width="1"/>
+        <text x="96" y="287" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(160,140,200,0.8)">GARAGES</text>
+        <text x="96" y="298" text-anchor="middle" font-family="sans-serif" font-size="6" fill="rgba(160,140,200,0.5)">↑ stairs up</text>
+        <rect x="86" y="396" width="60" height="34" rx="3" fill="rgba(122,158,126,0.18)" stroke="rgba(122,158,126,0.4)" stroke-width="1"/>
+        <text x="116" y="411" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(122,158,126,0.8)">GARAGES</text>
+        <text x="116" y="422" text-anchor="middle" font-family="sans-serif" font-size="6" fill="rgba(122,158,126,0.5)">↑ stairs up</text>
+        <rect x="192" y="464" width="60" height="34" rx="3" fill="rgba(232,200,112,0.18)" stroke="rgba(232,200,112,0.4)" stroke-width="1"/>
+        <text x="222" y="479" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(232,200,112,0.8)">GARAGES</text>
+        <text x="222" y="490" text-anchor="middle" font-family="sans-serif" font-size="6" fill="rgba(232,200,112,0.5)">↑ stairs up</text>
+        <rect x="348" y="464" width="60" height="34" rx="3" fill="rgba(232,200,112,0.18)" stroke="rgba(232,200,112,0.4)" stroke-width="1"/>
+        <text x="378" y="479" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(232,200,112,0.8)">GARAGES</text>
+        <text x="378" y="490" text-anchor="middle" font-family="sans-serif" font-size="6" fill="rgba(232,200,112,0.5)">↑ stairs up</text>
+        <rect x="440" y="396" width="60" height="34" rx="3" fill="rgba(200,120,120,0.18)" stroke="rgba(200,120,120,0.4)" stroke-width="1"/>
+        <text x="470" y="409" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(200,120,120,0.8)">LOADING</text>
+        <text x="470" y="420" text-anchor="middle" font-family="sans-serif" font-size="6" fill="rgba(200,120,120,0.5)">kitchen · hotel</text>
+        <!-- Entry points -->
+        <circle cx="300" cy="56" r="8" fill="rgba(196,149,106,0.4)" stroke="rgba(196,149,106,0.7)" stroke-width="1.5"/>
+        <text x="300" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(196,149,106,0.9)" font-weight="bold">↓</text>
+        <circle cx="106" cy="174" r="8" fill="rgba(196,149,106,0.4)" stroke="rgba(196,149,106,0.7)" stroke-width="1.5"/>
+        <text x="106" y="178" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(196,149,106,0.9)" font-weight="bold">↓</text>
+        <circle cx="70" cy="354" r="8" fill="rgba(196,149,106,0.4)" stroke="rgba(196,149,106,0.7)" stroke-width="1.5"/>
+        <text x="70" y="358" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(196,149,106,0.9)" font-weight="bold">↓</text>
+        <circle cx="530" cy="354" r="8" fill="rgba(196,149,106,0.4)" stroke="rgba(196,149,106,0.7)" stroke-width="1.5"/>
+        <text x="530" y="358" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(196,149,106,0.9)" font-weight="bold">↓</text>
+        <circle cx="494" cy="174" r="8" fill="rgba(196,149,106,0.4)" stroke="rgba(196,149,106,0.7)" stroke-width="1.5"/>
+        <text x="494" y="178" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(196,149,106,0.9)" font-weight="bold">↓</text>
+        <circle cx="300" cy="546" r="8" fill="rgba(196,149,106,0.4)" stroke="rgba(196,149,106,0.7)" stroke-width="1.5"/>
+        <text x="300" y="550" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(196,149,106,0.9)" font-weight="bold">↓</text>
+        <text x="300" y="568" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(196,149,106,0.4)" letter-spacing="1.5">MAIN ENTRANCE</text>
+        <!-- Glass panels -->
+        <rect x="280" y="222" width="40" height="12" rx="2" fill="rgba(168,200,216,0.1)" stroke="rgba(168,200,216,0.35)" stroke-width="1"/>
+        <text x="300" y="231" text-anchor="middle" font-family="sans-serif" font-size="6" fill="rgba(168,200,216,0.55)">glass panel above</text>
+        <text x="300" y="585" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(168,200,216,0.3)">glass panels in paths above reveal the network below</text>
+      </svg>
+      </div>
+    </div>
+
+    <!-- Neighborhoods grid -->
+    <div class="neighborhoods reveal">
+
+      <div class="nbhd c-warm">
+        <div class="nbhd-zone">North · Economic Engine</div>
+        <div class="nbhd-name">The Plant</div>
+        <div class="nbhd-desc">Earth-sheltered into a berm. Noise faces outward. From inside the circle you see a green hillside and solar panels. Funds everything. Manufactures products that serve people everywhere.</div>
+        <div class="nbhd-features">
+          <span class="nbhd-tag">Green Roof</span><span class="nbhd-tag">Solar Array</span><span class="nbhd-tag">Resident-First Hiring</span><span class="nbhd-tag">Living Wages</span>
+        </div>
+      </div>
+
+      <div class="nbhd c-river">
+        <div class="nbhd-zone">Northwest · Transitional Housing</div>
+        <div class="nbhd-name">Dignity Village</div>
+        <div class="nbhd-desc">Private homes for people experiencing homelessness. A door they can call their own. Underground garage beneath each home. No judgment. No expiration date on dignity.</div>
+        <div class="nbhd-features">
+          <span class="nbhd-tag">Private Homes</span><span class="nbhd-tag">Transition Center</span><span class="nbhd-tag">Job Training</span><span class="nbhd-tag">Legal Aid</span>
+        </div>
+      </div>
+
+      <div class="nbhd c-purple">
+        <div class="nbhd-zone">West · Military Model</div>
+        <div class="nbhd-name">Staff Village</div>
+        <div class="nbhd-desc">Housing and medical provided for every employee. Security staff who know residents by name. Teachers who live next to their students. When home is home, people stay.</div>
+        <div class="nbhd-features">
+          <span class="nbhd-tag">Housing Provided</span><span class="nbhd-tag">Medical Covered</span><span class="nbhd-tag">Community First</span>
+        </div>
+      </div>
+
+      <div class="nbhd c-sage">
+        <div class="nbhd-zone">Southwest · Foster Care & Education</div>
+        <div class="nbhd-name">Sibling Village</div>
+        <div class="nbhd-desc">Siblings stay together. Non-negotiable. Small home clusters. Caregivers chosen for calling. The red button always within reach. Schools adjacent — small classes, teachers who stay.</div>
+        <div class="nbhd-features">
+          <span class="nbhd-tag">Siblings Together</span><span class="nbhd-tag">Red Button Safety</span><span class="nbhd-tag">K-12 Schools</span><span class="nbhd-tag">Trades Program</span>
+        </div>
+      </div>
+
+      <div class="nbhd c-gold">
+        <div class="nbhd-zone">South · Chosen Family</div>
+        <div class="nbhd-name">Family & Friends</div>
+        <div class="nbhd-desc">Custom homes. The natural creek winds behind every home — two feet deep, slow moving. Each property has a culvert gate. Open it and you're connected. Close it and you have your own private swimming hole.</div>
+        <div class="nbhd-features">
+          <span class="nbhd-tag">Natural Creek</span><span class="nbhd-tag">Culvert Gates</span><span class="nbhd-tag">Custom Homes</span>
+        </div>
+      </div>
+
+      <div class="nbhd c-red">
+        <div class="nbhd-zone">Southeast · Always Open</div>
+        <div class="nbhd-name">24hr Kitchen · Emergency Hotel · Detox</div>
+        <div class="nbhd-desc">The doors that need to be open at 3am are open at 3am. Anyone eats. Families have somewhere safe tonight. Someone ready to get clean right now doesn't wait until Tuesday.</div>
+        <div class="nbhd-features">
+          <span class="nbhd-tag">Anyone Eats Free</span><span class="nbhd-tag">No Reservation</span><span class="nbhd-tag">Ready When You Are</span>
+        </div>
+      </div>
+
+      <div class="nbhd c-fire full">
+        <div class="nbhd-zone">Center · Shared · Belongs to Everyone</div>
+        <div class="nbhd-name">The Commons</div>
+        <div class="nbhd-desc">Every zone faces it equally. Restaurants worth driving for. Outdoor cinema on the grass. Amphitheater for live music. Farmers market. Science & Maker Center. Skate park. Splash pad. Pool. Stargazing field. Fire pits. Retractable shade canopies. A neighborhood kid and a foster kid end up in the same place on a Saturday afternoon. Nobody planned it.</div>
+        <div class="nbhd-features">
+          <span class="nbhd-tag">Restaurants</span><span class="nbhd-tag">Outdoor Cinema</span><span class="nbhd-tag">Amphitheater</span><span class="nbhd-tag">Maker Center</span><span class="nbhd-tag">Farmers Market</span><span class="nbhd-tag">Stargazing Field</span><span class="nbhd-tag">Fire Pits</span><span class="nbhd-tag">Pool</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- UNDERGROUND -->
+<section id="underground">
+  <div class="underground-inner">
+    <div class="reveal">
+      <div class="section-label">The engine</div>
+      <h2 class="underground-title">Above Ground<br>is the <span>Dream.</span><br>Below Ground<br>is the Engine.</h2>
+      <p class="underground-copy">No cars on the surface. <strong>Ever.</strong> Inspired by Chicago's Lower Wacker Drive and Disney World's utilidor system — every vehicle, every delivery truck, every garage lives underground. The surface of HOME belongs entirely to people.</p>
+      <div class="underground-points">
+        <div class="u-point"><div class="u-dot"></div><div class="u-text"><strong>Every home has an underground garage.</strong> Park below. Walk up stairs. Step out your front door into a world with no cars in it.</div></div>
+        <div class="u-point"><div class="u-dot"></div><div class="u-text"><strong>All deliveries underground.</strong> The restaurant, the grocery, the 24hr kitchen — all stocked below grade. Never a truck on the paths.</div></div>
+        <div class="u-point"><div class="u-dot"></div><div class="u-text"><strong>Emergency vehicles surface anywhere in seconds</strong> through the underground network.</div></div>
+        <div class="u-point"><div class="u-dot"></div><div class="u-text"><strong>Glass panels in walking paths</strong> reveal the network below — science exhibit built into the ground you walk on.</div></div>
+        <div class="u-point"><div class="u-dot"></div><div class="u-text"><strong>Underground parking stays cool</strong> in Arizona heat. You never get into a 140 degree car.</div></div>
+      </div>
+    </div>
+    <div class="underground-visual reveal">
+      <p style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(196,149,106,0.5);margin-bottom:16px">Cross Section — Home at Address</p>
+      <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+        <!-- Sky -->
+        <rect x="0" y="0" width="400" height="120" fill="#1A2B1B" rx="4"/>
+        <!-- Ground line -->
+        <rect x="0" y="118" width="400" height="4" fill="rgba(122,158,126,0.4)"/>
+        <!-- Underground -->
+        <rect x="0" y="122" width="400" height="158" fill="#0E120E" rx="0"/>
+        <!-- House above ground -->
+        <rect x="120" y="50" width="160" height="70" rx="3" fill="rgba(44,62,45,0.8)" stroke="rgba(122,158,126,0.3)" stroke-width="1"/>
+        <!-- Roof -->
+        <path d="M 108 52 L 200 18 L 292 52 Z" fill="rgba(44,62,45,0.9)" stroke="rgba(122,158,126,0.25)" stroke-width="1"/>
+        <!-- Door -->
+        <rect x="182" y="88" width="36" height="32" rx="2" fill="rgba(232,200,112,0.2)" stroke="rgba(232,200,112,0.3)" stroke-width="1"/>
+        <!-- Windows -->
+        <rect x="132" y="62" width="30" height="22" rx="2" fill="rgba(168,200,216,0.15)" stroke="rgba(168,200,216,0.2)" stroke-width="1"/>
+        <rect x="238" y="62" width="30" height="22" rx="2" fill="rgba(168,200,216,0.15)" stroke="rgba(168,200,216,0.2)" stroke-width="1"/>
+        <!-- Tree -->
+        <circle cx="86" cy="72" r="22" fill="rgba(70,110,65,0.6)"/>
+        <rect x="83" y="90" width="6" height="28" fill="rgba(50,30,10,0.6)"/>
+        <!-- Path -->
+        <rect x="188" y="120" width="24" height="4" fill="rgba(196,149,106,0.2)"/>
+        <!-- Stairs going down -->
+        <path d="M 188 122 L 175 158 L 188 158" fill="none" stroke="rgba(196,149,106,0.4)" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <path d="M 212 122 L 225 158 L 212 158" fill="none" stroke="rgba(196,149,106,0.4)" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <!-- Underground garage -->
+        <rect x="130" y="158" width="140" height="70" rx="3" fill="rgba(30,20,10,0.8)" stroke="rgba(196,149,106,0.3)" stroke-width="1"/>
+        <text x="200" y="186" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(196,149,106,0.6)" font-weight="bold">GARAGE</text>
+        <!-- Car in garage -->
+        <rect x="150" y="196" width="50" height="22" rx="8" fill="rgba(196,149,106,0.15)" stroke="rgba(196,149,106,0.25)" stroke-width="1"/>
+        <rect x="200" y="196" width="50" height="22" rx="8" fill="rgba(196,149,106,0.12)" stroke="rgba(196,149,106,0.2)" stroke-width="1"/>
+        <!-- Underground road -->
+        <rect x="0" y="238" width="400" height="28" fill="rgba(196,149,106,0.1)" stroke="rgba(196,149,106,0.2)" stroke-width="1"/>
+        <line x1="0" y1="252" x2="400" y2="252" stroke="rgba(196,149,106,0.15)" stroke-width="1" stroke-dasharray="12,8"/>
+        <text x="200" y="257" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(196,149,106,0.45)" letter-spacing="2">UNDERGROUND RING ROAD</text>
+        <!-- Labels -->
+        <text x="8" y="14" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,0.25)">↑ above ground</text>
+        <text x="8" y="140" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,0.2)">↓ below ground</text>
+        <text x="200" y="108" text-anchor="middle" font-family="sans-serif" font-size="8" fill="rgba(232,200,112,0.5)">front door · path · no cars</text>
+        <!-- Glass panel indicator -->
+        <rect x="190" y="117" width="20" height="5" fill="rgba(168,200,216,0.2)" stroke="rgba(168,200,216,0.4)" stroke-width="1"/>
+        <text x="200" y="115" text-anchor="middle" font-family="sans-serif" font-size="6" fill="rgba(168,200,216,0.5)">glass panel</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- SUSTAINABILITY -->
+<section id="sustain">
+  <div class="sustain-inner">
+    <div class="reveal">
+      <div class="section-label sage">Built to last</div>
+      <h2 class="sustain-title">Independent of<br><span>Outside Systems.</span></h2>
+    </div>
+    <div class="sustain-grid reveal">
+      <div class="sustain-block">
+        <div class="sustain-icon">☀️</div>
+        <div class="sustain-name">Energy</div>
+        <div class="sustain-desc">Solar on every roof. Community battery storage. Surplus sold to the grid. All electric. The campus generates more than it uses and the data is displayed publicly for all residents to see.</div>
+      </div>
+      <div class="sustain-block">
+        <div class="sustain-icon">💧</div>
+        <div class="sustain-name">Water</div>
+        <div class="sustain-desc">Atmospheric water generators. Rainwater catchment. Greywater recycling. Natural creek management. Aquaponics. Deep well backup. Layered redundancy so no single failure leaves the community without water.</div>
+      </div>
+      <div class="sustain-block">
+        <div class="sustain-icon">🌱</div>
+        <div class="sustain-name">Food</div>
+        <div class="sustain-desc">Climate-controlled greenhouses year round. Aquaponics closed loop. Hydroponic towers. The campus feeds itself, supplies the 24hr kitchen, and sells surplus at the Commons farmers market.</div>
+      </div>
+      <div class="sustain-block">
+        <div class="sustain-icon">🏗️</div>
+        <div class="sustain-name">Built From the Earth</div>
+        <div class="sustain-desc">Rammed earth and adobe construction — ancient Arizona technology having a modern renaissance. Naturally cool in summer. Made from the land beneath it. Improves with age rather than deteriorates.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISITOR ECONOMY -->
+<section id="visitors">
+  <div class="visitors-inner">
+    <div class="reveal">
+      <div class="section-label gold">Beyond the campus</div>
+      <h2 class="visitors-title">HOME Draws<br><span>The World In.</span></h2>
+      <p class="visitors-sub">Beautiful enough that people want to come. And when they come they spend money that flows back into the mission. The visitor economy isn't the foundation — that's The Plant. But it adds revenue and does something equally important: it connects HOME to the wider world.</p>
+    </div>
+    <div class="visitors-grid reveal">
+      <div class="visitor-card">
+        <div class="visitor-icon">🍽️</div>
+        <div class="visitor-name">Destination Dining</div>
+        <div class="visitor-desc">Restaurants worth driving for. A diner open late. A weekend farmers market open to the public. Food draws people in and the campus keeps them.</div>
+      </div>
+      <div class="visitor-card">
+        <div class="visitor-icon">⚗️</div>
+        <div class="visitor-name">Science & Maker Center</div>
+        <div class="visitor-desc">Field trips from every school in Arizona. Families on weekends. The campus systems — solar, aquaponics, underground network, rammed earth — become the curriculum. Wonder you can touch.</div>
+      </div>
+      <div class="visitor-card">
+        <div class="visitor-icon">🗺️</div>
+        <div class="visitor-name">The Campus Tour</div>
+        <div class="visitor-desc">A guided experience that tells the story of HOME. How it was built. What it's for. Who lives here. Ends with a meal at the diner. People who take this tour become advocates.</div>
+      </div>
+      <div class="visitor-card">
+        <div class="visitor-icon">🏨</div>
+        <div class="visitor-name">Boutique Inn</div>
+        <div class="visitor-desc">Architects, planners, educators, governments studying the model. Retreat groups. Families experiencing the campus for a weekend. Guests become ambassadors.</div>
+      </div>
+      <div class="visitor-card">
+        <div class="visitor-icon">🎵</div>
+        <div class="visitor-name">The Amphitheater</div>
+        <div class="visitor-desc">Concerts, festivals, performances open to the public. The campus becomes a cultural destination. Kids who live there see the outside world show up for something in their home.</div>
+      </div>
+      <div class="visitor-card">
+        <div class="visitor-icon">🎬</div>
+        <div class="visitor-name">Seasonal Events</div>
+        <div class="visitor-desc">A summer creek festival. Winter stargazing night. Harvest market. Makers fair. Traditions people plan around, year after year. HOME becomes part of Arizona's identity.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PATH -->
+<section id="path">
+  <div class="path-inner">
+    <div class="reveal">
+      <div class="section-label">How we get there</div>
+      <h2 class="path-title">Software<br>First.<br><span>Then the</span><br>Land.</h2>
+      <p class="path-sub">Every customer who uses Twomiah software is participating in this journey. Every dollar of recurring revenue is a brick in something that doesn't exist yet — but will.</p>
+    </div>
+    <div class="chapters reveal">
+      <div class="chapter active">
+        <div class="chapter-num">01</div>
+        <div class="chapter-content">
+          <div class="chapter-title">Build Twomiah</div>
+          <div class="chapter-desc">Real customers. Recurring revenue. Proof of concept. This is where we are now.</div>
+        </div>
+      </div>
+      <div class="chapter">
+        <div class="chapter-num">02</div>
+        <div class="chapter-content">
+          <div class="chapter-title">Scale the Factory</div>
+          <div class="chapter-desc">Agencies, franchises, verticals. Real MRR that funds the next chapter.</div>
+        </div>
+      </div>
+      <div class="chapter">
+        <div class="chapter-num">03</div>
+        <div class="chapter-content">
+          <div class="chapter-title">Find the Land</div>
+          <div class="chapter-desc">Arizona. Natural waterway. 200–300 acres. The foundation everything else sits on.</div>
+        </div>
+      </div>
+      <div class="chapter">
+        <div class="chapter-num">04</div>
+        <div class="chapter-content">
+          <div class="chapter-title">Design Underground First</div>
+          <div class="chapter-desc">The network below grade before a single home goes up above.</div>
+        </div>
+      </div>
+      <div class="chapter">
+        <div class="chapter-num">05</div>
+        <div class="chapter-content">
+          <div class="chapter-title">Break Ground — Phase 1</div>
+          <div class="chapter-desc">Dignity Village. The Plant. The Commons. The 24-Hour Kitchen.</div>
+        </div>
+      </div>
+      <div class="chapter">
+        <div class="chapter-num">06</div>
+        <div class="chapter-content">
+          <div class="chapter-title">Phase 2 — Services</div>
+          <div class="chapter-desc">Emergency Hotel. Detox Center. Medical Center. Law Center. Staff Village.</div>
+        </div>
+      </div>
+      <div class="chapter">
+        <div class="chapter-num">07</div>
+        <div class="chapter-content">
+          <div class="chapter-title">Phase 3 — Community</div>
+          <div class="chapter-desc">Family & Friends. The creek. Sibling Village. Schools. The Maker Center.</div>
+        </div>
+      </div>
+      <div class="chapter">
+        <div class="chapter-num">08</div>
+        <div class="chapter-content">
+          <div class="chapter-title">Publish the Blueprint</div>
+          <div class="chapter-desc">Let others build HOME in their own communities. That's how you scale the mission.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIGGER IDEA -->
+<section id="bigger">
+  <div class="bigger-inner reveal">
+    <div class="section-label sage" style="justify-content:center">The bigger idea</div>
+    <h2 class="bigger-title">That's<br><span class="hl">Why</span><br>We Build.</h2>
+    <p class="bigger-copy">Until there are no more homeless people unless it is a choice. Until children are safe in foster care because the right people are caring for them. Until the door that needs to be open at 3am is open at 3am. Until every kid grows up somewhere that communicates <strong>wonder instead of danger.</strong></p>
+    <p class="bigger-copy">If HOME works — self sustaining, solar powered, water independent, built from the earth, underground infrastructure keeping the surface beautiful, designed like a science museum — it becomes something people study and replicate.</p>
+    <p class="bigger-copy">You don't end homelessness by being in a hundred places at once. <strong>You end it by publishing a blueprint that works and letting communities build it themselves.</strong></p>
+    <p class="bigger-sign">Living vision · First drawn March 2026 · Grows as the dream grows</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="nav-wordmark">TWOMIAH</span>
+      <p class="footer-tagline">Pro-grade software for the people who actually do the work. Built in Eau Claire, Wisconsin. Building toward HOME.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Products</h5>
+      <ul>
+        <li><a href="factory.html">Twomiah Factory</a></li>
+        <li><a href="build.html">Twomiah Build</a></li>
+        <li><a href="care.html">Twomiah Care</a></li>
+        <li><a href="cardshop.html">Twomiah Card Shop</a></li>
+        <li><a href="ickapp.html">Twomiah IckApp</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="index.html#story">Our Story</a></li>
+        <li><a href="index.html#mission">Mission</a></li>
+        <li><a href="vision.html">The Vision</a></li>
+        <li><a href="mailto:hello@twomiah.com">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Twomiah. All rights reserved.</span>
+    <span class="footer-loc">Built in Eau Claire, WI · Building toward Arizona</span>
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),i*60) });
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Map tabs
+function showMap(level, btn) {
+  document.querySelectorAll('.map-level').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.map-tab').forEach(el=>el.classList.remove('active'));
+  document.getElementById('map-'+level).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
