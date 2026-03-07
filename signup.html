@@ -108,6 +108,32 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .btn-back{background:none;border:none;color:rgba(255,255,255,0.4);font-family:'Barlow',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:color 0.2s;padding:14px 0}
 .btn-back:hover{color:var(--white)}
 
+/* Template picker */
+.template-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.template-card{background:var(--dark);border:2px solid rgba(255,255,255,0.08);border-radius:8px;cursor:pointer;transition:all 0.2s;overflow:hidden;position:relative}
+.template-card:hover{border-color:rgba(255,255,255,0.25)}
+.template-card.selected{border-color:var(--fire);box-shadow:0 0 20px rgba(255,61,0,0.15)}
+.template-card .tpl-preview{height:240px;overflow:hidden;position:relative;background:#f5f5f5}
+.template-card .tpl-preview iframe{width:1280px;height:900px;transform:scale(0.23);transform-origin:top left;border:none;pointer-events:none}
+.template-card .tpl-info{padding:14px 16px}
+.template-card .tpl-name{font-size:13px;font-weight:700;margin-bottom:2px}
+.template-card .tpl-desc{font-size:11px;color:rgba(255,255,255,0.35);line-height:1.4}
+.template-card .tpl-badge{position:absolute;top:8px;right:8px;background:var(--fire);color:white;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;border-radius:3px;display:none}
+.template-card.selected .tpl-badge{display:block}
+.tpl-mini{height:240px;display:flex;flex-direction:column;font-family:system-ui,sans-serif}
+.tpl-mini-nav{display:flex;align-items:center;justify-content:space-between;padding:6px 10px;font-size:7px;font-weight:700;color:white}
+.tpl-mini-hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;text-align:center}
+.tpl-mini-hero h3{font-size:11px;font-weight:800;margin-bottom:3px}
+.tpl-mini-hero p{font-size:7px;opacity:0.7;margin-bottom:6px}
+.tpl-mini-hero .tpl-btn{font-size:7px;padding:3px 12px;border-radius:3px;color:white;font-weight:700;display:inline-block}
+.tpl-mini-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:4px 10px 8px}
+.tpl-mini-card{background:rgba(255,255,255,0.08);border-radius:3px;padding:6px 4px;text-align:center}
+.tpl-mini-card .card-icon{font-size:10px;margin-bottom:2px}
+.tpl-mini-card .card-label{font-size:6px;font-weight:600;opacity:0.8}
+.tpl-mini-footer{padding:4px 10px;text-align:center;font-size:5px;opacity:0.5;color:white}
+.tpl-note{font-size:12px;color:rgba(255,255,255,0.3);text-align:center;margin-top:8px}
+@media(max-width:768px){.template-grid{grid-template-columns:1fr}}
+
 /* Summary */
 .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin-bottom:24px}
 .summary-item{padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
@@ -165,7 +191,8 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
     <div class="step-dot" data-step="2">3</div><div class="step-line"></div>
     <div class="step-dot" data-step="3">4</div><div class="step-line"></div>
     <div class="step-dot" data-step="4">5</div><div class="step-line"></div>
-    <div class="step-dot" data-step="5">6</div>
+    <div class="step-dot" data-step="5">6</div><div class="step-line"></div>
+    <div class="step-dot" data-step="6">7</div>
   </div>
 
   <div class="form-card">
@@ -272,8 +299,20 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
       </div>
     </div>
 
-    <!-- STEP 3: Plan & Billing -->
+    <!-- STEP 3: Website Template -->
     <div class="step" data-step="2">
+      <div class="step-title">Website Template</div>
+      <div class="step-desc">Choose a design for your website. Your company name and brand color are previewed live.</div>
+      <div class="template-grid" id="templateGrid"></div>
+      <div class="tpl-note">Don't worry — you can customize everything after signup.</div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="prevStep()">&larr; Back</button>
+        <button class="btn-next" onclick="nextStep()">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: Plan & Billing -->
+    <div class="step" data-step="3">
       <div class="step-title">Plan &amp; Billing</div>
       <div class="step-desc">Choose your plan. All plans include a 30-day free trial.</div>
 
@@ -336,8 +375,8 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
       </div>
     </div>
 
-    <!-- STEP 4: Deploy Service -->
-    <div class="step" data-step="3">
+    <!-- STEP 5: Deploy Service -->
+    <div class="step" data-step="4">
       <div class="step-title">Deploy Service</div>
       <div class="step-desc">How much help do you want getting set up? All options include your CRM, website, and database.</div>
 
@@ -381,8 +420,8 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
       </div>
     </div>
 
-    <!-- STEP 5: Admin User -->
-    <div class="step" data-step="4">
+    <!-- STEP 6: Admin User -->
+    <div class="step" data-step="5">
       <div class="step-title">Admin Account</div>
       <div class="step-desc">This will be the owner/admin login for your new CRM.</div>
       <div class="row">
@@ -410,8 +449,8 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
       </div>
     </div>
 
-    <!-- STEP 6: Review & Submit -->
-    <div class="step" data-step="5">
+    <!-- STEP 7: Review & Submit -->
+    <div class="step" data-step="6">
       <div class="step-title">Review &amp; Submit</div>
       <div class="step-desc">Double-check everything before we create your account.</div>
       <div class="summary-grid" id="summaryGrid"></div>
@@ -438,10 +477,80 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
 
 <script>
 var currentStep = 0;
-var totalSteps = 6;
+var totalSteps = 7;
 var selectedPlan = '';
 var selectedHosting = 'saas';
 var selectedDeploy = 'full';
+var selectedTemplate = '';
+
+// Template definitions per industry category
+var TEMPLATES = {
+  contractor: [
+    { id: 'modern-minimal', name: 'Modern Minimal', desc: 'Clean lines, whitespace, modern feel', navBg: '#1a1a1a', heroBg: 'linear-gradient(135deg,#f8f9fa,#e9ecef)', heroText: '#222', cardBg: '#fff', cardText: '#333', btnRadius: '20px', fontStyle: 'system-ui,sans-serif' },
+    { id: 'bold-industrial', name: 'Bold Industrial', desc: 'Heavy, strong, construction aesthetic', navBg: '#111', heroBg: 'linear-gradient(135deg,#1a1a1a,#2d2d2d)', heroText: '#fff', cardBg: '#1e1e1e', cardText: '#eee', btnRadius: '0', fontStyle: 'Impact,sans-serif' },
+    { id: 'professional-corporate', name: 'Professional Corporate', desc: 'Traditional, trustworthy look', navBg: '#0d1b2a', heroBg: 'linear-gradient(135deg,#0d1b2a,#1b3a5c)', heroText: '#fff', cardBg: '#fff', cardText: '#333', btnRadius: '4px', fontStyle: 'Georgia,serif' },
+  ],
+  homecare: [
+    { id: 'clean-professional', name: 'Clean Professional', desc: 'Clinical yet warm, trust-focused', navBg: '#0d7377', heroBg: 'linear-gradient(135deg,#e8f5f5,#d0ebeb)', heroText: '#1a3a3a', cardBg: '#fff', cardText: '#333', btnRadius: '6px', fontStyle: 'system-ui,sans-serif' },
+    { id: 'warm-community', name: 'Warm & Community', desc: 'Inviting, family-friendly feel', navBg: '#5c3d2e', heroBg: 'linear-gradient(135deg,#fdf6ee,#f5e6d0)', heroText: '#3a2a1a', cardBg: '#fefaf5', cardText: '#4a3a2a', btnRadius: '20px', fontStyle: 'Georgia,serif' },
+  ],
+  general: [
+    { id: 'clean-minimal', name: 'Clean Minimal', desc: 'Simple, works for any service business', navBg: '#1a1a1a', heroBg: 'linear-gradient(135deg,#f5f5f5,#eaeaea)', heroText: '#222', cardBg: '#fff', cardText: '#333', btnRadius: '6px', fontStyle: 'system-ui,sans-serif' },
+    { id: 'trade-professional', name: 'Trade Professional', desc: 'Structured, professional trade look', navBg: '#1a2744', heroBg: 'linear-gradient(135deg,#1a2744,#2d4a6f)', heroText: '#fff', cardBg: '#fff', cardText: '#333', btnRadius: '4px', fontStyle: 'system-ui,sans-serif' },
+  ]
+};
+
+function getIndustryCategory() {
+  var ind = val('industry');
+  if (ind === 'home_care') return 'homecare';
+  if (ind && ind !== 'other') return 'contractor';
+  return 'general';
+}
+
+function renderTemplates() {
+  var category = getIndustryCategory();
+  var templates = TEMPLATES[category] || TEMPLATES.general;
+  var companyName = val('companyName') || 'Your Company';
+  var primaryColor = val('colorHex') || '#FF3D00';
+  var grid = document.getElementById('templateGrid');
+
+  // Adjust grid columns
+  grid.style.gridTemplateColumns = templates.length === 2 ? 'repeat(2,1fr)' : 'repeat(3,1fr)';
+
+  var html = '';
+  templates.forEach(function(tpl, i) {
+    var isSelected = selectedTemplate === tpl.id || (!selectedTemplate && i === 0);
+    if (isSelected && !selectedTemplate) selectedTemplate = tpl.id;
+    html += '<div class="template-card' + (isSelected ? ' selected' : '') + '" data-template="' + tpl.id + '" onclick="selectTemplate(this)">'
+      + '<div class="tpl-badge">Selected</div>'
+      + '<div class="tpl-mini" style="font-family:' + tpl.fontStyle + '">'
+      + '<div class="tpl-mini-nav" style="background:' + tpl.navBg + '">'
+      + '<span>' + escapeHtml(companyName) + '</span>'
+      + '<span style="font-size:6px;opacity:0.6">Home &nbsp; Services &nbsp; About &nbsp; Contact</span>'
+      + '</div>'
+      + '<div class="tpl-mini-hero" style="background:' + tpl.heroBg + ';color:' + tpl.heroText + '">'
+      + '<h3 style="font-size:' + (tpl.fontStyle.includes('Impact') ? '14px' : '11px') + ';letter-spacing:' + (tpl.fontStyle.includes('Impact') ? '0.05em' : '0') + '">' + escapeHtml(companyName) + '</h3>'
+      + '<p>Professional services you can trust</p>'
+      + '<span class="tpl-btn" style="background:' + primaryColor + ';border-radius:' + tpl.btnRadius + '">Get a Free Estimate</span>'
+      + '</div>'
+      + '<div class="tpl-mini-cards" style="background:' + (tpl.heroText === '#fff' ? '#f5f5f5' : '#fff') + '">'
+      + '<div class="tpl-mini-card" style="background:' + tpl.cardBg + ';color:' + tpl.cardText + '"><div class="card-icon">&#x1F527;</div><div class="card-label">Service 1</div></div>'
+      + '<div class="tpl-mini-card" style="background:' + tpl.cardBg + ';color:' + tpl.cardText + '"><div class="card-icon">&#x1F3E0;</div><div class="card-label">Service 2</div></div>'
+      + '<div class="tpl-mini-card" style="background:' + tpl.cardBg + ';color:' + tpl.cardText + '"><div class="card-icon">&#x2B50;</div><div class="card-label">Service 3</div></div>'
+      + '</div>'
+      + '<div class="tpl-mini-footer" style="background:' + tpl.navBg + ';color:#fff">&copy; ' + escapeHtml(companyName) + '</div>'
+      + '</div>'
+      + '<div class="tpl-info"><div class="tpl-name">' + tpl.name + '</div><div class="tpl-desc">' + tpl.desc + '</div></div>'
+      + '</div>';
+  });
+  grid.innerHTML = html;
+}
+
+function selectTemplate(el) {
+  document.querySelectorAll('.template-card').forEach(function(c) { c.classList.remove('selected'); });
+  el.classList.add('selected');
+  selectedTemplate = el.getAttribute('data-template');
+}
 
 // Pre-fill from URL params
 (function() {
@@ -516,16 +625,20 @@ function nextStep() {
   if (currentStep === 0) {
     if (!val('companyName')) return toast('Company name is required.', 'error');
   }
-  if (currentStep === 2) {
+  // Render templates when entering step 2
+  if (currentStep === 1) {
+    renderTemplates();
+  }
+  if (currentStep === 3) {
     if (!selectedPlan) return toast('Please select a plan.', 'error');
   }
-  if (currentStep === 4) {
+  if (currentStep === 5) {
     if (!val('firstName') || !val('lastName')) return toast('Name is required.', 'error');
     if (!val('email') || !val('email').includes('@')) return toast('Valid email is required.', 'error');
     if (!val('password') || val('password').length < 8) return toast('Password must be at least 8 characters.', 'error');
   }
-  // Build summary on step 5
-  if (currentStep === 4) buildSummary();
+  // Build summary on step 5 (admin account)
+  if (currentStep === 5) buildSummary();
 
   if (currentStep < totalSteps - 1) showStep(currentStep + 1);
 }
@@ -562,6 +675,7 @@ function buildSummary() {
     ['Domain', val('domain') || '--'],
     ['Timezone', val('timezone')],
     ['Brand Color', val('colorHex')],
+    ['Website Template', selectedTemplate || 'Default'],
     ['Plan', planLabel(selectedPlan)],
     ['Hosting', selectedHosting === 'saas' ? 'SaaS (Hosted)' : 'Self-Hosted'],
     ['Deploy Service', deployLabel(selectedDeploy)],
@@ -610,6 +724,7 @@ function getFormData() {
     zip: val('zip'),
     domain: val('domain'),
     primary_color: val('colorHex'),
+    website_theme: selectedTemplate,
     plan: selectedPlan,
     deployment_model: selectedHosting === 'saas' ? 'saas' : 'owned',
     monthly_amount: selectedHosting === 'saas' ? planPrices[selectedPlan] || 0 : null,
@@ -648,8 +763,8 @@ function submitForm() {
         setTimeout(function() { window.location.href = result.data.checkoutUrl; }, 1500);
       } else {
         btn.textContent = 'Account Created!';
-        document.querySelector('.step[data-step="5"] .step-title').textContent = 'You\'re All Set!';
-        document.querySelector('.step[data-step="5"] .step-desc').textContent = 'Your CRM is being built. Check your email (' + val('email') + ') for login instructions.';
+        document.querySelector('.step[data-step="6"] .step-title').textContent = 'You\'re All Set!';
+        document.querySelector('.step[data-step="6"] .step-desc').textContent = 'Your CRM is being built. Check your email (' + val('email') + ') for login instructions.';
       }
     } else {
       toast(result.data.error || 'Something went wrong. Please try again.', 'error');
