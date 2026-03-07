@@ -278,26 +278,31 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
       <div class="step-desc">Choose your plan. All plans include a 14-day free trial.</div>
 
       <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;display:block">Select a Plan *</label>
-      <div class="plan-grid" id="planGrid">
-        <div class="plan-card" data-plan="solo" onclick="selectPlan(this)">
-          <div class="plan-label">Solo</div>
-          <div class="plan-price">$49</div>
-          <div class="plan-per">/mo &middot; 1-2 users</div>
-        </div>
+      <div class="plan-grid" id="planGrid" style="grid-template-columns:repeat(5,1fr)">
         <div class="plan-card" data-plan="starter" onclick="selectPlan(this)">
           <div class="plan-label">Starter</div>
-          <div class="plan-price">$129</div>
-          <div class="plan-per">/mo &middot; up to 10</div>
+          <div class="plan-price">$49</div>
+          <div class="plan-per">/mo &middot; 2 users</div>
         </div>
         <div class="plan-card" data-plan="pro" onclick="selectPlan(this)">
           <div class="plan-label">Pro</div>
+          <div class="plan-price">$149</div>
+          <div class="plan-per">/mo &middot; up to 10</div>
+        </div>
+        <div class="plan-card" data-plan="business" onclick="selectPlan(this)">
+          <div class="plan-label">Business</div>
           <div class="plan-price">$299</div>
           <div class="plan-per">/mo &middot; up to 25</div>
         </div>
+        <div class="plan-card" data-plan="construction" onclick="selectPlan(this)">
+          <div class="plan-label">Construction</div>
+          <div class="plan-price">$599</div>
+          <div class="plan-per">/mo &middot; up to 50</div>
+        </div>
         <div class="plan-card" data-plan="enterprise" onclick="selectPlan(this)">
           <div class="plan-label">Enterprise</div>
-          <div class="plan-price">$85</div>
-          <div class="plan-per">/user/mo &middot; 15 min</div>
+          <div class="plan-price">$199</div>
+          <div class="plan-per">/user/mo &middot; 10 min</div>
         </div>
       </div>
 
@@ -535,7 +540,7 @@ function val(id) {
 }
 
 function planLabel(p) {
-  var map = { solo: 'Solo ($49/mo)', starter: 'Starter ($129/mo)', pro: 'Pro ($299/mo)', enterprise: 'Enterprise ($85/user/mo)' };
+  var map = { starter: 'Starter ($49/mo)', pro: 'Pro ($149/mo)', business: 'Business ($299/mo)', construction: 'Construction ($599/mo)', enterprise: 'Enterprise ($199/user/mo)' };
   return map[p] || p;
 }
 function deployLabel(d) {
@@ -590,7 +595,7 @@ function getFormData() {
   var addons = [];
   document.querySelectorAll('#addonsGrid input:checked').forEach(function(cb) { addons.push(cb.value); });
 
-  var planPrices = { solo: 49, starter: 129, pro: 299, enterprise: 85 };
+  var planPrices = { starter: 49, pro: 149, business: 299, construction: 599, enterprise: 199 };
 
   return {
     name: val('companyName'),
