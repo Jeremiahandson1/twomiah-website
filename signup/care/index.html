@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Started — Twomiah Care</title>
+<meta name="description" content="Sign up for Twomiah Care. Your home care agency CRM, ready in minutes.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--fire:#0D7377;--ember:#0FA3A8;--gold:#0FA3A8;--dark:#0D0D0D;--charcoal:#1A1A1A;--white:#FFF;--grad:linear-gradient(135deg,#0FA3A8,#0D7377,#095456)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(13,13,13,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-icon{width:30px;height:30px}
+.nav-wordmark{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.12em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-back{color:rgba(255,255,255,0.4);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-back:hover{color:var(--white)}
+
+.container{max-width:780px;margin:0 auto;padding:120px 24px 80px}
+.page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);letter-spacing:0.04em;line-height:1;margin-bottom:8px;text-align:center}
+.page-sub{font-size:15px;color:rgba(255,255,255,0.45);text-align:center;margin-bottom:48px}
+
+/* Progress */
+.progress{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:48px;flex-wrap:wrap}
+.step-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;border:2px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.3);transition:all 0.3s;flex-shrink:0}
+.step-dot.active{border-color:var(--fire);color:var(--fire);background:rgba(13,115,119,0.1)}
+.step-dot.done{border-color:#28C840;color:#28C840;background:rgba(40,200,64,0.1)}
+.step-line{width:40px;height:2px;background:rgba(255,255,255,0.08);flex-shrink:0}
+.step-line.done{background:#28C840}
+
+/* Form Card */
+.form-card{background:var(--charcoal);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:40px 36px}
+.step{display:none}
+.step.active{display:block}
+.step-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.04em;margin-bottom:6px}
+.step-desc{font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:28px}
+
+/* Fields */
+.field{margin-bottom:20px}
+.field label{display:block;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;padding:12px 14px;background:var(--dark);border:1px solid rgba(255,255,255,0.1);border-radius:4px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;transition:border-color 0.2s;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--ember)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,0.2)}
+.field select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23666' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.field select option{background:var(--dark);color:var(--white)}
+.field textarea{resize:vertical;min-height:80px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.field-hint{font-size:11px;color:rgba(255,255,255,0.25);margin-top:4px}
+
+/* Color picker */
+.color-row{display:flex;align-items:center;gap:12px}
+.color-row input[type="color"]{width:48px;height:40px;padding:2px;border:1px solid rgba(255,255,255,0.1);border-radius:4px;background:var(--dark);cursor:pointer}
+.color-row input[type="text"]{flex:1}
+
+/* File upload */
+.file-upload{display:flex;align-items:center;gap:12px}
+.file-upload input[type="file"]{display:none}
+.file-btn{padding:10px 18px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:4px;color:rgba(255,255,255,0.5);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+.file-btn:hover{background:rgba(255,255,255,0.1);color:var(--white)}
+.file-name{font-size:13px;color:rgba(255,255,255,0.35)}
+
+/* Plan cards */
+.plan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.plan-card{background:var(--dark);border:2px solid rgba(255,255,255,0.08);border-radius:6px;padding:20px 16px;cursor:pointer;transition:all 0.2s;text-align:center}
+.plan-card:hover{border-color:rgba(255,255,255,0.2)}
+.plan-card.selected{border-color:var(--fire);background:rgba(13,115,119,0.06)}
+.plan-card .plan-label{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ember);margin-bottom:6px}
+.plan-card .plan-price{font-family:'Bebas Neue',sans-serif;font-size:32px;line-height:1;margin-bottom:2px}
+.plan-card .plan-per{font-size:11px;color:rgba(255,255,255,0.3)}
+
+/* Hosting cards */
+.hosting-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.hosting-card{background:var(--dark);border:2px solid rgba(255,255,255,0.08);border-radius:6px;padding:24px 20px;cursor:pointer;transition:all 0.2s}
+.hosting-card:hover{border-color:rgba(255,255,255,0.2)}
+.hosting-card.selected{border-color:var(--fire);background:rgba(13,115,119,0.06)}
+.hosting-card h4{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.04em;margin-bottom:6px}
+.hosting-card p{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6}
+
+/* Deploy service cards */
+.deploy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.deploy-card{background:var(--dark);border:2px solid rgba(255,255,255,0.08);border-radius:6px;padding:20px 16px;cursor:pointer;transition:all 0.2s;text-align:center}
+.deploy-card:hover{border-color:rgba(255,255,255,0.2)}
+.deploy-card.selected{border-color:var(--fire);background:rgba(13,115,119,0.06)}
+.deploy-card h4{font-size:14px;font-weight:700;margin-bottom:4px}
+.deploy-card .deploy-price{font-family:'Bebas Neue',sans-serif;font-size:28px;line-height:1;color:var(--ember);margin-bottom:6px}
+.deploy-card p{font-size:12px;color:rgba(255,255,255,0.35);line-height:1.5}
+
+/* Checkboxes */
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
+.check-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--dark);border:1px solid rgba(255,255,255,0.08);border-radius:4px;cursor:pointer;transition:all 0.2s}
+.check-item:hover{border-color:rgba(255,255,255,0.2)}
+.check-item.checked{border-color:var(--fire);background:rgba(13,115,119,0.06)}
+.check-item input{display:none}
+.check-box{width:18px;height:18px;border:2px solid rgba(255,255,255,0.2);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s}
+.check-item.checked .check-box{border-color:var(--fire);background:var(--fire)}
+.check-item.checked .check-box::after{content:'\2713';color:white;font-size:11px;font-weight:700}
+.check-label{font-size:13px;color:rgba(255,255,255,0.6)}
+
+/* Buttons */
+.btn-row{display:flex;justify-content:space-between;align-items:center;margin-top:32px}
+.btn-next{background:var(--fire);color:var(--white);padding:14px 32px;border:none;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+.btn-next:hover{background:var(--ember)}
+.btn-next:disabled{opacity:0.4;cursor:not-allowed}
+.btn-back{background:none;border:none;color:rgba(255,255,255,0.4);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:color 0.2s;padding:14px 0}
+.btn-back:hover{color:var(--white)}
+
+/* Template picker */
+.template-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.template-card{background:var(--dark);border:2px solid rgba(255,255,255,0.08);border-radius:8px;cursor:pointer;transition:all 0.2s;overflow:hidden;position:relative}
+.template-card:hover{border-color:rgba(255,255,255,0.25)}
+.template-card.selected{border-color:var(--fire);box-shadow:0 0 20px rgba(13,115,119,0.15)}
+.template-card .tpl-preview{height:240px;overflow:hidden;position:relative;background:#f5f5f5}
+.template-card .tpl-preview iframe{width:1280px;height:900px;transform:scale(0.23);transform-origin:top left;border:none;pointer-events:none}
+.template-card .tpl-info{padding:14px 16px}
+.template-card .tpl-name{font-size:13px;font-weight:700;margin-bottom:2px}
+.template-card .tpl-desc{font-size:11px;color:rgba(255,255,255,0.35);line-height:1.4}
+.template-card .tpl-badge{position:absolute;top:8px;right:8px;background:var(--fire);color:white;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;border-radius:3px;display:none}
+.template-card.selected .tpl-badge{display:block}
+.tpl-mini{height:240px;display:flex;flex-direction:column;font-family:system-ui,sans-serif}
+.tpl-mini-nav{display:flex;align-items:center;justify-content:space-between;padding:6px 10px;font-size:7px;font-weight:700;color:white}
+.tpl-mini-hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;text-align:center}
+.tpl-mini-hero h3{font-size:11px;font-weight:800;margin-bottom:3px}
+.tpl-mini-hero p{font-size:7px;opacity:0.7;margin-bottom:6px}
+.tpl-mini-hero .tpl-btn{font-size:7px;padding:3px 12px;border-radius:3px;color:white;font-weight:700;display:inline-block}
+.tpl-mini-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:4px 10px 8px}
+.tpl-mini-card{background:rgba(255,255,255,0.08);border-radius:3px;padding:6px 4px;text-align:center}
+.tpl-mini-card .card-icon{font-size:10px;margin-bottom:2px}
+.tpl-mini-card .card-label{font-size:6px;font-weight:600;opacity:0.8}
+.tpl-mini-footer{padding:4px 10px;text-align:center;font-size:5px;opacity:0.5;color:white}
+.tpl-note{font-size:12px;color:rgba(255,255,255,0.3);text-align:center;margin-top:8px}
+@media(max-width:768px){.template-grid{grid-template-columns:1fr}}
+
+/* Summary */
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin-bottom:24px}
+.summary-item{padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.summary-label{font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:3px}
+.summary-value{font-size:14px;color:rgba(255,255,255,0.8)}
+
+/* Toast */
+.toast{position:fixed;top:80px;right:24px;z-index:200;padding:14px 24px;border-radius:6px;font-size:14px;font-weight:600;transform:translateX(120%);transition:transform 0.3s}
+.toast.show{transform:translateX(0)}
+.toast.success{background:#28C840;color:white}
+.toast.error{background:#FF3D00;color:white}
+
+footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40px 48px 20px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-links{display:flex;gap:22px;flex-wrap:wrap}
+.footer-links a{color:rgba(255,255,255,0.3);text-decoration:none;font-size:13px;transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.18)}
+
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  .container{padding:110px 16px 60px}
+  .row,.row-3{grid-template-columns:1fr}
+  .plan-grid{grid-template-columns:repeat(2,1fr)}
+  .deploy-grid{grid-template-columns:1fr}
+  .check-grid{grid-template-columns:1fr}
+  .summary-grid{grid-template-columns:1fr}
+  .form-card{padding:28px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg class="nav-icon" viewBox="0 0 120 120" fill="none">
+      <defs><linearGradient id="ng" x1="0" y1="120" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#0FA3A8"/><stop offset="50%" stop-color="#0D7377"/><stop offset="100%" stop-color="#095456"/></linearGradient><filter id="nglow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <path d="M42 96 L20 48 L42 60 L52 24 L62 52 L75 40 L60 96 Z" fill="url(#ng)" opacity="0.65"/>
+      <path d="M78 96 L56 44 L68 58 L78 18 L88 50 L104 36 L96 96 Z" fill="url(#ng)" filter="url(#nglow)"/>
+      <rect x="16" y="96" width="88" height="3" rx="1.5" fill="url(#ng)" opacity="0.45"/>
+    </svg>
+    <span class="nav-wordmark">TWOMIAH</span>
+  </a>
+  <a href="/care.html" class="nav-back">&larr; Back to Care</a>
+</nav>
+
+<div class="container">
+  <h1 class="page-title">Get Started with <span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Twomiah Care</span></h1>
+  <p class="page-sub">Fill out the form below and we'll have your agency platform ready in minutes.</p>
+
+  <!-- Progress dots -->
+  <div class="progress" id="progress">
+    <div class="step-dot active" data-step="0">1</div><div class="step-line"></div>
+    <div class="step-dot" data-step="1">2</div><div class="step-line"></div>
+    <div class="step-dot" data-step="2">3</div><div class="step-line"></div>
+    <div class="step-dot" data-step="3">4</div><div class="step-line"></div>
+    <div class="step-dot" data-step="4">5</div><div class="step-line"></div>
+    <div class="step-dot" data-step="5">6</div><div class="step-line"></div>
+    <div class="step-dot" data-step="6">7</div>
+  </div>
+
+  <div class="form-card">
+
+    <!-- STEP 1: Company Info -->
+    <div class="step active" data-step="0">
+      <div class="step-title">Company Information</div>
+      <div class="step-desc">Tell us about your agency so we can set up your CRM.</div>
+      <div class="field">
+        <label>Company Name *</label>
+        <input type="text" id="companyName" placeholder="e.g. Sunrise Home Care LLC" required>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Industry</label>
+          <select id="industry">
+            <option value="">Select your industry...</option>
+            <option value="home_care_nonmedical">Home Care (Non-Medical)</option>
+            <option value="home_health_skilled">Home Health (Skilled Nursing)</option>
+            <option value="hospice">Hospice</option>
+            <option value="personal_care">Personal Care</option>
+            <option value="companion_care">Companion Care</option>
+            <option value="respite_care">Respite Care</option>
+            <option value="senior_living">Senior Living / Assisted Living</option>
+            <option value="disability_services">Disability Services</option>
+            <option value="pediatric_home_care">Pediatric Home Care</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Phone</label>
+          <input type="tel" id="phone" placeholder="(555) 123-4567">
+        </div>
+      </div>
+      <div class="field">
+        <label>Address</label>
+        <input type="text" id="address" placeholder="123 Main Street">
+      </div>
+      <div class="row-3">
+        <div class="field">
+          <label>City</label>
+          <input type="text" id="city" placeholder="Springfield">
+        </div>
+        <div class="field">
+          <label>State</label>
+          <select id="state">
+            <option value="">State...</option>
+            <option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>ZIP</label>
+          <input type="text" id="zip" placeholder="62704">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Domain (if you have one)</label>
+          <input type="text" id="domain" placeholder="sunrisehomecare.com">
+        </div>
+        <div class="field">
+          <label>Timezone</label>
+          <select id="timezone">
+            <option value="America/New_York">Eastern</option>
+            <option value="America/Chicago">Central</option>
+            <option value="America/Denver">Mountain</option>
+            <option value="America/Los_Angeles">Pacific</option>
+            <option value="America/Anchorage">Alaska</option>
+            <option value="Pacific/Honolulu">Hawaii</option>
+          </select>
+        </div>
+      </div>
+      <div class="btn-row">
+        <span></span>
+        <button class="btn-next" onclick="nextStep()">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Branding -->
+    <div class="step" data-step="1">
+      <div class="step-title">Branding</div>
+      <div class="step-desc">Upload your logo and choose your brand color. We'll theme your entire CRM to match.</div>
+      <div class="field">
+        <label>Company Logo</label>
+        <div class="file-upload">
+          <label class="file-btn" for="logoFile">Choose File</label>
+          <input type="file" id="logoFile" accept="image/*" onchange="updateFileName(this,'logoName')">
+          <span class="file-name" id="logoName">No file chosen</span>
+        </div>
+        <div class="field-hint">PNG or JPG, at least 400x400px recommended</div>
+      </div>
+      <div class="field">
+        <label>Primary Brand Color</label>
+        <div class="color-row">
+          <input type="color" id="colorPicker" value="#0D7377" onchange="document.getElementById('colorHex').value=this.value">
+          <input type="text" id="colorHex" value="#0D7377" placeholder="#0D7377" onchange="document.getElementById('colorPicker').value=this.value">
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="prevStep()">&larr; Back</button>
+        <button class="btn-next" onclick="nextStep()">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Website Template -->
+    <div class="step" data-step="2">
+      <div class="step-title">Website Template</div>
+      <div class="step-desc">Choose a design for your website. Your company name and brand color are previewed live.</div>
+      <div class="template-grid" id="templateGrid"></div>
+      <div class="tpl-note">Don't worry — you can customize everything after signup.</div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="prevStep()">&larr; Back</button>
+        <button class="btn-next" onclick="nextStep()">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: Plan & Billing -->
+    <div class="step" data-step="3">
+      <div class="step-title">Plan &amp; Billing</div>
+      <div class="step-desc">Choose your plan. All plans include a 30-day free trial.</div>
+
+      <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;display:block">Select a Plan *</label>
+      <div class="plan-grid" id="planGrid" style="grid-template-columns:repeat(5,1fr)">
+        <div class="plan-card" data-plan="starter" onclick="selectPlan(this)">
+          <div class="plan-label">Starter</div>
+          <div class="plan-price">$49</div>
+          <div class="plan-per">/mo &middot; 2 users</div>
+        </div>
+        <div class="plan-card" data-plan="pro" onclick="selectPlan(this)">
+          <div class="plan-label">Pro</div>
+          <div class="plan-price">$149</div>
+          <div class="plan-per">/mo &middot; up to 10</div>
+        </div>
+        <div class="plan-card" data-plan="business" onclick="selectPlan(this)">
+          <div class="plan-label">Business</div>
+          <div class="plan-price">$299</div>
+          <div class="plan-per">/mo &middot; up to 25</div>
+        </div>
+        <div class="plan-card" data-plan="agency" onclick="selectPlan(this)">
+          <div class="plan-label">Agency</div>
+          <div class="plan-price">$599</div>
+          <div class="plan-per">/mo &middot; up to 50</div>
+        </div>
+        <div class="plan-card" data-plan="enterprise" onclick="selectPlan(this)">
+          <div class="plan-label">Enterprise</div>
+          <div class="plan-price">$199</div>
+          <div class="plan-per">/user/mo &middot; 10 min</div>
+        </div>
+      </div>
+
+      <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;display:block">Hosting Preference</label>
+      <div class="hosting-grid" id="hostingGrid">
+        <div class="hosting-card selected" data-hosting="saas" onclick="selectHosting(this)">
+          <h4>SaaS (Hosted)</h4>
+          <p>We host, update, and maintain everything. Just log in and go. Monthly subscription.</p>
+        </div>
+        <div class="hosting-card" data-hosting="self-hosted" onclick="selectHosting(this)">
+          <h4>Self-Hosted (Own It)</h4>
+          <p>One-time purchase. Full source code. Deploy on your own server or we deploy for you.</p>
+        </div>
+      </div>
+
+      <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;display:block">Add-Ons (optional)</label>
+      <div class="check-grid" id="addonsGrid">
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="sms"><span class="check-box"></span><span class="check-label">SMS &amp; Texting</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="evv"><span class="check-box"></span><span class="check-label">EVV (Electronic Visit Verification)</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="medication"><span class="check-box"></span><span class="check-label">Medication Tracking</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="careplan"><span class="check-box"></span><span class="check-label">Care Plan Management</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="portal"><span class="check-box"></span><span class="check-label">Client Portal</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="marketing"><span class="check-box"></span><span class="check-label">Marketing &amp; Reviews</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="payments"><span class="check-box"></span><span class="check-label">Online Payments (Stripe)</span></label>
+        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="hipaa"><span class="check-box"></span><span class="check-label">HIPAA Compliance Package</span></label>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-back" onclick="prevStep()">&larr; Back</button>
+        <button class="btn-next" onclick="nextStep()">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 5: Deploy Service -->
+    <div class="step" data-step="4">
+      <div class="step-title">Deploy Service</div>
+      <div class="step-desc">How much help do you want getting set up? All options include your CRM, website, and database.</div>
+
+      <div class="deploy-grid" id="deployGrid">
+        <div class="deploy-card" data-deploy="basic" onclick="selectDeploy(this)">
+          <h4>Basic</h4>
+          <div class="deploy-price">$299</div>
+          <p>We set up your CRM and website on our servers. You get login credentials and a live URL. Self-service onboarding.</p>
+        </div>
+        <div class="deploy-card selected" data-deploy="full" onclick="selectDeploy(this)">
+          <h4>Full Setup</h4>
+          <div class="deploy-price">$499</div>
+          <p>Everything in Basic, plus we import your existing data, configure integrations, and do a 30-min walkthrough call.</p>
+        </div>
+        <div class="deploy-card" data-deploy="white-glove" onclick="selectDeploy(this)">
+          <h4>White Glove</h4>
+          <div class="deploy-price">$699</div>
+          <p>Full concierge setup. We build your website content, migrate all data, train your team, and provide 30 days of priority support.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Migrating from another platform? (optional)</label>
+        <select id="migrationSource">
+          <option value="">No migration needed</option>
+          <option value="alayacare">AlayaCare</option>
+          <option value="homecare_homebase">HHAeXchange</option>
+          <option value="clearcare">ClearCare / WellSky</option>
+          <option value="axxess">Axxess</option>
+          <option value="carevoyant">CareVoyant</option>
+          <option value="kinnser">Kinnser / WellSky</option>
+          <option value="spreadsheet">Spreadsheets / Manual</option>
+          <option value="other">Other</option>
+        </select>
+        <div class="field-hint">If you have data in another system, we can help migrate it during setup.</div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-back" onclick="prevStep()">&larr; Back</button>
+        <button class="btn-next" onclick="nextStep()">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 6: Admin User -->
+    <div class="step" data-step="5">
+      <div class="step-title">Admin Account</div>
+      <div class="step-desc">This will be the owner/admin login for your new CRM.</div>
+      <div class="row">
+        <div class="field">
+          <label>First Name *</label>
+          <input type="text" id="firstName" placeholder="John">
+        </div>
+        <div class="field">
+          <label>Last Name *</label>
+          <input type="text" id="lastName" placeholder="Smith">
+        </div>
+      </div>
+      <div class="field">
+        <label>Email Address *</label>
+        <input type="email" id="email" placeholder="john@sunrisehomecare.com">
+      </div>
+      <div class="field">
+        <label>Password *</label>
+        <input type="password" id="password" placeholder="At least 8 characters">
+        <div class="field-hint">This will be your CRM admin login password.</div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="prevStep()">&larr; Back</button>
+        <button class="btn-next" onclick="nextStep()">Review &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 7: Review & Submit -->
+    <div class="step" data-step="6">
+      <div class="step-title">Review &amp; Submit</div>
+      <div class="step-desc">Double-check everything before we create your account.</div>
+      <div class="summary-grid" id="summaryGrid"></div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="prevStep()">&larr; Back</button>
+        <button class="btn-next" id="submitBtn" onclick="submitForm()">Submit &amp; Create My CRM</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="nav-wordmark">TWOMIAH</span>
+    <div class="footer-links">
+      <a href="/">Home</a><a href="/build.html">Build</a><a href="/care.html">Care</a><a href="/vision.html">Vision</a>
+    </div>
+    <span class="footer-copy">&copy; 2026 Twomiah</span>
+  </div>
+</footer>
+
+<script>
+var currentStep = 0;
+var totalSteps = 7;
+var selectedPlan = '';
+var selectedHosting = 'saas';
+var selectedDeploy = 'full';
+var selectedTemplate = '';
+
+// Template definitions per industry category
+var TEMPLATES = {
+  homecare: [
+    { id: 'clean-professional', name: 'Clean Professional', desc: 'Clinical yet warm, trust-focused', navBg: '#0d7377', heroBg: 'linear-gradient(135deg,#e8f5f5,#d0ebeb)', heroText: '#1a3a3a', cardBg: '#fff', cardText: '#333', btnRadius: '6px', fontStyle: 'system-ui,sans-serif' },
+    { id: 'warm-community', name: 'Warm & Community', desc: 'Inviting, family-friendly feel', navBg: '#5c3d2e', heroBg: 'linear-gradient(135deg,#fdf6ee,#f5e6d0)', heroText: '#3a2a1a', cardBg: '#fefaf5', cardText: '#4a3a2a', btnRadius: '20px', fontStyle: 'Georgia,serif' },
+    { id: 'modern-medical', name: 'Modern Medical', desc: 'Modern healthcare aesthetic', navBg: '#1a2744', heroBg: 'linear-gradient(135deg,#f0f4f8,#dce4ed)', heroText: '#1a2744', cardBg: '#fff', cardText: '#333', btnRadius: '4px', fontStyle: 'system-ui,sans-serif' },
+  ]
+};
+
+function getIndustryCategory() {
+  return 'homecare';
+}
+
+function renderTemplates() {
+  var category = getIndustryCategory();
+  var templates = TEMPLATES[category] || TEMPLATES.homecare;
+  var companyName = val('companyName') || 'Your Company';
+  var primaryColor = val('colorHex') || '#0D7377';
+  var grid = document.getElementById('templateGrid');
+
+  // Adjust grid columns
+  grid.style.gridTemplateColumns = templates.length === 2 ? 'repeat(2,1fr)' : 'repeat(3,1fr)';
+
+  var html = '';
+  templates.forEach(function(tpl, i) {
+    var isSelected = selectedTemplate === tpl.id || (!selectedTemplate && i === 0);
+    if (isSelected && !selectedTemplate) selectedTemplate = tpl.id;
+    html += '<div class="template-card' + (isSelected ? ' selected' : '') + '" data-template="' + tpl.id + '" onclick="selectTemplate(this)">'
+      + '<div class="tpl-badge">Selected</div>'
+      + '<div class="tpl-mini" style="font-family:' + tpl.fontStyle + '">'
+      + '<div class="tpl-mini-nav" style="background:' + tpl.navBg + '">'
+      + '<span>' + escapeHtml(companyName) + '</span>'
+      + '<span style="font-size:6px;opacity:0.6">Home &nbsp; Services &nbsp; About &nbsp; Contact</span>'
+      + '</div>'
+      + '<div class="tpl-mini-hero" style="background:' + tpl.heroBg + ';color:' + tpl.heroText + '">'
+      + '<h3 style="font-size:11px">' + escapeHtml(companyName) + '</h3>'
+      + '<p>Compassionate care you can trust</p>'
+      + '<span class="tpl-btn" style="background:' + primaryColor + ';border-radius:' + tpl.btnRadius + '">Schedule a Consultation</span>'
+      + '</div>'
+      + '<div class="tpl-mini-cards" style="background:' + (tpl.heroText === '#fff' ? '#f5f5f5' : '#fff') + '">'
+      + '<div class="tpl-mini-card" style="background:' + tpl.cardBg + ';color:' + tpl.cardText + '"><div class="card-icon">&#x1F3E0;</div><div class="card-label">Home Care</div></div>'
+      + '<div class="tpl-mini-card" style="background:' + tpl.cardBg + ';color:' + tpl.cardText + '"><div class="card-icon">&#x2764;</div><div class="card-label">Personal Care</div></div>'
+      + '<div class="tpl-mini-card" style="background:' + tpl.cardBg + ';color:' + tpl.cardText + '"><div class="card-icon">&#x2B50;</div><div class="card-label">Companion</div></div>'
+      + '</div>'
+      + '<div class="tpl-mini-footer" style="background:' + tpl.navBg + ';color:#fff">&copy; ' + escapeHtml(companyName) + '</div>'
+      + '</div>'
+      + '<div class="tpl-info"><div class="tpl-name">' + tpl.name + '</div><div class="tpl-desc">' + tpl.desc + '</div></div>'
+      + '</div>';
+  });
+  grid.innerHTML = html;
+}
+
+function selectTemplate(el) {
+  document.querySelectorAll('.template-card').forEach(function(c) { c.classList.remove('selected'); });
+  el.classList.add('selected');
+  selectedTemplate = el.getAttribute('data-template');
+}
+
+// Pre-fill from URL params
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var plan = params.get('plan');
+  if (plan) {
+    var card = document.querySelector('.plan-card[data-plan="' + plan + '"]');
+    if (card) selectPlan(card);
+  }
+  var hosting = params.get('hosting');
+  if (hosting) {
+    var hCard = document.querySelector('.hosting-card[data-hosting="' + hosting + '"]');
+    if (hCard) selectHosting(hCard);
+  }
+})();
+
+function selectPlan(el) {
+  document.querySelectorAll('.plan-card').forEach(function(c) { c.classList.remove('selected'); });
+  el.classList.add('selected');
+  selectedPlan = el.getAttribute('data-plan');
+}
+
+function selectHosting(el) {
+  document.querySelectorAll('.hosting-card').forEach(function(c) { c.classList.remove('selected'); });
+  el.classList.add('selected');
+  selectedHosting = el.getAttribute('data-hosting');
+}
+
+function selectDeploy(el) {
+  document.querySelectorAll('.deploy-card').forEach(function(c) { c.classList.remove('selected'); });
+  el.classList.add('selected');
+  selectedDeploy = el.getAttribute('data-deploy');
+}
+
+function toggleCheck(el) {
+  setTimeout(function() {
+    var cb = el.querySelector('input[type="checkbox"]');
+    if (cb.checked) el.classList.add('checked');
+    else el.classList.remove('checked');
+  }, 10);
+}
+
+function updateFileName(input, spanId) {
+  var name = input.files && input.files[0] ? input.files[0].name : 'No file chosen';
+  document.getElementById(spanId).textContent = name;
+}
+
+function updateProgress() {
+  var dots = document.querySelectorAll('.step-dot');
+  var lines = document.querySelectorAll('.step-line');
+  dots.forEach(function(d, i) {
+    d.classList.remove('active', 'done');
+    if (i < currentStep) d.classList.add('done');
+    else if (i === currentStep) d.classList.add('active');
+  });
+  lines.forEach(function(l, i) {
+    l.classList.toggle('done', i < currentStep);
+  });
+}
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelector('.step[data-step="' + n + '"]').classList.add('active');
+  currentStep = n;
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function nextStep() {
+  if (currentStep === 0) {
+    if (!val('companyName')) return toast('Company name is required.', 'error');
+  }
+  if (currentStep === 1) {
+    renderTemplates();
+  }
+  if (currentStep === 3) {
+    if (!selectedPlan) return toast('Please select a plan.', 'error');
+  }
+  if (currentStep === 5) {
+    if (!val('firstName') || !val('lastName')) return toast('Name is required.', 'error');
+    if (!val('email') || !val('email').includes('@')) return toast('Valid email is required.', 'error');
+    if (!val('password') || val('password').length < 8) return toast('Password must be at least 8 characters.', 'error');
+  }
+  if (currentStep === 5) buildSummary();
+
+  if (currentStep < totalSteps - 1) showStep(currentStep + 1);
+}
+
+function prevStep() {
+  if (currentStep > 0) showStep(currentStep - 1);
+}
+
+function val(id) {
+  var el = document.getElementById(id);
+  return el ? el.value.trim() : '';
+}
+
+function planLabel(p) {
+  var map = { starter: 'Starter ($49/mo)', pro: 'Pro ($149/mo)', business: 'Business ($299/mo)', agency: 'Agency ($599/mo)', enterprise: 'Enterprise ($199/user/mo)' };
+  return map[p] || p;
+}
+function deployLabel(d) {
+  var map = { basic: 'Basic ($299)', full: 'Full Setup ($499)', 'white-glove': 'White Glove ($699)' };
+  return map[d] || d;
+}
+
+function buildSummary() {
+  var addons = [];
+  document.querySelectorAll('#addonsGrid input:checked').forEach(function(cb) { addons.push(cb.value); });
+  var migSrc = val('migrationSource');
+
+  var items = [
+    ['Company', val('companyName')],
+    ['Industry', val('industry') || '--'],
+    ['Phone', val('phone') || '--'],
+    ['Location', [val('city'), val('state'), val('zip')].filter(Boolean).join(', ') || '--'],
+    ['Address', val('address') || '--'],
+    ['Domain', val('domain') || '--'],
+    ['Timezone', val('timezone')],
+    ['Brand Color', val('colorHex')],
+    ['Website Template', selectedTemplate || 'Default'],
+    ['Plan', planLabel(selectedPlan)],
+    ['Hosting', selectedHosting === 'saas' ? 'SaaS (Hosted)' : 'Self-Hosted'],
+    ['Deploy Service', deployLabel(selectedDeploy)],
+    ['Add-Ons', addons.length ? addons.join(', ') : 'None'],
+    ['Migration From', migSrc || 'None'],
+    ['Admin Name', val('firstName') + ' ' + val('lastName')],
+    ['Admin Email', val('email')],
+  ];
+
+  var html = '';
+  items.forEach(function(item) {
+    html += '<div class="summary-item"><div class="summary-label">' + item[0] + '</div><div class="summary-value">' + escapeHtml(item[1]) + '</div></div>';
+  });
+  document.getElementById('summaryGrid').innerHTML = html;
+}
+
+function escapeHtml(s) {
+  var d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function toast(msg, type) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast ' + (type || 'success') + ' show';
+  setTimeout(function() { t.classList.remove('show'); }, 4000);
+}
+
+function getFormData() {
+  var addons = [];
+  document.querySelectorAll('#addonsGrid input:checked').forEach(function(cb) { addons.push(cb.value); });
+
+  var planPrices = { starter: 49, pro: 149, business: 299, agency: 599, enterprise: 199 };
+
+  return {
+    name: val('companyName'),
+    slug: val('companyName').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+    email: val('email'),
+    admin_email: val('email'),
+    phone: val('phone'),
+    industry: val('industry'),
+    address: val('address'),
+    city: val('city'),
+    state: val('state'),
+    zip: val('zip'),
+    domain: val('domain'),
+    primary_color: val('colorHex'),
+    website_theme: selectedTemplate,
+    plan: selectedPlan,
+    deployment_model: selectedHosting === 'saas' ? 'saas' : 'owned',
+    monthly_amount: selectedHosting === 'saas' ? planPrices[selectedPlan] || 0 : null,
+    billing_type: selectedHosting === 'saas' ? 'subscription' : 'one_time',
+    products: ['crm', 'website'],
+    features: addons,
+    notes: [
+      'Deploy service: ' + deployLabel(selectedDeploy),
+      'Timezone: ' + val('timezone'),
+      val('migrationSource') ? 'Migration from: ' + val('migrationSource') : '',
+      'Admin: ' + val('firstName') + ' ' + val('lastName'),
+    ].filter(Boolean).join(' | '),
+    admin_password: val('password'),
+  };
+}
+
+function submitForm() {
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  var data = getFormData();
+  var API = 'https://twomiah-factory-api.onrender.com';
+
+  fetch(API + '/api/v1/factory/public/signup', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  })
+  .then(function(res) { return res.json().then(function(d) { return { ok: res.ok, data: d }; }); })
+  .then(function(result) {
+    if (result.ok) {
+      toast('Account created! Redirecting...', 'success');
+      if (result.data.checkoutUrl) {
+        setTimeout(function() { window.location.href = result.data.checkoutUrl; }, 1500);
+      } else {
+        btn.textContent = 'Account Created!';
+        document.querySelector('.step[data-step="6"] .step-title').textContent = 'You\'re All Set!';
+        document.querySelector('.step[data-step="6"] .step-desc').textContent = 'Your CRM is being built. Check your email (' + val('email') + ') for login instructions.';
+      }
+    } else {
+      toast(result.data.error || 'Something went wrong. Please try again.', 'error');
+      btn.disabled = false;
+      btn.textContent = 'Submit & Create My CRM';
+    }
+  })
+  .catch(function() {
+    toast('Network error. Please check your connection and try again.', 'error');
+    btn.disabled = false;
+    btn.textContent = 'Submit & Create My CRM';
+  });
+}
+</script>
+</body>
+</html>
