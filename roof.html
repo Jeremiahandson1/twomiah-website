@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twomiah Roof — Roofing CRM &amp; Measurement Software</title>
+<meta name="description" content="CRM, $9 measurement reports, insurance workflow, canvassing, storm lead gen, and customer portal — all in one platform built for roofing contractors.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --slate:#1E3A5F;--slate-mid:#163050;--slate-dark:#0F2340;
+  --accent:#FF6B35;--dim-accent:#FF8F66;
+  --dark:#0A1628;--charcoal:#0F1E34;--smoke:#132842;
+  --ash:#3A546A;--mist:#5A7A94;--bone:#E8F0F8;--white:#FFF;
+  --grad:linear-gradient(135deg,#FF8F66,#FF6B35,#E55A2B)
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(10,22,40,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-icon{width:30px;height:30px}
+.nav-wordmark{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.12em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-back{color:rgba(255,255,255,0.3)!important;font-size:11px!important}
+.nav-cta{background:var(--accent)!important;color:var(--white)!important;padding:8px 18px;border-radius:3px!important}
+.nav-cta:hover{background:#E55A2B!important}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:140px 80px 80px;position:relative;overflow:hidden;max-width:1400px;margin:0 auto}
+.hero-glow{position:absolute;right:-100px;top:50%;transform:translateY(-50%);width:600px;height:600px;background:radial-gradient(ellipse,rgba(255,107,53,0.1) 0%,transparent 70%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,107,53,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,53,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero-left{position:relative;z-index:1}
+.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;animation:fadeUp 0.8s 0.1s both}
+.hero-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,6vw,88px);line-height:0.9;letter-spacing:0.02em;margin-bottom:24px;animation:fadeUp 0.8s 0.2s both}
+.accent-line{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:17px;line-height:1.8;color:rgba(255,255,255,0.5);margin-bottom:36px;animation:fadeUp 0.8s 0.3s both}
+.hero-sub em{color:var(--bone);font-style:normal;font-weight:600}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp 0.8s 0.4s both}
+.btn-primary{background:var(--accent);color:var(--white);padding:14px 30px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;transition:all 0.2s;box-shadow:0 4px 20px rgba(255,107,53,0.3)}
+.btn-primary:hover{background:#E55A2B;transform:translateY(-2px)}
+.btn-ghost{border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.65);padding:14px 30px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.4);color:var(--white);transform:translateY(-2px)}
+
+/* PIPELINE MOCKUP */
+.hero-right{animation:fadeUp 0.8s 0.4s both;position:relative;z-index:1}
+.pipeline-mock{background:#0F1E34;border:1px solid rgba(255,107,53,0.15);border-radius:8px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.6)}
+.pipeline-topbar{background:#0A1525;padding:12px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,107,53,0.08)}
+.pipeline-logo-sm{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:0.1em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pipeline-title{font-size:12px;color:rgba(255,255,255,0.3);margin-left:4px}
+.pipeline-body{padding:12px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.pipe-col{display:flex;flex-direction:column;gap:6px}
+.pipe-col-header{font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:4px 6px;border-bottom:2px solid rgba(255,107,53,0.2);margin-bottom:2px}
+.pipe-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:8px 8px}
+.pipe-name{font-size:10px;font-weight:600;color:rgba(255,255,255,0.8)}
+.pipe-detail{font-size:8px;color:rgba(255,255,255,0.3);margin-top:2px}
+.pipe-tag{display:inline-block;font-size:7px;font-weight:700;letter-spacing:0.08em;padding:2px 5px;border-radius:8px;margin-top:4px}
+.tag-storm{background:rgba(255,107,53,0.15);color:var(--accent)}
+.tag-ins{background:rgba(34,197,94,0.12);color:#22c55e}
+.tag-hot{background:rgba(239,68,68,0.12);color:#ef4444}
+
+/* SECTIONS */
+section{padding:100px 48px}
+.inner{max-width:1200px;margin:0 auto}
+.section-label{display:flex;align-items:center;gap:10px;font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.section-label::after{content:'';flex:0 0 36px;height:1px;background:var(--accent);opacity:0.5}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,5vw,72px);letter-spacing:0.04em;line-height:1;margin-bottom:16px}
+.section-sub{font-size:16px;line-height:1.8;color:rgba(255,255,255,0.5);max-width:580px}
+
+/* PROBLEM BAND */
+#problem{background:var(--charcoal);padding:60px 48px}
+.problem-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,0.04)}
+.problem-card{background:var(--charcoal);padding:36px 32px}
+.problem-num{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:1;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.problem-text{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.45)}
+.problem-text strong{color:var(--bone);font-weight:600}
+
+/* FEATURES */
+#features{background:var(--dark)}
+.features-header{margin-bottom:64px}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,0.04)}
+.feat-card{background:var(--dark);padding:36px 32px;position:relative;overflow:hidden;transition:background 0.25s}
+.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform 0.35s cubic-bezier(0.22,1,0.36,1)}
+.feat-card:hover{background:var(--charcoal)}
+.feat-card:hover::before{transform:scaleX(1)}
+.feat-icon{font-size:28px;margin-bottom:16px}
+.feat-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px;color:var(--white)}
+.feat-desc{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.45)}
+.feat-tag{display:inline-block;margin-top:12px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);padding:4px 10px;background:rgba(255,107,53,0.08);border:1px solid rgba(255,107,53,0.15);border-radius:2px}
+
+/* VS SECTION */
+#vs{background:var(--charcoal)}
+.vs-inner{max-width:900px;margin:0 auto}
+.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:32px;align-items:start;margin-top:48px}
+.vs-col-label{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:20px}
+.vs-col-label.them{color:rgba(255,255,255,0.2)}
+.vs-col-label.us{color:var(--accent)}
+.vs-list{display:flex;flex-direction:column;gap:10px}
+.vs-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.5;color:rgba(255,255,255,0.45)}
+.vs-item.positive{color:rgba(255,255,255,0.75)}
+.vs-item::before{content:'\2713';flex-shrink:0;font-size:12px;font-weight:700;color:var(--accent);margin-top:1px}
+.vs-item.negative::before{content:'\2717';color:rgba(255,255,255,0.2)}
+.vs-divider{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.vs-vs{font-family:'Bebas Neue',sans-serif;font-size:32px;color:rgba(255,255,255,0.1)}
+.vs-line{width:1px;height:100%;background:rgba(255,255,255,0.06);flex:1}
+
+/* PRICING */
+#pricing{background:var(--charcoal)}
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+.price-card{background:var(--dark);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:28px 22px;display:flex;flex-direction:column;position:relative;transition:border-color 0.2s}
+.price-card:hover{border-color:rgba(255,107,53,0.2)}
+.price-card.featured{border-color:var(--accent);background:#08111E}
+.price-card.featured::before{content:'MOST POPULAR';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--white);font-size:9px;font-weight:700;letter-spacing:0.2em;padding:4px 12px;border-radius:0 0 4px 4px}
+.price-tier{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:6px}
+.price-tier.featured{color:var(--accent)}
+.price-name{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:0.04em;margin-bottom:14px}
+.price-amount{display:flex;align-items:flex-end;gap:4px;margin-bottom:6px}
+.price-dollar{font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.price-per{font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:8px}
+.price-annual{font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:20px}
+.price-annual span{color:rgba(255,143,102,0.7)}
+.price-divider{height:1px;background:rgba(255,255,255,0.06);margin-bottom:18px}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:24px;flex:1}
+.price-features li{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:rgba(255,255,255,0.5);line-height:1.4}
+.price-features li::before{content:'\2192';color:var(--accent);flex-shrink:0;font-size:11px;margin-top:1px}
+.price-features li.bold-item{color:rgba(255,255,255,0.8);font-weight:600}
+.price-cta{display:block;text-align:center;background:rgba(255,107,53,0.1);color:var(--accent);border:1px solid rgba(255,107,53,0.25);padding:12px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s}
+.price-cta:hover{background:rgba(255,107,53,0.2);border-color:var(--accent)}
+.price-card.featured .price-cta{background:var(--accent);color:var(--white);border-color:var(--accent)}
+.price-card.featured .price-cta:hover{background:#E55A2B}
+
+/* CTA BAND */
+#cta-band{background:var(--dark);padding:100px 48px;text-align:center;position:relative;overflow:hidden}
+#cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(255,107,53,0.07) 0%,transparent 70%);pointer-events:none}
+.cta-inner{position:relative;z-index:1;max-width:600px;margin:0 auto}
+.cta-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,6vw,88px);line-height:0.9;letter-spacing:0.03em;margin-bottom:20px}
+.cta-sub{font-size:16px;line-height:1.8;color:rgba(255,255,255,0.45);margin-bottom:36px}
+
+/* FOOTER */
+footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:var(--dark)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:rgba(255,255,255,0.6)}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.2)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding:120px 24px 60px;gap:40px}
+  .pipeline-body{grid-template-columns:repeat(3,1fr)}
+  .problem-inner{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr}
+  .vs-grid{grid-template-columns:1fr;gap:24px}
+  .vs-divider{flex-direction:row;height:auto}.vs-line{width:100%;height:1px;flex:1}
+  .price-grid{grid-template-columns:1fr 1fr}
+  nav{padding:14px 20px}
+  .nav-links{gap:16px}
+  section{padding:60px 20px}
+}
+@media(max-width:600px){
+  .price-grid{grid-template-columns:1fr}
+  .pipeline-body{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-icon" viewBox="0 0 120 120" fill="none">
+      <defs><linearGradient id="ng" x1="0" y1="120" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FF8F66"/><stop offset="100%" stop-color="#E55A2B"/></linearGradient></defs>
+      <path d="M42 96 L20 48 L42 60 L52 24 L62 52 L75 40 L60 96 Z" fill="url(#ng)" opacity="0.65"/>
+      <path d="M78 96 L56 44 L68 58 L78 18 L88 50 L104 36 L96 96 Z" fill="url(#ng)"/>
+    </svg>
+    <span class="nav-wordmark">TWOMIAH ROOF</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="index.html" class="nav-back">&larr; Twomiah</a></li>
+    <li><a href="/signup/roof" class="nav-cta">Start Free Trial</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section style="padding:0">
+  <div class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-left">
+      <div class="hero-eyebrow">Twomiah Roof &mdash; Roofing CRM</div>
+      <h1 class="hero-headline">Close More<br><span class="accent-line">Roofs. Faster.</span></h1>
+      <p class="hero-sub">One platform for <em>$9 measurement reports, insurance workflow, pipeline board, canvassing, storm leads, and your customer portal</em>. Built for roofing contractors who are done paying $400/mo for half the features.</p>
+      <div class="hero-actions">
+        <a href="/signup/roof" class="btn-primary">Start Free Trial</a>
+        <a href="#pricing" class="btn-ghost">See Pricing</a>
+      </div>
+    </div>
+    <!-- PIPELINE MOCKUP -->
+    <div class="hero-right">
+      <div class="pipeline-mock">
+        <div class="pipeline-topbar">
+          <span class="pipeline-logo-sm">ROOF</span>
+          <span class="pipeline-title">Pipeline Board &mdash; This Week</span>
+        </div>
+        <div class="pipeline-body">
+          <div class="pipe-col">
+            <div class="pipe-col-header">Lead</div>
+            <div class="pipe-card">
+              <div class="pipe-name">Garcia Res.</div>
+              <div class="pipe-detail">Hail damage &middot; 28 sq</div>
+              <span class="pipe-tag tag-storm">&LeftRightArrow; STORM</span>
+            </div>
+            <div class="pipe-card">
+              <div class="pipe-name">Thompson</div>
+              <div class="pipe-detail">Age-out reroof</div>
+            </div>
+          </div>
+          <div class="pipe-col">
+            <div class="pipe-col-header">Inspection</div>
+            <div class="pipe-card">
+              <div class="pipe-name">Martinez</div>
+              <div class="pipe-detail">Wind damage &middot; 34 sq</div>
+              <span class="pipe-tag tag-ins">INS FILED</span>
+            </div>
+          </div>
+          <div class="pipe-col">
+            <div class="pipe-col-header">Proposal</div>
+            <div class="pipe-card">
+              <div class="pipe-name">Johnson</div>
+              <div class="pipe-detail">Full reroof &middot; 42 sq</div>
+              <span class="pipe-tag tag-hot">$18,400</span>
+            </div>
+          </div>
+          <div class="pipe-col">
+            <div class="pipe-col-header">Signed</div>
+            <div class="pipe-card">
+              <div class="pipe-name">Williams</div>
+              <div class="pipe-detail">Insurance &middot; 31 sq</div>
+              <span class="pipe-tag tag-ins">APPROVED</span>
+            </div>
+          </div>
+          <div class="pipe-col">
+            <div class="pipe-col-header">Production</div>
+            <div class="pipe-card">
+              <div class="pipe-name">Davis</div>
+              <div class="pipe-detail">GAF HDZ &middot; 38 sq</div>
+              <span class="pipe-tag tag-ins">SCHEDULED</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM BAND -->
+<section id="problem">
+  <div class="problem-inner reveal">
+    <div class="problem-card">
+      <div class="problem-num">$9</div>
+      <p class="problem-text"><strong>per measurement report</strong> &mdash; satellite-based, permit-ready, delivered in minutes. No more climbing ladders to measure or paying $50+ per report elsewhere.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-num">11</div>
+      <p class="problem-text"><strong>pipeline stages from lead to paid</strong> &mdash; lead, contacted, inspection scheduled, inspection complete, proposal sent, negotiation, signed, materials ordered, production scheduled, in progress, complete.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-num">0</div>
+      <p class="problem-text"><strong>competitors with storm leads + canvassing + insurance workflow + $9 measurements</strong> in one platform. AccuLynx charges 3&times; for half the features.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="inner">
+    <div class="features-header reveal">
+      <div class="section-label">What's Inside</div>
+      <h2 class="section-title">One Login.<br><span class="accent-line">Every Roof Covered.</span></h2>
+      <p class="section-sub">Every feature a roofing contractor needs &mdash; from the first knock to the final invoice &mdash; all talking to each other.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card reveal">
+        <div class="feat-icon">&#x1F4D0;</div>
+        <div class="feat-title">$9 Measurement Reports</div>
+        <p class="feat-desc">Satellite-based roof measurements delivered in minutes. Pitch, ridges, valleys, waste factor &mdash; everything you need for a material order or insurance supplement.</p>
+        <span class="feat-tag">$9 / Report</span>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">&#x1F6E1;</div>
+        <div class="feat-title">Insurance Workflow</div>
+        <p class="feat-desc">Track claims from filed &rarr; adjuster scheduled &rarr; approved &rarr; supplement &rarr; paid. Auto-generate Xactimate-ready scopes. Never lose an insurance job to paperwork.</p>
+        <span class="feat-tag">All Tiers</span>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">&#x1F4CA;</div>
+        <div class="feat-title">11-Stage Pipeline Board</div>
+        <p class="feat-desc">Drag-and-drop Kanban board purpose-built for roofing. Lead &rarr; Inspection &rarr; Proposal &rarr; Signed &rarr; Production &rarr; Complete. See every job at a glance.</p>
+        <span class="feat-tag">All Tiers</span>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">&#x1F6AA;</div>
+        <div class="feat-title">Canvassing Tool</div>
+        <p class="feat-desc">Drop pins on a map, assign canvassers to zones, track door knocks and outcomes in real time. GPS-verified with photo proof at each stop.</p>
+        <span class="feat-tag">Starter +</span>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">&#x26A1;</div>
+        <div class="feat-title">Storm Lead Generation</div>
+        <p class="feat-desc">NOAA hail and wind data mapped to your service area. Auto-generate lead lists by zip code after every storm. Be the first crew knocking.</p>
+        <span class="feat-tag">Pro +</span>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">&#x1F464;</div>
+        <div class="feat-title">Customer Portal</div>
+        <p class="feat-desc">Homeowners log in with a PIN to see their project status, inspection photos, invoices, and equipment warranty info. Fewer phone calls, more trust.</p>
+        <span class="feat-tag">All Tiers</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VS SECTION -->
+<section id="vs" style="background:var(--charcoal)">
+  <div class="inner">
+    <div class="vs-inner">
+      <div class="reveal" style="text-align:center;margin-bottom:48px">
+        <div class="section-label" style="justify-content:center">The Comparison</div>
+        <h2 class="section-title">Why Not<br><span class="accent-line">AccuLynx?</span></h2>
+      </div>
+      <div class="vs-grid reveal">
+        <div>
+          <div class="vs-col-label them">AccuLynx / Roofr / JobNimbus</div>
+          <div class="vs-list">
+            <div class="vs-item negative">$400+/mo for core CRM features</div>
+            <div class="vs-item negative">$15&ndash;$50 per measurement report</div>
+            <div class="vs-item negative">No built-in canvassing tool</div>
+            <div class="vs-item negative">No storm lead generation</div>
+            <div class="vs-item negative">Customer portal costs extra or missing</div>
+            <div class="vs-item negative">Built for enterprise, priced for enterprise</div>
+          </div>
+        </div>
+        <div class="vs-divider">
+          <div class="vs-line"></div>
+          <div class="vs-vs">VS</div>
+          <div class="vs-line"></div>
+        </div>
+        <div>
+          <div class="vs-col-label us">Twomiah Roof</div>
+          <div class="vs-list">
+            <div class="vs-item positive">$49&ndash;$299/mo with everything included</div>
+            <div class="vs-item positive">$9 measurement reports &mdash; lowest in industry</div>
+            <div class="vs-item positive">Canvassing with GPS + photo verification</div>
+            <div class="vs-item positive">Storm leads from NOAA data, automated</div>
+            <div class="vs-item positive">Customer portal included at every tier</div>
+            <div class="vs-item positive">Built for roofers, priced for real businesses</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="inner">
+    <div class="reveal" style="margin-bottom:16px">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Flat Rate.<br><span class="accent-line">No Surprises.</span></h2>
+      <p class="section-sub">One price per tier. Measurement reports billed separately at $9 each. Save 15% with annual billing.</p>
+    </div>
+    <div class="price-grid">
+      <!-- Solo -->
+      <div class="price-card reveal">
+        <div class="price-tier">Solo Roofer</div>
+        <div class="price-name">Solo</div>
+        <div class="price-amount">
+          <div class="price-dollar">$49</div>
+          <div class="price-per">/mo</div>
+        </div>
+        <div class="price-annual">or <span>$42/mo billed annually</span></div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li class="bold-item">11-stage pipeline board</li>
+          <li class="bold-item">$9 measurement reports</li>
+          <li class="bold-item">Insurance workflow tracking</li>
+          <li class="bold-item">Customer portal</li>
+          <li>Contacts + job history</li>
+          <li>Invoicing + Stripe payments</li>
+          <li>Mobile app</li>
+        </ul>
+        <a href="/signup/roof?plan=solo" class="price-cta">Get Started</a>
+      </div>
+      <!-- Starter -->
+      <div class="price-card featured reveal">
+        <div class="price-tier featured">2&ndash;5 Crew</div>
+        <div class="price-name">Starter</div>
+        <div class="price-amount">
+          <div class="price-dollar">$129</div>
+          <div class="price-per">/mo</div>
+        </div>
+        <div class="price-annual">or <span>$110/mo billed annually</span></div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li class="bold-item">Everything in Solo</li>
+          <li class="bold-item">Canvassing tool with GPS</li>
+          <li class="bold-item">Two-way texting</li>
+          <li class="bold-item">Automated SMS pipeline</li>
+          <li class="bold-item">Photo capture on mobile</li>
+          <li class="bold-item">Crew scheduling</li>
+          <li>Material order templates</li>
+          <li>Review automation</li>
+        </ul>
+        <a href="/signup/roof?plan=starter" class="price-cta">Get Started</a>
+      </div>
+      <!-- Pro -->
+      <div class="price-card reveal">
+        <div class="price-tier">5+ Crew</div>
+        <div class="price-name">Pro</div>
+        <div class="price-amount">
+          <div class="price-dollar">$299</div>
+          <div class="price-per">/mo</div>
+        </div>
+        <div class="price-annual">or <span>$254/mo billed annually</span></div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li class="bold-item">Everything in Starter</li>
+          <li class="bold-item">Storm lead generation</li>
+          <li class="bold-item">QuickBooks sync</li>
+          <li class="bold-item">Supplement automation</li>
+          <li class="bold-item">Multi-crew dispatch</li>
+          <li class="bold-item">Job costing + P&amp;L</li>
+          <li>Custom reports + dashboards</li>
+          <li>Lead source tracking</li>
+        </ul>
+        <a href="/signup/roof?plan=pro" class="price-cta">Get Started</a>
+      </div>
+      <!-- Enterprise -->
+      <div class="price-card reveal">
+        <div class="price-tier">10+ Users</div>
+        <div class="price-name">Enterprise</div>
+        <div class="price-amount">
+          <div class="price-dollar">$85</div>
+          <div class="price-per">/user/mo</div>
+        </div>
+        <div class="price-annual">or <span>$72/user billed annually</span></div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li class="bold-item">Everything in Pro</li>
+          <li class="bold-item">Multi-branch management</li>
+          <li class="bold-item">Role-based permissions</li>
+          <li class="bold-item">API access</li>
+          <li class="bold-item">Dedicated success manager</li>
+          <li class="bold-item">Custom integrations</li>
+          <li>White-label options</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="/signup/roof?plan=enterprise" class="price-cta">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="cta-band">
+  <div class="cta-inner reveal">
+    <div class="section-label" style="justify-content:center">Get Started Today</div>
+    <h2 class="cta-title">Stop Losing Roofs<br><span class="accent-line">to Better Software.</span></h2>
+    <p class="cta-sub">First 5 measurement reports free. No credit card required.</p>
+    <div class="hero-actions" style="justify-content:center">
+      <a href="/signup/roof" class="btn-primary">Start Free Trial</a>
+      <a href="index.html" class="btn-ghost">&larr; Back to Twomiah</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span class="nav-wordmark">TWOMIAH</span>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="build.html">Build</a>
+      <a href="care.html">Care</a>
+      <a href="wrench.html">Wrench</a>
+      <a href="factory.html">Factory</a>
+      <a href="mailto:hello@twomiah.com">Contact</a>
+    </div>
+    <span class="footer-copy">&copy; 2026 Twomiah</span>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((e) => {
+  e.forEach((el, i) => { if (el.isIntersecting) setTimeout(() => el.target.classList.add('visible'), i * 60) });
+}, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.4)' : '';
+});
+</script>
+</body>
+</html>
