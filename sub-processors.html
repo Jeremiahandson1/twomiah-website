@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sub-Processor Disclosure — Twomiah Software Ventures</title>
+<meta name="description" content="Third-party sub-processors used by Twomiah Software Ventures to process personal data.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--fire:#FF3D00;--ember:#FF6D00;--gold:#FFAB00;--dark:#0D0D0D;--charcoal:#1A1A1A;--ash:#555;--bone:#F5F0EB;--white:#FFF;--grad:linear-gradient(135deg,#FFAB00,#FF6D00,#FF3D00)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:var(--fire)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(13,13,13,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-icon{width:30px;height:30px}
+.nav-wordmark{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.12em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-back{color:rgba(255,255,255,0.3)!important;font-size:11px!important}
+
+.page-header{padding:140px 48px 60px;text-align:center;position:relative;overflow:hidden}
+.page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 50% 30%,rgba(255,61,0,0.06) 0%,transparent 70%);pointer-events:none}
+.page-header h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,5.5vw,72px);letter-spacing:0.04em;line-height:1;position:relative;z-index:1}
+.page-header .fire-line{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-header .effective{font-size:13px;color:rgba(255,255,255,0.35);margin-top:16px;letter-spacing:0.08em;position:relative;z-index:1}
+
+.policy{max-width:880px;margin:0 auto;padding:0 48px 100px}
+.policy h2{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:0.06em;color:var(--ember);margin-top:56px;margin-bottom:16px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06)}
+.policy h2:first-child{margin-top:0;border-top:none;padding-top:0}
+.policy p,.policy li{font-size:15px;line-height:1.85;color:rgba(255,255,255,0.55)}
+.policy p{margin-bottom:16px}
+.policy ul{list-style:none;margin-bottom:16px;padding-left:0}
+.policy ul li{padding-left:20px;position:relative;margin-bottom:6px}
+.policy ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--fire);opacity:0.6}
+.policy strong{color:rgba(255,255,255,0.75);font-weight:600}
+.policy a{color:var(--ember);text-decoration:none;transition:color 0.2s}
+.policy a:hover{color:var(--fire)}
+.policy table{width:100%;border-collapse:collapse;margin:16px 0 24px}
+.policy th,.policy td{text-align:left;padding:12px 16px;font-size:14px;line-height:1.6;border-bottom:1px solid rgba(255,255,255,0.06)}
+.policy th{color:var(--bone);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:0.08em}
+.policy td{color:rgba(255,255,255,0.5)}
+.risk-high{color:#ff4444;font-weight:600}
+.risk-med{color:#ffaa00;font-weight:600}
+.risk-low{color:#44cc44;font-weight:600}
+
+footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40px 48px 20px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-links{display:flex;gap:22px;flex-wrap:wrap}
+.footer-links a{color:rgba(255,255,255,0.3);text-decoration:none;font-size:13px;transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.18)}
+
+@media(max-width:1024px){nav,section,.page-header,.policy{padding-left:24px;padding-right:24px}.policy table{font-size:12px}.policy th,.policy td{padding:8px 10px}}
+@media(max-width:640px){.nav-links{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg class="nav-icon" viewBox="0 0 120 120" fill="none">
+      <defs><linearGradient id="ng" x1="0" y1="120" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FFAB00"/><stop offset="50%" stop-color="#FF6D00"/><stop offset="100%" stop-color="#FF3D00"/></linearGradient><filter id="nglow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <path d="M42 96 L20 48 L42 60 L52 24 L62 52 L75 40 L60 96 Z" fill="url(#ng)" opacity="0.65"/>
+      <path d="M78 96 L56 44 L68 58 L78 18 L88 50 L104 36 L96 96 Z" fill="url(#ng)" filter="url(#nglow)"/>
+      <rect x="16" y="96" width="88" height="3" rx="1.5" fill="url(#ng)" opacity="0.45"/>
+    </svg>
+    <span class="nav-wordmark">TWOMIAH</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/" class="nav-back">&larr; Home</a></li>
+    <li><a href="/terms">Terms</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <h1><span class="fire-line">Sub-Processor Disclosure</span></h1>
+  <p class="effective">Last Updated: March 21, 2026</p>
+</div>
+
+<div class="policy">
+
+  <p>This page identifies the third-party service providers ("Sub-processors") used by <strong>Twomiah Software Ventures</strong> to process Personal Data in connection with its services. This disclosure supports our obligations under our <a href="/dpa">Data Processing Agreement</a> and applicable data protection laws.</p>
+
+  <h2>Our Approach</h2>
+
+  <p>We carefully select Sub-processors and require each to:</p>
+  <ul>
+    <li>Process Personal Data only on our documented instructions</li>
+    <li>Implement appropriate technical and organizational safeguards</li>
+    <li>Enter into data processing agreements with us</li>
+    <li>Provide adequate transfer safeguards (including Standard Contractual Clauses where applicable)</li>
+  </ul>
+
+  <h2>Payment Processing</h2>
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>Data Processed</th><th>Location</th></tr>
+    <tr><td><strong>Stripe</strong></td><td>Subscriptions, billing, checkout</td><td>Payment details, billing info, transaction history</td><td>US / EU</td></tr>
+    <tr><td><strong>PayPal</strong></td><td>Payment processing (BreakReturns)</td><td>Payment details, billing info</td><td>US / EU</td></tr>
+  </table>
+
+  <h2>Hosting &amp; Infrastructure</h2>
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>Data Processed</th><th>Location</th></tr>
+    <tr><td><strong>Render</strong></td><td>Application hosting, PostgreSQL databases</td><td>All application data, deployment configs</td><td>US</td></tr>
+    <tr><td><strong>Supabase</strong></td><td>Database hosting, authentication</td><td>All platform data (tenants, users, CRM records)</td><td>US</td></tr>
+    <tr><td><strong>Amazon Web Services (S3)</strong></td><td>File and media storage</td><td>Uploaded files, documents, images</td><td>US</td></tr>
+    <tr><td><strong>Cloudflare</strong></td><td>CDN, DNS, R2 object storage</td><td>Traffic data, cached content, media files</td><td>Global</td></tr>
+    <tr><td><strong>Redis</strong></td><td>Caching, job queues (Twomiah Ads)</td><td>Transient operational data</td><td>US</td></tr>
+  </table>
+
+  <h2>Email &amp; Communications</h2>
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>Data Processed</th><th>Location</th></tr>
+    <tr><td><strong>SendGrid (Twilio)</strong></td><td>Transactional emails, notifications</td><td>Email addresses, message content</td><td>US</td></tr>
+    <tr><td><strong>Resend</strong></td><td>Transactional emails</td><td>Email addresses, message content</td><td>US</td></tr>
+    <tr><td><strong>Gmail SMTP</strong></td><td>Transactional emails (BreakReturns)</td><td>Email addresses, message content</td><td>US</td></tr>
+  </table>
+
+  <h2>SMS &amp; Voice</h2>
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>Data Processed</th><th>Location</th></tr>
+    <tr><td><strong>Twilio</strong></td><td>SMS verification, notifications, voice, call recording</td><td>Phone numbers, message content, call audio</td><td>US</td></tr>
+  </table>
+
+  <h2>Artificial Intelligence</h2>
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>Data Processed</th><th>Location</th></tr>
+    <tr><td><strong>Anthropic (Claude)</strong></td><td>Content generation, code generation, AI features</td><td>User inputs, generated content</td><td>US</td></tr>
+    <tr><td><strong>OpenAI</strong></td><td>Image analysis, receipt scanning, AI receptionist</td><td>User inputs, uploaded images, audio</td><td>US</td></tr>
+  </table>
+
+  <h2>Advertising Platforms</h2>
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>Data Processed</th><th>Location</th></tr>
+    <tr><td><strong>Meta Platforms</strong></td><td>Ad campaign management (Twomiah Ads)</td><td>Campaign data, audience targeting, performance metrics</td><td>US / EU</td></tr>
+    <tr><td><strong>Google Ads</strong></td><td>Ad campaign management (Twomiah Ads)</td><td>Campaign data, audience targeting, performance metrics</td><td>US</td></tr>
+    <tr><td><strong>TikTok</strong></td><td>Ad campaign management (Twomiah Ads)</td><td>Campaign data, ad content</td><td>US</td></tr>
+  </table>
+
+  <h2>Maps &amp; Geolocation</h2>
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>Data Processed</th><th>Location</th></tr>
+    <tr><td><strong>Google Maps / Places</strong></td><td>Address autocomplete, mapping, satellite imagery</td><td>Addresses, geolocation data</td><td>US</td></tr>
+  </table>
+
+  <h2>Analytics &amp; Monitoring</h2>
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>Data Processed</th><th>Location</th></tr>
+    <tr><td><strong>Sentry</strong></td><td>Error tracking, performance monitoring</td><td>Device data, error context, stack traces</td><td>US</td></tr>
+    <tr><td><strong>Google Analytics</strong></td><td>Usage analytics (optional, admin-configurable)</td><td>Device data, usage behavior, IP address</td><td>US</td></tr>
+  </table>
+
+  <h2>Code &amp; Deployment</h2>
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>Data Processed</th><th>Location</th></tr>
+    <tr><td><strong>GitHub</strong></td><td>Source code hosting, automated deployment</td><td>Source code (no customer PII in repos)</td><td>US</td></tr>
+  </table>
+
+  <h2>Push Notifications</h2>
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>Data Processed</th><th>Location</th></tr>
+    <tr><td><strong>Firebase (Google)</strong></td><td>Mobile push notifications</td><td>Device tokens, notification content</td><td>US</td></tr>
+    <tr><td><strong>Web Push (VAPID)</strong></td><td>Browser push notifications</td><td>Subscription endpoints, notification content</td><td>US</td></tr>
+  </table>
+
+  <h2>Media &amp; Image Storage</h2>
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>Data Processed</th><th>Location</th></tr>
+    <tr><td><strong>Cloudinary</strong></td><td>Image hosting (Card Shop)</td><td>Uploaded images</td><td>US</td></tr>
+  </table>
+
+  <h2>Healthcare Integrations</h2>
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>Data Processed</th><th>Location</th></tr>
+    <tr><td><strong>Sandata</strong></td><td>Electronic Visit Verification, Medicaid compliance</td><td>Visit records, caregiver data, patient identifiers</td><td>US</td></tr>
+    <tr><td><strong>Gusto</strong></td><td>Payroll processing</td><td>Employee data, compensation, tax info</td><td>US</td></tr>
+  </table>
+
+  <h2>Accounting</h2>
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>Data Processed</th><th>Location</th></tr>
+    <tr><td><strong>QuickBooks Online (Intuit)</strong></td><td>Invoicing, accounting sync</td><td>Financial data, invoices, customer records</td><td>US</td></tr>
+    <tr><td><strong>QuickBooks Desktop</strong></td><td>Desktop accounting sync (QBWC)</td><td>Financial data, invoices</td><td>On-premise</td></tr>
+  </table>
+
+  <h2>Data Architecture &amp; Isolation</h2>
+
+  <p>Twomiah uses a multi-tenant architecture with strong data isolation:</p>
+  <ul>
+    <li>Each customer receives a <strong>dedicated, isolated database instance</strong></li>
+    <li>No customer data is commingled with another customer's data in the same database</li>
+    <li>Data flows through: Supabase &rarr; Render (PostgreSQL) &rarr; isolated customer database</li>
+  </ul>
+
+  <h2>International Transfers</h2>
+
+  <p>Where Personal Data is transferred outside the EEA/UK, Twomiah relies on Standard Contractual Clauses (SCCs) and equivalent safeguards provided by our Sub-processors.</p>
+
+  <h2>Updates &amp; Objections</h2>
+
+  <p>We may update this list periodically. Where required by applicable law or contract, we will provide advance notice of new Sub-processors and allow customers to object.</p>
+
+  <p>To request more information or object to a Sub-processor, contact us at <a href="mailto:support@twomiah.com">support@twomiah.com</a>. We will review requests in good faith.</p>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="nav-wordmark">TWOMIAH</span>
+    <div class="footer-links">
+      <a href="/">Home</a><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="/cookies">Cookies</a><a href="/sub-processors">Sub-processors</a><a href="/security">Security</a>
+    </div>
+    <span class="footer-copy">&copy; 2026 Twomiah Software Ventures</span>
+  </div>
+</footer>
+
+</body>
+</html>

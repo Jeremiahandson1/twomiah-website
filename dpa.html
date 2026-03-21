@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Processing Agreement — Twomiah Software Ventures</title>
+<meta name="description" content="Data Processing Agreement (DPA) and Standard Contractual Clauses for Twomiah Software Ventures.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--fire:#FF3D00;--ember:#FF6D00;--gold:#FFAB00;--dark:#0D0D0D;--charcoal:#1A1A1A;--ash:#555;--bone:#F5F0EB;--white:#FFF;--grad:linear-gradient(135deg,#FFAB00,#FF6D00,#FF3D00)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:var(--fire)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(13,13,13,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-icon{width:30px;height:30px}
+.nav-wordmark{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.12em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-back{color:rgba(255,255,255,0.3)!important;font-size:11px!important}
+
+.page-header{padding:140px 48px 60px;text-align:center;position:relative;overflow:hidden}
+.page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 50% 30%,rgba(255,61,0,0.06) 0%,transparent 70%);pointer-events:none}
+.page-header h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,5.5vw,72px);letter-spacing:0.04em;line-height:1;position:relative;z-index:1}
+.page-header .fire-line{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-header .effective{font-size:13px;color:rgba(255,255,255,0.35);margin-top:16px;letter-spacing:0.08em;position:relative;z-index:1}
+
+.policy{max-width:780px;margin:0 auto;padding:0 48px 100px}
+.policy h2{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:0.06em;color:var(--ember);margin-top:56px;margin-bottom:16px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06)}
+.policy h2:first-child{margin-top:0;border-top:none;padding-top:0}
+.policy h3{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:var(--bone);margin:24px 0 10px;letter-spacing:0.04em}
+.policy p,.policy li{font-size:15px;line-height:1.85;color:rgba(255,255,255,0.55)}
+.policy p{margin-bottom:16px}
+.policy ul{list-style:none;margin-bottom:16px;padding-left:0}
+.policy ul li{padding-left:20px;position:relative;margin-bottom:6px}
+.policy ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--fire);opacity:0.6}
+.policy strong{color:rgba(255,255,255,0.75);font-weight:600}
+.policy a{color:var(--ember);text-decoration:none;transition:color 0.2s}
+.policy a:hover{color:var(--fire)}
+.policy .highlight{background:var(--charcoal);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:24px 28px;margin:24px 0}
+.policy .highlight p{margin-bottom:8px}
+.policy .highlight p:last-child{margin-bottom:0}
+
+footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40px 48px 20px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-links{display:flex;gap:22px;flex-wrap:wrap}
+.footer-links a{color:rgba(255,255,255,0.3);text-decoration:none;font-size:13px;transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.18)}
+
+@media(max-width:1024px){nav,section,.page-header,.policy{padding-left:24px;padding-right:24px}}
+@media(max-width:640px){.nav-links{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg class="nav-icon" viewBox="0 0 120 120" fill="none">
+      <defs><linearGradient id="ng" x1="0" y1="120" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FFAB00"/><stop offset="50%" stop-color="#FF6D00"/><stop offset="100%" stop-color="#FF3D00"/></linearGradient><filter id="nglow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <path d="M42 96 L20 48 L42 60 L52 24 L62 52 L75 40 L60 96 Z" fill="url(#ng)" opacity="0.65"/>
+      <path d="M78 96 L56 44 L68 58 L78 18 L88 50 L104 36 L96 96 Z" fill="url(#ng)" filter="url(#nglow)"/>
+      <rect x="16" y="96" width="88" height="3" rx="1.5" fill="url(#ng)" opacity="0.45"/>
+    </svg>
+    <span class="nav-wordmark">TWOMIAH</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/" class="nav-back">&larr; Home</a></li>
+    <li><a href="/terms">Terms</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <h1><span class="fire-line">Data Processing Agreement</span></h1>
+  <p class="effective">Effective Date: March 21, 2026 &nbsp;&middot;&nbsp; Last Updated: March 21, 2026</p>
+</div>
+
+<div class="policy">
+
+  <p>This Data Processing Agreement ("DPA") forms part of the <a href="/terms">Terms of Service</a> between you ("Controller" or "Customer") and <strong>Twomiah Software Ventures</strong> ("Processor"), and governs the processing of Personal Data under applicable data protection laws, including the General Data Protection Regulation (GDPR).</p>
+
+  <h2>1. Definitions</h2>
+
+  <ul>
+    <li><strong>"Personal Data"</strong> &mdash; any information relating to an identified or identifiable natural person</li>
+    <li><strong>"Processing"</strong> &mdash; any operation performed on Personal Data (collection, storage, use, transmission, deletion)</li>
+    <li><strong>"Controller"</strong> &mdash; the entity that determines the purposes and means of processing (you, the Customer)</li>
+    <li><strong>"Processor"</strong> &mdash; the entity that processes data on behalf of the Controller (Twomiah)</li>
+    <li><strong>"Sub-processor"</strong> &mdash; a third party engaged by the Processor to process Personal Data</li>
+  </ul>
+
+  <h2>2. Scope &amp; Roles</h2>
+
+  <p>The Controller determines the purposes of processing. The Processor processes Personal Data solely on the Controller's documented instructions and solely for the purpose of providing the Service.</p>
+
+  <p>The Processor shall not:</p>
+  <ul>
+    <li>Sell Personal Data</li>
+    <li>Use Personal Data for purposes unrelated to providing the Service</li>
+    <li>Process Personal Data in a manner inconsistent with the Controller's instructions</li>
+  </ul>
+
+  <h2>3. Nature &amp; Purpose of Processing</h2>
+
+  <p>Processing activities include hosting, storage, transmission, display, and support services necessary to operate the Twomiah platform. This includes:</p>
+
+  <h3>Categories of Data</h3>
+  <ul>
+    <li>Name, email address, phone number, business address</li>
+    <li>Account credentials (stored as bcrypt hashes)</li>
+    <li>Business data (contacts, jobs, quotes, invoices, schedules)</li>
+    <li>Payment information (processed by Stripe; not stored by Twomiah)</li>
+    <li>Usage data and device information</li>
+    <li>Communications (email, SMS via Twilio/SendGrid)</li>
+    <li>Uploaded files, photos, and documents</li>
+  </ul>
+
+  <h3>Categories of Data Subjects</h3>
+  <ul>
+    <li>Customers (businesses using Twomiah products)</li>
+    <li>End users (employees, clients, and contacts within customer accounts)</li>
+  </ul>
+
+  <h2>4. Processor Obligations</h2>
+
+  <h3>4.1 Follow Instructions</h3>
+  <p>The Processor shall process Personal Data only on documented instructions from the Controller, unless required by applicable law.</p>
+
+  <h3>4.2 Confidentiality</h3>
+  <p>The Processor shall ensure that all personnel authorized to process Personal Data are bound by confidentiality obligations.</p>
+
+  <h3>4.3 Security Measures</h3>
+  <p>The Processor shall implement appropriate technical and organizational measures to protect Personal Data, including:</p>
+  <ul>
+    <li>Encryption in transit (TLS 1.2+) and at rest (AES-256)</li>
+    <li>Dedicated, isolated database instances per customer</li>
+    <li>Role-based access controls</li>
+    <li>Password hashing (bcrypt, cost factor 12)</li>
+    <li>Short-lived JWT authentication tokens</li>
+    <li>Error monitoring with PII scrubbing (Sentry)</li>
+    <li>Environment-based secret management</li>
+  </ul>
+
+  <p>Full details are published at <a href="/security">twomiah.com/security</a>.</p>
+
+  <h3>4.4 Data Minimization</h3>
+  <p>The Processor shall only process Personal Data that is necessary for service delivery.</p>
+
+  <h2>5. Sub-Processors</h2>
+
+  <p>The Processor may engage Sub-processors to assist in providing the Service. The Processor shall:</p>
+  <ul>
+    <li>Ensure Sub-processors are bound by equivalent data protection obligations</li>
+    <li>Remain liable for the actions of its Sub-processors</li>
+    <li>Maintain a current list of Sub-processors at <a href="/sub-processors">twomiah.com/sub-processors</a></li>
+    <li>Provide notice of new Sub-processors where required by applicable law</li>
+  </ul>
+
+  <h2>6. Data Subject Rights</h2>
+
+  <p>The Processor shall assist the Controller in responding to data subject requests, including:</p>
+  <ul>
+    <li>Access requests</li>
+    <li>Correction requests</li>
+    <li>Deletion requests ("right to be forgotten")</li>
+    <li>Data portability requests</li>
+    <li>Objection to processing</li>
+  </ul>
+
+  <p>The Processor will respond to assistance requests within a reasonable timeframe.</p>
+
+  <h2>7. Data Breach Notification</h2>
+
+  <p>The Processor shall:</p>
+  <ul>
+    <li>Notify the Controller without undue delay after becoming aware of a Personal Data breach</li>
+    <li>Provide relevant details including the nature of the breach, categories of data affected, and mitigation steps</li>
+    <li>Cooperate with the Controller in meeting any breach notification obligations under applicable law</li>
+  </ul>
+
+  <h2>8. Data Retention &amp; Deletion</h2>
+
+  <p>Upon termination of the Service:</p>
+  <ul>
+    <li>Customer data will be available for export for 30 days</li>
+    <li>After 30 days, data will be permanently deleted</li>
+    <li>Backups containing the data will expire within 30 days on a rolling basis</li>
+    <li>Certain data may be retained where required by law (e.g., payment records for 7 years)</li>
+  </ul>
+
+  <h2>9. Audits</h2>
+
+  <p>The Processor shall:</p>
+  <ul>
+    <li>Provide information reasonably necessary to demonstrate compliance with this DPA</li>
+    <li>Allow reasonable audits by the Controller or an authorized third-party auditor, subject to confidentiality obligations, reasonable notice, and security safeguards</li>
+  </ul>
+
+  <h2>10. International Transfers (Standard Contractual Clauses)</h2>
+
+  <p>Where Personal Data is transferred outside the European Economic Area (EEA) or the United Kingdom, the parties agree to the European Commission's Standard Contractual Clauses (2021 Decision 2021/914/EU) as follows:</p>
+
+  <div class="highlight">
+    <p><strong>Module 2: Controller &rarr; Processor</strong></p>
+    <p><strong>Data Exporter:</strong> Customer (Controller)</p>
+    <p><strong>Data Importer:</strong> Twomiah Software Ventures (Processor)</p>
+  </div>
+
+  <h3>Description of Transfer</h3>
+  <p>Personal Data as described in Section 3 of this DPA is transferred on a continuous basis for the duration of the Service.</p>
+
+  <h3>Technical &amp; Organizational Measures</h3>
+  <p>As described in Section 4.3 and at <a href="/security">twomiah.com/security</a>, including:</p>
+  <ul>
+    <li>Encryption in transit (TLS 1.2+)</li>
+    <li>Encryption at rest (AES-256)</li>
+    <li>Isolated per-tenant databases</li>
+    <li>Role-based access controls</li>
+    <li>Incident response procedures</li>
+  </ul>
+
+  <h3>Government Access Requests</h3>
+  <p>The Processor shall:</p>
+  <ul>
+    <li>Review the legality of any government request for access to Personal Data</li>
+    <li>Challenge requests that are unlawful or disproportionate where reasonable</li>
+    <li>Notify the Controller where permitted by law</li>
+  </ul>
+
+  <h3>Sub-Processors (Onward Transfers)</h3>
+  <p>The Processor may transfer data to Sub-processors subject to equivalent safeguards and written agreements. See <a href="/sub-processors">twomiah.com/sub-processors</a>.</p>
+
+  <h3>Conflict</h3>
+  <p>In the event of any conflict between this DPA and the Standard Contractual Clauses, the Standard Contractual Clauses shall prevail.</p>
+
+  <h2>11. Liability</h2>
+
+  <p>Each party's liability under this DPA is subject to the limitations set forth in the <a href="/terms">Terms of Service</a>, except where prohibited by applicable law.</p>
+
+  <h2>12. Governing Law</h2>
+
+  <p>This DPA is governed by the same law as the Terms of Service (State of Wisconsin, United States), except that the Standard Contractual Clauses shall be governed by the law of the EU Member State in which the Data Exporter is established.</p>
+
+  <h2>13. Contact</h2>
+
+  <p>For questions about this DPA or data processing practices:</p>
+  <p>
+    <strong>Twomiah Software Ventures</strong><br>
+    Jeremiah Phillips<br>
+    2607 Beverly Hills Drive<br>
+    Eau Claire, WI 54701<br>
+    <a href="mailto:support@twomiah.com">support@twomiah.com</a><br>
+    (715) 864-5052
+  </p>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="nav-wordmark">TWOMIAH</span>
+    <div class="footer-links">
+      <a href="/">Home</a><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="/cookies">Cookies</a><a href="/sub-processors">Sub-processors</a><a href="/security">Security</a>
+    </div>
+    <span class="footer-copy">&copy; 2026 Twomiah Software Ventures</span>
+  </div>
+</footer>
+
+</body>
+</html>
