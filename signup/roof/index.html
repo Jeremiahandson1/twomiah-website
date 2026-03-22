@@ -421,6 +421,10 @@ footer{background:#060E1C;border-top:1px solid rgba(255,255,255,0.05);padding:40
       <div class="step-title">Review &amp; Submit</div>
       <div class="step-desc">Double-check everything looks good, then hit submit. We'll build your CRM in under 5 minutes.</div>
       <div class="summary-grid" id="summaryGrid"></div>
+      <label class="terms-check" style="display:flex;align-items:flex-start;gap:10px;margin:24px 0 8px;cursor:pointer;font-size:13px;line-height:1.6;color:rgba(255,255,255,0.55)">
+        <input type="checkbox" id="agreeTerms" style="margin-top:4px;accent-color:var(--fire);min-width:16px">
+        <span>I agree to the <a href="/terms.html" target="_blank" style="color:var(--ember)">Terms of Service</a>, <a href="/privacy.html" target="_blank" style="color:var(--ember)">Privacy Policy</a>, and <a href="/cookies.html" target="_blank" style="color:var(--ember)">Cookie Policy</a>.</span>
+      </label>
       <div class="btn-row">
         <button class="btn-back" onclick="prevStep()">&larr; Back</button>
         <button class="btn-next" id="submitBtn" onclick="submitForm()">Submit &amp; Create My CRM</button>
@@ -638,6 +642,10 @@ function getFormData() {
 }
 
 function submitForm() {
+  if (!document.getElementById('agreeTerms').checked) {
+    toast('You must agree to the Terms of Service and Privacy Policy to continue.', 'error');
+    return;
+  }
   var btn = document.getElementById('submitBtn');
   btn.disabled = true;
   btn.textContent = 'Submitting...';
@@ -684,5 +692,6 @@ function submitForm() {
   }
 })();
 </script>
+<script src="/cookie-banner.js"></script>
 </body>
 </html>

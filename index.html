@@ -105,7 +105,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 /* FOOTER */
 footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56px 48px 28px}
-.footer-top{max-width:1200px;margin:0 auto 40px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px}
+.footer-top{max-width:1200px;margin:0 auto 40px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
 .footer-brand .nav-wordmark{display:block;margin-bottom:14px;font-size:20px}
 .footer-tagline{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.3);max-width:260px}
 .footer-col h5{font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--ember);margin-bottom:16px}
@@ -167,80 +167,125 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
 <section id="products">
   <div class="products-header reveal">
     <div class="section-label">What We Build</div>
-    <h2 class="products-title">Seven Products.<br><span>One Mission.</span></h2>
+    <h2 class="products-title">Real Software.<br><span>Real Industries.</span></h2>
   </div>
-  <div class="products-grid">
 
-    <a href="factory.html" class="product-card reveal">
-      <span class="subdomain-badge">factory.twomiah.com</span>
-      <div class="product-num">01</div>
-      <div class="product-icon">🏭</div>
-      <div class="product-tagline">Automated Deployment</div>
-      <div class="product-name">Twomiah Factory</div>
-      <p class="product-desc">Spin up a fully branded, production-ready CRM for your business in minutes — not months. Your logo, your domain, your data. Built on proven Twomiah infrastructure.</p>
-      <span class="product-link">See how it works</span>
-    </a>
-
+  <!-- CRM Suite -->
+  <div style="max-width:1200px;margin:0 auto 12px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--ember);margin-bottom:8px;padding-left:4px">CRM Suite — Industry-Specific Business Software</div>
+  </div>
+  <div class="products-grid" style="margin-bottom:48px">
     <a href="build.html" class="product-card reveal">
       <span class="subdomain-badge">build.twomiah.com</span>
-      <div class="product-num">02</div>
+      <div class="product-num">01</div>
       <div class="product-icon">🏗️</div>
-      <div class="product-tagline">Construction CRM</div>
+      <div class="product-tagline">General Contractor</div>
       <div class="product-name">Twomiah Build</div>
-      <p class="product-desc">Manage jobs, clients, schedules, and crews from one dashboard — without the enterprise price tag or the learning curve. From first lead to final invoice.</p>
+      <p class="product-desc">Jobs, quotes, invoices, scheduling, project management, and crew coordination. From first lead to final invoice — built for how contractors actually work.</p>
+      <span class="product-link">Get started</span>
+    </a>
+
+    <a href="roof.html" class="product-card reveal">
+      <span class="subdomain-badge">roof.twomiah.com</span>
+      <div class="product-num">02</div>
+      <div class="product-icon">🏠</div>
+      <div class="product-tagline">Roofing Contractor</div>
+      <div class="product-name">Twomiah Roof</div>
+      <p class="product-desc">Satellite roof measurements, storm tracking, insurance claim management, canvassing tools, and instant estimator — everything a roofing company needs.</p>
+      <span class="product-link">Get started</span>
+    </a>
+
+    <a href="wrench.html" class="product-card reveal">
+      <span class="subdomain-badge">wrench.twomiah.com</span>
+      <div class="product-num">03</div>
+      <div class="product-icon">🔧</div>
+      <div class="product-tagline">HVAC · Plumbing · Electrical</div>
+      <div class="product-name">Twomiah Wrench</div>
+      <p class="product-desc">Dispatch, service agreements, flat-rate pricebook, and field tech mobile app. Built for the trades that keep homes running.</p>
       <span class="product-link">Get started</span>
     </a>
 
     <a href="care.html" class="product-card reveal">
       <span class="subdomain-badge">care.twomiah.com</span>
-      <div class="product-num">03</div>
-      <div class="product-icon">🏠</div>
-      <div class="product-tagline">Home Care CRM</div>
-      <div class="product-name">Twomiah Care</div>
-      <p class="product-desc">Scheduling, caregiver management, and compliance tools built specifically for home care agencies. Run your operation without the paperwork chaos.</p>
-      <span class="product-link">Learn more</span>
-    </a>
-
-    <a href="cardshop.html" class="product-card reveal">
-      <span class="subdomain-badge">shop.twomiah.com</span>
       <div class="product-num">04</div>
-      <div class="product-icon">🃏</div>
-      <div class="product-tagline">Card Marketplace</div>
-      <div class="product-name">Twomiah Card Shop</div>
-      <p class="product-desc">Buy, sell, and trade sports cards in a marketplace built for collectors. Clean listings, fair prices, and a community that knows the hobby.</p>
-      <span class="product-link">Visit the shop</span>
-    </a>
-
-    <a href="ickapp.html" class="product-card reveal">
-      <span class="subdomain-badge">ick.twomiah.com</span>
-      <div class="product-num">05</div>
-      <div class="product-icon">📱</div>
-      <div class="product-tagline">Food Scanner</div>
-      <div class="product-name">Twomiah IckApp</div>
-      <p class="product-desc">Scan any food barcode and instantly get a science-based health score, harmful ingredient warnings, and cleaner alternatives. Know what's actually in your food.</p>
-      <span class="product-link">Download the app</span>
-    </a>
-
-    <a href="vision.html" class="product-card reveal">
-      <span class="subdomain-badge">vision.twomiah.com</span>
-      <div class="product-num">06</div>
-      <div class="product-icon">🏡</div>
-      <div class="product-tagline">AI Home Visualization</div>
-      <div class="product-name">Twomiah Vision</div>
-      <p class="product-desc">AI-powered home visualization that lives on your website. Homeowners upload a photo, pick from 450+ real products, and see a photorealistic before/after in seconds. Every render is a lead.</p>
-      <span class="product-link">See how it works</span>
+      <div class="product-icon">💚</div>
+      <div class="product-tagline">Home Care Agency</div>
+      <div class="product-name">Twomiah Care</div>
+      <p class="product-desc">Scheduling, care plans, caregiver management, family portal, and EVV compliance. Built for home care agencies who put people first.</p>
+      <span class="product-link">Learn more</span>
+      <span class="cs-badge">Sandata Pending</span>
     </a>
 
     <a href="leaf.html" class="product-card reveal">
       <span class="subdomain-badge">leaf.twomiah.com</span>
-      <div class="product-num">07</div>
+      <div class="product-num">05</div>
       <div class="product-icon">🌿</div>
-      <div class="product-tagline">Dispensary Platform</div>
+      <div class="product-tagline">Cannabis Dispensary</div>
       <div class="product-name">Twomiah Leaf</div>
-      <p class="product-desc">POS, loyalty, delivery, and a GPU-powered website — all in one platform built for cannabis dispensaries. Compliance baked in, not bolted on.</p>
+      <p class="product-desc">Menu management, loyalty program, age-verified website, and compliance tracking for dispensaries. One platform, no patchwork.</p>
       <span class="product-link">See the platform</span>
+      <span class="cs-badge">METRC Pending</span>
+    </a>
+  </div>
+
+  <!-- Platform -->
+  <div style="max-width:1200px;margin:0 auto 12px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--ember);margin-bottom:8px;padding-left:4px">Platform & Tools</div>
+  </div>
+  <div class="products-grid" style="margin-bottom:48px">
+    <a href="factory.html" class="product-card reveal">
+      <span class="subdomain-badge">factory.twomiah.com</span>
+      <div class="product-num">06</div>
+      <div class="product-icon">🏭</div>
+      <div class="product-tagline">Deployment Engine</div>
+      <div class="product-name">Twomiah Factory</div>
+      <p class="product-desc">The engine behind every CRM. Generates fully branded, production-ready software in minutes — your logo, your domain, your data. Manages all tenants from one dashboard.</p>
+      <span class="product-link">See how it works</span>
     </a>
 
+    <a href="vision.html" class="product-card reveal">
+      <span class="subdomain-badge">vision.twomiah.com</span>
+      <div class="product-num">07</div>
+      <div class="product-icon">🏡</div>
+      <div class="product-tagline">AI Home Visualization</div>
+      <div class="product-name">Twomiah Vision</div>
+      <p class="product-desc">AI-powered exterior visualization that embeds on contractor websites. Homeowners upload a photo, pick from 450+ real products, and see a photorealistic result in seconds.</p>
+      <span class="product-link">See how it works</span>
+    </a>
+
+    <a href="ickapp.html" class="product-card reveal">
+      <span class="subdomain-badge">ick.twomiah.com</span>
+      <div class="product-num">08</div>
+      <div class="product-icon">📱</div>
+      <div class="product-tagline">Food Scanner</div>
+      <div class="product-name">Twomiah IckApp</div>
+      <p class="product-desc">Scan any food barcode and instantly see a health score, harmful ingredient warnings, and cleaner alternatives. Know what you're actually eating.</p>
+      <span class="product-link">Download the app</span>
+    </a>
+  </div>
+
+  <!-- Coming Soon -->
+  <div style="max-width:1200px;margin:0 auto 12px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--ash);margin-bottom:8px;padding-left:4px">In Development</div>
+  </div>
+  <div class="products-grid">
+    <div class="product-card coming-soon reveal">
+      <span class="cs-badge">In Development</span>
+      <div class="product-num">09</div>
+      <div class="product-icon">🗳️</div>
+      <div class="product-tagline">Political Transparency</div>
+      <div class="product-name">WhosRunningUSA</div>
+      <p class="product-desc">Track every candidate, every race, every dollar — from local school board to the White House. Real transparency for real voters.</p>
+    </div>
+
+    <div class="product-card coming-soon reveal">
+      <span class="cs-badge">In Development</span>
+      <div class="product-num">10</div>
+      <div class="product-icon">🃏</div>
+      <div class="product-tagline">Card Marketplace</div>
+      <div class="product-name">Twomiah Card Shop</div>
+      <p class="product-desc">Buy, sell, and trade sports cards in a marketplace built for collectors. Clean listings, fair prices, and a community that knows the hobby.</p>
+    </div>
   </div>
 </section>
 
@@ -255,9 +300,9 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
       <br>
       <p class="mission-copy">Twomiah changes that. Every product we build starts with a real problem that real people face — built the way it should've been built from the start. <strong>Powerful, simple, and priced for the people who actually do the work.</strong></p>
       <div class="mission-stats">
-        <div class="stat"><div class="stat-num">6</div><div class="stat-label">Products Shipped</div></div>
+        <div class="stat"><div class="stat-num">8</div><div class="stat-label">Products Shipped</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">CRM Verticals</div></div>
         <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Years in Sales</div></div>
-        <div class="stat"><div class="stat-num">1</div><div class="stat-label">Mission</div></div>
         <div class="stat"><div class="stat-num">ECW</div><div class="stat-label">Eau Claire, WI</div></div>
       </div>
     </div>
@@ -290,10 +335,13 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
   <div class="cta-inner reveal">
     <div class="section-label" style="justify-content:center">Get Started</div>
     <h2 class="cta-title">Ready to<br>Work Smarter?</h2>
-    <p class="cta-sub">Start with Twomiah Build — the construction CRM that actually fits the way contractors work.</p>
+    <p class="cta-sub">Pick your industry. Get a fully branded CRM, website, and mobile app — deployed in minutes, not months.</p>
     <div class="hero-actions">
-      <a href="build.html" class="btn-primary">Try Twomiah Build</a>
-      <a href="mailto:hello@twomiah.com" class="btn-ghost">Get in Touch</a>
+      <a href="build.html" class="btn-primary">Contractors</a>
+      <a href="roof.html" class="btn-primary" style="background:var(--ember)">Roofers</a>
+      <a href="wrench.html" class="btn-primary" style="background:#2563eb">Field Service</a>
+      <a href="care.html" class="btn-ghost">Home Care</a>
+      <a href="leaf.html" class="btn-ghost">Dispensary</a>
     </div>
   </div>
 </section>
@@ -305,15 +353,21 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
       <p class="footer-tagline">Pro-grade software for the people who actually do the work. Built in Eau Claire, Wisconsin.</p>
     </div>
     <div class="footer-col">
+      <h5>CRM Suite</h5>
+      <ul>
+        <li><a href="build.html">Build — Contractors</a></li>
+        <li><a href="roof.html">Roof — Roofing</a></li>
+        <li><a href="wrench.html">Wrench — Field Service</a></li>
+        <li><a href="care.html">Care — Home Care</a></li>
+        <li><a href="leaf.html">Leaf — Dispensary</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
       <h5>Products</h5>
       <ul>
         <li><a href="factory.html">Twomiah Factory</a></li>
-        <li><a href="build.html">Twomiah Build</a></li>
-        <li><a href="care.html">Twomiah Care</a></li>
-        <li><a href="cardshop.html">Twomiah Card Shop</a></li>
-        <li><a href="ickapp.html">Twomiah IckApp</a></li>
         <li><a href="vision.html">Twomiah Vision</a></li>
-        <li><a href="leaf.html">Twomiah Leaf</a></li>
+        <li><a href="ickapp.html">Twomiah IckApp</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -338,5 +392,6 @@ const obs = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 document.querySelectorAll('.product-card').forEach((c,i)=>c.style.transitionDelay=`${i*0.05}s`);
 </script>
+<script src="/cookie-banner.js"></script>
 </body>
 </html>
