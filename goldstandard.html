@@ -173,8 +173,8 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,0.04)}
   <ul class="nav-links">
     <li><a href="#problem">The Problem</a></li>
     <li><a href="#how">How It Works</a></li>
+    <li><a href="#download">Download</a></li>
     <li><a href="#growers">For Growers</a></li>
-    <li><a href="#scoring">Scoring</a></li>
     <li><a href="index.html" class="nav-back">&larr; Twomiah</a></li>
     <li><a href="https://leaf-score-api.twomiah.workers.dev/portal" class="nav-cta">Grower Portal</a></li>
   </ul>
@@ -316,6 +316,67 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,0.04)}
   </div>
 </section>
 
+<!-- CONSUMER DOWNLOAD + PRICING -->
+<section id="download">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;margin-bottom:48px">
+      <div class="section-label" style="justify-content:center">For Consumers</div>
+      <h2 class="section-title">Download<br><span class="gold-line">The App.</span></h2>
+      <p class="section-sub" style="margin:0 auto">3 free scans. Then choose the plan that works for you.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;max-width:800px;margin:0 auto" class="reveal">
+      <div style="background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:3px;padding:32px;text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;margin-bottom:4px;">Free</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--gold);">$0</div>
+        <ul style="list-style:none;text-align:left;margin:20px 0;font-size:13px;color:rgba(255,255,255,0.5)">
+          <li style="padding:6px 0"><span style="color:var(--gold);font-weight:800">&#10003; </span>3 product scans</li>
+          <li style="padding:6px 0"><span style="color:var(--gold);font-weight:800">&#10003; </span>Safety scores</li>
+          <li style="padding:6px 0"><span style="color:var(--gold);font-weight:800">&#10003; </span>Basic lab results</li>
+        </ul>
+      </div>
+      <div style="background:var(--charcoal);border:2px solid var(--gold);border-radius:3px;padding:32px;text-align:center;position:relative;">
+        <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--dark);font-size:9px;font-weight:900;letter-spacing:0.15em;padding:3px 12px;border-radius:2px;">BEST VALUE</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;margin-bottom:4px;">Yearly</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--gold);">$19.99<small style="font-size:16px;color:var(--muted);font-family:'Barlow',sans-serif;font-weight:400">/yr</small></div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">$1.67/mo</div>
+        <ul style="list-style:none;text-align:left;margin:20px 0;font-size:13px;color:rgba(255,255,255,0.5)">
+          <li style="padding:6px 0"><span style="color:var(--gold);font-weight:800">&#10003; </span>Unlimited scans</li>
+          <li style="padding:6px 0"><span style="color:var(--gold);font-weight:800">&#10003; </span>Full lab reports</li>
+          <li style="padding:6px 0"><span style="color:var(--gold);font-weight:800">&#10003; </span>Recall alerts</li>
+          <li style="padding:6px 0"><span style="color:var(--gold);font-weight:800">&#10003; </span>Nearby dispensaries</li>
+        </ul>
+      </div>
+      <div style="background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:3px;padding:32px;text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;margin-bottom:4px;">Monthly</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--gold);">$1.99<small style="font-size:16px;color:var(--muted);font-family:'Barlow',sans-serif;font-weight:400">/mo</small></div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">7-day free trial</div>
+        <ul style="list-style:none;text-align:left;margin:20px 0;font-size:13px;color:rgba(255,255,255,0.5)">
+          <li style="padding:6px 0"><span style="color:var(--gold);font-weight:800">&#10003; </span>Unlimited scans</li>
+          <li style="padding:6px 0"><span style="color:var(--gold);font-weight:800">&#10003; </span>Full lab reports</li>
+          <li style="padding:6px 0"><span style="color:var(--gold);font-weight:800">&#10003; </span>Cancel anytime</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Download + Promo -->
+    <div class="reveal" style="text-align:center;margin-top:48px;">
+      <a href="https://expo.dev/accounts/jeremiahandson/projects/leaf-score/builds/888d876d-1fb2-49f1-982c-55b70e8705e5" class="btn-primary" style="font-size:14px;padding:18px 40px;">Download Android Beta</a>
+      <p style="color:var(--muted);font-size:12px;margin-top:12px;">iOS coming soon &mdash; <a href="#" style="color:var(--gold)">join the waitlist</a></p>
+    </div>
+
+    <!-- Promo code -->
+    <div class="reveal" style="max-width:400px;margin:36px auto 0;text-align:center;">
+      <p style="color:var(--muted);font-size:13px;margin-bottom:12px;">Have a promo code?</p>
+      <div style="display:flex;gap:8px;">
+        <input id="promoInput" type="text" placeholder="Enter code" style="flex:1;padding:12px 16px;background:var(--charcoal);border:1px solid rgba(255,255,255,0.1);border-radius:3px;color:var(--white);font-size:14px;text-transform:uppercase;letter-spacing:0.1em" />
+        <button onclick="checkPromo()" style="padding:12px 24px;background:var(--gold);color:var(--dark);border:none;border-radius:3px;font-weight:700;font-size:13px;cursor:pointer;letter-spacing:0.1em;text-transform:uppercase">Apply</button>
+      </div>
+      <p id="promoResult" style="margin-top:8px;font-size:13px;display:none;"></p>
+    </div>
+  </div>
+</section>
+
 <!-- FOR GROWERS -->
 <section id="growers">
   <div class="inner">
@@ -415,6 +476,30 @@ const obs = new IntersectionObserver((entries) => {
   });
 }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Promo code checker
+async function checkPromo() {
+  const code = document.getElementById('promoInput').value.trim();
+  const result = document.getElementById('promoResult');
+  if (!code) return;
+
+  try {
+    const res = await fetch('https://leaf-score-api.twomiah.workers.dev/api/promos/check/' + encodeURIComponent(code));
+    const json = await res.json();
+    result.style.display = 'block';
+    if (json.valid) {
+      result.style.color = '#22c55e';
+      result.textContent = '✓ Valid! ' + json.freeMonths + ' months free for ' + json.type + 's. Enter this code in the app after downloading.';
+    } else {
+      result.style.color = '#ef4444';
+      result.textContent = '✕ ' + (json.error || 'Invalid code');
+    }
+  } catch {
+    result.style.display = 'block';
+    result.style.color = '#ef4444';
+    result.textContent = 'Could not verify code';
+  }
+}
 </script>
 </body>
 </html>
