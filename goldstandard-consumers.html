@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Gold Standard — For Consumers</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#050505;color:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif}
+.page{max-width:800px;margin:0 auto;padding:40px 24px}
+
+.header{text-align:center;padding:48px 0 40px;border-bottom:1px solid #1a1a1a;margin-bottom:40px}
+.logo{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px}
+.logo svg{width:40px;height:40px}
+.logo-text{font-size:28px;font-weight:900;background:linear-gradient(135deg,#D4AF37,#8B6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.collab{color:#666;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px}
+.tagline{font-size:26px;font-weight:900;color:#D4AF37;margin-bottom:8px}
+.subtitle{color:#888;font-size:16px;line-height:1.6}
+
+h2{font-size:22px;font-weight:900;margin:40px 0 16px}
+h2 span{color:#D4AF37}
+p{color:#aaa;font-size:14px;line-height:1.7;margin-bottom:12px}
+.highlight{color:#f5f5f5;font-weight:600}
+
+.callout{background:#111;border-left:3px solid #D4AF37;padding:20px 24px;margin:24px 0;border-radius:0 8px 8px 0}
+.callout.red{border-left-color:#ef4444}
+.callout p{margin:0;color:#ccc}
+.callout strong{color:#D4AF37}
+.callout.red strong{color:#ef4444}
+
+.hero-question{font-size:36px;font-weight:900;text-align:center;margin:40px 0 16px;line-height:1.2}
+.hero-question span{color:#D4AF37}
+.hero-answer{text-align:center;color:#888;font-size:16px;margin-bottom:40px}
+
+.steps{counter-reset:step;margin:24px 0}
+.step{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid #111;counter-increment:step}
+.step::before{content:counter(step);width:40px;height:40px;background:#D4AF37;color:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0}
+.step-content h4{font-size:16px;font-weight:700;color:#f5f5f5}
+.step-content p{font-size:14px;color:#888;margin:4px 0 0}
+
+.features{margin:24px 0}
+.feature{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid #111}
+.feature-icon{font-size:28px;width:44px;text-align:center;flex-shrink:0}
+.feature-text h4{font-size:15px;font-weight:700;margin-bottom:2px;color:#f5f5f5}
+.feature-text p{font-size:13px;color:#888;margin:0}
+
+/* Score example */
+.score-example{display:flex;align-items:center;gap:24px;background:#111;border-radius:12px;padding:24px;margin:24px 0}
+.score-circle{width:80px;height:80px;border-radius:40px;border:4px solid #22c55e;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.score-circle .num{font-size:32px;font-weight:900;color:#22c55e}
+.score-circle .grade{font-size:14px;font-weight:800;color:#22c55e;margin-top:-4px}
+.score-details h4{font-size:16px;font-weight:700;margin-bottom:4px}
+.score-details p{color:#888;font-size:13px;margin:0}
+.score-bar{display:flex;align-items:center;gap:8px;margin-top:8px}
+.score-bar-label{font-size:11px;color:#666;width:70px}
+.score-bar-track{flex:1;height:4px;background:#1a1a1a;border-radius:2px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:2px}
+
+/* Pricing */
+.pricing{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:24px 0}
+.price-card{background:#111;border:1px solid #1a1a1a;border-radius:8px;padding:20px;text-align:center}
+.price-card.featured{border-color:#D4AF37;position:relative}
+.price-card.featured::before{content:'BEST VALUE';position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:#D4AF37;color:#000;font-size:9px;font-weight:900;letter-spacing:1px;padding:2px 10px;border-radius:4px}
+.price-card .tier{font-size:14px;font-weight:700;margin-bottom:4px}
+.price-card .amount{font-size:28px;font-weight:900;color:#D4AF37}
+.price-card .amount small{font-size:12px;color:#666;font-weight:400}
+.price-card .note{font-size:11px;color:#666;margin-top:2px}
+.price-card ul{list-style:none;text-align:left;margin:12px 0 0;font-size:12px;color:#888}
+.price-card ul li{padding:3px 0}
+.price-card ul li::before{content:'✓ ';color:#D4AF37;font-weight:800}
+
+.cta-box{background:linear-gradient(135deg,#D4AF3715,#8B691410);border:1px solid #D4AF3730;border-radius:12px;padding:32px;text-align:center;margin:32px 0}
+.cta-box h3{font-size:20px;font-weight:900;color:#D4AF37;margin:0 0 8px}
+.cta-box p{color:#888;margin:0 0 20px;font-size:14px}
+.cta-btn{display:inline-block;background:#D4AF37;color:#000;padding:14px 36px;border-radius:6px;font-weight:800;font-size:15px;text-decoration:none}
+.cta-code{margin-top:16px;color:#666;font-size:13px}
+.cta-code code{background:#1a1a1a;color:#D4AF37;padding:4px 12px;border-radius:4px;font-weight:700;font-size:14px}
+
+.footer{text-align:center;padding:40px 0;color:#333;font-size:12px;border-top:1px solid #111;margin-top:40px}
+.footer a{color:#D4AF37;text-decoration:none}
+
+@media(max-width:600px){
+  .pricing{grid-template-columns:1fr}
+  .score-example{flex-direction:column;text-align:center}
+  .hero-question{font-size:28px}
+}
+@media print{
+  body{background:#fff;color:#000}
+  p,.feature-text p,.step-content p,.score-details p{color:#333}
+  .callout{background:#f5f5f5}
+  .stat,.price-card,.score-example{background:#f9f9f9;border:1px solid #ddd}
+  .logo-text,.tagline,.amount,.num{color:#8B6914;-webkit-text-fill-color:#8B6914}
+  h2 span{color:#8B6914}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div class="logo">
+    <svg viewBox="0 0 120 120" fill="none"><defs><linearGradient id="lg" x1="20" y1="100" x2="100" y2="20" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#8B6914"/></linearGradient></defs><path d="M60 10 C60 10 30 30 25 60 C20 90 40 110 60 110 C80 110 100 90 95 60 C90 30 60 10 60 10 Z" fill="url(#lg)" opacity="0.9"/><path d="M60 30 L60 95" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><path d="M60 50 C48 44 42 34 42 34" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none"/><path d="M60 65 C72 59 80 48 80 48" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none"/></svg>
+    <span class="logo-text">THE GOLD STANDARD</span>
+  </div>
+  <div class="collab">A Collab by Micro Bros × Twomiah Leaf</div>
+  <div class="tagline">Know What You're Consuming.</div>
+  <p class="subtitle">The Carfax for cannabis. Scan any product. See lab results. Get a safety score.</p>
+</div>
+
+<div class="hero-question">Do you know what's <span>in your weed?</span></div>
+<p class="hero-answer">Cannabis is tested for pesticides, heavy metals, and microbials. But those results are buried in PDFs you never see. Until now.</p>
+
+<div class="callout red">
+  <p><strong>In 2025, a Michigan lab was shut down for faking $229 million worth of test results.</strong> Consumers had no way to know. The Gold Standard exists so you never have to wonder.</p>
+</div>
+
+<h2>How It <span>Works</span></h2>
+<div class="steps">
+  <div class="step"><div class="step-content"><h4>Download the app</h4><p>Free on Android (iOS coming soon). Get 3 free scans to try it.</p></div></div>
+  <div class="step"><div class="step-content"><h4>Scan your product</h4><p>Point your camera at the QR code, barcode, or take a photo of the label at the dispensary.</p></div></div>
+  <div class="step"><div class="step-content"><h4>See the score</h4><p>Instantly see a 0-100 safety score, full lab results, and any red flags.</p></div></div>
+  <div class="step"><div class="step-content"><h4>Make an informed choice</h4><p>Compare products. Find higher-scored alternatives nearby. Know before you buy.</p></div></div>
+</div>
+
+<h2>What You <span>See</span></h2>
+<div class="score-example">
+  <div class="score-circle"><div class="num">94</div><div class="grade">A</div></div>
+  <div class="score-details">
+    <h4>Pistachio Flower — GoodLyfe Farms</h4>
+    <p>THC: 28.9% · Tested by Aries SRC · All contaminants passed</p>
+    <div class="score-bar"><span class="score-bar-label">Pesticides</span><div class="score-bar-track"><div class="score-bar-fill" style="width:100%;background:#22c55e"></div></div></div>
+    <div class="score-bar"><span class="score-bar-label">Microbials</span><div class="score-bar-track"><div class="score-bar-fill" style="width:100%;background:#22c55e"></div></div></div>
+    <div class="score-bar"><span class="score-bar-label">Heavy Metals</span><div class="score-bar-track"><div class="score-bar-fill" style="width:100%;background:#22c55e"></div></div></div>
+  </div>
+</div>
+
+<h2>What We <span>Check</span></h2>
+<div class="features">
+  <div class="feature"><div class="feature-icon">🧪</div><div class="feature-text"><h4>Pesticides (30% of score)</h4><p>Did it pass? Are any results near the action limit? We flag products that barely squeaked by.</p></div></div>
+  <div class="feature"><div class="feature-icon">🦠</div><div class="feature-text"><h4>Microbials (20% of score)</h4><p>Yeast, mold, E. coli, salmonella — the stuff you definitely don't want to smoke.</p></div></div>
+  <div class="feature"><div class="feature-icon">⚗️</div><div class="feature-text"><h4>Heavy Metals (10% of score)</h4><p>Lead, arsenic, cadmium, mercury. Cannabis plants absorb these from soil.</p></div></div>
+  <div class="feature"><div class="feature-icon">📋</div><div class="feature-text"><h4>Lab Status (35% of score)</h4><p>Did it pass on the first try? Was it remediated? Did it require retesting? We show you the full story.</p></div></div>
+  <div class="feature"><div class="feature-icon">🔍</div><div class="feature-text"><h4>Transparency (5% of score)</h4><p>If a product was remediated, were the steps documented? Transparency matters.</p></div></div>
+</div>
+
+<h2>Red <span>Flags</span></h2>
+<div class="features">
+  <div class="feature"><div class="feature-icon">⚠️</div><div class="feature-text"><h4>Remediated Products</h4><p>The product failed testing and was "fixed" before being retested. You decide if that's OK.</p></div></div>
+  <div class="feature"><div class="feature-icon">🚨</div><div class="feature-text"><h4>Near Action Limits</h4><p>Pesticide levels above 75% of the legal limit. It passed, but barely.</p></div></div>
+  <div class="feature"><div class="feature-icon">❌</div><div class="feature-text"><h4>Failed Tests</h4><p>Products with an F grade should not be on shelves. We make sure you know.</p></div></div>
+  <div class="feature"><div class="feature-icon">📱</div><div class="feature-text"><h4>Recall Alerts</h4><p>Get notified if a product you scanned is recalled by the state.</p></div></div>
+</div>
+
+<h2>More <span>Features</span></h2>
+<div class="features">
+  <div class="feature"><div class="feature-icon">📍</div><div class="feature-text"><h4>Find Nearby Dispensaries</h4><p>See which dispensaries near you carry higher-scored products.</p></div></div>
+  <div class="feature"><div class="feature-icon">📋</div><div class="feature-text"><h4>Scan History</h4><p>Every product you scan is saved. Compare scores across brands and dispensaries over time.</p></div></div>
+  <div class="feature"><div class="feature-icon">🔎</div><div class="feature-text"><h4>Search Products</h4><p>Search by strain, brand, or product name without scanning.</p></div></div>
+  <div class="feature"><div class="feature-icon">📤</div><div class="feature-text"><h4>Share Results</h4><p>Share a product's score with friends. "This Pistachio scored 94 on Gold Standard."</p></div></div>
+</div>
+
+<h2><span>Pricing</span></h2>
+<div class="pricing">
+  <div class="price-card">
+    <div class="tier">Free</div>
+    <div class="amount">$0</div>
+    <div class="note">3 scans included</div>
+    <ul>
+      <li>3 product scans</li>
+      <li>Safety scores</li>
+      <li>Basic results</li>
+    </ul>
+  </div>
+  <div class="price-card featured">
+    <div class="tier">Yearly</div>
+    <div class="amount">$19.99 <small>/yr</small></div>
+    <div class="note">$1.67/mo</div>
+    <ul>
+      <li>Unlimited scans</li>
+      <li>Full lab reports</li>
+      <li>Recall alerts</li>
+      <li>Nearby dispensaries</li>
+      <li>Scan history</li>
+    </ul>
+  </div>
+  <div class="price-card">
+    <div class="tier">Monthly</div>
+    <div class="amount">$1.99 <small>/mo</small></div>
+    <div class="note">7-day free trial</div>
+    <ul>
+      <li>Unlimited scans</li>
+      <li>Full lab reports</li>
+      <li>Cancel anytime</li>
+    </ul>
+  </div>
+</div>
+
+<div class="cta-box">
+  <h3>Download the App</h3>
+  <p>Available now on Android. iOS coming soon.</p>
+  <a href="https://expo.dev/accounts/jeremiahandson/projects/leaf-score/builds/888d876d-1fb2-49f1-982c-55b70e8705e5" class="cta-btn">Download Android Beta</a>
+  <div class="cta-code">Use code <code>BETA2026</code> for 3 months free</div>
+</div>
+
+<div class="callout">
+  <p><strong>Know what you're consuming.</strong> Every scan. Every product. Every time. That's the Gold Standard.</p>
+</div>
+
+<div class="footer">
+  <p>The Gold Standard — A Collab by Micro Bros × Twomiah Leaf</p>
+  <p style="margin-top:8px"><a href="https://twomiah.com/goldstandard">twomiah.com/goldstandard</a> · <a href="mailto:hello@twomiah.com">hello@twomiah.com</a></p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Gold Standard — For Growers & Brands</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#050505;color:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif}
+.page{max-width:800px;margin:0 auto;padding:40px 24px}
+
+/* Header */
+.header{text-align:center;padding:48px 0 40px;border-bottom:1px solid #1a1a1a;margin-bottom:40px}
+.logo{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px}
+.logo svg{width:40px;height:40px}
+.logo-text{font-size:28px;font-weight:900;background:linear-gradient(135deg,#D4AF37,#8B6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.collab{color:#666;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px}
+.tagline{font-size:22px;font-weight:800;color:#D4AF37;margin-bottom:8px}
+.subtitle{color:#888;font-size:15px;line-height:1.6}
+
+/* Sections */
+h2{font-size:22px;font-weight:900;margin:40px 0 16px;color:#f5f5f5}
+h2 span{color:#D4AF37}
+h3{font-size:16px;font-weight:700;margin:24px 0 8px}
+p{color:#aaa;font-size:14px;line-height:1.7;margin-bottom:12px}
+.highlight{color:#f5f5f5;font-weight:600}
+
+/* Problem callout */
+.callout{background:#111;border-left:3px solid #D4AF37;padding:20px 24px;margin:24px 0;border-radius:0 8px 8px 0}
+.callout.red{border-left-color:#ef4444}
+.callout p{margin:0;color:#ccc}
+.callout strong{color:#D4AF37}
+.callout.red strong{color:#ef4444}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+.stat{background:#111;border-radius:8px;padding:24px;text-align:center}
+.stat-num{font-size:32px;font-weight:900;color:#D4AF37}
+.stat-label{color:#666;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+
+/* Feature list */
+.features{margin:24px 0}
+.feature{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid #111}
+.feature-icon{font-size:24px;width:40px;text-align:center;flex-shrink:0}
+.feature-text h4{font-size:15px;font-weight:700;margin-bottom:2px;color:#f5f5f5}
+.feature-text p{font-size:13px;color:#888;margin:0}
+
+/* Pricing */
+.pricing{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0}
+.price-card{background:#111;border:1px solid #1a1a1a;border-radius:8px;padding:24px;text-align:center}
+.price-card.featured{border-color:#D4AF37}
+.price-card .tier{font-size:16px;font-weight:800;margin-bottom:4px}
+.price-card .amount{font-size:36px;font-weight:900;color:#D4AF37}
+.price-card .amount small{font-size:14px;color:#666;font-weight:400}
+.price-card ul{list-style:none;text-align:left;margin:16px 0 0;font-size:13px;color:#888}
+.price-card ul li{padding:4px 0}
+.price-card ul li::before{content:'✓ ';color:#D4AF37;font-weight:800}
+
+/* CTA */
+.cta-box{background:linear-gradient(135deg,#D4AF3715,#8B691410);border:1px solid #D4AF3730;border-radius:12px;padding:32px;text-align:center;margin:32px 0}
+.cta-box h3{font-size:20px;font-weight:900;color:#D4AF37;margin:0 0 8px}
+.cta-box p{color:#888;margin:0 0 20px;font-size:14px}
+.cta-btn{display:inline-block;background:#D4AF37;color:#000;padding:14px 36px;border-radius:6px;font-weight:800;font-size:15px;text-decoration:none}
+.cta-code{margin-top:16px;color:#666;font-size:13px}
+.cta-code code{background:#1a1a1a;color:#D4AF37;padding:4px 12px;border-radius:4px;font-weight:700;font-size:14px}
+
+/* How it works */
+.steps{counter-reset:step;margin:24px 0}
+.step{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid #111;counter-increment:step}
+.step::before{content:counter(step);width:32px;height:32px;background:#D4AF37;color:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;flex-shrink:0}
+.step-content h4{font-size:15px;font-weight:700;color:#f5f5f5}
+.step-content p{font-size:13px;color:#888;margin:2px 0 0}
+
+/* Footer */
+.footer{text-align:center;padding:40px 0;color:#333;font-size:12px;border-top:1px solid #111;margin-top:40px}
+.footer a{color:#D4AF37;text-decoration:none}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr}
+  .pricing{grid-template-columns:1fr}
+}
+@media print{
+  body{background:#fff;color:#000}
+  .page{padding:20px}
+  p,.feature-text p,.step-content p{color:#333}
+  .callout{background:#f5f5f5;border-left-color:#D4AF37}
+  .stat,.price-card{background:#f9f9f9;border:1px solid #ddd}
+  .stat-num,.price-card .amount,.logo-text,.tagline{color:#8B6914;-webkit-text-fill-color:#8B6914}
+  .cta-box{background:#f5f5f0;border-color:#D4AF37}
+  h2 span{color:#8B6914}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div class="logo">
+    <svg viewBox="0 0 120 120" fill="none"><defs><linearGradient id="lg" x1="20" y1="100" x2="100" y2="20" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#8B6914"/></linearGradient></defs><path d="M60 10 C60 10 30 30 25 60 C20 90 40 110 60 110 C80 110 100 90 95 60 C90 30 60 10 60 10 Z" fill="url(#lg)" opacity="0.9"/><path d="M60 30 L60 95" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><path d="M60 50 C48 44 42 34 42 34" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none"/><path d="M60 65 C72 59 80 48 80 48" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none"/></svg>
+    <span class="logo-text">THE GOLD STANDARD</span>
+  </div>
+  <div class="collab">A Collab by Micro Bros × Twomiah Leaf</div>
+  <div class="tagline">For Growers & Brands</div>
+  <p class="subtitle">Upload your lab results. Prove your product is clean. Let consumers find you.</p>
+</div>
+
+<h2>The <span>Problem</span></h2>
+<div class="callout red">
+  <p><strong>$229 million in cannabis products were recalled in Michigan</strong> after Viridis Labs was shut down for faking test results. Consumers lost trust. Your clean lab results are sitting in PDFs nobody sees.</p>
+</div>
+<p>Consumers want to know what's in their weed. They can't access lab results at the dispensary. They have no way to compare products by safety. <span class="highlight">Until now.</span></p>
+
+<h2>The <span>Solution</span></h2>
+<p>The Gold Standard is a consumer app where people scan cannabis products and see lab results, contaminant data, and a 0-100 safety score. <span class="highlight">Think Carfax for cannabis.</span></p>
+<p>When you upload your lab results to our platform, your products become scannable. Consumers see your scores. High scores drive sales. Transparency becomes your competitive advantage.</p>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">0-100</div><div class="stat-label">Safety Score</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">Dimensions Scored</div></div>
+  <div class="stat"><div class="stat-num">A-F</div><div class="stat-label">Letter Grade</div></div>
+</div>
+
+<h2>How It <span>Works</span></h2>
+<div class="steps">
+  <div class="step"><div class="step-content"><h4>Create your free account</h4><p>Register with your state license number. Takes 2 minutes.</p></div></div>
+  <div class="step"><div class="step-content"><h4>Upload your lab results</h4><p>Download our CSV template, paste your COA data, upload. We score it automatically.</p></div></div>
+  <div class="step"><div class="step-content"><h4>Get verified</h4><p>We verify your license against state records. Verified brands get a trust badge.</p></div></div>
+  <div class="step"><div class="step-content"><h4>Consumers find you</h4><p>Your products appear when consumers scan, search, or browse nearby dispensaries.</p></div></div>
+</div>
+
+<h2>Why <span>Upload?</span></h2>
+<div class="features">
+  <div class="feature"><div class="feature-icon">🛡️</div><div class="feature-text"><h4>Prove You're Clean</h4><p>After Viridis, consumers are skeptical. Show them verified lab results with a score they can trust.</p></div></div>
+  <div class="feature"><div class="feature-icon">📈</div><div class="feature-text"><h4>Drive Sales</h4><p>High-scoring products get recommended to consumers searching nearby dispensaries. Score 90+? You're featured.</p></div></div>
+  <div class="feature"><div class="feature-icon">📊</div><div class="feature-text"><h4>See Analytics</h4><p>Track how many consumers scan your products, where they're scanning, and which strains get the most attention.</p></div></div>
+  <div class="feature"><div class="feature-icon">🏷️</div><div class="feature-text"><h4>Gold Standard Badge</h4><p>Verified brands get a badge for their packaging. QR codes link directly to your scored product page.</p></div></div>
+  <div class="feature"><div class="feature-icon">🚫</div><div class="feature-text"><h4>Control Your Page</h4><p>Free tier shows competitor ads on your product pages. Upgrade to remove them and own your presence.</p></div></div>
+  <div class="feature"><div class="feature-icon">🆓</div><div class="feature-text"><h4>Free to Start</h4><p>Upload 3 strains for free. No credit card required. See the value before you pay.</p></div></div>
+</div>
+
+<h2><span>Pricing</span></h2>
+<div class="pricing">
+  <div class="price-card">
+    <div class="tier">Free</div>
+    <div class="amount">$0</div>
+    <ul>
+      <li>3 strains</li>
+      <li>CSV upload</li>
+      <li>Basic product page</li>
+      <li>Competitor ads shown</li>
+    </ul>
+  </div>
+  <div class="price-card">
+    <div class="tier">Bronze</div>
+    <div class="amount">$29 <small>/mo</small></div>
+    <ul>
+      <li>10 strains</li>
+      <li>No competitor ads</li>
+      <li>Basic scan analytics</li>
+      <li>Email support</li>
+    </ul>
+  </div>
+  <div class="price-card featured">
+    <div class="tier">Silver</div>
+    <div class="amount">$79 <small>/mo</small></div>
+    <ul>
+      <li>Unlimited strains</li>
+      <li>Bulk CSV upload</li>
+      <li>Full analytics dashboard</li>
+      <li>Featured in search</li>
+      <li>Priority support</li>
+    </ul>
+  </div>
+  <div class="price-card">
+    <div class="tier">Gold ⭐</div>
+    <div class="amount">$199 <small>/mo</small></div>
+    <ul>
+      <li>Everything in Silver</li>
+      <li>Gold Standard badge</li>
+      <li>Custom branded page</li>
+      <li>QR codes for packaging</li>
+      <li>Priority verification</li>
+    </ul>
+  </div>
+</div>
+
+<div class="callout">
+  <p><strong>First 10 growers get 3 months of Silver free.</strong> No credit card. Upload your lab results today and be part of the launch.</p>
+</div>
+
+<div class="cta-box">
+  <h3>Get Started Now</h3>
+  <p>Create your free account and upload your first lab results in 5 minutes.</p>
+  <a href="https://leaf-score-api.twomiah.workers.dev/portal/register" class="cta-btn">Create Grower Account</a>
+  <div class="cta-code">Use promo code <code>GROWER10</code> for 3 months free</div>
+</div>
+
+<div class="footer">
+  <p>The Gold Standard — A Collab by Micro Bros × Twomiah Leaf</p>
+  <p style="margin-top:8px"><a href="https://twomiah.com/goldstandard">twomiah.com/goldstandard</a> · <a href="mailto:hello@twomiah.com">hello@twomiah.com</a></p>
+</div>
+
+</div>
+</body>
+</html>
