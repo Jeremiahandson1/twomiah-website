@@ -353,6 +353,76 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
   </div>
 </section>
 
+<!-- ═══ VS COMPARISON ═══ -->
+<section id="vs" style="background:var(--charcoal)">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;margin-bottom:32px">
+      <div class="section-label" style="justify-content:center">The Comparison</div>
+      <h2 class="section-title">See How We<br><span class="fire-line">Stack Up.</span></h2>
+      <p class="section-sub" style="margin:0 auto">Pick a competitor. We'll show you why contractors switch to Build.</p>
+    </div>
+    <div class="reveal" style="display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap">
+      <button class="vs-toggle active" onclick="showCompare('buildertrend')">vs Buildertrend</button>
+      <button class="vs-toggle" onclick="showCompare('procore')">vs Procore</button>
+      <button class="vs-toggle" onclick="showCompare('coconstruct')">vs CoConstruct</button>
+    </div>
+    <div id="compareTable" class="reveal"></div>
+    <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Build: $49&ndash;$599/mo &mdash; all-inclusive, no add-ons. Competitors charge more for less.</p>
+  </div>
+</section>
+<style>
+.vs-toggle{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);padding:8px 20px;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;font-family:'Barlow',sans-serif}
+.vs-toggle:hover{border-color:rgba(255,61,0,0.3);color:var(--white)}
+.vs-toggle.active{background:rgba(255,61,0,0.15);border-color:var(--fire);color:var(--fire)}
+.cmp-table{width:100%;border-collapse:collapse}
+.cmp-table th{text-align:left;padding:10px 16px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);border-bottom:1px solid rgba(255,255,255,0.06)}
+.cmp-table th:nth-child(2),.cmp-table th:nth-child(3){text-align:center}
+.cmp-table th:nth-child(3){color:var(--fire)}
+.cmp-cat td{padding:8px 16px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--ember);background:rgba(255,109,0,0.04);border-bottom:1px solid rgba(255,255,255,0.03)}
+.cmp-table tr{border-bottom:1px solid rgba(255,255,255,0.03)}
+.cmp-table td{padding:8px 16px;font-size:12px;color:rgba(255,255,255,0.5)}
+.cmp-table td:nth-child(2),.cmp-table td:nth-child(3){text-align:center;width:120px}
+.cmp-y{color:var(--fire);font-weight:700}
+.cmp-n{color:rgba(255,255,255,0.15)}
+.cmp-a{color:#fbbf24;font-size:9px;font-weight:700;letter-spacing:0.08em}
+.cmp-price td{padding:12px 16px;font-weight:700;font-size:14px;border-top:1px solid rgba(255,255,255,0.08)}
+.cmp-price td:nth-child(2){color:rgba(255,255,255,0.5)}
+.cmp-price td:nth-child(3){color:var(--fire)}
+@media(max-width:768px){.cmp-table td,.cmp-table th{padding:6px 8px;font-size:11px}.cmp-table td:nth-child(2),.cmp-table td:nth-child(3){width:80px}}
+</style>
+<script>
+var cmpData={
+buildertrend:{name:'Buildertrend',price:'$199+/mo',features:{crm:1,quotes:1,invoicing:1,scheduling:1,time_tracking:1,project_mgmt:1,change_orders:1,rfis:1,daily_logs:1,punch_lists:1,gantt:1,submittals:1,drawings:1,bidding:0,takeoffs:'a',customer_portal:1,sub_portal:1,selections:1,online_approval:0,sms:0,email_campaigns:0,gps:0,routing:0,photo_capture:1,quickbooks:1,budget_tracking:1,financing:0,pricebook:0,job_costing:0,mobile_app:1,api:0,visualizer:0,automations:0}},
+procore:{name:'Procore',price:'$375+/mo',features:{crm:0,quotes:0,invoicing:0,scheduling:1,time_tracking:0,project_mgmt:1,change_orders:1,rfis:1,daily_logs:1,punch_lists:1,gantt:1,submittals:1,drawings:1,bidding:1,takeoffs:0,customer_portal:0,sub_portal:0,selections:0,online_approval:0,sms:0,email_campaigns:0,gps:0,routing:0,photo_capture:0,quickbooks:1,budget_tracking:1,financing:0,pricebook:0,job_costing:0,mobile_app:1,api:1,visualizer:0,automations:0}},
+coconstruct:{name:'CoConstruct',price:'$99+/mo',features:{crm:1,quotes:1,invoicing:1,scheduling:1,time_tracking:1,project_mgmt:1,change_orders:1,rfis:0,daily_logs:0,punch_lists:0,gantt:0,submittals:0,drawings:0,bidding:0,takeoffs:0,customer_portal:1,sub_portal:0,selections:1,online_approval:0,sms:0,email_campaigns:0,gps:0,routing:0,photo_capture:0,quickbooks:1,budget_tracking:1,financing:0,pricebook:0,job_costing:0,mobile_app:1,api:0,visualizer:0,automations:0}}
+};
+var featureNames={crm:'CRM',quotes:'Quotes & Estimates',invoicing:'Invoicing',scheduling:'Scheduling',time_tracking:'Time Tracking',project_mgmt:'Project Management',change_orders:'Change Orders',rfis:'RFIs',daily_logs:'Daily Logs',punch_lists:'Punch Lists',gantt:'Gantt Charts',submittals:'Submittals',drawings:'Drawings',bidding:'Bidding',takeoffs:'Takeoffs',customer_portal:'Customer Portal',sub_portal:'Subcontractor Portal',selections:'Selections',online_approval:'Online Approval',sms:'SMS Marketing',email_campaigns:'Email Campaigns',gps:'GPS Field Tracking',routing:'Route Optimization',photo_capture:'Photo Capture',quickbooks:'QuickBooks Integration',budget_tracking:'Budget Tracking',financing:'Financing',pricebook:'Pricebook',job_costing:'Job Costing',mobile_app:'Mobile App',api:'Open API',visualizer:'Exterior Visualizer',automations:'Automations'};
+var cats={
+'Core':['crm','quotes','invoicing','scheduling','time_tracking'],
+'Construction PM':['project_mgmt','change_orders','rfis','daily_logs','punch_lists','gantt','submittals','drawings','bidding','takeoffs'],
+'Client':['customer_portal','sub_portal','selections','online_approval'],
+'Communication':['sms','email_campaigns','gps','routing','photo_capture'],
+'Financial':['quickbooks','budget_tracking','financing','pricebook','job_costing'],
+'Platform':['mobile_app','api','visualizer','automations']
+};
+var buildTiers={crm:'Starter',quotes:'Starter',invoicing:'Starter',scheduling:'Starter',time_tracking:'Pro',project_mgmt:'Construction',change_orders:'Construction',rfis:'Construction',daily_logs:'Construction',punch_lists:'Construction',gantt:'Construction',submittals:'Construction',drawings:'Construction',bidding:'Construction',takeoffs:'Construction',customer_portal:'Starter',sub_portal:'Business',selections:'Construction',online_approval:'Pro',sms:'Pro',email_campaigns:'Pro',gps:'Construction',routing:'Construction',photo_capture:'Starter',quickbooks:'Pro',budget_tracking:'Business',financing:'Pro',pricebook:'Pro',job_costing:'Business',mobile_app:'Starter',api:'Enterprise',visualizer:'Pro',automations:'Business'};
+var tierColors={Starter:'#22c55e',Pro:'#3b82f6',Business:'#a855f7',Construction:'#FF6D00',Enterprise:'#f59e0b'};
+function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
+function buildCk(f){var t=buildTiers[f];return '<span style="color:'+tierColors[t]+';font-size:10px;font-weight:700;letter-spacing:0.05em">'+t.toUpperCase()+'</span>'}
+function showCompare(key){
+document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});
+event.target.classList.add('active');
+var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Build (Tier)</th></tr></thead><tbody>';
+Object.keys(cats).forEach(function(cat){
+h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';
+cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+buildCk(f)+'</td></tr>'});
+});
+h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$49</span> / <span style="color:#3b82f6">$149</span> / <span style="color:#a855f7">$299</span> / <span style="color:#FF6D00">$599</span> / <span style="color:#f59e0b">Custom</span></td></tr>';
+h+='</tbody></table>';
+document.getElementById('compareTable').innerHTML=h}
+showCompare('buildertrend');
+</script>
+
 <!-- PRICING -->
 <section id="pricing">
   <div class="inner">

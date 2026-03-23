@@ -411,6 +411,76 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.05);padding
   </div>
 </section>
 
+<!-- ═══ VS COMPARISON ═══ -->
+<section id="vs" style="background:var(--ink)">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;margin-bottom:32px">
+      <div class="section-label" style="justify-content:center;color:var(--teal-light)">The Comparison</div>
+      <h2 class="section-title" style="color:var(--cream)">See How We<br><span class="teal-line">Stack Up.</span></h2>
+      <p class="section-sub" style="margin:0 auto;color:rgba(255,255,255,0.5)">Pick a competitor. We'll show you why agencies switch to Care.</p>
+    </div>
+    <div class="reveal" style="display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap">
+      <button class="vs-toggle active" onclick="showCompare('alora')">vs Alora</button>
+      <button class="vs-toggle" onclick="showCompare('carevoyant')">vs CareVoyant</button>
+      <button class="vs-toggle" onclick="showCompare('axxess')">vs Axxess</button>
+    </div>
+    <div id="compareTable" class="reveal"></div>
+    <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Care: $49&ndash;$599/mo &mdash; all-inclusive, no add-ons. Competitors charge more for less.</p>
+  </div>
+</section>
+<style>
+.vs-toggle{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);padding:8px 20px;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif}
+.vs-toggle:hover{border-color:rgba(15,163,168,0.4);color:var(--cream)}
+.vs-toggle.active{background:rgba(13,115,119,0.25);border-color:var(--teal-light);color:var(--teal-light)}
+.cmp-table{width:100%;border-collapse:collapse}
+.cmp-table th{text-align:left;padding:10px 16px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);border-bottom:1px solid rgba(255,255,255,0.06)}
+.cmp-table th:nth-child(2),.cmp-table th:nth-child(3){text-align:center}
+.cmp-table th:nth-child(3){color:var(--teal-light)}
+.cmp-cat td{padding:8px 16px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal-light);background:rgba(13,115,119,0.08);border-bottom:1px solid rgba(255,255,255,0.03)}
+.cmp-table tr{border-bottom:1px solid rgba(255,255,255,0.03)}
+.cmp-table td{padding:8px 16px;font-size:12px;color:rgba(255,255,255,0.5)}
+.cmp-table td:nth-child(2),.cmp-table td:nth-child(3){text-align:center;width:120px}
+.cmp-y{color:var(--teal-light);font-weight:700}
+.cmp-n{color:rgba(255,255,255,0.15)}
+.cmp-a{color:#fbbf24;font-size:9px;font-weight:700;letter-spacing:0.08em}
+.cmp-price td{padding:12px 16px;font-weight:700;font-size:14px;border-top:1px solid rgba(255,255,255,0.08)}
+.cmp-price td:nth-child(2){color:rgba(255,255,255,0.5)}
+.cmp-price td:nth-child(3){color:var(--teal-light)}
+@media(max-width:768px){.cmp-table td,.cmp-table th{padding:6px 8px;font-size:11px}.cmp-table td:nth-child(2),.cmp-table td:nth-child(3){width:80px}}
+</style>
+<script>
+var cmpData={
+alora:{name:'Alora',price:'$295+/mo',features:{crm:1,scheduling:1,care_notes:1,care_plans:1,evv:1,med_tracking:1,health_alerts:0,task_checklists:0,sms:0,email_campaigns:0,family_portal:0,push_notifications:0,gps:1,caregiver_matching:0,payroll:'a',billing:1,time_tracking:0,compliance_dashboard:1,insurance_billing:0,multi_state:0,custom_forms:0,mobile_app:1,api:0,automations:0,reporting:1,multi_location:1}},
+carevoyant:{name:'CareVoyant',price:'Custom',features:{crm:1,scheduling:1,care_notes:1,care_plans:1,evv:1,med_tracking:0,health_alerts:0,task_checklists:0,sms:0,email_campaigns:0,family_portal:0,push_notifications:0,gps:0,caregiver_matching:0,payroll:1,billing:1,time_tracking:0,compliance_dashboard:1,insurance_billing:0,multi_state:0,custom_forms:0,mobile_app:0,api:1,automations:0,reporting:1,multi_location:1}},
+axxess:{name:'Axxess',price:'$250+/mo',features:{crm:1,scheduling:1,care_notes:1,care_plans:0,evv:1,med_tracking:0,health_alerts:0,task_checklists:0,sms:0,email_campaigns:0,family_portal:0,push_notifications:0,gps:0,caregiver_matching:0,payroll:0,billing:1,time_tracking:0,compliance_dashboard:1,insurance_billing:0,multi_state:0,custom_forms:0,mobile_app:1,api:0,automations:0,reporting:1,multi_location:0}}
+};
+var featureNames={crm:'CRM',scheduling:'Scheduling',care_notes:'Care Notes',care_plans:'Care Plans',evv:'Electronic Visit Verification',med_tracking:'Medication Tracking',health_alerts:'Health Alerts',task_checklists:'Task Checklists',sms:'SMS Marketing',email_campaigns:'Email Campaigns',family_portal:'Family Portal',push_notifications:'Push Notifications',gps:'GPS Tracking',caregiver_matching:'Caregiver Matching',payroll:'Payroll',billing:'Billing',time_tracking:'Time Tracking',compliance_dashboard:'Compliance Dashboard',insurance_billing:'Insurance Billing',multi_state:'Multi-State Compliance',custom_forms:'Custom Forms',mobile_app:'Mobile App',api:'Open API',automations:'Automations',reporting:'Reporting',multi_location:'Multi-Location'};
+var cats={
+'Core':['crm','scheduling','care_notes','care_plans'],
+'Clinical':['evv','med_tracking','health_alerts','task_checklists'],
+'Communication':['sms','email_campaigns','family_portal','push_notifications'],
+'Operations':['gps','caregiver_matching','payroll','billing','time_tracking'],
+'Compliance':['compliance_dashboard','insurance_billing','multi_state','custom_forms'],
+'Platform':['mobile_app','api','automations','reporting','multi_location']
+};
+var careTiers={crm:'Starter',scheduling:'Starter',care_notes:'Starter',care_plans:'Pro',evv:'Pro',med_tracking:'Pro',health_alerts:'Business',task_checklists:'Pro',sms:'Pro',email_campaigns:'Pro',family_portal:'Pro',push_notifications:'Pro',gps:'Pro',caregiver_matching:'Business',payroll:'Business',billing:'Business',time_tracking:'Pro',compliance_dashboard:'Business',insurance_billing:'Agency',multi_state:'Agency',custom_forms:'Business',mobile_app:'Starter',api:'Enterprise',automations:'Business',reporting:'Pro',multi_location:'Agency'};
+var tierColors={Starter:'#22c55e',Pro:'#3b82f6',Business:'#a855f7',Agency:'#0FA3A8',Enterprise:'#f59e0b'};
+function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
+function careCk(f){var t=careTiers[f];return '<span style="color:'+tierColors[t]+';font-size:10px;font-weight:700;letter-spacing:0.05em">'+t.toUpperCase()+'</span>'}
+function showCompare(key){
+document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});
+event.target.classList.add('active');
+var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Care (Tier)</th></tr></thead><tbody>';
+Object.keys(cats).forEach(function(cat){
+h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';
+cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+careCk(f)+'</td></tr>'});
+});
+h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$49</span> / <span style="color:#3b82f6">$149</span> / <span style="color:#a855f7">$299</span> / <span style="color:#0FA3A8">$599</span> / <span style="color:#f59e0b">Custom</span></td></tr>';
+h+='</tbody></table>';
+document.getElementById('compareTable').innerHTML=h}
+showCompare('alora');
+</script>
+
 <!-- PRICING -->
 <section id="pricing">
   <div class="inner">

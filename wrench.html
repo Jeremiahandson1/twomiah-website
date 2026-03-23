@@ -373,46 +373,74 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
   </div>
 </section>
 
-<!-- VS SECTION -->
+<!-- ═══ VS ═══ -->
 <section id="vs" style="background:var(--charcoal)">
   <div class="inner">
-    <div class="vs-inner">
-      <div class="reveal" style="text-align:center;margin-bottom:48px">
-        <div class="section-label" style="justify-content:center">The Comparison</div>
-        <h2 class="section-title">Why Not<br><span class="steel-line">ServiceTitan?</span></h2>
-      </div>
-      <div class="vs-grid reveal">
-        <div>
-          <div class="vs-col-label them">ServiceTitan / Jobber / Housecall Pro</div>
-          <div class="vs-list">
-            <div class="vs-item negative">$300–$600+/mo for core features</div>
-            <div class="vs-item negative">6-month onboarding before you're live</div>
-            <div class="vs-item negative">Website costs extra — not included</div>
-            <div class="vs-item negative">No real arrival tracker for customers</div>
-            <div class="vs-item negative">SEO and ads? Hire another vendor</div>
-            <div class="vs-item negative">Built for enterprise, sold to small shops</div>
-          </div>
-        </div>
-        <div class="vs-divider">
-          <div class="vs-line"></div>
-          <div class="vs-vs">VS</div>
-          <div class="vs-line"></div>
-        </div>
-        <div>
-          <div class="vs-col-label us">Twomiah Wrench</div>
-          <div class="vs-list">
-            <div class="vs-item positive">$59–$279/mo with everything included</div>
-            <div class="vs-item positive">Up and running today — no onboarding call</div>
-            <div class="vs-item positive">Website + CMS included at every tier</div>
-            <div class="vs-item positive">Live tech tracker on your website, day one</div>
-            <div class="vs-item positive">Google + Meta ads automation built in</div>
-            <div class="vs-item positive">Built for your trade, your size, right now</div>
-          </div>
-        </div>
-      </div>
+    <div class="reveal" style="text-align:center;margin-bottom:32px">
+      <div class="section-label" style="justify-content:center">The Comparison</div>
+      <h2 class="section-title">See How We<br><span class="steel-line">Stack Up.</span></h2>
+      <p class="section-sub" style="margin:0 auto">Pick a competitor. We'll show you why service pros switch to Twomiah Wrench.</p>
     </div>
+    <div class="reveal" style="display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap">
+      <button class="vs-toggle active" onclick="showCompare('servicetitan')">vs ServiceTitan</button>
+      <button class="vs-toggle" onclick="showCompare('jobber')">vs Jobber</button>
+      <button class="vs-toggle" onclick="showCompare('housecall')">vs Housecall Pro</button>
+    </div>
+    <div id="compareTable" class="reveal"></div>
+    <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Twomiah Wrench: $59&ndash;$279/mo &mdash; all-inclusive, no add-ons. Competitors: $300+/mo + add-ons for most features.</p>
   </div>
 </section>
+<style>
+.vs-toggle{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);padding:8px 20px;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;font-family:'Barlow',sans-serif}
+.vs-toggle:hover{border-color:rgba(14,165,233,0.3);color:var(--white)}
+.vs-toggle.active{background:rgba(14,165,233,0.15);border-color:var(--steel);color:var(--steel)}
+.cmp-table{width:100%;border-collapse:collapse}
+.cmp-table th{text-align:left;padding:10px 16px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);border-bottom:1px solid rgba(255,255,255,0.06)}
+.cmp-table th:nth-child(2),.cmp-table th:nth-child(3){text-align:center}
+.cmp-table th:nth-child(3){color:var(--steel)}
+.cmp-cat td{padding:8px 16px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--steel);background:rgba(14,165,233,0.04);border-bottom:1px solid rgba(255,255,255,0.03)}
+.cmp-table tr{border-bottom:1px solid rgba(255,255,255,0.03)}
+.cmp-table td{padding:8px 16px;font-size:12px;color:rgba(255,255,255,0.5)}
+.cmp-table td:nth-child(2),.cmp-table td:nth-child(3){text-align:center;width:120px}
+.cmp-y{color:var(--steel);font-weight:700}
+.cmp-n{color:rgba(255,255,255,0.15)}
+.cmp-a{color:#fbbf24;font-size:9px;font-weight:700;letter-spacing:0.08em}
+.cmp-price td{padding:12px 16px;font-weight:700;font-size:14px;border-top:1px solid rgba(255,255,255,0.08)}
+.cmp-price td:nth-child(2){color:rgba(255,255,255,0.5)}
+.cmp-price td:nth-child(3){color:var(--steel)}
+@media(max-width:768px){.cmp-table td,.cmp-table th{padding:6px 8px;font-size:11px}.cmp-table td:nth-child(2),.cmp-table td:nth-child(3){width:80px}}
+</style>
+<script>
+var cmpData={
+servicetitan:{name:'ServiceTitan',price:'$300+/user/mo',features:{crm:1,quotes:1,invoicing:1,scheduling:1,dispatch:1,gps:1,routing:1,time:1,photo:1,equipment:'a',fleet:'a',sms:'a',email:'a',portal:1,booking:1,calltrack:'a',qb:1,pricebook:1,financing:1,inventory:'a',agreements:1,automations:1,forms:1,reporting:1,mobile:1,api:1}},
+jobber:{name:'Jobber',price:'$39+/mo',features:{crm:1,quotes:1,invoicing:1,scheduling:1,dispatch:0,gps:1,routing:1,time:1,photo:1,equipment:0,fleet:0,sms:0,email:0,portal:1,booking:1,calltrack:0,qb:1,pricebook:0,financing:0,inventory:0,agreements:0,automations:0,forms:0,reporting:0,mobile:1,api:0}},
+housecall:{name:'Housecall Pro',price:'$49+/mo',features:{crm:1,quotes:1,invoicing:1,scheduling:1,dispatch:1,gps:1,routing:0,time:1,photo:0,equipment:0,fleet:0,sms:0,email:0,portal:0,booking:1,calltrack:0,qb:1,pricebook:0,financing:0,inventory:0,agreements:0,automations:0,forms:0,reporting:0,mobile:1,api:0}}
+};
+var featureNames={crm:'CRM',quotes:'Quotes',invoicing:'Invoicing',scheduling:'Scheduling',dispatch:'Dispatch',gps:'GPS Tracking',routing:'Route Optimization',time:'Time Tracking',photo:'Photo Capture',equipment:'Equipment Tracking',fleet:'Fleet Management',sms:'SMS Marketing',email:'Email Campaigns',portal:'Customer Portal',booking:'Online Booking',calltrack:'Call Tracking',qb:'QuickBooks Integration',pricebook:'Pricebook',financing:'Financing',inventory:'Inventory',agreements:'Service Agreements',automations:'Automations',forms:'Custom Forms',reporting:'Reporting',mobile:'Mobile App',api:'Open API'};
+var cats={
+'Core':['crm','quotes','invoicing','scheduling','dispatch'],
+'Field':['gps','routing','time','photo','equipment','fleet'],
+'Communication':['sms','email','portal','booking','calltrack'],
+'Financial':['qb','pricebook','financing','inventory','agreements'],
+'Advanced':['automations','forms','reporting','mobile','api']
+};
+var wrenchTiers={crm:'Solo',quotes:'Solo',invoicing:'Solo',scheduling:'Solo',dispatch:'SmallShop',gps:'Solo',routing:'SmallShop',time:'Solo',photo:'Solo',equipment:'SmallShop',fleet:'Growing',sms:'SmallShop',email:'SmallShop',portal:'Solo',booking:'Solo',calltrack:'Growing',qb:'Solo',pricebook:'SmallShop',financing:'Growing',inventory:'SmallShop',agreements:'SmallShop',automations:'Growing',forms:'SmallShop',reporting:'SmallShop',mobile:'Solo',api:'Enterprise'};
+var tierColors={Solo:'#22c55e',SmallShop:'#3b82f6',Growing:'#a855f7',Enterprise:'#f59e0b'};
+function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
+function wrenchCk(f){var t=wrenchTiers[f];return '<span style="color:'+tierColors[t]+';font-size:10px;font-weight:700;letter-spacing:0.05em">'+t.toUpperCase()+'</span>'}
+function showCompare(key){
+document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});
+event.target.classList.add('active');
+var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Wrench (Tier)</th></tr></thead><tbody>';
+Object.keys(cats).forEach(function(cat){
+h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';
+cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+wrenchCk(f)+'</td></tr>'});
+});
+h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$59</span> / <span style="color:#3b82f6">$149</span> / <span style="color:#a855f7">$279</span> / <span style="color:#f59e0b">Custom</span></td></tr>';
+h+='</tbody></table>';
+document.getElementById('compareTable').innerHTML=h}
+showCompare('servicetitan');
+</script>
 
 <!-- PRICING -->
 <section id="pricing">
