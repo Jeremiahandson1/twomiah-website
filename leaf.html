@@ -565,16 +565,19 @@ var cats={
 'Supply Chain':['grow_trace','cultivation','mfg','wholesale','lab'],
 'Operations':['scheduling','training','fraud','bi','soc2','api']
 };
+var leafTiers={pos:'Starter',id_scan:'Starter',checkin:'Starter',kiosk:'Business',ai:'Business',metrc:'Pro',biotrack:'Pro',leafdata:'Pro',multi:'Business',rfid:'Business',batch:'Pro',labels:'Pro',delivery:'Pro',routing:'Pro',gps:'Pro',loyalty:'Pro',gamified:'Business',referral:'Pro',paybank:'Business',wallet:'Business',sms:'Pro',email:'Pro',ordering:'Pro',website:'Pro',seo:'Pro',grow_trace:'Pro',cultivation:'Enterprise',mfg:'Enterprise',wholesale:'Enterprise',lab:'Enterprise',scheduling:'Pro',training:'Pro',fraud:'Business',predict:'Business',bi:'Business',soc2:'Business',offline:'Starter',api:'Business'};
+var tierColors={Starter:'#22c55e',Pro:'#3b82f6',Business:'#a855f7',Enterprise:'#f59e0b'};
 function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
+function leafCk(f){var t=leafTiers[f];return '<span style="color:'+tierColors[t]+';font-size:10px;font-weight:700;letter-spacing:0.05em">'+t.toUpperCase()+'</span>'}
 function showCompare(key){
 document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});
 event.target.classList.add('active');
-var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Leaf</th></tr></thead><tbody>';
+var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Leaf (Tier)</th></tr></thead><tbody>';
 Object.keys(cats).forEach(function(cat){
 h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';
-cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+ck(1)+'</td></tr>'});
+cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+leafCk(f)+'</td></tr>'});
 });
-h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td>$299/mo</td></tr>';
+h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$299</span> / <span style="color:#3b82f6">$499</span> / <span style="color:#a855f7">$799</span> / <span style="color:#f59e0b">$1,299</span></td></tr>';
 h+='</tbody></table>';
 document.getElementById('compareTable').innerHTML=h}
 showCompare('dutchie');
