@@ -188,6 +188,9 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,0.04)}
   .stat-card{padding:20px}
   .stat-num{font-size:36px}
 
+  #remediation .problem-grid{gap:24px}
+  .remediation-methods{grid-template-columns:1fr!important}
+
   .steps-grid{grid-template-columns:1fr;gap:20px}
   .step-card{padding:24px 20px}
 
@@ -234,6 +237,7 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,0.04)}
   <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
   <ul class="nav-links">
     <li><a href="#problem" onclick="document.querySelector('.nav-links').classList.remove('open')">The Problem</a></li>
+    <li><a href="#remediation" onclick="document.querySelector('.nav-links').classList.remove('open')">Remediation</a></li>
     <li><a href="#how" onclick="document.querySelector('.nav-links').classList.remove('open')">How It Works</a></li>
     <li><a href="#download" onclick="document.querySelector('.nav-links').classList.remove('open')">Download</a></li>
     <li><a href="#growers" onclick="document.querySelector('.nav-links').classList.remove('open')">For Growers</a></li>
@@ -292,6 +296,88 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,0.04)}
     <div class="viridis-banner reveal">
       <h3>The Viridis Labs Scandal</h3>
       <p>In 2025, Viridis Labs &mdash; one of Michigan's largest cannabis testing facilities &mdash; was permanently shut down for <strong>faking lab results</strong>. $229 million in products were recalled. Founders were banned for life. Consumers had no way to know. <strong>The Gold Standard exists so this never happens again.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- REMEDIATION -->
+<section id="remediation">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-label">What They Don't Tell You</div>
+      <h2 class="section-title">What Is<br><span class="gold-line">Remediation?</span></h2>
+      <p class="section-sub">When a cannabis product <strong>fails</strong> lab testing, it doesn't always get destroyed. In many states, growers can "remediate" the product and resubmit it for testing. Here's what that means for you.</p>
+    </div>
+
+    <div class="problem-grid reveal" style="margin-top:48px">
+      <div>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.04em;margin-bottom:16px">How Remediation <span class="gold-line">Works</span></h3>
+        <div style="margin-bottom:16px;padding:16px;background:var(--charcoal);border-left:3px solid var(--orange);border-radius:0 4px 4px 0">
+          <p style="color:var(--orange);font-weight:700;font-size:14px;margin:0 0 4px">Step 1: Product Fails Testing</p>
+          <p style="color:var(--muted);font-size:13px;margin:0">Lab finds pesticides, mold, heavy metals, or other contaminants above legal limits.</p>
+        </div>
+        <div style="margin-bottom:16px;padding:16px;background:var(--charcoal);border-left:3px solid var(--orange);border-radius:0 4px 4px 0">
+          <p style="color:var(--orange);font-weight:700;font-size:14px;margin:0 0 4px">Step 2: Grower "Fixes" It</p>
+          <p style="color:var(--muted);font-size:13px;margin:0">Common methods include re-drying, ozone treatment, irradiation (gamma rays or e-beam), distillation, or blending with clean material.</p>
+        </div>
+        <div style="margin-bottom:16px;padding:16px;background:var(--charcoal);border-left:3px solid var(--green);border-radius:0 4px 4px 0">
+          <p style="color:var(--green);font-weight:700;font-size:14px;margin:0 0 4px">Step 3: Retested &amp; "Passes"</p>
+          <p style="color:var(--muted);font-size:13px;margin:0">The remediated product is retested. If contaminants are now below limits, it passes and can be sold.</p>
+        </div>
+        <div style="padding:16px;background:var(--charcoal);border-left:3px solid var(--red);border-radius:0 4px 4px 0">
+          <p style="color:var(--red);font-weight:700;font-size:14px;margin:0 0 4px">Step 4: Sold to You</p>
+          <p style="color:var(--muted);font-size:13px;margin:0">The product sits on the shelf with no visible indication it was ever remediated. You'd never know &mdash; unless you check The Gold Standard.</p>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.04em;margin-bottom:16px">Why You Should <span class="gold-line">Care</span></h3>
+        <div style="margin-bottom:24px">
+          <p style="color:var(--bone);font-weight:600;font-size:15px;margin:0 0 6px">🔬 Remediation masks the problem, doesn't fix it</p>
+          <p style="color:var(--muted);font-size:13px;line-height:1.7;margin:0">Irradiation kills mold spores but doesn't remove the mycotoxins they already produced. Ozone breaks down pesticides but can create harmful byproducts. The contaminants were there &mdash; remediation just gets the numbers below the threshold.</p>
+        </div>
+        <div style="margin-bottom:24px">
+          <p style="color:var(--bone);font-weight:600;font-size:15px;margin:0 0 6px">🧪 Terpenes and quality degrade</p>
+          <p style="color:var(--muted);font-size:13px;line-height:1.7;margin:0">Heat treatment, irradiation, and ozone all destroy terpenes &mdash; the compounds responsible for flavor, aroma, and the entourage effect. A remediated product may test clean but taste flat and hit different.</p>
+        </div>
+        <div style="margin-bottom:24px">
+          <p style="color:var(--bone);font-weight:600;font-size:15px;margin:0 0 6px">⚠️ It signals poor growing practices</p>
+          <p style="color:var(--muted);font-size:13px;line-height:1.7;margin:0">Clean growers pass on the first try. Remediation usually means something went wrong &mdash; improper pest management, contaminated growing media, or unsanitary processing conditions. Do you want to consume a product from that facility?</p>
+        </div>
+        <div style="margin-bottom:24px">
+          <p style="color:var(--bone);font-weight:600;font-size:15px;margin:0 0 6px">💰 It's cheaper than doing it right</p>
+          <p style="color:var(--muted);font-size:13px;line-height:1.7;margin:0">Remediation costs a fraction of what it costs to grow clean from the start. Some operations treat it as a cost of doing business &mdash; grow cheap, remediate later, sell anyway. You're paying premium prices for a remediated product.</p>
+        </div>
+        <div>
+          <p style="color:var(--bone);font-weight:600;font-size:15px;margin:0 0 6px">🚫 Most states don't require disclosure</p>
+          <p style="color:var(--muted);font-size:13px;line-height:1.7;margin:0">In most states, there is <strong>no requirement</strong> to tell consumers a product was remediated. The label looks the same. The budtender doesn't know. Only the tracking system knows &mdash; and The Gold Standard.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:48px">
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.04em;margin-bottom:16px;text-align:center">Common Remediation <span class="gold-line">Methods</span></h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        <div class="stat-card">
+          <div style="font-size:28px;margin-bottom:8px">☢️</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.04em;margin-bottom:4px">Irradiation</div>
+          <p style="color:var(--muted);font-size:12px;line-height:1.6;margin:0">Gamma rays or electron beams kill microbials. Used on food too, but destroys terpenes and may alter cannabinoid profiles.</p>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:28px;margin-bottom:8px">💨</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.04em;margin-bottom:4px">Ozone Treatment</div>
+          <p style="color:var(--muted);font-size:12px;line-height:1.6;margin:0">Ozone gas oxidizes contaminants. Can create formaldehyde and other byproducts. Degrades terpenes significantly.</p>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:28px;margin-bottom:8px">🔥</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.04em;margin-bottom:4px">Distillation</div>
+          <p style="color:var(--muted);font-size:12px;line-height:1.6;margin:0">Extract, purify, re-infuse. Strips the plant to its cannabinoids, removing contaminants but also everything that made it unique.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="viridis-banner reveal" style="margin-top:48px;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.15)">
+      <h3 style="color:var(--gold)">What The Gold Standard Does</h3>
+      <p>We flag every remediated product with a visible warning. We show the remediation method and date when documented. We lower the score &mdash; because a product that failed and was fixed is not the same as a product that passed clean. <strong style="color:var(--gold)">You deserve to know. We make sure you do.</strong></p>
     </div>
   </div>
 </section>
