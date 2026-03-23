@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Gold Standard — Cannabis Transparency by Twomiah</title>
+<meta name="description" content="Scan any cannabis product and see its lab results, safety score, and contaminant data. For consumers who want to know what they're consuming. For growers who want to prove their product is clean.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#D4AF37;--gold-mid:#B8960C;--gold-dark:#8B6914;
+  --dark:#0A0A0A;--charcoal:#111111;--smoke:#1A1A1A;
+  --ash:#555;--muted:#888;--bone:#F5F0EB;--white:#FFFFFF;
+  --green:#22c55e;--red:#ef4444;--orange:#f97316;
+  --grad:linear-gradient(135deg,#D4AF37,#B8960C,#8B6914)
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(10,10,10,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,175,55,0.08)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-icon{width:30px;height:30px}
+.nav-wordmark{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.12em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-sub{font-size:10px;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-left:4px}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-back{color:rgba(255,255,255,0.3)!important;font-size:11px!important}
+.nav-cta{background:var(--gold)!important;color:var(--dark)!important;padding:8px 18px;border-radius:3px!important;font-weight:700!important}
+.nav-cta:hover{background:var(--gold-mid)!important}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s,transform 0.6s}
+.reveal.visible{opacity:1;transform:none}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:140px 40px 80px;text-align:center}
+.hero::before{content:'';position:absolute;top:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;animation:fadeUp 0.8s 0.1s both}
+.hero-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,10vw,120px);line-height:0.9;letter-spacing:0.02em;margin-bottom:28px;animation:fadeUp 0.8s 0.2s both}
+.gold-line{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(15px,1.8vw,18px);line-height:1.8;color:rgba(255,255,255,0.5);max-width:620px;margin:0 auto 40px;animation:fadeUp 0.8s 0.3s both}
+.hero-sub em{color:var(--bone);font-style:normal;font-weight:600}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.8s 0.4s both}
+.btn-primary{background:var(--gold);color:var(--dark);padding:14px 30px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;transition:all 0.2s;box-shadow:0 4px 20px rgba(212,175,55,0.3)}
+.btn-primary:hover{background:var(--gold-mid);transform:translateY(-2px);box-shadow:0 8px 28px rgba(212,175,55,0.4)}
+.btn-ghost{border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.65);padding:14px 30px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.4);color:var(--white);transform:translateY(-2px)}
+.hero-hint{margin-top:48px;font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:0.15em;text-transform:uppercase;animation:fadeUp 0.8s 0.6s both}
+.hero-hint span{color:var(--gold)}
+
+/* SCROLL HINT */
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.2);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;animation:fadeUp 1s 1s both;z-index:2}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,transparent,var(--gold));animation:scrollP 2s ease-in-out infinite}
+@keyframes scrollP{0%,100%{opacity:0.3}50%{opacity:1}}
+
+/* SECTIONS */
+section{padding:100px 48px}
+.inner{max-width:1200px;margin:0 auto}
+.section-label{display:flex;align-items:center;gap:10px;font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.section-label::after{content:'';flex:0 0 36px;height:1px;background:var(--gold);opacity:0.5}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,5vw,72px);letter-spacing:0.04em;line-height:1;margin-bottom:16px}
+.section-sub{font-size:16px;line-height:1.8;color:rgba(255,255,255,0.5);max-width:600px}
+.section-sub strong{color:var(--bone);font-weight:600}
+
+/* PROBLEM */
+#problem{background:var(--charcoal);position:relative;overflow:hidden}
+#problem::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,0.04) 0%,transparent 60%);pointer-events:none}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:48px;align-items:center}
+.problem-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat-card{background:var(--dark);border:1px solid rgba(255,255,255,0.06);border-radius:3px;padding:28px;text-align:center}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--red);letter-spacing:0.02em}
+.stat-num.gold{color:var(--gold)}
+.stat-label{font-size:12px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px}
+
+/* HOW IT WORKS */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px}
+.step-card{background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:3px;padding:32px 24px;text-align:center;position:relative}
+.step-card::before{content:attr(data-step);position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:32px;height:32px;background:var(--gold);color:var(--dark);font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.step-icon{font-size:36px;margin:16px 0 12px}
+.step-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.06em;margin-bottom:8px}
+.step-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* SCORING */
+.score-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:48px;align-items:start}
+.score-bar{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.score-bar-label{width:100px;font-size:13px;font-weight:600;color:var(--muted)}
+.score-bar-track{flex:1;height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:3px}
+.score-bar-pct{width:40px;font-size:13px;font-weight:700;text-align:right}
+.grade-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:32px}
+.grade-card{text-align:center;padding:16px 8px;background:var(--charcoal);border-radius:3px}
+.grade-letter{font-family:'Bebas Neue',sans-serif;font-size:36px}
+.grade-range{font-size:10px;color:var(--muted);letter-spacing:0.1em}
+
+/* GROWERS */
+.grower-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+.grower-tier{background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:3px;padding:28px;text-align:center}
+.grower-tier.featured{border-color:var(--gold);position:relative}
+.grower-tier.featured::before{content:'POPULAR';position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--dark);font-size:9px;font-weight:900;letter-spacing:0.15em;padding:3px 12px;border-radius:2px}
+.tier-name{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.06em;margin-bottom:4px}
+.tier-price{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--gold);letter-spacing:0.02em}
+.tier-price small{font-size:16px;color:var(--muted);font-family:'Barlow',sans-serif;font-weight:400}
+.tier-list{list-style:none;text-align:left;margin:20px 0}
+.tier-list li{padding:6px 0;font-size:13px;color:rgba(255,255,255,0.5)}
+.tier-list li::before{content:'✓ ';color:var(--gold);font-weight:800}
+
+/* CONSUMER */
+.consumer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:48px}
+.consumer-card{background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:3px;padding:32px;text-align:center}
+.consumer-icon{font-size:40px;margin-bottom:16px}
+.consumer-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.06em;margin-bottom:8px}
+.consumer-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* VIRIDIS */
+.viridis-banner{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:3px;padding:48px;text-align:center;margin-top:48px}
+.viridis-banner h3{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--red);letter-spacing:0.04em;margin-bottom:12px}
+.viridis-banner p{font-size:15px;color:rgba(255,255,255,0.5);line-height:1.8;max-width:600px;margin:0 auto}
+.viridis-banner strong{color:var(--gold)}
+
+/* CTA BAND */
+.cta-band{background:var(--charcoal);text-align:center;padding:80px 48px;position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,0.06) 0%,transparent 70%);pointer-events:none}
+
+/* FOOTER */
+footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,0.04)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:rgba(255,255,255,0.6)}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.2)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav{padding:14px 24px}
+  section{padding:60px 24px}
+  .problem-grid,.score-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:1fr 1fr}
+  .grower-grid{grid-template-columns:1fr 1fr}
+  .consumer-grid{grid-template-columns:1fr}
+  .grade-cards{grid-template-columns:repeat(5,1fr)}
+}
+@media(max-width:640px){
+  nav{padding:12px 16px}
+  .nav-links{display:none}
+  section{padding:48px 16px}
+  .hero{padding:120px 20px 60px}
+  .steps-grid,.grower-grid{grid-template-columns:1fr}
+  .grade-cards{grid-template-columns:repeat(3,1fr)}
+  .problem-stats{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-icon" viewBox="0 0 120 120" fill="none">
+      <defs><linearGradient id="lg" x1="20" y1="100" x2="100" y2="20" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#8B6914"/></linearGradient></defs>
+      <path d="M60 10 C60 10 30 30 25 60 C20 90 40 110 60 110 C80 110 100 90 95 60 C90 30 60 10 60 10 Z" fill="url(#lg)" opacity="0.8"/>
+      <path d="M60 30 L60 95" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+      <path d="M60 50 C48 44 42 34 42 34" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none"/>
+      <path d="M60 65 C72 59 80 48 80 48" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none"/>
+    </svg>
+    <span class="nav-wordmark">THE GOLD STANDARD</span>
+    <span class="nav-sub">by Micro Bros</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#growers">For Growers</a></li>
+    <li><a href="#scoring">Scoring</a></li>
+    <li><a href="index.html" class="nav-back">&larr; Twomiah</a></li>
+    <li><a href="https://leaf-score-api.twomiah.workers.dev/portal" class="nav-cta">Grower Portal</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section style="padding:0">
+  <div class="hero">
+    <div class="hero-eyebrow">Micro Bros &times; Twomiah &mdash; Cannabis Transparency</div>
+    <h1 class="hero-headline">Know What<br><span class="gold-line">You're Consuming.</span></h1>
+    <p class="hero-sub">Scan any cannabis product and instantly see its lab results, contaminant data, and safety score. <em>The Carfax for weed.</em></p>
+    <div class="hero-actions">
+      <a href="https://leaf-score-api.twomiah.workers.dev/portal/register" class="btn-primary">I'm a Grower</a>
+      <a href="#how" class="btn-ghost">I'm a Consumer</a>
+    </div>
+    <p class="hero-hint">Available in <span>Michigan</span> &mdash; more states coming soon</p>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      scroll
+    </div>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section id="problem">
+  <div class="inner">
+    <div class="problem-grid">
+      <div class="reveal">
+        <div class="section-label">The Problem</div>
+        <h2 class="section-title">You Don't Know<br><span class="gold-line">What's In Your Weed.</span></h2>
+        <p class="section-sub">Cannabis products are tested for pesticides, heavy metals, microbials, and mycotoxins. But those results are buried in PDFs that consumers never see. <strong>Until now.</strong></p>
+      </div>
+      <div class="problem-stats reveal">
+        <div class="stat-card">
+          <div class="stat-num">$229M</div>
+          <div class="stat-label">Products Recalled</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">1</div>
+          <div class="stat-label">Lab Shut Down (Viridis)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num gold">0</div>
+          <div class="stat-label">Apps That Show You</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num gold">100</div>
+          <div class="stat-label">Our Safety Score</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="viridis-banner reveal">
+      <h3>The Viridis Labs Scandal</h3>
+      <p>In 2025, Viridis Labs &mdash; one of Michigan's largest cannabis testing facilities &mdash; was permanently shut down for <strong>faking lab results</strong>. $229 million in products were recalled. Founders were banned for life. Consumers had no way to know. <strong>The Gold Standard exists so this never happens again.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;margin-bottom:16px">
+      <div class="section-label" style="justify-content:center">How It Works</div>
+      <h2 class="section-title">Scan. Score.<br><span class="gold-line">Know.</span></h2>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card reveal" data-step="1">
+        <div class="step-icon">📱</div>
+        <div class="step-name">Download</div>
+        <p class="step-desc">Get The Gold Standard app. 3 free scans to try it out.</p>
+      </div>
+      <div class="step-card reveal" data-step="2">
+        <div class="step-icon">📷</div>
+        <div class="step-name">Scan</div>
+        <p class="step-desc">Point your camera at the product QR code, barcode, or photograph the label.</p>
+      </div>
+      <div class="step-card reveal" data-step="3">
+        <div class="step-icon">🔬</div>
+        <div class="step-name">See Results</div>
+        <p class="step-desc">Full lab breakdown: pesticides, microbials, heavy metals, potency, terpenes.</p>
+      </div>
+      <div class="step-card reveal" data-step="4">
+        <div class="step-icon">🛡️</div>
+        <div class="step-name">Get Scored</div>
+        <p class="step-desc">0&ndash;100 safety score with grade (A&ndash;F). Know before you buy.</p>
+      </div>
+    </div>
+
+    <div class="consumer-grid" style="margin-top:60px">
+      <div class="consumer-card reveal">
+        <div class="consumer-icon">⚠️</div>
+        <div class="consumer-name">Remediation Alerts</div>
+        <p class="consumer-desc">Products that failed and were "fixed" are flagged. You decide if that's OK.</p>
+      </div>
+      <div class="consumer-card reveal">
+        <div class="consumer-icon">📋</div>
+        <div class="consumer-name">Scan History</div>
+        <p class="consumer-desc">Every product you scan is saved. Compare scores across brands and dispensaries.</p>
+      </div>
+      <div class="consumer-card reveal">
+        <div class="consumer-icon">🔔</div>
+        <div class="consumer-name">Recall Alerts</div>
+        <p class="consumer-desc">Get notified if a product you scanned is recalled. Never be the last to know.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCORING -->
+<section id="scoring" style="background:var(--charcoal)">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-label">The Score</div>
+      <h2 class="section-title">Five Dimensions.<br><span class="gold-line">One Number.</span></h2>
+      <p class="section-sub">Every product is scored on a 0&ndash;100 scale across five weighted dimensions. Higher is cleaner.</p>
+    </div>
+
+    <div class="score-grid reveal">
+      <div>
+        <div class="score-bar"><span class="score-bar-label">Lab Status</span><div class="score-bar-track"><div class="score-bar-fill" style="width:35%;background:var(--gold)"></div></div><span class="score-bar-pct">35%</span></div>
+        <div class="score-bar"><span class="score-bar-label">Pesticides</span><div class="score-bar-track"><div class="score-bar-fill" style="width:30%;background:var(--green)"></div></div><span class="score-bar-pct">30%</span></div>
+        <div class="score-bar"><span class="score-bar-label">Microbials</span><div class="score-bar-track"><div class="score-bar-fill" style="width:20%;background:var(--green)"></div></div><span class="score-bar-pct">20%</span></div>
+        <div class="score-bar"><span class="score-bar-label">Heavy Metals</span><div class="score-bar-track"><div class="score-bar-fill" style="width:10%;background:var(--green)"></div></div><span class="score-bar-pct">10%</span></div>
+        <div class="score-bar"><span class="score-bar-label">Transparency</span><div class="score-bar-track"><div class="score-bar-fill" style="width:5%;background:var(--gold)"></div></div><span class="score-bar-pct">5%</span></div>
+      </div>
+      <div>
+        <div class="grade-cards">
+          <div class="grade-card"><div class="grade-letter" style="color:var(--green)">A</div><div class="grade-range">90&ndash;100</div></div>
+          <div class="grade-card"><div class="grade-letter" style="color:#a3e635">B</div><div class="grade-range">75&ndash;89</div></div>
+          <div class="grade-card"><div class="grade-letter" style="color:#eab308">C</div><div class="grade-range">60&ndash;74</div></div>
+          <div class="grade-card"><div class="grade-letter" style="color:var(--orange)">D</div><div class="grade-range">45&ndash;59</div></div>
+          <div class="grade-card"><div class="grade-letter" style="color:var(--red)">F</div><div class="grade-range">0&ndash;44</div></div>
+        </div>
+        <p style="margin-top:24px;font-size:14px;color:var(--muted);line-height:1.7">Products that pass all tests on the first try score highest. Remediated products are flagged with a warning. Failed products get an F and should not be for sale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR GROWERS -->
+<section id="growers">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;margin-bottom:16px">
+      <div class="section-label" style="justify-content:center">For Growers &amp; Brands</div>
+      <h2 class="section-title">Prove Your Product<br><span class="gold-line">Is Clean.</span></h2>
+      <p class="section-sub" style="margin:0 auto">Upload your lab results. Get verified. Show consumers you have nothing to hide. Free to start.</p>
+    </div>
+
+    <div class="grower-grid">
+      <div class="grower-tier reveal">
+        <div class="tier-name">Free</div>
+        <div class="tier-price">$0 <small>/mo</small></div>
+        <ul class="tier-list">
+          <li>3 strains</li>
+          <li>CSV upload</li>
+          <li>Basic product page</li>
+          <li>Competitor ads shown</li>
+        </ul>
+        <a href="https://leaf-score-api.twomiah.workers.dev/portal/register" class="btn-ghost" style="display:block;text-align:center">Start Free</a>
+      </div>
+      <div class="grower-tier reveal">
+        <div class="tier-name">Bronze</div>
+        <div class="tier-price">$29 <small>/mo</small></div>
+        <ul class="tier-list">
+          <li>10 strains</li>
+          <li>No competitor ads</li>
+          <li>Basic analytics</li>
+          <li>Email support</li>
+        </ul>
+        <a href="https://leaf-score-api.twomiah.workers.dev/portal/register" class="btn-ghost" style="display:block;text-align:center">Get Bronze</a>
+      </div>
+      <div class="grower-tier featured reveal">
+        <div class="tier-name">Silver</div>
+        <div class="tier-price">$79 <small>/mo</small></div>
+        <ul class="tier-list">
+          <li>Unlimited strains</li>
+          <li>Bulk CSV upload</li>
+          <li>Full analytics</li>
+          <li>Featured placement</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="https://leaf-score-api.twomiah.workers.dev/portal/register" class="btn-primary" style="display:block;text-align:center">Get Silver</a>
+      </div>
+      <div class="grower-tier reveal">
+        <div class="tier-name">Gold ⭐</div>
+        <div class="tier-price">$199 <small>/mo</small></div>
+        <ul class="tier-list">
+          <li>Everything in Silver</li>
+          <li>Gold Standard badge</li>
+          <li>Custom branded page</li>
+          <li>QR codes for packaging</li>
+          <li>Priority verification</li>
+          <li>Dedicated manager</li>
+        </ul>
+        <a href="https://leaf-score-api.twomiah.workers.dev/portal/register" class="btn-ghost" style="display:block;text-align:center">Get Gold</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="inner reveal" style="position:relative;z-index:1">
+    <div class="section-label" style="justify-content:center">Get Started</div>
+    <h2 class="section-title" style="text-align:center">The Industry Faked<br><span class="gold-line">Your Lab Results.</span></h2>
+    <p class="section-sub" style="text-align:center;margin:0 auto 32px">We're building the platform that makes sure it never happens again. For consumers. For growers. For the industry.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="https://leaf-score-api.twomiah.workers.dev/portal/register" class="btn-primary">I'm a Grower &mdash; Upload Results</a>
+      <a href="#how" class="btn-ghost">I'm a Consumer &mdash; Download App</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="nav-wordmark">TWOMIAH</span>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="leaf.html">Leaf</a>
+      <a href="build.html">Build</a>
+      <a href="care.html">Care</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="mailto:hello@twomiah.com">Contact</a>
+    </div>
+    <span class="footer-copy">&copy; 2026 Micro Bros &times; Twomiah</span>
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((el, i) => {
+    if (el.isIntersecting) setTimeout(() => el.target.classList.add('visible'), i * 60);
+  });
+}, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
