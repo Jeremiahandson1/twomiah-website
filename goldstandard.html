@@ -134,6 +134,10 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,0.04)}
 .footer-links a:hover{color:rgba(255,255,255,0.6)}
 .footer-copy{font-size:12px;color:rgba(255,255,255,0.2)}
 
+/* HAMBURGER MENU */
+.menu-toggle{display:none;background:none;border:none;color:var(--white);font-size:24px;cursor:pointer;padding:8px}
+.nav-links.open{display:flex!important}
+
 /* RESPONSIVE */
 @media(max-width:1024px){
   nav{padding:14px 24px}
@@ -145,13 +149,58 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,0.04)}
   .grade-cards{grid-template-columns:repeat(5,1fr)}
 }
 @media(max-width:640px){
-  nav{padding:12px 16px}
-  .nav-links{display:none}
-  section{padding:48px 16px}
-  .hero{padding:120px 20px 60px}
-  .steps-grid,.grower-grid{grid-template-columns:1fr}
-  .grade-cards{grid-template-columns:repeat(3,1fr)}
-  .problem-stats{grid-template-columns:1fr}
+  .menu-toggle{display:block}
+  nav{padding:12px 16px;flex-wrap:wrap}
+  .nav-logo{flex:1}
+  .nav-sub{display:none}
+  .nav-links{display:none;width:100%;flex-direction:column;gap:0;padding:16px 0 8px;order:3}
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:12px 0;font-size:14px;border-bottom:1px solid rgba(255,255,255,0.05)}
+  .nav-links.open{display:flex}
+  .nav-cta{display:inline-block!important;margin-top:8px}
+
+  section{padding:40px 16px}
+  .hero{padding:100px 16px 48px;min-height:auto}
+  .hero-headline{font-size:clamp(40px,12vw,64px)}
+  .hero-sub{font-size:15px;margin-bottom:28px}
+  .hero-actions{flex-direction:column;align-items:center}
+  .btn-primary,.btn-ghost{width:100%;text-align:center;padding:16px}
+  .hero-hint{font-size:10px}
+  .scroll-hint{display:none}
+
+  .section-title{font-size:clamp(32px,8vw,48px)}
+  .section-sub{font-size:14px}
+
+  .problem-grid{gap:32px}
+  .problem-stats{grid-template-columns:1fr 1fr}
+  .stat-card{padding:20px}
+  .stat-num{font-size:36px}
+
+  .steps-grid{grid-template-columns:1fr;gap:20px}
+  .step-card{padding:24px 20px}
+
+  .consumer-grid{gap:12px}
+  .consumer-card{padding:24px}
+
+  .score-grid{gap:32px}
+  .grade-cards{grid-template-columns:repeat(5,1fr);gap:4px}
+  .grade-card{padding:12px 4px}
+  .grade-letter{font-size:28px}
+
+  /* Consumer pricing on mobile */
+  #download .inner > div:nth-child(2){grid-template-columns:1fr!important;max-width:100%!important}
+
+  .grower-grid{grid-template-columns:1fr;gap:12px}
+  .grower-tier{padding:24px}
+  .tier-price{font-size:32px}
+
+  .viridis-banner{padding:28px 20px}
+  .viridis-banner h3{font-size:28px}
+
+  .cta-band{padding:48px 16px}
+
+  .footer-inner{flex-direction:column;text-align:center;gap:12px}
+  .footer-links{flex-wrap:wrap;justify-content:center;gap:16px}
 }
 </style>
 </head>
@@ -170,11 +219,12 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,0.04)}
     <span class="nav-wordmark">THE GOLD STANDARD</span>
     <span class="nav-sub">a collab by Micro Bros × Twomiah Leaf</span>
   </a>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
   <ul class="nav-links">
-    <li><a href="#problem">The Problem</a></li>
-    <li><a href="#how">How It Works</a></li>
-    <li><a href="#download">Download</a></li>
-    <li><a href="#growers">For Growers</a></li>
+    <li><a href="#problem" onclick="document.querySelector('.nav-links').classList.remove('open')">The Problem</a></li>
+    <li><a href="#how" onclick="document.querySelector('.nav-links').classList.remove('open')">How It Works</a></li>
+    <li><a href="#download" onclick="document.querySelector('.nav-links').classList.remove('open')">Download</a></li>
+    <li><a href="#growers" onclick="document.querySelector('.nav-links').classList.remove('open')">For Growers</a></li>
     <li><a href="index.html" class="nav-back">&larr; Twomiah</a></li>
     <li><a href="https://leaf-score-api.twomiah.workers.dev/portal" class="nav-cta">Grower Portal</a></li>
   </ul>
