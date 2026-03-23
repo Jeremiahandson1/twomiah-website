@@ -510,45 +510,73 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
 <!-- ═══ VS ═══ -->
 <section id="vs">
   <div class="inner">
-    <div class="vs-inner">
-      <div class="reveal" style="text-align:center;margin-bottom:48px">
-        <div class="section-label" style="justify-content:center">The Comparison</div>
-        <h2 class="section-title">Why Not<br><span class="leaf-line">Dutchie?</span></h2>
-      </div>
-      <div class="vs-grid reveal">
-        <div>
-          <div class="vs-col-label">Dutchie / Treez / BLAZE</div>
-          <div class="vs-list">
-            <div class="vs-item negative">$500&ndash;$1,200/mo for POS + menu</div>
-            <div class="vs-item negative">Loyalty requires Springbig ($300/mo extra)</div>
-            <div class="vs-item negative">Generic iframe menu embed</div>
-            <div class="vs-item negative">No website &mdash; you still need Squarespace</div>
-            <div class="vs-item negative">No delivery management built in</div>
-            <div class="vs-item negative">No cash drawer reconciliation</div>
-            <div class="vs-item negative">Same look as every other dispensary</div>
-          </div>
-        </div>
-        <div class="vs-divider">
-          <div class="vs-line"></div>
-          <div class="vs-vs">VS</div>
-          <div class="vs-line"></div>
-        </div>
-        <div>
-          <div class="vs-col-label us">Twomiah Leaf</div>
-          <div class="vs-list">
-            <div class="vs-item positive">$149&ndash;$399/mo for everything</div>
-            <div class="vs-item positive">Loyalty program built in &mdash; 4 tiers, referrals, rewards</div>
-            <div class="vs-item positive">GPU-rendered website with WebGL effects</div>
-            <div class="vs-item positive">Full website included &mdash; menu, ordering, blog, SEO</div>
-            <div class="vs-item positive">Delivery zones, driver tracking, compliance</div>
-            <div class="vs-item positive">Cash sessions with variance reporting</div>
-            <div class="vs-item positive">The only dispensary site that looks like the future</div>
-          </div>
-        </div>
-      </div>
+    <div class="reveal" style="text-align:center;margin-bottom:32px">
+      <div class="section-label" style="justify-content:center">The Comparison</div>
+      <h2 class="section-title">See How We<br><span class="leaf-line">Stack Up.</span></h2>
+      <p class="section-sub" style="margin:0 auto">Pick a competitor. We'll show you why dispensaries switch to Leaf.</p>
     </div>
+    <div class="reveal" style="display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap">
+      <button class="vs-toggle active" onclick="showCompare('dutchie')">vs Dutchie</button>
+      <button class="vs-toggle" onclick="showCompare('blaze')">vs BLAZE</button>
+      <button class="vs-toggle" onclick="showCompare('flowhub')">vs Flowhub</button>
+      <button class="vs-toggle" onclick="showCompare('cova')">vs Cova</button>
+    </div>
+    <div id="compareTable" class="reveal"></div>
+    <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Leaf: $299&ndash;$1,299/mo &mdash; all-inclusive, no add-ons. Competitors: $500+/mo + add-ons for loyalty, marketing, scheduling.</p>
   </div>
 </section>
+<style>
+.vs-toggle{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);padding:8px 20px;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;font-family:'Barlow',sans-serif}
+.vs-toggle:hover{border-color:rgba(22,163,74,0.3);color:var(--white)}
+.vs-toggle.active{background:rgba(22,163,74,0.15);border-color:var(--leaf);color:var(--leaf)}
+.cmp-table{width:100%;border-collapse:collapse}
+.cmp-table th{text-align:left;padding:10px 16px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);border-bottom:1px solid rgba(255,255,255,0.06)}
+.cmp-table th:nth-child(2),.cmp-table th:nth-child(3){text-align:center}
+.cmp-table th:nth-child(3){color:var(--leaf)}
+.cmp-cat td{padding:8px 16px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--leaf);background:rgba(22,163,74,0.04);border-bottom:1px solid rgba(255,255,255,0.03)}
+.cmp-table tr{border-bottom:1px solid rgba(255,255,255,0.03)}
+.cmp-table td{padding:8px 16px;font-size:12px;color:rgba(255,255,255,0.5)}
+.cmp-table td:nth-child(2),.cmp-table td:nth-child(3){text-align:center;width:120px}
+.cmp-y{color:var(--leaf);font-weight:700}
+.cmp-n{color:rgba(255,255,255,0.15)}
+.cmp-a{color:#fbbf24;font-size:9px;font-weight:700;letter-spacing:0.08em}
+.cmp-price td{padding:12px 16px;font-weight:700;font-size:14px;border-top:1px solid rgba(255,255,255,0.08)}
+.cmp-price td:nth-child(2){color:rgba(255,255,255,0.5)}
+.cmp-price td:nth-child(3){color:var(--leaf)}
+@media(max-width:768px){.cmp-table td,.cmp-table th{padding:6px 8px;font-size:11px}.cmp-table td:nth-child(2),.cmp-table td:nth-child(3){width:80px}}
+</style>
+<script>
+var cmpData={
+dutchie:{name:'Dutchie',price:'$500+/mo',features:{pos:1,id_scan:0,checkin:0,kiosk:0,ai:0,metrc:1,biotrack:1,leafdata:0,multi:1,rfid:0,batch:1,labels:0,delivery:1,routing:0,gps:1,loyalty:1,gamified:1,referral:0,paybank:1,wallet:1,sms:'a',email:'a',ordering:1,website:0,seo:0,grow_trace:0,cultivation:0,mfg:0,wholesale:0,lab:0,scheduling:'a',training:0,fraud:0,predict:0,bi:1,soc2:0,offline:0,api:1}},
+blaze:{name:'BLAZE',price:'$500+/mo',features:{pos:1,id_scan:0,checkin:0,kiosk:1,ai:1,metrc:1,biotrack:1,leafdata:0,multi:1,rfid:0,batch:1,labels:0,delivery:1,routing:0,gps:1,loyalty:1,gamified:0,referral:0,paybank:0,wallet:0,sms:1,email:1,ordering:1,website:1,seo:1,grow_trace:0,cultivation:0,mfg:0,wholesale:0,lab:0,scheduling:'a',training:0,fraud:0,predict:0,bi:0,soc2:0,offline:0,api:0}},
+flowhub:{name:'Flowhub',price:'$499+/mo',features:{pos:1,id_scan:1,checkin:1,kiosk:0,ai:0,metrc:1,biotrack:1,leafdata:0,multi:1,rfid:0,batch:1,labels:0,delivery:0,routing:0,gps:0,loyalty:1,gamified:0,referral:0,paybank:0,wallet:0,sms:0,email:0,ordering:1,website:0,seo:0,grow_trace:0,cultivation:0,mfg:0,wholesale:0,lab:0,scheduling:'a',training:0,fraud:0,predict:0,bi:0,soc2:0,offline:0,api:0}},
+cova:{name:'Cova',price:'$200-1000/mo',features:{pos:1,id_scan:1,checkin:1,kiosk:0,ai:0,metrc:1,biotrack:1,leafdata:0,multi:1,rfid:0,batch:1,labels:0,delivery:0,routing:0,gps:0,loyalty:0,gamified:0,referral:0,paybank:0,wallet:0,sms:0,email:0,ordering:1,website:0,seo:0,grow_trace:0,cultivation:0,mfg:0,wholesale:0,lab:0,scheduling:'a',training:0,fraud:0,predict:0,bi:0,soc2:0,offline:1,api:0}}
+};
+var featureNames={pos:'POS System',id_scan:'Hardware ID Scanning',checkin:'Customer Check-In Queue',kiosk:'Self-Service Kiosk',ai:'AI Budtender',metrc:'Metrc Integration',biotrack:'BioTrack Integration',leafdata:'Leaf Data Systems',multi:'Multi-Location',rfid:'RFID Scanning',batch:'Batch/Lot Tracking',labels:'Label Printing + QR Codes',delivery:'Delivery Management',routing:'Route Optimization',gps:'Real-Time GPS Tracking',loyalty:'Loyalty Program (Built-In)',gamified:'Gamified Loyalty',referral:'Referral Program',paybank:'Pay by Bank (ACH)',wallet:'Apple/Google Wallet Pass',sms:'SMS Marketing',email:'Email Marketing',ordering:'Online Ordering',website:'White-Label Website',seo:'SEO Product Pages',grow_trace:'Grow Input Traceability',cultivation:'Cultivation Tracking',mfg:'Manufacturing/Processing',wholesale:'Wholesale/Distribution',lab:'Lab Testing (CoA)',scheduling:'Employee Scheduling',training:'Training LMS',fraud:'Fraud Detection',predict:'Predictive Inventory',bi:'BI Dashboard',soc2:'SOC 2 Controls',offline:'Offline POS Mode',api:'Open API'};
+var cats={
+'POS & Sales':['pos','id_scan','checkin','kiosk','ai'],
+'Compliance':['metrc','biotrack','leafdata','batch','labels'],
+'Inventory':['multi','rfid','predict','offline'],
+'Marketing':['loyalty','gamified','referral','paybank','wallet','sms','email'],
+'Delivery':['delivery','routing','gps'],
+'Ecommerce':['ordering','website','seo'],
+'Supply Chain':['grow_trace','cultivation','mfg','wholesale','lab'],
+'Operations':['scheduling','training','fraud','bi','soc2','api']
+};
+function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
+function showCompare(key){
+document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});
+event.target.classList.add('active');
+var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Leaf</th></tr></thead><tbody>';
+Object.keys(cats).forEach(function(cat){
+h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';
+cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+ck(1)+'</td></tr>'});
+});
+h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td>$299/mo</td></tr>';
+h+='</tbody></table>';
+document.getElementById('compareTable').innerHTML=h}
+showCompare('dutchie');
+</script>
 
 <!-- ═══ PRICING ═══ -->
 <section id="pricing">
@@ -558,75 +586,97 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
       <h2 class="section-title">Everything Included.<br><span class="leaf-line">No Add-Ons.</span></h2>
       <p class="section-sub">POS, website, loyalty, delivery, analytics, compliance &mdash; all in one price. No per-transaction fees. No "contact sales for loyalty."</p>
     </div>
-    <div class="price-grid">
+    <div class="price-grid" style="grid-template-columns:repeat(4,1fr)">
       <div class="price-card reveal">
         <div class="price-tier">Single Location</div>
         <div class="price-name">Starter</div>
-        <div class="price-amount">
-          <div class="price-dollar">$149</div>
-          <div class="price-per">/mo</div>
-        </div>
-        <div class="price-annual">or <span>$127/mo billed annually</span></div>
+        <div class="price-amount"><div class="price-dollar">$299</div><div class="price-per">/mo</div></div>
+        <div class="price-annual">or <span>$239/mo billed annually</span></div>
         <div class="price-divider"></div>
         <ul class="price-features">
           <li class="bold-item">Full POS system</li>
-          <li class="bold-item">GPU-rendered website</li>
-          <li class="bold-item">Product menu + online ordering</li>
-          <li class="bold-item">Loyalty program (4 tiers)</li>
-          <li class="bold-item">Cash session tracking</li>
+          <li class="bold-item">ID scanning + verification</li>
+          <li class="bold-item">Customer check-in queue</li>
+          <li class="bold-item">Cash sessions + reconciliation</li>
+          <li class="bold-item">Offline POS mode</li>
           <li>Inventory management</li>
-          <li>Customer database</li>
-          <li>2.5oz compliance enforcement</li>
-          <li>Audit trail</li>
+          <li>Purchase limit enforcement</li>
+          <li>QR code scanning</li>
+          <li>Tip management</li>
+          <li>EOD reconciliation reports</li>
+          <li>5 users included</li>
         </ul>
-        <a href="leaf-signup.html?plan=starter" class="price-cta">Get Started</a>
+        <a href="leaf-signup.html?plan=starter" class="price-cta">Start Free Trial</a>
       </div>
       <div class="price-card featured reveal">
-        <div class="price-tier featured">Growing Dispensary</div>
-        <div class="price-name">Growth</div>
-        <div class="price-amount">
-          <div class="price-dollar">$249</div>
-          <div class="price-per">/mo</div>
-        </div>
-        <div class="price-annual">or <span>$212/mo billed annually</span></div>
+        <div class="price-tier featured">Most Popular</div>
+        <div class="price-name">Pro</div>
+        <div class="price-amount"><div class="price-dollar">$499</div><div class="price-per">/mo</div></div>
+        <div class="price-annual">or <span>$399/mo billed annually</span></div>
         <div class="price-divider"></div>
         <ul class="price-features">
           <li class="bold-item">Everything in Starter</li>
-          <li class="bold-item">Delivery management + zones</li>
-          <li class="bold-item">SMS marketing (500/mo)</li>
+          <li class="bold-item">Metrc / BioTrack / Leaf Data</li>
+          <li class="bold-item">Delivery + GPS tracking</li>
+          <li class="bold-item">Loyalty + referral program</li>
+          <li class="bold-item">Label printing + QR codes</li>
+          <li class="bold-item">SMS + email marketing</li>
           <li class="bold-item">Analytics dashboard</li>
-          <li class="bold-item">Push notifications</li>
-          <li class="bold-item">Team roles (budtender, driver)</li>
-          <li>Merch store with Stripe</li>
-          <li>Data export (CSV, Excel)</li>
-          <li>Priority support</li>
+          <li>Employee scheduling</li>
+          <li>Training LMS</li>
+          <li>Online ordering + website</li>
+          <li>Batch/lot tracking</li>
+          <li>Grow input traceability</li>
+          <li>15 users included</li>
         </ul>
-        <a href="leaf-signup.html?plan=growth" class="price-cta">Get Started</a>
+        <a href="leaf-signup.html?plan=pro" class="price-cta">Start Free Trial</a>
       </div>
       <div class="price-card reveal">
-        <div class="price-tier">Multi-Location</div>
-        <div class="price-name">Enterprise</div>
-        <div class="price-amount">
-          <div class="price-dollar">$399</div>
-          <div class="price-per">/mo</div>
-        </div>
-        <div class="price-annual">or <span>$339/mo billed annually</span></div>
+        <div class="price-tier">Scale Without Limits</div>
+        <div class="price-name">Business</div>
+        <div class="price-amount"><div class="price-dollar">$799</div><div class="price-per">/mo</div></div>
+        <div class="price-annual">or <span>$639/mo billed annually</span></div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Everything in Growth</li>
-          <li class="bold-item">Multi-location dashboard</li>
-          <li class="bold-item">Unlimited SMS</li>
-          <li class="bold-item">API access</li>
-          <li class="bold-item">Custom integrations</li>
-          <li class="bold-item">White-label options</li>
+          <li class="bold-item">Everything in Pro</li>
+          <li class="bold-item">Multi-location (up to 10)</li>
+          <li class="bold-item">AI budtender (Claude-powered)</li>
+          <li class="bold-item">Self-service kiosk</li>
+          <li class="bold-item">RFID inventory scanning</li>
+          <li class="bold-item">BI dashboard + custom reports</li>
+          <li class="bold-item">Predictive inventory</li>
+          <li>Gamified loyalty</li>
+          <li>Pay by Bank (ACH)</li>
+          <li>Fraud detection</li>
+          <li>SOC 2 controls</li>
+          <li>30 users included</li>
+        </ul>
+        <a href="leaf-signup.html?plan=business" class="price-cta">Start Free Trial</a>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-tier">Seed-to-Sale</div>
+        <div class="price-name">Enterprise</div>
+        <div class="price-amount"><div class="price-dollar">$1,299</div><div class="price-per">/mo</div></div>
+        <div class="price-annual">or <span>$1,039/mo billed annually</span></div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li class="bold-item">Everything in Business</li>
+          <li class="bold-item">Cultivation / grow tracking</li>
+          <li class="bold-item">Manufacturing / processing</li>
+          <li class="bold-item">Wholesale / distribution</li>
+          <li class="bold-item">Lab testing + CoA</li>
+          <li class="bold-item">Franchise management</li>
+          <li class="bold-item">Open API + marketplace</li>
           <li>Dedicated success manager</li>
-          <li>Custom reporting</li>
-          <li>On-site training</li>
+          <li>Unlimited locations</li>
+          <li>Consumer mobile app</li>
+          <li>White-label option</li>
+          <li>100+ users</li>
         </ul>
         <a href="leaf-signup.html?plan=enterprise" class="price-cta">Contact Sales</a>
       </div>
     </div>
-    <p class="price-note reveal">All plans include unlimited users, unlimited products, and a fully hosted website. No setup fees.</p>
+    <p class="price-note reveal">All plans include unlimited products, a fully hosted website, and no per-transaction fees. 14-day free trial. No setup fees.</p>
   </div>
 </section>
 
