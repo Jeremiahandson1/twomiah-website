@@ -239,7 +239,7 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,0.04)}
     <li><a href="#problem" onclick="document.querySelector('.nav-links').classList.remove('open')">The Problem</a></li>
     <li><a href="#remediation" onclick="document.querySelector('.nav-links').classList.remove('open')">Remediation</a></li>
     <li><a href="#how" onclick="document.querySelector('.nav-links').classList.remove('open')">How It Works</a></li>
-    <li><a href="#download" onclick="document.querySelector('.nav-links').classList.remove('open')">Download</a></li>
+    <li><a href="#download" onclick="document.querySelector('.nav-links').classList.remove('open')">Get Started</a></li>
     <li><a href="#growers" onclick="document.querySelector('.nav-links').classList.remove('open')">For Growers</a></li>
     <li><a href="index.html" class="nav-back">&larr; Twomiah</a></li>
     <li><a href="https://leaf-score-api.twomiah.workers.dev/portal" class="nav-cta">Grower Portal</a></li>
@@ -393,8 +393,8 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,0.04)}
     <div class="steps-grid">
       <div class="step-card reveal" data-step="1">
         <div class="step-icon">📱</div>
-        <div class="step-name">Download</div>
-        <p class="step-desc">Get The Gold Standard app. 3 free scans to try it out.</p>
+        <div class="step-name">Open</div>
+        <p class="step-desc">Open The Gold Standard in your browser. No download needed. 3 free scans to try it out.</p>
       </div>
       <div class="step-card reveal" data-step="2">
         <div class="step-icon">📷</div>
@@ -469,7 +469,7 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,0.04)}
   <div class="inner">
     <div class="reveal" style="text-align:center;margin-bottom:48px">
       <div class="section-label" style="justify-content:center">For Consumers</div>
-      <h2 class="section-title">Download<br><span class="gold-line">The App.</span></h2>
+      <h2 class="section-title">Open<br><span class="gold-line">The App.</span></h2>
       <p class="section-sub" style="margin:0 auto">3 free scans. Then choose the plan that works for you.</p>
     </div>
 
@@ -509,8 +509,8 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,0.04)}
 
     <!-- Download + Promo -->
     <div class="reveal" style="text-align:center;margin-top:48px;">
-      <a href="https://expo.dev/accounts/jeremiahandson/projects/leaf-score/builds/888d876d-1fb2-49f1-982c-55b70e8705e5" class="btn-primary" style="font-size:14px;padding:18px 40px;">Download Android Beta</a>
-      <p style="color:var(--muted);font-size:12px;margin-top:12px;">iOS coming soon &mdash; <a href="#" style="color:var(--gold)">join the waitlist</a></p>
+      <a href="https://leaf-score-api.twomiah.workers.dev/scan" class="btn-primary" style="font-size:14px;padding:18px 40px;">Open Gold Standard</a>
+      <p style="color:var(--muted);font-size:12px;margin-top:12px;">Works on any device &mdash; iPhone, Android, or desktop. No app store needed.</p>
     </div>
 
     <!-- Promo code -->
@@ -594,7 +594,7 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,0.04)}
     <p class="section-sub" style="text-align:center;margin:0 auto 32px">We're building the platform that makes sure it never happens again. For consumers. For growers. For the industry.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
       <a href="https://leaf-score-api.twomiah.workers.dev/portal/register" class="btn-primary">I'm a Grower &mdash; Upload Results</a>
-      <a href="#how" class="btn-ghost">I'm a Consumer &mdash; Download App</a>
+      <a href="#how" class="btn-ghost">I'm a Consumer &mdash; Open App</a>
     </div>
   </div>
 </section>
@@ -637,7 +637,7 @@ async function checkPromo() {
     result.style.display = 'block';
     if (json.valid) {
       result.style.color = '#22c55e';
-      result.textContent = '✓ Valid! ' + json.freeMonths + ' months free for ' + json.type + 's. Enter this code in the app after downloading.';
+      result.textContent = '✓ Valid! ' + json.freeMonths + ' months free for ' + json.type + 's. Enter this code in the app to activate.';
     } else {
       result.style.color = '#ef4444';
       result.textContent = '✕ ' + (json.error || 'Invalid code');
