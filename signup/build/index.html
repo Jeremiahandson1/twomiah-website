@@ -359,14 +359,14 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
 
       <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;display:block">Add-Ons (optional)</label>
       <div class="check-grid" id="addonsGrid">
-        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="sms"><span class="check-box"></span><span class="check-label">SMS &amp; Texting</span></label>
-        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="gps"><span class="check-box"></span><span class="check-label">GPS &amp; Field Tracking</span></label>
-        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="inventory"><span class="check-box"></span><span class="check-label">Inventory Management</span></label>
-        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="fleet"><span class="check-box"></span><span class="check-label">Fleet Management</span></label>
-        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="equipment"><span class="check-box"></span><span class="check-label">Equipment Tracking</span></label>
-        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="marketing"><span class="check-box"></span><span class="check-label">Marketing &amp; Reviews</span></label>
-        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="payments"><span class="check-box"></span><span class="check-label">Online Payments (Stripe)</span></label>
-        <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="portal"><span class="check-box"></span><span class="check-label">Client Portal</span></label>
+        <label class="check-item"><input type="checkbox" value="sms" onchange="toggleCheck(this.closest('.check-item'))"><span class="check-box"></span><span class="check-label">SMS &amp; Texting</span></label>
+        <label class="check-item"><input type="checkbox" value="gps" onchange="toggleCheck(this.closest('.check-item'))"><span class="check-box"></span><span class="check-label">GPS &amp; Field Tracking</span></label>
+        <label class="check-item"><input type="checkbox" value="inventory" onchange="toggleCheck(this.closest('.check-item'))"><span class="check-box"></span><span class="check-label">Inventory Management</span></label>
+        <label class="check-item"><input type="checkbox" value="fleet" onchange="toggleCheck(this.closest('.check-item'))"><span class="check-box"></span><span class="check-label">Fleet Management</span></label>
+        <label class="check-item"><input type="checkbox" value="equipment" onchange="toggleCheck(this.closest('.check-item'))"><span class="check-box"></span><span class="check-label">Equipment Tracking</span></label>
+        <label class="check-item"><input type="checkbox" value="marketing" onchange="toggleCheck(this.closest('.check-item'))"><span class="check-box"></span><span class="check-label">Marketing &amp; Reviews</span></label>
+        <label class="check-item"><input type="checkbox" value="payments" onchange="toggleCheck(this.closest('.check-item'))"><span class="check-box"></span><span class="check-label">Online Payments (Stripe)</span></label>
+        <label class="check-item"><input type="checkbox" value="portal" onchange="toggleCheck(this.closest('.check-item'))"><span class="check-box"></span><span class="check-label">Client Portal</span></label>
       </div>
 
       <div class="btn-row">
@@ -590,12 +590,9 @@ function selectDeploy(el) {
 }
 
 function toggleCheck(el) {
-  // Small delay to let the default checkbox toggle happen first
-  setTimeout(function() {
-    var cb = el.querySelector('input[type="checkbox"]');
-    if (cb.checked) el.classList.add('checked');
-    else el.classList.remove('checked');
-  }, 10);
+  var cb = el.querySelector('input[type="checkbox"]');
+  if (cb.checked) el.classList.add('checked');
+  else el.classList.remove('checked');
 }
 
 function updateFileName(input, spanId) {
@@ -621,6 +618,11 @@ function showStep(n) {
   document.querySelector('.step[data-step="' + n + '"]').classList.add('active');
   currentStep = n;
   updateProgress();
+  // Re-sync checkbox visual state with actual checked state
+  document.querySelectorAll('.check-item input[type="checkbox"]').forEach(function(cb) {
+    if (cb.checked) cb.closest('.check-item').classList.add('checked');
+    else cb.closest('.check-item').classList.remove('checked');
+  });
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
