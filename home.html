@@ -148,6 +148,11 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
 .footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.05);padding-top:20px;display:flex;justify-content:space-between;align-items:center}
 .footer-copy,.footer-loc{font-size:11px;color:rgba(255,255,255,0.18);letter-spacing:0.04em}
 
+/* CAMPUS IMAGES */
+.campus-gallery{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:32px;padding-top:48px}
+.campus-img{width:100%;border-radius:6px;border:1px solid rgba(255,255,255,0.06);box-shadow:0 24px 64px rgba(0,0,0,0.5);display:block}
+.campus-img-caption{font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ash);text-align:center;margin-top:-16px}
+
 /* ANIMATIONS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}
@@ -199,6 +204,10 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
       <div class="section-label">The Vision</div>
       <h2 class="section-title">A Circular Campus.<br><span>Self-Sustaining By Design.</span></h2>
       <p class="section-sub">HOME is a large-scale campus organized in concentric zones — each one serving a different purpose, all of them connected. At the center, community. At the edges, industry and housing. Underground, the infrastructure that makes it all invisible. <strong>No landlords. No gatekeepers. No expiration dates.</strong> A place where families live, people work, visitors spend, and every dollar circulates back into the mission.</p>
+    </div>
+    <div class="campus-gallery reveal">
+      <img src="images/home-campus-aerial.png" alt="Aerial view of the HOME campus — concentric zones, timber structures, amphitheater, river, and forest" class="campus-img" loading="lazy">
+      <img src="images/home-campus-details.png" alt="Close-up views of HOME campus zones — the great hall, neighborhoods, cliffside lodges, amphitheater, river trail, and greenhouses" class="campus-img" loading="lazy">
     </div>
   </div>
 </section>
