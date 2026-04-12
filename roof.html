@@ -344,7 +344,7 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
       <button class="vs-toggle" onclick="showCompare('roofr')">vs Roofr</button>
     </div>
     <div id="compareTable" class="reveal"></div>
-    <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Twomiah Roof: $49&ndash;$299/mo &mdash; all-inclusive, no add-ons. Competitors: $150+/mo + add-ons for most features.</p>
+    <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Twomiah Roof: $49&ndash;$599/mo &mdash; website included at Pro+. Competitors: $150+/user/mo + add-ons for most features.</p>
   </div>
 </section>
 <style>
@@ -394,7 +394,7 @@ Object.keys(cats).forEach(function(cat){
 h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';
 cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+roofCk(f)+'</td></tr>'});
 });
-h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$49</span> / <span style="color:#3b82f6">$129</span> / <span style="color:#a855f7">$299</span> / <span style="color:#f59e0b">Custom</span></td></tr>';
+h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$49</span> / <span style="color:#3b82f6">$149</span> / <span style="color:#a855f7">$299</span> / <span style="color:#FF6D00">$599</span> / <span style="color:#f59e0b">$199/user</span></td></tr>';
 h+='</tbody></table>';
 document.getElementById('compareTable').innerHTML=h}
 showCompare('acculynx');
@@ -406,97 +406,95 @@ showCompare('acculynx');
     <div class="reveal" style="margin-bottom:16px">
       <div class="section-label">Pricing</div>
       <h2 class="section-title">Flat Rate.<br><span class="accent-line">No Surprises.</span></h2>
-      <p class="section-sub">One price per tier. Measurement reports billed separately at $9 each. Save 15% with annual billing.</p>
+      <p class="section-sub">Pro and higher include a website at no extra cost. Measurement credits scale with tier. 30-day free trial &middot; 60-day money-back &middot; Annual saves 2 months.</p>
     </div>
-    <div class="price-grid">
-      <!-- Solo -->
+    <div class="price-grid" style="grid-template-columns:repeat(4,1fr)">
+      <!-- Starter -->
       <div class="price-card reveal">
         <div class="price-tier">Solo Roofer</div>
-        <div class="price-name">Solo</div>
+        <div class="price-name">Starter</div>
         <div class="price-amount">
           <div class="price-dollar">$49</div>
           <div class="price-per">/mo</div>
         </div>
-        <div class="price-annual">or <span>$42/mo billed annually</span></div>
+        <div class="price-annual">or <span>$490/yr</span> &mdash; 2 months free</div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">11-stage pipeline board</li>
-          <li class="bold-item">$9 measurement reports</li>
-          <li class="bold-item">Insurance workflow tracking</li>
+          <li class="bold-item">Lead intake</li>
+          <li class="bold-item">Job tracking</li>
+          <li class="bold-item">Quotes &amp; invoices</li>
+          <li class="bold-item">Stripe payments</li>
           <li class="bold-item">Customer portal</li>
-          <li>Contacts + job history</li>
-          <li>Invoicing + Stripe payments</li>
-          <li>Mobile app</li>
+          <li>2 users included</li>
+          <li>Pair with any website tier</li>
         </ul>
-        <a href="/signup/roof?plan=solo" class="price-cta">Launch Your System</a>
-      </div>
-      <!-- Starter -->
-      <div class="price-card featured reveal">
-        <div class="price-tier featured">2&ndash;5 Crew</div>
-        <div class="price-name">Starter</div>
-        <div class="price-amount">
-          <div class="price-dollar">$129</div>
-          <div class="price-per">/mo</div>
-        </div>
-        <div class="price-annual">or <span>$110/mo billed annually</span></div>
-        <div class="price-divider"></div>
-        <ul class="price-features">
-          <li class="bold-item">Everything in Solo</li>
-          <li class="bold-item">Canvassing tool with GPS</li>
-          <li class="bold-item">Two-way texting</li>
-          <li class="bold-item">Automated SMS pipeline</li>
-          <li class="bold-item">Photo capture on mobile</li>
-          <li class="bold-item">Crew scheduling</li>
-          <li>Material order templates</li>
-          <li>Review automation</li>
-        </ul>
-        <a href="/signup/roof?plan=starter" class="price-cta">Launch Your System</a>
+        <a href="/signup/roof?plan=starter" class="price-cta">Start Free Trial</a>
       </div>
       <!-- Pro -->
-      <div class="price-card reveal">
-        <div class="price-tier">5+ Crew</div>
+      <div class="price-card featured reveal">
+        <div class="price-tier featured">2&ndash;10 Crew</div>
         <div class="price-name">Pro</div>
+        <div class="price-amount">
+          <div class="price-dollar">$149</div>
+          <div class="price-per">/mo</div>
+        </div>
+        <div class="price-annual">or <span>$1,490/yr</span> &mdash; 2 months free</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li class="bold-item">Everything in Starter</li>
+          <li class="bold-item">Good-Better-Best pricing</li>
+          <li class="bold-item">Pricebook</li>
+          <li class="bold-item">3 measurement reports/mo</li>
+          <li class="bold-item">Two-way SMS + reviews</li>
+          <li class="bold-item">Showcase website included ($49 value)</li>
+          <li>5 users included</li>
+        </ul>
+        <a href="/signup/roof?plan=pro" class="price-cta">Start Free Trial</a>
+      </div>
+      <!-- Business -->
+      <div class="price-card reveal">
+        <div class="price-tier">10&ndash;25 Crew</div>
+        <div class="price-name">Business</div>
         <div class="price-amount">
           <div class="price-dollar">$299</div>
           <div class="price-per">/mo</div>
         </div>
-        <div class="price-annual">or <span>$254/mo billed annually</span></div>
-        <div class="price-divider"></div>
-        <ul class="price-features">
-          <li class="bold-item">Everything in Starter</li>
-          <li class="bold-item">Storm lead generation</li>
-          <li class="bold-item">QuickBooks sync</li>
-          <li class="bold-item">Supplement automation</li>
-          <li class="bold-item">Multi-crew dispatch</li>
-          <li class="bold-item">Job costing + P&amp;L</li>
-          <li>Custom reports + dashboards</li>
-          <li>Lead source tracking</li>
-        </ul>
-        <a href="/signup/roof?plan=pro" class="price-cta">Launch Your System</a>
-      </div>
-      <!-- Enterprise -->
-      <div class="price-card reveal">
-        <div class="price-tier">10+ Users</div>
-        <div class="price-name">Enterprise</div>
-        <div class="price-amount">
-          <div class="price-dollar">$85</div>
-          <div class="price-per">/user/mo</div>
-        </div>
-        <div class="price-annual">or <span>$72/user billed annually</span></div>
+        <div class="price-annual">or <span>$2,990/yr</span> &mdash; 2 months free</div>
         <div class="price-divider"></div>
         <ul class="price-features">
           <li class="bold-item">Everything in Pro</li>
-          <li class="bold-item">Multi-branch management</li>
-          <li class="bold-item">Role-based permissions</li>
-          <li class="bold-item">API access</li>
-          <li class="bold-item">Dedicated success manager</li>
-          <li class="bold-item">Custom integrations</li>
-          <li>White-label options</li>
-          <li>Priority support</li>
+          <li class="bold-item">Instant estimator on website</li>
+          <li class="bold-item">$350&ndash;$550/sq pricing</li>
+          <li class="bold-item">10 measurement reports/mo</li>
+          <li class="bold-item">Insurance workflow + adjusters</li>
+          <li class="bold-item">Book Jobs website included ($99 value)</li>
+          <li>15 users included</li>
         </ul>
-        <a href="/signup/roof?plan=enterprise" class="price-cta">Contact Sales</a>
+        <a href="/signup/roof?plan=business" class="price-cta">Start Free Trial</a>
+      </div>
+      <!-- Storm -->
+      <div class="price-card reveal">
+        <div class="price-tier">Storm Chasers</div>
+        <div class="price-name">Storm</div>
+        <div class="price-amount">
+          <div class="price-dollar">$599</div>
+          <div class="price-per">/mo</div>
+        </div>
+        <div class="price-annual">or <span>$5,990/yr</span> &mdash; 2 months free</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li class="bold-item">Everything in Business</li>
+          <li class="bold-item"><strong>Unlimited measurement reports</strong></li>
+          <li class="bold-item">Storm lead generation + radar</li>
+          <li class="bold-item">Door-knock canvassing tool</li>
+          <li class="bold-item">Insurance supplements + depreciation</li>
+          <li class="bold-item">Service area pages on website</li>
+          <li>20 users included</li>
+        </ul>
+        <a href="/signup/roof?plan=storm" class="price-cta">Start Free Trial</a>
       </div>
     </div>
+    <p style="text-align:center;font-size:12px;color:rgba(255,255,255,0.3);margin-top:24px">Just need a website? <strong>Presence $19/mo</strong>, <strong>Showcase $49/mo</strong>, <strong>Book Jobs $99/mo</strong>. Enterprise (white-label, $199/user/mo, min 10) also available.</p>
   </div>
 </section>
 

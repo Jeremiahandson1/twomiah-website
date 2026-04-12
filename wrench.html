@@ -387,7 +387,7 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
       <button class="vs-toggle" onclick="showCompare('housecall')">vs Housecall Pro</button>
     </div>
     <div id="compareTable" class="reveal"></div>
-    <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Twomiah Wrench: $59&ndash;$279/mo &mdash; all-inclusive, no add-ons. Competitors: $300+/mo + add-ons for most features.</p>
+    <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Twomiah Wrench: $49&ndash;$599/mo &mdash; all-inclusive with website at Pro+. Competitors: $300+/mo + add-ons for most features.</p>
   </div>
 </section>
 <style>
@@ -424,8 +424,8 @@ var cats={
 'Financial':['qb','pricebook','financing','inventory','agreements'],
 'Advanced':['automations','forms','reporting','mobile','api']
 };
-var wrenchTiers={crm:'Solo',quotes:'Solo',invoicing:'Solo',scheduling:'Solo',dispatch:'SmallShop',gps:'Solo',routing:'SmallShop',time:'Solo',photo:'Solo',equipment:'SmallShop',fleet:'Growing',sms:'SmallShop',email:'SmallShop',portal:'Solo',booking:'Solo',calltrack:'Growing',qb:'Solo',pricebook:'SmallShop',financing:'Growing',inventory:'SmallShop',agreements:'SmallShop',automations:'Growing',forms:'SmallShop',reporting:'SmallShop',mobile:'Solo',api:'Enterprise'};
-var tierColors={Solo:'#22c55e',SmallShop:'#3b82f6',Growing:'#a855f7',Enterprise:'#f59e0b'};
+var wrenchTiers={crm:'Starter',quotes:'Starter',invoicing:'Starter',scheduling:'Starter',dispatch:'Pro',gps:'Pro',routing:'Pro',time:'Starter',photo:'Starter',equipment:'Business',fleet:'Business',sms:'Pro',email:'Business',portal:'Starter',booking:'Pro',calltrack:'Fleet',qb:'Pro',pricebook:'Pro',financing:'Business',inventory:'Business',agreements:'Pro',automations:'Business',forms:'Business',reporting:'Business',mobile:'Starter',api:'Enterprise'};
+var tierColors={Starter:'#22c55e',Pro:'#3b82f6',Business:'#a855f7',Fleet:'#FF6D00',Enterprise:'#f59e0b'};
 function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
 function wrenchCk(f){var t=wrenchTiers[f];return '<span style="color:'+tierColors[t]+';font-size:10px;font-weight:700;letter-spacing:0.05em">'+t.toUpperCase()+'</span>'}
 function showCompare(key){
@@ -436,7 +436,7 @@ Object.keys(cats).forEach(function(cat){
 h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';
 cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+wrenchCk(f)+'</td></tr>'});
 });
-h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$59</span> / <span style="color:#3b82f6">$149</span> / <span style="color:#a855f7">$279</span> / <span style="color:#f59e0b">Custom</span></td></tr>';
+h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$49</span> / <span style="color:#3b82f6">$149</span> / <span style="color:#a855f7">$299</span> / <span style="color:#FF6D00">$599</span> / <span style="color:#f59e0b">$199/user</span></td></tr>';
 h+='</tbody></table>';
 document.getElementById('compareTable').innerHTML=h}
 showCompare('servicetitan');
@@ -447,79 +447,97 @@ showCompare('servicetitan');
   <div class="inner">
     <div class="reveal" style="margin-bottom:16px">
       <div class="section-label">Pricing</div>
-      <h2 class="section-title">Flat Rate.<br><span class="steel-line">No Surprises.</span></h2>
-      <p class="section-sub">One price per tier. Website, CMS, and all the tools included. Save 15% with annual billing.</p>
+      <h2 class="section-title">Flat Rate.<br><span class="steel-line">Website Built In.</span></h2>
+      <p class="section-sub">Pro and higher include a website at no extra cost. Annual billing saves 2 months. 30-day free trial &middot; 60-day money-back guarantee.</p>
     </div>
-    <div class="price-grid">
-      <!-- Solo -->
+    <div class="price-grid" style="grid-template-columns:repeat(4,1fr)">
+      <!-- Starter -->
       <div class="price-card reveal">
         <div class="price-tier">Solo Operator</div>
-        <div class="price-name">Solo</div>
+        <div class="price-name">Starter</div>
         <div class="price-amount">
-          <div class="price-dollar">$59</div>
+          <div class="price-dollar">$49</div>
           <div class="price-per">/mo</div>
         </div>
-        <div class="price-annual">or <span>$50/mo billed annually</span> — save $108/yr</div>
+        <div class="price-annual">or <span>$490/yr</span> — 2 months free</div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Jobs, quotes &amp; invoices</li>
-          <li class="bold-item">Pricebook + Stripe payments</li>
-          <li class="bold-item">Online booking widget</li>
-          <li class="bold-item">Your website (1 page + booking)</li>
-          <li>Customer contact management</li>
-          <li>Mobile app (iOS + Android)</li>
-          <li>Dashboard overview</li>
+          <li class="bold-item">Jobs &amp; scheduling</li>
+          <li class="bold-item">Quotes &amp; invoices</li>
+          <li class="bold-item">Stripe payments</li>
+          <li class="bold-item">Customer portal</li>
+          <li class="bold-item">Mobile tech app</li>
+          <li>2 users included</li>
+          <li>Pair with any website tier</li>
         </ul>
-        <a href="/signup/wrench?plan=solo" class="price-cta">Launch Your System</a>
+        <a href="/signup/wrench?plan=starter" class="price-cta">Start Free Trial</a>
       </div>
-      <!-- Small Shop -->
+      <!-- Pro -->
       <div class="price-card featured reveal">
-        <div class="price-tier featured">2–5 Techs</div>
-        <div class="price-name">Small Shop</div>
+        <div class="price-tier featured">2–10 Techs</div>
+        <div class="price-name">Pro</div>
         <div class="price-amount">
           <div class="price-dollar">$149</div>
           <div class="price-per">/mo</div>
         </div>
-        <div class="price-annual">or <span>$127/mo billed annually</span> — save $264/yr</div>
+        <div class="price-annual">or <span>$1,490/yr</span> — 2 months free</div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Everything in Solo</li>
-          <li class="bold-item">Drag &amp; drop dispatch calendar</li>
-          <li class="bold-item">Real-time tech arrival tracker</li>
-          <li class="bold-item">Recurring jobs + service agreements</li>
-          <li class="bold-item">Two-way texting + review automation</li>
-          <li class="bold-item">GPS time tracking</li>
-          <li class="bold-item">Brochure website (3–5 pages)</li>
-          <li>Warranties + service history</li>
-          <li>Photo capture on mobile</li>
+          <li class="bold-item">Everything in Starter</li>
+          <li class="bold-item">GPS tracking + geofencing</li>
+          <li class="bold-item">Route optimization</li>
+          <li class="bold-item">Flat-rate pricebook</li>
+          <li class="bold-item">Service agreements</li>
+          <li class="bold-item">Two-way SMS</li>
+          <li class="bold-item">Showcase website included ($49 value)</li>
+          <li>5 users included</li>
         </ul>
-        <a href="/signup/wrench?plan=small-shop" class="price-cta">Launch Your System</a>
+        <a href="/signup/wrench?plan=pro" class="price-cta">Start Free Trial</a>
       </div>
-      <!-- Growing -->
+      <!-- Business -->
       <div class="price-card reveal">
-        <div class="price-tier">5+ Techs</div>
-        <div class="price-name">Growing Op</div>
+        <div class="price-tier">10–25 Techs</div>
+        <div class="price-name">Business</div>
         <div class="price-amount">
-          <div class="price-dollar">$279</div>
+          <div class="price-dollar">$299</div>
           <div class="price-per">/mo</div>
         </div>
-        <div class="price-annual">or <span>$237/mo billed annually</span> — save $504/yr</div>
+        <div class="price-annual">or <span>$2,990/yr</span> — 2 months free</div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Everything in Small Shop</li>
-          <li class="bold-item">Route optimization</li>
-          <li class="bold-item">Google + Meta ads automation</li>
-          <li class="bold-item">Seasonal campaign templates</li>
-          <li class="bold-item">Job costing + QuickBooks sync</li>
-          <li class="bold-item">Lead inbox (Angi, Thumbtack, Google LSA)</li>
-          <li class="bold-item">AI receptionist</li>
-          <li class="bold-item">Full site (gallery, blog, testimonials)</li>
-          <li>Custom dashboards + reports</li>
-          <li>Referral program automation</li>
+          <li class="bold-item">Everything in Pro</li>
+          <li class="bold-item">Customer equipment tracking</li>
+          <li class="bold-item">Parts inventory</li>
+          <li class="bold-item">Fleet management</li>
+          <li class="bold-item">Maintenance contracts</li>
+          <li class="bold-item">Book Jobs website included ($99 value)</li>
+          <li>15 users included</li>
         </ul>
-        <a href="/signup/wrench?plan=growing" class="price-cta">Launch Your System</a>
+        <a href="/signup/wrench?plan=business" class="price-cta">Start Free Trial</a>
+      </div>
+      <!-- Fleet -->
+      <div class="price-card reveal">
+        <div class="price-tier">Multi-Location</div>
+        <div class="price-name">Fleet</div>
+        <div class="price-amount">
+          <div class="price-dollar">$599</div>
+          <div class="price-per">/mo</div>
+        </div>
+        <div class="price-annual">or <span>$5,990/yr</span> — 2 months free</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li class="bold-item">Everything in Business</li>
+          <li class="bold-item">Multi-location dispatch</li>
+          <li class="bold-item">Advanced scheduling &amp; routing</li>
+          <li class="bold-item">Call tracking &amp; recording</li>
+          <li class="bold-item">Commission tracking</li>
+          <li class="bold-item">Service area pages on website</li>
+          <li>20 users included</li>
+        </ul>
+        <a href="/signup/wrench?plan=fleet" class="price-cta">Start Free Trial</a>
       </div>
     </div>
+    <p style="text-align:center;font-size:12px;color:rgba(255,255,255,0.3);margin-top:24px">Just need a website? Standalone tiers: <strong>Presence $19/mo</strong>, <strong>Showcase $49/mo</strong>, <strong>Book Jobs $99/mo</strong>. Enterprise (white-label, $199/user/mo, min 10) also available.</p>
     <!-- Add-ons -->
     <div class="reveal" style="margin-top:48px;max-width:600px">
       <div style="font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:16px">Optional Add-Ons</div>
