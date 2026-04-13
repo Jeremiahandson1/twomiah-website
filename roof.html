@@ -387,8 +387,8 @@ var cats={
 'Financial':['qb','financing','pricebook','inventory','fleet'],
 'Platform':['mobile','api']
 };
-var roofTiers={crm:'Solo',quotes:'Solo',invoicing:'Solo',scheduling:'Solo',time:'Starter',gps:'Starter',routing:'Starter',rfis:'Pro',cos:'Pro',punch:'Pro',logs:'Starter',gantt:'Pro',measure:'Starter',storm:'Pro',canvas:'Starter',insurance:'Starter',visualizer:'Pro',estimator:'Pro',sms:'Starter',email:'Starter',portal:'Solo',booking:'Solo',photo:'Solo',qb:'Solo',financing:'Pro',pricebook:'Starter',inventory:'Pro',fleet:'Pro',mobile:'Solo',api:'Enterprise'};
-var tierColors={Solo:'#22c55e',Starter:'#3b82f6',Pro:'#a855f7',Enterprise:'#f59e0b'};
+var roofTiers={crm:'Starter',quotes:'Starter',invoicing:'Starter',scheduling:'Starter',time:'Starter',gps:'Pro',routing:'Pro',rfis:'Business',cos:'Business',punch:'Business',logs:'Business',gantt:'Business',measure:'Pro',storm:'Storm',canvas:'Storm',insurance:'Business',visualizer:'Business',estimator:'Business',sms:'Pro',email:'Business',portal:'Starter',booking:'Pro',photo:'Pro',qb:'Pro',financing:'Business',pricebook:'Pro',inventory:'Business',fleet:'Business',mobile:'Starter',api:'Enterprise'};
+var tierColors={Starter:'#22c55e',Pro:'#3b82f6',Business:'#a855f7',Storm:'#FF6D00',Enterprise:'#f59e0b'};
 function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
 function roofCk(f){var t=roofTiers[f];return '<span style="color:'+tierColors[t]+';font-size:10px;font-weight:700;letter-spacing:0.05em">'+t.toUpperCase()+'</span>'}
 function toggleCmp(){var c=document.getElementById('cmpContent'),b=document.getElementById('cmpToggleBtn');if(c.style.display==='none'){c.style.display='block';b.innerHTML='Hide comparison &nbsp;&uarr;';showCompareInit('acculynx')}else{c.style.display='none';b.innerHTML='Compare vs. AccuLynx, JobNimbus &amp; Roofr &nbsp;&darr;'}}
