@@ -317,20 +317,30 @@ footer{background:#060D18;border-top:1px solid rgba(255,255,255,0.05);padding:40
 
       <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;display:block">Select a Plan *</label>
       <div class="plan-grid" id="planGrid">
-        <div class="plan-card" data-plan="solo" onclick="selectPlan(this)">
-          <div class="plan-label">Solo</div>
-          <div class="plan-price">$59</div>
-          <div class="plan-per">/mo &middot; 1 user</div>
+        <div class="plan-card" data-plan="starter" onclick="selectPlan(this)">
+          <div class="plan-label">Starter</div>
+          <div class="plan-price">$49</div>
+          <div class="plan-per">/mo &middot; 2 users</div>
         </div>
-        <div class="plan-card" data-plan="small-shop" onclick="selectPlan(this)">
-          <div class="plan-label">Small Shop</div>
+        <div class="plan-card" data-plan="pro" onclick="selectPlan(this)">
+          <div class="plan-label">Pro</div>
           <div class="plan-price">$149</div>
           <div class="plan-per">/mo &middot; up to 5</div>
         </div>
-        <div class="plan-card" data-plan="growing" onclick="selectPlan(this)">
-          <div class="plan-label">Growing Op</div>
-          <div class="plan-price">$279</div>
+        <div class="plan-card" data-plan="business" onclick="selectPlan(this)">
+          <div class="plan-label">Business</div>
+          <div class="plan-price">$299</div>
           <div class="plan-per">/mo &middot; up to 15</div>
+        </div>
+        <div class="plan-card" data-plan="fleet" onclick="selectPlan(this)">
+          <div class="plan-label">Fleet</div>
+          <div class="plan-price">$599</div>
+          <div class="plan-per">/mo &middot; up to 20</div>
+        </div>
+        <div class="plan-card" data-plan="enterprise" onclick="selectPlan(this)">
+          <div class="plan-label">Enterprise</div>
+          <div class="plan-price">$199</div>
+          <div class="plan-per">/user/mo &middot; 10+</div>
         </div>
       </div>
 
@@ -631,7 +641,13 @@ function val(id) {
 }
 
 function planLabel(p) {
-  var map = { solo: 'Solo ($59/mo)', 'small-shop': 'Small Shop ($149/mo)', growing: 'Growing Op ($279/mo)' };
+  var map = {
+    starter: 'Starter ($49/mo)',
+    pro: 'Pro ($149/mo)',
+    business: 'Business ($299/mo)',
+    fleet: 'Fleet ($599/mo)',
+    enterprise: 'Enterprise ($199/user/mo)'
+  };
   return map[p] || p;
 }
 function deployLabel(d) {

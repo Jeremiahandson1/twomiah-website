@@ -275,25 +275,30 @@ footer{background:#060E1C;border-top:1px solid rgba(255,255,255,0.05);padding:40
       <div class="step-title">Plan &amp; Billing</div>
       <div class="step-desc">Pick the plan that fits your crew. All plans include the customer portal and $9 measurement reports.</div>
       <div class="plan-grid">
-        <div class="plan-card" onclick="selectPlan('solo',this)">
-          <div class="plan-label">Solo</div>
-          <div class="plan-price">$49</div>
-          <div class="plan-per">/mo</div>
-        </div>
         <div class="plan-card" onclick="selectPlan('starter',this)">
           <div class="plan-label">Starter</div>
-          <div class="plan-price">$129</div>
-          <div class="plan-per">/mo</div>
+          <div class="plan-price">$49</div>
+          <div class="plan-per">/mo &middot; 2 users</div>
         </div>
         <div class="plan-card" onclick="selectPlan('pro',this)">
           <div class="plan-label">Pro</div>
+          <div class="plan-price">$149</div>
+          <div class="plan-per">/mo &middot; up to 5</div>
+        </div>
+        <div class="plan-card" onclick="selectPlan('business',this)">
+          <div class="plan-label">Business</div>
           <div class="plan-price">$299</div>
-          <div class="plan-per">/mo</div>
+          <div class="plan-per">/mo &middot; up to 15</div>
+        </div>
+        <div class="plan-card" onclick="selectPlan('storm',this)">
+          <div class="plan-label">Storm</div>
+          <div class="plan-price">$599</div>
+          <div class="plan-per">/mo &middot; up to 20</div>
         </div>
         <div class="plan-card" onclick="selectPlan('enterprise',this)">
           <div class="plan-label">Enterprise</div>
-          <div class="plan-price">$85</div>
-          <div class="plan-per">/user/mo</div>
+          <div class="plan-price">$199</div>
+          <div class="plan-per">/user/mo &middot; 10+</div>
         </div>
       </div>
       <div class="field">
@@ -553,7 +558,13 @@ function val(id) {
 }
 
 function planLabel(p) {
-  var map = { solo: 'Solo ($49/mo)', starter: 'Starter ($129/mo)', pro: 'Pro ($299/mo)', enterprise: 'Enterprise ($85/user/mo)' };
+  var map = {
+    starter: 'Starter ($49/mo)',
+    pro: 'Pro ($149/mo)',
+    business: 'Business ($299/mo)',
+    storm: 'Storm ($599/mo)',
+    enterprise: 'Enterprise ($199/user/mo)'
+  };
   return map[p] || p;
 }
 function deployLabel(d) {
