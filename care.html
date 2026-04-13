@@ -417,18 +417,23 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.05);padding
 <!-- ═══ VS COMPARISON ═══ -->
 <section id="vs" style="background:var(--ink)">
   <div class="inner">
-    <div class="reveal" style="text-align:center;margin-bottom:32px">
+    <div class="reveal" style="text-align:center;margin-bottom:24px">
       <div class="section-label" style="justify-content:center;color:var(--teal-light)">The Comparison</div>
       <h2 class="section-title" style="color:var(--cream)">See How We<br><span class="teal-line">Stack Up.</span></h2>
-      <p class="section-sub" style="margin:0 auto;color:rgba(255,255,255,0.5)">Pick a competitor. We'll show you why agencies switch to Care.</p>
+      <p class="section-sub" style="margin:0 auto;color:rgba(255,255,255,0.5)">Want the spec-by-spec breakdown? Click below.</p>
     </div>
-    <div class="reveal" style="display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap">
-      <button class="vs-toggle active" onclick="showCompare('alora')">vs Alora</button>
-      <button class="vs-toggle" onclick="showCompare('carevoyant')">vs CareVoyant</button>
-      <button class="vs-toggle" onclick="showCompare('axxess')">vs Axxess</button>
+    <div class="reveal" style="text-align:center;margin-bottom:24px">
+      <button id="cmpToggleBtn" onclick="toggleCmp()" style="background:rgba(13,115,119,0.2);border:1px solid var(--teal-light);color:var(--teal-light);padding:14px 32px;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s">Compare Care vs. Alora, CareVoyant &amp; Axxess &nbsp;&darr;</button>
     </div>
-    <div id="compareTable" class="reveal"></div>
-    <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Care: $49&ndash;$599/mo &mdash; all-inclusive, no add-ons. Competitors charge more for less.</p>
+    <div id="cmpContent" style="display:none">
+      <div class="reveal" style="display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap">
+        <button class="vs-toggle active" onclick="showCompare('alora')">vs Alora</button>
+        <button class="vs-toggle" onclick="showCompare('carevoyant')">vs CareVoyant</button>
+        <button class="vs-toggle" onclick="showCompare('axxess')">vs Axxess</button>
+      </div>
+      <div id="compareTable" class="reveal"></div>
+      <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Care: $49&ndash;$599/mo &mdash; all-inclusive, no add-ons. Competitors charge more for less.</p>
+    </div>
   </div>
 </section>
 <style>
@@ -470,18 +475,11 @@ var careTiers={crm:'Starter',scheduling:'Starter',care_notes:'Starter',care_plan
 var tierColors={Starter:'#22c55e',Pro:'#3b82f6',Business:'#a855f7',Agency:'#0FA3A8',Enterprise:'#f59e0b'};
 function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
 function careCk(f){var t=careTiers[f];return '<span style="color:'+tierColors[t]+';font-size:10px;font-weight:700;letter-spacing:0.05em">'+t.toUpperCase()+'</span>'}
-function showCompare(key){
-document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});
-event.target.classList.add('active');
-var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Care (Tier)</th></tr></thead><tbody>';
-Object.keys(cats).forEach(function(cat){
-h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';
-cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+careCk(f)+'</td></tr>'});
-});
-h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$49</span> / <span style="color:#3b82f6">$149</span> / <span style="color:#a855f7">$299</span> / <span style="color:#0FA3A8">$599</span> / <span style="color:#f59e0b">Custom</span></td></tr>';
-h+='</tbody></table>';
-document.getElementById('compareTable').innerHTML=h}
-showCompare('alora');
+function toggleCmp(){var c=document.getElementById('cmpContent'),b=document.getElementById('cmpToggleBtn');if(c.style.display==='none'){c.style.display='block';b.innerHTML='Hide comparison &nbsp;&uarr;';showCompareInit('alora')}else{c.style.display='none';b.innerHTML='Compare Care vs. Alora, CareVoyant &amp; Axxess &nbsp;&darr;'}}
+function showCompareInit(key){document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});document.querySelector('.vs-toggle[onclick*="'+key+'"]').classList.add('active');renderCmp(key)}
+function renderCmp(key){var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Care (Tier)</th></tr></thead><tbody>';Object.keys(cats).forEach(function(cat){h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+careCk(f)+'</td></tr>'})});h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$49</span> / <span style="color:#3b82f6">$149</span> / <span style="color:#a855f7">$299</span> / <span style="color:#0FA3A8">$599</span> / <span style="color:#f59e0b">Custom</span></td></tr>';h+='</tbody></table>';document.getElementById('compareTable').innerHTML=h}
+function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});event.target.classList.add('active');renderCmp(key)}
+// Comparison hidden by default; expand button initializes it.
 </script>
 
 <!-- PRICING -->

@@ -333,18 +333,23 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
 <!-- ═══ VS ═══ -->
 <section id="vs" style="background:var(--charcoal)">
   <div class="inner">
-    <div class="reveal" style="text-align:center;margin-bottom:32px">
+    <div class="reveal" style="text-align:center;margin-bottom:24px">
       <div class="section-label" style="justify-content:center">The Comparison</div>
       <h2 class="section-title">See How We<br><span class="accent-line">Stack Up.</span></h2>
-      <p class="section-sub" style="margin:0 auto">Pick a competitor. We'll show you why roofers switch to Twomiah Roof.</p>
+      <p class="section-sub" style="margin:0 auto">Want the spec-by-spec breakdown? Click below.</p>
     </div>
-    <div class="reveal" style="display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap">
-      <button class="vs-toggle active" onclick="showCompare('acculynx')">vs AccuLynx</button>
-      <button class="vs-toggle" onclick="showCompare('jobnimbus')">vs JobNimbus</button>
-      <button class="vs-toggle" onclick="showCompare('roofr')">vs Roofr</button>
+    <div class="reveal" style="text-align:center;margin-bottom:24px">
+      <button id="cmpToggleBtn" onclick="toggleCmp()" style="background:rgba(255,107,53,0.1);border:1px solid var(--accent);color:var(--accent);padding:14px 32px;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:'Barlow',sans-serif;transition:all 0.2s">Compare vs. AccuLynx, JobNimbus &amp; Roofr &nbsp;&darr;</button>
     </div>
-    <div id="compareTable" class="reveal"></div>
-    <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Twomiah Roof: $49&ndash;$599/mo &mdash; website included at Pro+. Competitors: $150+/user/mo + add-ons for most features.</p>
+    <div id="cmpContent" style="display:none">
+      <div class="reveal" style="display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap">
+        <button class="vs-toggle active" onclick="showCompare('acculynx')">vs AccuLynx</button>
+        <button class="vs-toggle" onclick="showCompare('jobnimbus')">vs JobNimbus</button>
+        <button class="vs-toggle" onclick="showCompare('roofr')">vs Roofr</button>
+      </div>
+      <div id="compareTable" class="reveal"></div>
+      <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Twomiah Roof: $49&ndash;$599/mo &mdash; website included at Pro+. Competitors: $150+/user/mo + add-ons for most features.</p>
+    </div>
   </div>
 </section>
 <style>
@@ -386,18 +391,11 @@ var roofTiers={crm:'Solo',quotes:'Solo',invoicing:'Solo',scheduling:'Solo',time:
 var tierColors={Solo:'#22c55e',Starter:'#3b82f6',Pro:'#a855f7',Enterprise:'#f59e0b'};
 function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
 function roofCk(f){var t=roofTiers[f];return '<span style="color:'+tierColors[t]+';font-size:10px;font-weight:700;letter-spacing:0.05em">'+t.toUpperCase()+'</span>'}
-function showCompare(key){
-document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});
-event.target.classList.add('active');
-var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Roof (Tier)</th></tr></thead><tbody>';
-Object.keys(cats).forEach(function(cat){
-h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';
-cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+roofCk(f)+'</td></tr>'});
-});
-h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$49</span> / <span style="color:#3b82f6">$149</span> / <span style="color:#a855f7">$299</span> / <span style="color:#FF6D00">$599</span> / <span style="color:#f59e0b">$199/user</span></td></tr>';
-h+='</tbody></table>';
-document.getElementById('compareTable').innerHTML=h}
-showCompare('acculynx');
+function toggleCmp(){var c=document.getElementById('cmpContent'),b=document.getElementById('cmpToggleBtn');if(c.style.display==='none'){c.style.display='block';b.innerHTML='Hide comparison &nbsp;&uarr;';showCompareInit('acculynx')}else{c.style.display='none';b.innerHTML='Compare vs. AccuLynx, JobNimbus &amp; Roofr &nbsp;&darr;'}}
+function showCompareInit(key){document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});document.querySelector('.vs-toggle[onclick*="'+key+'"]').classList.add('active');renderCmp(key)}
+function renderCmp(key){var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Roof (Tier)</th></tr></thead><tbody>';Object.keys(cats).forEach(function(cat){h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+roofCk(f)+'</td></tr>'})});h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$49</span> / <span style="color:#3b82f6">$149</span> / <span style="color:#a855f7">$299</span> / <span style="color:#FF6D00">$599</span> / <span style="color:#f59e0b">$199/user</span></td></tr>';h+='</tbody></table>';document.getElementById('compareTable').innerHTML=h}
+function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});event.target.classList.add('active');renderCmp(key)}
+// Comparison hidden by default; expand button initializes it.
 </script>
 
 <!-- PRICING -->

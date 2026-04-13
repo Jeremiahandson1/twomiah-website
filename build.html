@@ -358,18 +358,23 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
 <!-- ═══ VS COMPARISON ═══ -->
 <section id="vs" style="background:var(--charcoal)">
   <div class="inner">
-    <div class="reveal" style="text-align:center;margin-bottom:32px">
+    <div class="reveal" style="text-align:center;margin-bottom:24px">
       <div class="section-label" style="justify-content:center">The Comparison</div>
       <h2 class="section-title">See How We<br><span class="fire-line">Stack Up.</span></h2>
-      <p class="section-sub" style="margin:0 auto">Pick a competitor. We'll show you why contractors switch to Build.</p>
+      <p class="section-sub" style="margin:0 auto">Want the spec-by-spec breakdown? Click below.</p>
     </div>
-    <div class="reveal" style="display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap">
-      <button class="vs-toggle active" onclick="showCompare('buildertrend')">vs Buildertrend</button>
-      <button class="vs-toggle" onclick="showCompare('procore')">vs Procore</button>
-      <button class="vs-toggle" onclick="showCompare('coconstruct')">vs CoConstruct</button>
+    <div class="reveal" style="text-align:center;margin-bottom:24px">
+      <button id="cmpToggleBtn" onclick="toggleCmp()" style="background:rgba(255,61,0,0.1);border:1px solid var(--fire);color:var(--fire);padding:14px 32px;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:'Barlow',sans-serif;transition:all 0.2s">Compare Build vs. Buildertrend, Procore &amp; CoConstruct &nbsp;&darr;</button>
     </div>
-    <div id="compareTable" class="reveal"></div>
-    <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Build: $49&ndash;$599/mo &mdash; all-inclusive, no add-ons. Competitors charge more for less.</p>
+    <div id="cmpContent" style="display:none">
+      <div class="reveal" style="display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap">
+        <button class="vs-toggle active" onclick="showCompare('buildertrend')">vs Buildertrend</button>
+        <button class="vs-toggle" onclick="showCompare('procore')">vs Procore</button>
+        <button class="vs-toggle" onclick="showCompare('coconstruct')">vs CoConstruct</button>
+      </div>
+      <div id="compareTable" class="reveal"></div>
+      <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Build: $49&ndash;$599/mo &mdash; all-inclusive, no add-ons. Competitors charge more for less.</p>
+    </div>
   </div>
 </section>
 <style>
@@ -411,6 +416,18 @@ var buildTiers={crm:'Starter',quotes:'Starter',invoicing:'Starter',scheduling:'S
 var tierColors={Starter:'#22c55e',Pro:'#3b82f6',Business:'#a855f7',Construction:'#FF6D00',Enterprise:'#f59e0b'};
 function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
 function buildCk(f){var t=buildTiers[f];return '<span style="color:'+tierColors[t]+';font-size:10px;font-weight:700;letter-spacing:0.05em">'+t.toUpperCase()+'</span>'}
+function toggleCmp(){
+var c=document.getElementById('cmpContent'),b=document.getElementById('cmpToggleBtn');
+if(c.style.display==='none'){c.style.display='block';b.innerHTML='Hide comparison &nbsp;&uarr;';showCompareInit('buildertrend')}
+else{c.style.display='none';b.innerHTML='Compare Build vs. Buildertrend, Procore &amp; CoConstruct &nbsp;&darr;'}
+}
+function showCompareInit(key){
+document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});
+document.querySelector('.vs-toggle[onclick*="'+key+'"]').classList.add('active');
+var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Build (Tier)</th></tr></thead><tbody>';
+Object.keys(cats).forEach(function(cat){h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+buildCk(f)+'</td></tr>'})});
+h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$49</span> / <span style="color:#3b82f6">$149</span> / <span style="color:#a855f7">$299</span> / <span style="color:#FF6D00">$599</span> / <span style="color:#f59e0b">Custom</span></td></tr>';
+h+='</tbody></table>';document.getElementById('compareTable').innerHTML=h}
 function showCompare(key){
 document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});
 event.target.classList.add('active');
@@ -422,7 +439,7 @@ cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.fea
 h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$49</span> / <span style="color:#3b82f6">$149</span> / <span style="color:#a855f7">$299</span> / <span style="color:#FF6D00">$599</span> / <span style="color:#f59e0b">Custom</span></td></tr>';
 h+='</tbody></table>';
 document.getElementById('compareTable').innerHTML=h}
-showCompare('buildertrend');
+// Comparison hidden by default; clicking the expand button initializes it.
 </script>
 
 <!-- PRICING -->
