@@ -723,7 +723,7 @@ function getFormData() {
     deployment_model: selectedHosting === 'saas' ? 'saas' : 'owned',
     monthly_amount: selectedHosting === 'saas' ? planPrices[selectedPlan] || 0 : null,
     billing_type: selectedHosting === 'saas' ? 'subscription' : 'one_time',
-    products: ['crm', 'website'],
+    products: ['crm-fieldservice', 'website'],
     features: addons,
     notes: [
       'Deploy service: ' + deployLabel(selectedDeploy),
