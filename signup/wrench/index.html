@@ -703,7 +703,7 @@ function getFormData() {
   var addons = [];
   document.querySelectorAll('#addonsGrid input:checked').forEach(function(cb) { addons.push(cb.value); });
 
-  var planPrices = { solo: 59, 'small-shop': 149, growing: 279 };
+  var planPrices = { starter: 49, pro: 149, business: 299, fleet: 599, enterprise: 199 };
 
   return {
     name: val('companyName'),

@@ -618,7 +618,7 @@ function getFormData() {
   var features = [];
   document.querySelectorAll('#featuresGrid input:checked').forEach(function(cb) { features.push(cb.value); });
 
-  var planPrices = { solo: 49, starter: 129, pro: 299, enterprise: 85 };
+  var planPrices = { starter: 49, pro: 149, business: 299, storm: 599, enterprise: 199 };
 
   return {
     name: val('companyName'),
