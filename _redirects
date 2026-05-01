@@ -1,0 +1,13 @@
+# 301 redirects for retired/moved pages.
+# Render serves this file natively for static sites — Netlify-style syntax.
+# Format: <source>  <destination>  <status>
+
+# The Gold Standard moved to its own domain.
+# Permanent redirect so anyone with the old link (printed materials,
+# emails, social) lands in the right place.
+/goldstandard              https://goldstandardapp.com  301
+/goldstandard.html         https://goldstandardapp.com  301
+/goldstandard-consumers    https://goldstandardapp.com/pricing/consumer  301
+/goldstandard-consumers.html  https://goldstandardapp.com/pricing/consumer  301
+/goldstandard-growers      https://goldstandardapp.com/pricing/grower  301
+/goldstandard-growers.html https://goldstandardapp.com/pricing/grower  301
