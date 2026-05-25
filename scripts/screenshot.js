@@ -46,7 +46,9 @@ const server = http.createServer((req, res) => {
     { name: 'home-desktop',  url: '/',           w: 1440, h: 900,  full: true  },
     { name: 'home-mobile',   url: '/',           w: 390,  h: 844,  full: true  },
     { name: 'home-hero',     url: '/',           w: 1440, h: 900,  full: false },
-    { name: 'home-mission',  url: '/#mission',   w: 1440, h: 900,  full: false }
+    { name: 'home-mission',  url: '/#mission',   w: 1440, h: 900,  full: false },
+    { name: 'mission-desktop', url: '/mission.html', w: 1440, h: 900, full: true },
+    { name: 'mission-mobile',  url: '/mission.html', w: 390,  h: 844, full: true }
   ];
 
   const errors = [];
