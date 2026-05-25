@@ -1,0 +1,14 @@
+{
+  "name": "twomiah-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static marketing site for Twomiah Software Ventures.",
+  "scripts": {
+    "og": "node scripts/generate-og-images.js",
+    "screenshot": "node scripts/screenshot.js"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.0.0",
+    "sharp": "^0.34.0"
+  }
+}

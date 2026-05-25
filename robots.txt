@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block transient redirect / utility pages
+Disallow: /leaf-signup.html
+Disallow: /goldstandard.html
+Disallow: /goldstandard-consumers.html
+Disallow: /goldstandard-growers.html
+
+Sitemap: https://twomiah.com/sitemap.xml
