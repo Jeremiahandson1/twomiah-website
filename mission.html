@@ -56,6 +56,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-links a:hover{color:var(--white)}
 .nav-back{color:rgba(255,255,255,0.35)!important;font-size:11px!important}
 .nav-back:hover{color:rgba(255,255,255,0.7)!important}
+.nav-links a.active{color:var(--white);position:relative}
+.nav-links a.active::after{content:'';position:absolute;left:0;right:0;bottom:-22px;height:2px;background:var(--grad)}
 .nav-cta{background:var(--fire)!important;color:var(--white)!important;padding:8px 18px;border-radius:3px!important;transition:background 0.2s!important}
 .nav-cta:hover{background:var(--ember)!important}
 
@@ -135,6 +137,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:48
   <ul class="nav-links">
     <li><a href="/" class="nav-back">← Home</a></li>
     <li><a href="/#products">Products</a></li>
+    <li><a href="/mission.html" class="active">Why Twomiah</a></li>
     <li><a href="/#story">🔥 Our Story</a></li>
     <li><a href="/#products" class="nav-cta">Find Your Product</a></li>
   </ul>
