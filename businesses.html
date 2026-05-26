@@ -103,16 +103,16 @@ section{padding:100px 48px;position:relative}
 /* CASE STUDY — Potato-Potahto before/after */
 #case-study{padding:120px 48px;background:var(--dark);position:relative;overflow:hidden}
 #case-study::before{content:'';position:absolute;top:50%;left:-15%;width:50%;height:60%;background:radial-gradient(ellipse at center,rgba(255,109,0,0.04) 0%,transparent 60%);pointer-events:none;transform:translateY(-50%)}
-.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px;position:relative;z-index:1}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px;position:relative;z-index:1;align-items:start}
 .case-card{background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:6px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:all 0.25s;position:relative}
 .case-card:hover{border-color:rgba(255,109,0,0.25);transform:translateY(-4px)}
 .case-card.before{border-color:rgba(255,255,255,0.05)}
 .case-card.before:hover{border-color:rgba(255,255,255,0.18)}
 .case-stamp{position:absolute;top:18px;left:18px;z-index:2;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:0.2em;padding:6px 14px;border-radius:3px;background:rgba(13,13,13,0.85);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.5)}
 .case-stamp.after{background:rgba(255,61,0,0.92);border-color:transparent;color:var(--white)}
-.case-thumb{aspect-ratio:3/4;background:#0a0a0a;overflow:hidden;position:relative;border-bottom:1px solid rgba(255,255,255,0.06)}
-.case-thumb img{width:100%;height:auto;display:block;object-fit:cover;object-position:top center;min-height:100%}
-.case-thumb::after{content:'';position:absolute;left:0;right:0;bottom:0;height:35%;background:linear-gradient(to bottom,transparent,rgba(26,26,26,0.95));pointer-events:none}
+.case-thumb{background:#0a0a0a;overflow:hidden;position:relative;border-bottom:1px solid rgba(255,255,255,0.06);max-height:1100px}
+.case-thumb img{width:100%;height:auto;display:block}
+.case-thumb::after{content:'';position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(to bottom,transparent,rgba(26,26,26,0.92));pointer-events:none}
 .case-meta{padding:28px 32px}
 .case-platform{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ember);margin-bottom:6px}
 .case-card.before .case-platform{color:rgba(255,255,255,0.4)}
