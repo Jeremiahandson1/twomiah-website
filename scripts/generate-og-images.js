@@ -120,6 +120,41 @@ const products = [
     line1: 'QR-tracked inventory, digital ownership,',
     line2: 'buy/sell/trade. Stores from $49/mo.',
     footer: 'CARDSHOP.TWOMIAH.COM'
+  },
+  // The three audience-bucket landing pages — branded share cards so
+  // /businesses /apps /collectors get their own preview when shared.
+  {
+    slug: 'businesses',
+    bg: '#0D0D0D', glow: '#FF3D00',
+    stopA: '#FFAB00', stopB: '#FF6D00', stopC: '#FF3D00',
+    eyebrow: 'CRMS · TOOLS · WEBSITES',
+    title: 'BUSINESSES',
+    headline: 'Real software, real businesses.',
+    line1: 'Industry CRMs for trades, care, and dispensaries,',
+    line2: 'plus websites for local small businesses.',
+    footer: 'TWOMIAH.COM/BUSINESSES'
+  },
+  {
+    slug: 'apps',
+    bg: '#0D0D0D', glow: '#FF3D00',
+    stopA: '#FFAB00', stopB: '#FF6D00', stopC: '#FF3D00',
+    eyebrow: 'CONSUMER APPS',
+    title: 'APPS',
+    headline: 'For Real People.',
+    line1: 'Food transparency, cannabis lab data,',
+    line2: 'and civic accountability. Free. No ads.',
+    footer: 'TWOMIAH.COM/APPS'
+  },
+  {
+    slug: 'collectors',
+    bg: '#0A0A0A', glow: '#E8B84B',
+    stopA: '#F6D365', stopB: '#E8B84B', stopC: '#C8922A',
+    eyebrow: 'CARD COLLECTORS',
+    title: 'COLLECTORS',
+    headline: 'Built for the Hobby.',
+    line1: 'A chain-of-custody marketplace + live',
+    line2: 'breaking platform for sports cards.',
+    footer: 'TWOMIAH.COM/COLLECTORS'
   }
 ];
 
