@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twomiah for Businesses — CRMs, Tools &amp; Websites for the Trades, Care, and Local Shops</title>
+<meta name="description" content="Industry-specific CRMs for contractors, roofers, HVAC/plumbing, home care, and dispensaries — plus websites for local small businesses. Branded, shipped in minutes, owned by you.">
+<meta name="theme-color" content="#FF3D00">
+<link rel="canonical" href="https://twomiah.com/businesses">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Twomiah">
+<meta property="og:title" content="Twomiah for Businesses — CRMs, Tools &amp; Websites">
+<meta property="og:description" content="Industry-specific CRMs for the trades, home care, and dispensaries — plus websites for local small businesses.">
+<meta property="og:url" content="https://twomiah.com/businesses">
+<meta property="og:image" content="https://twomiah.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Twomiah for Businesses">
+<meta name="twitter:description" content="CRMs, tools, and websites for the trades, care agencies, dispensaries, and local shops.">
+<meta name="twitter:image" content="https://twomiah.com/og-image.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--fire:#FF3D00;--ember:#FF6D00;--gold:#FFAB00;--dark:#0D0D0D;--charcoal:#1A1A1A;--smoke:#2A2A2A;--ash:#555;--bone:#F5F0EB;--white:#FFFFFF;--grad:linear-gradient(135deg,#FFAB00,#FF6D00,#FF3D00)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:var(--fire)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(13,13,13,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-icon{width:32px;height:32px}
+.nav-wordmark{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.12em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.nav-cta{background:var(--fire)!important;color:var(--white)!important;padding:8px 18px;border-radius:3px!important}
+.nav-cta:hover{background:var(--ember)!important}
+
+.hero{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:160px 40px 100px;position:relative;overflow:hidden}
+.hero-glow{position:absolute;bottom:-80px;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(255,61,0,0.18) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--ember);margin-bottom:24px;animation:fadeUp 0.8s 0.1s both}
+.hero-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,8vw,104px);line-height:0.92;letter-spacing:0.03em;margin-bottom:24px;max-width:900px;animation:fadeUp 0.8s 0.2s both}
+.fire-line{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(15px,1.8vw,19px);line-height:1.75;color:rgba(255,255,255,0.55);max-width:680px;margin:0 auto 36px;animation:fadeUp 0.8s 0.3s both}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.8s 0.4s both}
+.btn-primary{background:var(--fire);color:var(--white);padding:13px 30px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;transition:all 0.2s;box-shadow:0 4px 20px rgba(255,61,0,0.3)}
+.btn-primary:hover{background:var(--ember);transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,61,0,0.4)}
+.btn-ghost{border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.65);padding:13px 30px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.45);color:var(--white);transform:translateY(-2px)}
+
+section{padding:100px 48px;position:relative}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{display:flex;align-items:center;gap:10px;font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--ember);margin-bottom:16px}
+.section-label::after{content:'';flex:0 0 36px;height:1px;background:var(--ember);opacity:0.5}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,68px);letter-spacing:0.04em;line-height:1;margin-bottom:16px}
+.section-title span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-sub{font-size:16px;line-height:1.75;color:rgba(255,255,255,0.5);max-width:680px;margin-bottom:48px}
+
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,0.04)}
+.products-grid.grid-2col{grid-template-columns:repeat(2,1fr)}
+.product-card{background:var(--charcoal);padding:40px 36px;text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:background 0.25s;border:1px solid transparent}
+.product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform 0.35s cubic-bezier(0.22,1,0.36,1)}
+.product-card:hover{background:#1e1e1e;border-color:rgba(255,109,0,0.12)}
+.product-card:hover::before{transform:scaleX(1)}
+.subdomain-badge{font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ash);margin-bottom:24px;font-family:'Barlow Condensed',sans-serif;transition:color 0.2s}
+.product-card:hover .subdomain-badge{color:var(--ember)}
+.product-num{font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:1;color:rgba(255,255,255,0.04);position:absolute;top:20px;right:24px;transition:color 0.25s}
+.product-card:hover .product-num{color:rgba(255,109,0,0.07)}
+.product-icon{font-size:26px;margin-bottom:14px}
+.product-tagline{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ember);margin-bottom:8px}
+.product-name{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:14px;line-height:1}
+.product-desc{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.45);flex:1;margin-bottom:24px}
+.product-link{font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--fire)}
+
+/* LOCAL BUSINESS TIER */
+#local{background:var(--charcoal);position:relative;overflow:hidden}
+#local::before{content:'';position:absolute;top:0;right:-20%;width:60%;height:100%;background:radial-gradient(ellipse at right center,rgba(255,61,0,0.05) 0%,transparent 60%);pointer-events:none}
+.local-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center;margin-top:48px;position:relative;z-index:1}
+.local-feats{display:flex;flex-direction:column;gap:18px;margin-top:32px}
+.local-feat{display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:start}
+.local-feat-bullet{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--ember);line-height:1}
+.local-feat-text{font-size:14px;line-height:1.75;color:rgba(255,255,255,0.6)}
+.local-feat-text strong{color:var(--bone);font-weight:600}
+.local-pricing{background:var(--dark);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:36px 32px}
+.local-pricing-tier{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ember);margin-bottom:16px}
+.local-pricing-line{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}
+.local-pricing-amount{font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:1;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.local-pricing-label{font-size:14px;color:rgba(255,255,255,0.5)}
+.local-pricing-divider{height:1px;background:rgba(255,255,255,0.1);margin:24px 0}
+.local-pricing-includes{font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--ember);margin-bottom:14px}
+.local-pricing-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.local-pricing-list li{font-size:13px;color:rgba(255,255,255,0.6);display:flex;gap:10px}
+.local-pricing-list li::before{content:'\2713';color:var(--fire);font-weight:700;flex-shrink:0}
+.local-cta{display:block;text-align:center;background:var(--fire);color:var(--white);padding:14px;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background 0.2s}
+.local-cta:hover{background:var(--ember)}
+
+/* PROOF */
+#proof{padding:120px 48px;background:var(--dark)}
+.proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px}
+.proof-card{background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:6px;overflow:hidden;transition:all 0.25s;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+.proof-card:hover{border-color:rgba(255,109,0,0.25);transform:translateY(-4px)}
+.proof-image{aspect-ratio:16/10;background:#0a0a0a;overflow:hidden;position:relative;border-bottom:1px solid rgba(255,255,255,0.06)}
+.proof-image img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.proof-image-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.18);font-size:13px;letter-spacing:0.15em;text-transform:uppercase;font-family:'Bebas Neue',sans-serif}
+.proof-body{padding:28px 32px}
+.proof-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ember);margin-bottom:8px}
+.proof-title{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.03em;margin-bottom:6px;line-height:1}
+.proof-domain{font-size:12px;color:rgba(255,255,255,0.45);font-family:'Barlow Condensed',sans-serif;margin-bottom:14px;letter-spacing:0.06em}
+.proof-desc{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.5);margin-bottom:18px}
+.proof-link{font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--fire)}
+
+/* CTA */
+#cta-band{padding:120px 48px;text-align:center;position:relative;overflow:hidden}
+#cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(255,61,0,0.09) 0%,transparent 70%);pointer-events:none}
+.cta-inner{position:relative;z-index:1;max-width:600px;margin:0 auto}
+.cta-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,80px);line-height:0.95;letter-spacing:0.04em;margin-bottom:20px}
+.cta-sub{font-size:17px;line-height:1.7;color:rgba(255,255,255,0.5);margin-bottom:40px}
+
+footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56px 48px 28px}
+.footer-top{max-width:1200px;margin:0 auto 40px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px}
+.footer-brand .nav-wordmark{display:block;margin-bottom:14px;font-size:20px}
+.footer-tagline{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.3);max-width:260px}
+.footer-col h5{font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--ember);margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-col ul a{color:rgba(255,255,255,0.35);text-decoration:none;font-size:13px;transition:color 0.2s}
+.footer-col ul a:hover{color:var(--white)}
+.footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.05);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy,.footer-loc{font-size:11px;color:rgba(255,255,255,0.18);letter-spacing:0.04em}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){.products-grid{grid-template-columns:repeat(2,1fr)}.local-grid{grid-template-columns:1fr;gap:48px}.proof-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}nav,section{padding-left:24px;padding-right:24px}}
+@media(max-width:640px){.products-grid,.products-grid.grid-2col{grid-template-columns:1fr}.nav-links{display:none}.footer-top{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg class="nav-icon" viewBox="0 0 120 120" fill="none">
+      <defs><linearGradient id="ng" x1="0" y1="120" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FFAB00"/><stop offset="50%" stop-color="#FF6D00"/><stop offset="100%" stop-color="#FF3D00"/></linearGradient><filter id="nglow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <path d="M42 96 L20 48 L42 60 L52 24 L62 52 L75 40 L60 96 Z" fill="url(#ng)" opacity="0.65"/>
+      <path d="M78 96 L56 44 L68 58 L78 18 L88 50 L104 36 L96 96 Z" fill="url(#ng)" filter="url(#nglow)"/>
+      <rect x="16" y="96" width="88" height="3" rx="1.5" fill="url(#ng)" opacity="0.45"/>
+    </svg>
+    <span class="nav-wordmark">TWOMIAH</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/businesses" class="active">For Businesses</a></li>
+    <li><a href="/apps">Consumer Apps</a></li>
+    <li><a href="/collectors">Card Collectors</a></li>
+    <li><a href="/#story">🔥 Our Story</a></li>
+    <li><a href="mailto:hello@twomiah.com?subject=Twomiah%20for%20Businesses" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <p class="hero-eyebrow">Twomiah · For Businesses</p>
+  <h1 class="hero-headline">Real software<br><span class="fire-line">for real businesses.</span></h1>
+  <p class="hero-sub">Industry-specific CRMs for contractors, trades, home care, and dispensaries — plus websites for local small businesses. Branded, deployed in minutes, owned by you.</p>
+  <div class="hero-actions">
+    <a href="#crm-suite" class="btn-primary">See the CRM Suite</a>
+    <a href="#local" class="btn-ghost">Just need a website? →</a>
+  </div>
+</section>
+
+<section id="crm-suite">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">The CRM Suite</div>
+      <h2 class="section-title">Five Industries.<br><span>One Operating System.</span></h2>
+      <p class="section-sub">Each Twomiah CRM is built around how a specific industry actually works. Same engine underneath, different workflows on top.</p>
+    </div>
+
+    <div class="products-grid">
+      <a href="/build.html" class="product-card reveal">
+        <span class="subdomain-badge">build.twomiah.com</span>
+        <div class="product-num">01</div>
+        <div class="product-icon">🏗️</div>
+        <div class="product-tagline">General Contractor</div>
+        <div class="product-name">Twomiah Build</div>
+        <p class="product-desc">Jobs, quotes, invoices, scheduling, project management, and crew coordination. From first lead to final invoice.</p>
+        <span class="product-link">Get started →</span>
+      </a>
+
+      <a href="/roof.html" class="product-card reveal">
+        <span class="subdomain-badge">roof.twomiah.com</span>
+        <div class="product-num">02</div>
+        <div class="product-icon">🏠</div>
+        <div class="product-tagline">Roofing Contractor</div>
+        <div class="product-name">Twomiah Roof</div>
+        <p class="product-desc">Satellite roof measurements, storm tracking, insurance claim management, canvassing tools, and instant estimator.</p>
+        <span class="product-link">Get started →</span>
+      </a>
+
+      <a href="/wrench.html" class="product-card reveal">
+        <span class="subdomain-badge">wrench.twomiah.com</span>
+        <div class="product-num">03</div>
+        <div class="product-icon">🔧</div>
+        <div class="product-tagline">HVAC · Plumbing · Electrical</div>
+        <div class="product-name">Twomiah Wrench</div>
+        <p class="product-desc">Dispatch, service agreements, flat-rate pricebook, and field tech mobile app. Built for the trades that keep homes running.</p>
+        <span class="product-link">Get started →</span>
+      </a>
+
+      <a href="/care.html" class="product-card reveal">
+        <span class="subdomain-badge">care.twomiah.com</span>
+        <div class="product-num">04</div>
+        <div class="product-icon">💚</div>
+        <div class="product-tagline">Home Care Agency</div>
+        <div class="product-name">Twomiah Care</div>
+        <p class="product-desc">Scheduling, care plans, caregiver management, family portal, and EVV compliance. Built for agencies who put people first.</p>
+        <span class="product-link">Learn more →</span>
+      </a>
+
+      <a href="/leaf.html" class="product-card reveal">
+        <span class="subdomain-badge">leaf.twomiah.com</span>
+        <div class="product-num">05</div>
+        <div class="product-icon">🌿</div>
+        <div class="product-tagline">Cannabis Dispensary</div>
+        <div class="product-name">Twomiah Leaf</div>
+        <p class="product-desc">Menu management, loyalty program, age-verified website, and compliance tracking. One platform, no patchwork.</p>
+        <span class="product-link">See the platform →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="factory" style="background:var(--charcoal)">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">The Engine</div>
+      <h2 class="section-title">The <span>Factory</span> ships them all.</h2>
+      <p class="section-sub">Every Twomiah CRM is generated by one engine. Branded, deployed in minutes, managed from one dashboard. The products above are what the Factory builds.</p>
+    </div>
+    <div class="products-grid" style="margin-top:32px">
+      <a href="/factory.html" class="product-card reveal" style="grid-column:span 3">
+        <span class="subdomain-badge">factory.twomiah.com</span>
+        <div class="product-num">06</div>
+        <div class="product-icon">🏭</div>
+        <div class="product-tagline">Deployment Engine · B2B White-Label</div>
+        <div class="product-name">Twomiah Factory</div>
+        <p class="product-desc">The deployment engine behind every Twomiah CRM. Generates fully branded, production-ready software in minutes — your logo, your domain, your data. Multi-tenant management from one dashboard. If you want to white-label Twomiah for your own customers, this is the door.</p>
+        <span class="product-link">See how it works →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="vision">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Tools for Contractors</div>
+      <h2 class="section-title">Show their <span>actual house.</span></h2>
+      <p class="section-sub">An AI exterior visualizer that embeds on your existing contractor website. Homeowners upload a photo, pick from 450+ real products, and see a photorealistic result in seconds.</p>
+    </div>
+    <div class="products-grid grid-2col" style="margin-top:32px">
+      <a href="/vision.html" class="product-card reveal">
+        <span class="subdomain-badge">vision.twomiah.com</span>
+        <div class="product-num">07</div>
+        <div class="product-icon">🏡</div>
+        <div class="product-tagline">AI Home Visualization</div>
+        <div class="product-name">Twomiah Vision</div>
+        <p class="product-desc">Embeddable AI visualizer for contractor websites. Real products, photorealistic renders, branded experience. Turn browsers into qualified leads.</p>
+        <span class="product-link">See how it works →</span>
+      </a>
+
+      <a href="mailto:hello@twomiah.com?subject=Vision%20demo" class="product-card reveal">
+        <span class="subdomain-badge">Book a walkthrough</span>
+        <div class="product-num">07b</div>
+        <div class="product-icon">📞</div>
+        <div class="product-tagline">Talk to a Human</div>
+        <div class="product-name">15-Minute Demo</div>
+        <p class="product-desc">Want to see Vision running on a real contractor site? Email us and we'll walk you through it live. No deck, no slides — just the product on a screen.</p>
+        <span class="product-link">Email us →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="local">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Local Small Businesses</div>
+      <h2 class="section-title">Done with <span>GoDaddy templates?</span></h2>
+      <p class="section-sub">If you run a local shop, salon, restaurant, or service business and your website looks like everyone else's — we build real websites for local businesses. Clean, fast, and owned by you.</p>
+    </div>
+
+    <div class="local-grid">
+      <div class="reveal">
+        <div class="local-feats">
+          <div class="local-feat">
+            <span class="local-feat-bullet">01</span>
+            <p class="local-feat-text"><strong>Built to look like your business, not a template.</strong> Real photography, real copy, a real brand. Not a stock theme with your logo dropped in the corner.</p>
+          </div>
+          <div class="local-feat">
+            <span class="local-feat-bullet">02</span>
+            <p class="local-feat-text"><strong>Owned by you, hosted by us.</strong> You keep the domain. You keep the content. If you ever want to leave, we hand it over — no hostage situation.</p>
+          </div>
+          <div class="local-feat">
+            <span class="local-feat-bullet">03</span>
+            <p class="local-feat-text"><strong>Done in about a week.</strong> Not three months of "we'll get back to you." Send us the basics, see a draft in days, ship the site, move on with your life.</p>
+          </div>
+          <div class="local-feat">
+            <span class="local-feat-bullet">04</span>
+            <p class="local-feat-text"><strong>Local first.</strong> We're in Eau Claire, WI. If you're around, we'll come meet you. If you're not, we work the same way over a phone call.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="local-pricing reveal">
+        <div class="local-pricing-tier">Flat-Price Build</div>
+        <div class="local-pricing-line">
+          <span class="local-pricing-amount">$1,000</span>
+          <span class="local-pricing-label">one-time build</span>
+        </div>
+        <div class="local-pricing-line">
+          <span class="local-pricing-amount" style="font-size:38px">$75</span>
+          <span class="local-pricing-label">/ month hosting &amp; care</span>
+        </div>
+
+        <div class="local-pricing-divider"></div>
+
+        <div class="local-pricing-includes">What's Included</div>
+        <ul class="local-pricing-list">
+          <li>Custom-designed site, not a template</li>
+          <li>Mobile, tablet, desktop — all real</li>
+          <li>Your domain, your email, your photos</li>
+          <li>Contact form, hours, map, basics</li>
+          <li>Hosting, backups, security, SSL</li>
+          <li>Edits within 48 hours, no extra cost</li>
+        </ul>
+
+        <a href="mailto:hello@twomiah.com?subject=Local%20business%20website%20—%20tell%20me%20more&amp;body=Business%20name%3A%0A%0AWhat%20do%20you%20do%3F%0A%0ACurrent%20website%20(if%20any)%3A%0A%0ABest%20way%20to%20reach%20you%3A%0A%0A" class="local-cta">Tell us about your business →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proof">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Built With Twomiah</div>
+      <h2 class="section-title">Real customers.<br><span>Live sites.</span></h2>
+      <p class="section-sub">These aren't mockups. Both sites below are running in production, serving real customers. Click through and see for yourself.</p>
+    </div>
+
+    <div class="proof-grid">
+      <a href="https://claflinconstruction.net" target="_blank" rel="noopener" class="proof-card reveal">
+        <div class="proof-image">
+          <span class="proof-image-fallback">claflinconstruction.net</span>
+          <img src="/images/portfolio-claflin.png" alt="Claflin Construction website built with Twomiah" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="proof-body">
+          <div class="proof-eyebrow">General Contractor</div>
+          <div class="proof-title">Claflin Construction</div>
+          <div class="proof-domain">claflinconstruction.net ↗</div>
+          <p class="proof-desc">Navy/gold branded contractor site with service navigation, embedded visualizer, and request-estimate CTA. Built on the Build vertical.</p>
+          <span class="proof-link">Visit the live site →</span>
+        </div>
+      </a>
+
+      <a href="https://chippewavalleyhomecare.com" target="_blank" rel="noopener" class="proof-card reveal">
+        <div class="proof-image">
+          <span class="proof-image-fallback">chippewavalleyhomecare.com</span>
+          <img src="/images/portfolio-cvhc.png" alt="Chippewa Valley Home Care website built with Twomiah" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="proof-body">
+          <div class="proof-eyebrow">Home Care Agency</div>
+          <div class="proof-title">Chippewa Valley Home Care</div>
+          <div class="proof-domain">chippewavalleyhomecare.com ↗</div>
+          <p class="proof-desc">Warm, compassionate home care site with VA-approved badging, real photography, and clear caregiver/family CTAs. Built on the Care vertical.</p>
+          <span class="proof-link">Visit the live site →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="cta-band">
+  <div class="cta-inner">
+    <div class="section-label" style="justify-content:center">Get Started</div>
+    <h2 class="cta-title">Pick a door.<br>We'll meet you there.</h2>
+    <p class="cta-sub">CRM for your industry, a website for your shop, or both. Tell us what you do and we'll show you what's possible.</p>
+    <div class="hero-actions">
+      <a href="mailto:hello@twomiah.com?subject=Tell%20me%20about%20Twomiah" class="btn-primary">Email Us</a>
+      <a href="#crm-suite" class="btn-ghost">See the suite again</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="nav-wordmark">TWOMIAH</span>
+      <p class="footer-tagline">Pro-grade software for the people who actually do the work. Built in Eau Claire, Wisconsin.</p>
+    </div>
+    <div class="footer-col">
+      <h5>For Businesses</h5>
+      <ul>
+        <li><a href="/businesses">Overview</a></li>
+        <li><a href="/build.html">Build — Contractors</a></li>
+        <li><a href="/roof.html">Roof — Roofing</a></li>
+        <li><a href="/wrench.html">Wrench — Trades</a></li>
+        <li><a href="/care.html">Care — Home Care</a></li>
+        <li><a href="/leaf.html">Leaf — Dispensary</a></li>
+        <li><a href="/factory.html">Factory</a></li>
+        <li><a href="/vision.html">Vision</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Consumer Apps</h5>
+      <ul>
+        <li><a href="/apps">Overview</a></li>
+        <li><a href="https://ickthatish.com" target="_blank" rel="noopener">Ick That Ish ↗</a></li>
+        <li><a href="https://goldstandardapp.com" target="_blank" rel="noopener">Gold Standard ↗</a></li>
+        <li><a href="https://whosrunningusa.com" target="_blank" rel="noopener">WhosRunningUSA ↗</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Card Collectors</h5>
+      <ul>
+        <li><a href="/collectors">Overview</a></li>
+        <li><a href="https://cardshop.twomiah.com" target="_blank" rel="noopener">Card Shop ↗</a></li>
+        <li><a href="https://breakreturns.com" target="_blank" rel="noopener">BreakReturns ↗</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="/mission.html">Mission</a></li>
+        <li><a href="/#story">Our Story</a></li>
+        <li><a href="mailto:hello@twomiah.com">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Twomiah. All rights reserved. · <a href="/terms.html" style="color:var(--ash);text-decoration:none">Terms</a> · <a href="/privacy.html" style="color:var(--ash);text-decoration:none">Privacy</a> · <a href="/security.html" style="color:var(--ash);text-decoration:none">Security</a></span>
+    <span class="footer-loc">Built in Eau Claire, WI</span>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),i*60) });
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+<script src="/cookie-banner.js"></script>
+</body>
+</html>

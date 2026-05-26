@@ -76,7 +76,11 @@
         {"@type": "ListItem", "position": 5, "name": "Twomiah Leaf — Dispensary Platform", "url": "https://twomiah.com/leaf.html"},
         {"@type": "ListItem", "position": 6, "name": "Twomiah Factory — Deployment Engine", "url": "https://twomiah.com/factory.html"},
         {"@type": "ListItem", "position": 7, "name": "Twomiah Vision — AI Home Visualization", "url": "https://twomiah.com/vision.html"},
-        {"@type": "ListItem", "position": 8, "name": "Twomiah IckApp — Food Scanner", "url": "https://twomiah.com/ickapp.html"}
+        {"@type": "ListItem", "position": 8, "name": "Ick That Ish — Food Transparency", "url": "https://ickthatish.com"},
+        {"@type": "ListItem", "position": 9, "name": "Gold Standard — Cannabis Lab Testing Transparency", "url": "https://goldstandardapp.com"},
+        {"@type": "ListItem", "position": 10, "name": "WhosRunningUSA — Civic Transparency", "url": "https://whosrunningusa.com"},
+        {"@type": "ListItem", "position": 11, "name": "Twomiah Card Shop — Chain-of-Custody Marketplace", "url": "https://cardshop.twomiah.com"},
+        {"@type": "ListItem", "position": 12, "name": "BreakReturns — Live Card Breaks", "url": "https://breakreturns.com"}
       ]
     }
   ]
@@ -151,6 +155,25 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .product-card:hover .product-link{gap:12px}
 .products-grid.grid-2col{grid-template-columns:repeat(2,1fr)}
 
+/* AUDIENCE PICKER */
+.audience-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:1200px;margin:0 auto 96px;background:rgba(255,255,255,0.04)}
+.audience-card{background:var(--charcoal);padding:48px 36px 40px;text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:background 0.25s;border:1px solid transparent;min-height:340px}
+.audience-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform 0.35s cubic-bezier(0.22,1,0.36,1)}
+.audience-card:hover{background:#1e1e1e;border-color:rgba(255,109,0,0.18)}
+.audience-card:hover::before{transform:scaleX(1)}
+.audience-icon{font-size:40px;margin-bottom:24px;line-height:1}
+.audience-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--ember);margin-bottom:14px}
+.audience-title{font-family:'Bebas Neue',sans-serif;font-size:44px;line-height:0.95;letter-spacing:0.03em;margin-bottom:18px}
+.audience-desc{font-size:15px;line-height:1.7;color:rgba(255,255,255,0.55);flex:1;margin-bottom:24px}
+.audience-link{font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--fire)}
+
+/* BUCKET HEADERS */
+.bucket-header{max-width:1200px;margin:96px auto 32px;padding-left:4px;scroll-margin-top:96px}
+.bucket-header:first-of-type{margin-top:0}
+.bucket-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,4.5vw,60px);line-height:0.95;letter-spacing:0.04em;margin:14px 0 16px}
+.bucket-title span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.bucket-intro{font-size:15px;line-height:1.75;color:rgba(255,255,255,0.5);max-width:640px}
+
 /* MISSION */
 #mission{padding:120px 48px;position:relative;overflow:hidden}
 #mission::before{content:'';position:absolute;top:0;left:-20%;width:60%;height:100%;background:radial-gradient(ellipse at left center,rgba(255,61,0,0.05) 0%,transparent 60%);pointer-events:none}
@@ -186,7 +209,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 /* FOOTER */
 footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56px 48px 28px}
-.footer-top{max-width:1200px;margin:0 auto 40px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.footer-top{max-width:1200px;margin:0 auto 40px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px}
 .footer-brand .nav-wordmark{display:block;margin-bottom:14px;font-size:20px}
 .footer-tagline{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.3);max-width:260px}
 .footer-col h5{font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--ember);margin-bottom:16px}
@@ -202,7 +225,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* RESPONSIVE */
-@media(max-width:1024px){.products-grid{grid-template-columns:repeat(2,1fr)}.mission-inner{grid-template-columns:1fr;gap:48px}.story-inner{grid-template-columns:1fr;gap:48px}.footer-top{grid-template-columns:1fr 1fr}nav{padding:16px 24px}#products,#mission,#story,#cta{padding:80px 24px}}
+@media(max-width:1024px){.products-grid{grid-template-columns:repeat(2,1fr)}.audience-picker{grid-template-columns:1fr;margin-bottom:64px}.bucket-header{margin:64px auto 24px}.mission-inner{grid-template-columns:1fr;gap:48px}.story-inner{grid-template-columns:1fr;gap:48px}.footer-top{grid-template-columns:1fr 1fr}nav{padding:16px 24px}#products,#mission,#story,#cta{padding:80px 24px}}
 @media(max-width:640px){.products-grid,.products-grid.grid-2col{grid-template-columns:1fr}.nav-links{display:none}.footer-top{grid-template-columns:1fr}.mission-stats{grid-template-columns:1fr}.hero{padding:100px 24px 60px}}
 </style>
 </head>
@@ -219,10 +242,11 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
     <span class="nav-wordmark">TWOMIAH</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#products">Products</a></li>
-    <li><a href="#mission">Why Twomiah</a></li>
+    <li><a href="/businesses">For Businesses</a></li>
+    <li><a href="/apps">Consumer Apps</a></li>
+    <li><a href="/collectors">Card Collectors</a></li>
     <li><a href="#story" style="color:rgba(255,255,255,0.85)">🔥 Our Story</a></li>
-    <li><a href="#products" class="nav-cta">Find Your Product</a></li>
+    <li><a href="mailto:hello@twomiah.com" class="nav-cta">Get Started</a></li>
   </ul>
 </nav>
 
@@ -237,25 +261,54 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
     <rect x="16" y="96" width="88" height="3" rx="1.5" fill="url(#hg)" opacity="0.45"/>
   </svg>
   <h1 class="hero-headline">Pro Tools.<br><span class="fire-line">Real People.</span></h1>
-  <p class="hero-sub">Industry-specific CRMs and websites for <em>contractors, roofers, HVAC + plumbing, home care agencies, and dispensaries</em> — deployed in minutes, priced for the people who actually do the work.</p>
+  <p class="hero-sub">Industry-specific CRMs and websites for <em>contractors, roofers, HVAC + plumbing, home care agencies, and dispensaries</em> — plus consumer apps and a card-collector ecosystem. Built for the people who actually do the work.</p>
   <div class="hero-actions">
-    <a href="factory.html" class="btn-primary">Explore The Factory</a>
-    <a href="#products" class="btn-ghost">See All Products</a>
+    <a href="#products" class="btn-primary">Find What You Need ↓</a>
   </div>
   <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
 
 <section id="products">
   <div class="products-header reveal">
-    <div class="section-label">What We Build</div>
-    <h2 class="products-title">Real Software.<br><span>Real Industries.</span></h2>
+    <div class="section-label">Who Are You?</div>
+    <h2 class="products-title">Three Doors.<br><span>One Workshop.</span></h2>
   </div>
 
-  <!-- CRM Suite -->
-  <div style="max-width:1200px;margin:0 auto 12px">
-    <div style="font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--ember);margin-bottom:8px;padding-left:4px">CRM Suite — Industry-Specific Business Software</div>
+  <!-- AUDIENCE PICKER -->
+  <div class="audience-picker reveal">
+    <a href="#for-businesses" class="audience-card">
+      <div class="audience-icon">🛠️</div>
+      <div class="audience-eyebrow">For Businesses</div>
+      <h3 class="audience-title">CRMs<br>&amp; Websites.</h3>
+      <p class="audience-desc">Industry-specific CRMs for contractors, trades, home care, and dispensaries — plus websites for local small businesses.</p>
+      <span class="audience-link">See the suite ↓</span>
+    </a>
+
+    <a href="#consumer-apps" class="audience-card">
+      <div class="audience-icon">📱</div>
+      <div class="audience-eyebrow">Consumer Apps</div>
+      <h3 class="audience-title">For Real<br>People.</h3>
+      <p class="audience-desc">Food transparency, cannabis lab testing, and civic accountability. Apps that put real information back in your hands.</p>
+      <span class="audience-link">See the apps ↓</span>
+    </a>
+
+    <a href="#card-collectors" class="audience-card">
+      <div class="audience-icon">🃏</div>
+      <div class="audience-eyebrow">Card Collectors</div>
+      <h3 class="audience-title">Marketplace<br>+ Breaks.</h3>
+      <p class="audience-desc">A chain-of-custody marketplace and a live breaking platform — built for the people who actually collect.</p>
+      <span class="audience-link">See the platform ↓</span>
+    </a>
   </div>
-  <div class="products-grid" style="margin-bottom:48px">
+
+  <!-- ============ FOR BUSINESSES ============ -->
+  <div id="for-businesses" class="bucket-header reveal">
+    <div class="section-label">For Businesses</div>
+    <h3 class="bucket-title">CRMs, Tools<br><span>&amp; the Factory.</span></h3>
+    <p class="bucket-intro">Industry-specific business software for contractors, trades, home care, and dispensaries — plus websites for local small businesses. The Factory ships them all in minutes.</p>
+  </div>
+
+  <div class="products-grid">
     <a href="build.html" class="product-card reveal">
       <span class="subdomain-badge">build.twomiah.com</span>
       <div class="product-num">01</div>
@@ -309,11 +362,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
     </a>
   </div>
 
-  <!-- Platform -->
-  <div style="max-width:1200px;margin:0 auto 12px">
-    <div style="font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--ember);margin-bottom:8px;padding-left:4px">Platform — Powering Your System</div>
-  </div>
-  <div class="products-grid" style="margin-bottom:48px">
+  <div class="products-grid" style="margin-top:2px">
     <a href="factory.html" class="product-card reveal" style="grid-column:span 3">
       <span class="subdomain-badge">factory.twomiah.com</span>
       <div class="product-num">06</div>
@@ -325,11 +374,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
     </a>
   </div>
 
-  <!-- Standalone Apps -->
-  <div style="max-width:1200px;margin:0 auto 12px">
-    <div style="font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--ember);margin-bottom:8px;padding-left:4px">Standalone Apps</div>
-  </div>
-  <div class="products-grid grid-2col" style="margin-bottom:48px">
+  <div class="products-grid grid-2col" style="margin-top:2px">
     <a href="vision.html" class="product-card reveal">
       <span class="subdomain-badge">vision.twomiah.com</span>
       <div class="product-num">07</div>
@@ -340,40 +385,82 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
       <span class="product-link">See how it works</span>
     </a>
 
-    <a href="ickapp.html" class="product-card reveal">
-      <span class="subdomain-badge">ick.twomiah.com</span>
+    <a href="mailto:hello@twomiah.com?subject=Local%20business%20website%20—%20tell%20me%20more&amp;body=Tell%20us%20about%20your%20business%3A%0A%0A" class="product-card reveal">
+      <span class="subdomain-badge">Local · Eau Claire, WI</span>
       <div class="product-num">08</div>
-      <div class="product-icon">📱</div>
-      <div class="product-tagline">Food Scanner · Consumer App</div>
-      <div class="product-name">Twomiah IckApp</div>
-      <p class="product-desc">Scan any food barcode and instantly see a health score, harmful ingredient warnings, and cleaner alternatives. Know what you're actually eating.</p>
-      <span class="product-link">Download the app</span>
+      <div class="product-icon">🏪</div>
+      <div class="product-tagline">Local Small Businesses</div>
+      <div class="product-name">Local Websites</div>
+      <p class="product-desc">Done with GoDaddy templates? We build real websites for local businesses — clean, fast, and owned by you. Flat-price build, low monthly hosting.</p>
+      <span class="product-link">Tell us about your business</span>
     </a>
   </div>
 
-  <!-- Coming Soon -->
-  <div style="max-width:1200px;margin:0 auto 12px">
-    <div style="font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--ash);margin-bottom:8px;padding-left:4px">Building Now — Join the Waitlist</div>
+  <!-- ============ CONSUMER APPS ============ -->
+  <div id="consumer-apps" class="bucket-header reveal">
+    <div class="section-label">Consumer Apps</div>
+    <h3 class="bucket-title">For Real<br><span>People.</span></h3>
+    <p class="bucket-intro">Apps that put real information back in your hands — what's in your food, what's in your cannabis, and who's actually running for office.</p>
   </div>
-  <div class="products-grid grid-2col">
-    <a href="mailto:hello@twomiah.com?subject=Waitlist%3A%20WhosRunningUSA&amp;body=Add%20me%20to%20the%20WhosRunningUSA%20waitlist." class="product-card reveal" style="cursor:pointer">
-      <span class="cs-badge">Building Now</span>
+
+  <div class="products-grid">
+    <a href="https://ickthatish.com" target="_blank" rel="noopener" class="product-card reveal">
+      <span class="subdomain-badge">ickthatish.com ↗</span>
       <div class="product-num">09</div>
-      <div class="product-icon">🗳️</div>
-      <div class="product-tagline">Political Transparency</div>
-      <div class="product-name">WhosRunningUSA</div>
-      <p class="product-desc">Track every candidate, every race, every dollar — from local school board to the White House. Real transparency for real voters.</p>
-      <span class="product-link">Join the waitlist</span>
+      <div class="product-icon">🥫</div>
+      <div class="product-tagline">Food Transparency</div>
+      <div class="product-name">Ick That Ish</div>
+      <p class="product-desc">Your grocery store lied. Scan any food barcode and instantly see harmful ingredients, what's banned in Europe, and cleaner alternatives.</p>
+      <span class="product-link">Open the app</span>
     </a>
 
-    <a href="cardshop.html" class="product-card reveal">
-      <span class="cs-badge">Building Now</span>
+    <a href="https://goldstandardapp.com" target="_blank" rel="noopener" class="product-card reveal">
+      <span class="subdomain-badge">goldstandardapp.com ↗</span>
       <div class="product-num">10</div>
+      <div class="product-icon">🧪</div>
+      <div class="product-tagline">Cannabis Lab Testing</div>
+      <div class="product-name">Gold Standard</div>
+      <p class="product-desc">The package tells you it's tested. We show you what's actually on file — pulled directly from METRC and BioTrack. Transparency for consumers and growers.</p>
+      <span class="product-link">Open the app</span>
+    </a>
+
+    <a href="https://whosrunningusa.com" target="_blank" rel="noopener" class="product-card reveal">
+      <span class="subdomain-badge">whosrunningusa.com ↗</span>
+      <div class="product-num">11</div>
+      <div class="product-icon">🗳️</div>
+      <div class="product-tagline">Civic Transparency</div>
+      <div class="product-name">WhosRunningUSA</div>
+      <p class="product-desc">The best candidates don't have the most money. Track every candidate, every race, every dollar — from school board to the White House.</p>
+      <span class="product-link">Open the app</span>
+    </a>
+  </div>
+
+  <!-- ============ CARD COLLECTORS ============ -->
+  <div id="card-collectors" class="bucket-header reveal">
+    <div class="section-label">Card Collectors</div>
+    <h3 class="bucket-title">Marketplace<br><span>+ Breaks.</span></h3>
+    <p class="bucket-intro">A marketplace with chain-of-custody history and a live breaking platform — built around how collectors actually buy, sell, and trade.</p>
+  </div>
+
+  <div class="products-grid grid-2col">
+    <a href="https://cardshop.twomiah.com" target="_blank" rel="noopener" class="product-card reveal">
+      <span class="subdomain-badge">cardshop.twomiah.com ↗</span>
+      <div class="product-num">12</div>
       <div class="product-icon">🃏</div>
-      <div class="product-tagline">Card Marketplace</div>
+      <div class="product-tagline">Marketplace · Chain of Custody</div>
       <div class="product-name">Twomiah Card Shop</div>
-      <p class="product-desc">Buy, sell, and trade sports cards in a marketplace built for collectors. Clean listings, fair prices, and a community that knows the hobby.</p>
-      <span class="product-link">Preview the platform</span>
+      <p class="product-desc">Every card has a history. Card Shop is the chain — pack-out videos, ownership records, a stolen-card registry, a show floor, and a local card-shop finder.</p>
+      <span class="product-link">Open the marketplace</span>
+    </a>
+
+    <a href="https://breakreturns.com" target="_blank" rel="noopener" class="product-card reveal">
+      <span class="subdomain-badge">breakreturns.com ↗</span>
+      <div class="product-num">13</div>
+      <div class="product-icon">📦</div>
+      <div class="product-tagline">Live Card Breaks</div>
+      <div class="product-name">BreakReturns</div>
+      <p class="product-desc">Buy a share, watch the break live, bid on cards. A breaking platform built around the four-step flow real collectors actually use.</p>
+      <span class="product-link">Open the platform</span>
     </a>
   </div>
 </section>
@@ -389,7 +476,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
       <br>
       <p class="mission-copy">Twomiah changes that. Every product we build starts with a real problem that real people face — built the way it should've been built from the start. <strong>Powerful, simple, and priced for the people who actually do the work.</strong></p>
       <div class="mission-stats">
-        <div class="stat"><div class="stat-num">8</div><div class="stat-label">Products Shipped</div></div>
+        <div class="stat"><div class="stat-num">7</div><div class="stat-label">Live Properties Shipped</div></div>
         <div class="stat"><div class="stat-num">5</div><div class="stat-label">CRM Verticals</div></div>
         <div class="stat"><div class="stat-num">$0</div><div class="stat-label">Setup Fee</div></div>
         <div class="stat"><div class="stat-num">Mins</div><div class="stat-label">Not Months to Launch</div></div>
@@ -443,28 +530,40 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
       <p class="footer-tagline">Pro-grade software for the people who actually do the work. Built in Eau Claire, Wisconsin.</p>
     </div>
     <div class="footer-col">
-      <h5>CRM Suite</h5>
+      <h5>For Businesses</h5>
       <ul>
-        <li><a href="build.html">Build — Contractors</a></li>
-        <li><a href="roof.html">Roof — Roofing</a></li>
-        <li><a href="wrench.html">Wrench — Field Service</a></li>
-        <li><a href="care.html">Care — Home Care</a></li>
-        <li><a href="leaf.html">Leaf — Dispensary</a></li>
+        <li><a href="/businesses">Overview</a></li>
+        <li><a href="/build.html">Build — Contractors</a></li>
+        <li><a href="/roof.html">Roof — Roofing</a></li>
+        <li><a href="/wrench.html">Wrench — Trades</a></li>
+        <li><a href="/care.html">Care — Home Care</a></li>
+        <li><a href="/leaf.html">Leaf — Dispensary</a></li>
+        <li><a href="/factory.html">Factory</a></li>
+        <li><a href="/vision.html">Vision</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h5>Products</h5>
+      <h5>Consumer Apps</h5>
       <ul>
-        <li><a href="factory.html">Twomiah Factory</a></li>
-        <li><a href="vision.html">Twomiah Vision</a></li>
-        <li><a href="ickapp.html">Twomiah IckApp</a></li>
+        <li><a href="/apps">Overview</a></li>
+        <li><a href="https://ickthatish.com" target="_blank" rel="noopener">Ick That Ish ↗</a></li>
+        <li><a href="https://goldstandardapp.com" target="_blank" rel="noopener">Gold Standard ↗</a></li>
+        <li><a href="https://whosrunningusa.com" target="_blank" rel="noopener">WhosRunningUSA ↗</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Card Collectors</h5>
+      <ul>
+        <li><a href="/collectors">Overview</a></li>
+        <li><a href="https://cardshop.twomiah.com" target="_blank" rel="noopener">Card Shop ↗</a></li>
+        <li><a href="https://breakreturns.com" target="_blank" rel="noopener">BreakReturns ↗</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h5>Company</h5>
       <ul>
+        <li><a href="/mission.html">Mission</a></li>
         <li><a href="#story">Our Story</a></li>
-        <li><a href="mission.html">Why Twomiah</a></li>
         <li><a href="mailto:hello@twomiah.com">Contact</a></li>
       </ul>
     </div>
@@ -481,6 +580,7 @@ const obs = new IntersectionObserver((entries) => {
 },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 document.querySelectorAll('.product-card').forEach((c,i)=>c.style.transitionDelay=`${i*0.05}s`);
+document.querySelectorAll('.audience-card').forEach((c,i)=>c.style.transitionDelay=`${i*0.08}s`);
 </script>
 <script src="/cookie-banner.js"></script>
 </body>

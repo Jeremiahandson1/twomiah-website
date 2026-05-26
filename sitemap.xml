@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://twomiah.com/</loc><lastmod>2026-05-25</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://twomiah.com/build.html</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://twomiah.com/roof.html</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://twomiah.com/wrench.html</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://twomiah.com/care.html</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://twomiah.com/leaf.html</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://twomiah.com/factory.html</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://twomiah.com/vision.html</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://twomiah.com/ickapp.html</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://twomiah.com/cardshop.html</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://twomiah.com/mission.html</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://twomiah.com/</loc><lastmod>2026-05-26</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://twomiah.com/businesses</loc><lastmod>2026-05-26</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://twomiah.com/apps</loc><lastmod>2026-05-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://twomiah.com/collectors</loc><lastmod>2026-05-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://twomiah.com/build.html</loc><lastmod>2026-05-26</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://twomiah.com/roof.html</loc><lastmod>2026-05-26</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://twomiah.com/wrench.html</loc><lastmod>2026-05-26</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://twomiah.com/care.html</loc><lastmod>2026-05-26</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://twomiah.com/leaf.html</loc><lastmod>2026-05-26</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://twomiah.com/factory.html</loc><lastmod>2026-05-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://twomiah.com/vision.html</loc><lastmod>2026-05-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://twomiah.com/mission.html</loc><lastmod>2026-05-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://twomiah.com/home.html</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://twomiah.com/theblock.html</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://twomiah.com/signup/build/</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>

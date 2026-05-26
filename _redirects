@@ -11,3 +11,11 @@
 /goldstandard-consumers.html  https://goldstandardapp.com/pricing/consumer  301
 /goldstandard-growers      https://goldstandardapp.com/pricing/grower  301
 /goldstandard-growers.html https://goldstandardapp.com/pricing/grower  301
+
+# IckApp and Card Shop now live at their own domains and are surfaced via
+# /apps and /collectors on twomiah.com. Anyone hitting the old marketing
+# pages should land at the actual live product.
+/ickapp         https://ickthatish.com         301
+/ickapp.html    https://ickthatish.com         301
+/cardshop       https://cardshop.twomiah.com   301
+/cardshop.html  https://cardshop.twomiah.com   301
