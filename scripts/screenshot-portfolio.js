@@ -17,9 +17,33 @@ const SITES = [
   { slug: 'portfolio-breakreturns',    url: 'https://breakreturns.com' },
   // Case study: same local business, two builders. Full-page so the
   // contrast carries even after the visitor stops scrolling on /businesses.
-  { slug: 'case-potatopotahto-before', url: 'https://potato-potahto.com',         fullPage: true },
-  { slug: 'case-potatopotahto-after',  url: 'https://potato-potahto.netlify.app', fullPage: true }
+  // scrollFirst triggers IntersectionObserver-driven fade-ins before capture
+  // so the screenshot shows real content, not opacity:0 placeholders.
+  { slug: 'case-potatopotahto-before', url: 'https://potato-potahto.com',         fullPage: true, scrollFirst: true },
+  { slug: 'case-potatopotahto-after',  url: 'https://potato-potahto.netlify.app', fullPage: true, scrollFirst: true }
 ];
+
+// Slow-scroll the page from top to bottom so scroll-triggered animations
+// (reveals, lazy images, IntersectionObserver fade-ins) actually fire,
+// then return to top before the screenshot.
+async function autoScrollPage(page) {
+  await page.evaluate(async () => {
+    await new Promise((resolve) => {
+      let y = 0;
+      const step = 120;
+      const tick = setInterval(() => {
+        const max = document.body.scrollHeight;
+        window.scrollBy(0, step);
+        y += step;
+        if (y >= max) {
+          clearInterval(tick);
+          window.scrollTo(0, 0);
+          setTimeout(resolve, 900);
+        }
+      }, 90);
+    });
+  });
+}
 
 (async () => {
   const browser = await puppeteer.launch({
@@ -33,6 +57,9 @@ const SITES = [
     try {
       await page.goto(site.url, { waitUntil: 'networkidle2', timeout: 45000 });
       await new Promise(r => setTimeout(r, 2000));
+      if (site.scrollFirst) {
+        await autoScrollPage(page);
+      }
       const outPath = path.join(OUT_DIR, `${site.slug}.png`);
       await page.screenshot({ path: outPath, type: 'png', fullPage: !!site.fullPage });
       const kb = (fs.statSync(outPath).size / 1024).toFixed(1);
