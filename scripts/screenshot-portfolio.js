@@ -14,7 +14,11 @@ const SITES = [
   { slug: 'portfolio-goldstandard',    url: 'https://goldstandardapp.com' },
   { slug: 'portfolio-whosrunningusa',  url: 'https://whosrunningusa.com' },
   { slug: 'portfolio-cardshop',        url: 'https://cardshop.twomiah.com' },
-  { slug: 'portfolio-breakreturns',    url: 'https://breakreturns.com' }
+  { slug: 'portfolio-breakreturns',    url: 'https://breakreturns.com' },
+  // Case study: same local business, two builders. Full-page so the
+  // contrast carries even after the visitor stops scrolling on /businesses.
+  { slug: 'case-potatopotahto-before', url: 'https://potato-potahto.com',         fullPage: true },
+  { slug: 'case-potatopotahto-after',  url: 'https://potato-potahto.netlify.app', fullPage: true }
 ];
 
 (async () => {
@@ -30,7 +34,7 @@ const SITES = [
       await page.goto(site.url, { waitUntil: 'networkidle2', timeout: 45000 });
       await new Promise(r => setTimeout(r, 2000));
       const outPath = path.join(OUT_DIR, `${site.slug}.png`);
-      await page.screenshot({ path: outPath, type: 'png' });
+      await page.screenshot({ path: outPath, type: 'png', fullPage: !!site.fullPage });
       const kb = (fs.statSync(outPath).size / 1024).toFixed(1);
       console.log(`  ok  ${site.slug}.png (${kb} KB)`);
       ok++;

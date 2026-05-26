@@ -100,6 +100,30 @@ section{padding:100px 48px;position:relative}
 .local-cta{display:block;text-align:center;background:var(--fire);color:var(--white);padding:14px;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background 0.2s}
 .local-cta:hover{background:var(--ember)}
 
+/* CASE STUDY — Potato-Potahto before/after */
+#case-study{padding:120px 48px;background:var(--dark);position:relative;overflow:hidden}
+#case-study::before{content:'';position:absolute;top:50%;left:-15%;width:50%;height:60%;background:radial-gradient(ellipse at center,rgba(255,109,0,0.04) 0%,transparent 60%);pointer-events:none;transform:translateY(-50%)}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px;position:relative;z-index:1}
+.case-card{background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:6px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:all 0.25s;position:relative}
+.case-card:hover{border-color:rgba(255,109,0,0.25);transform:translateY(-4px)}
+.case-card.before{border-color:rgba(255,255,255,0.05)}
+.case-card.before:hover{border-color:rgba(255,255,255,0.18)}
+.case-stamp{position:absolute;top:18px;left:18px;z-index:2;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:0.2em;padding:6px 14px;border-radius:3px;background:rgba(13,13,13,0.85);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.5)}
+.case-stamp.after{background:rgba(255,61,0,0.92);border-color:transparent;color:var(--white)}
+.case-thumb{aspect-ratio:3/4;background:#0a0a0a;overflow:hidden;position:relative;border-bottom:1px solid rgba(255,255,255,0.06)}
+.case-thumb img{width:100%;height:auto;display:block;object-fit:cover;object-position:top center;min-height:100%}
+.case-thumb::after{content:'';position:absolute;left:0;right:0;bottom:0;height:35%;background:linear-gradient(to bottom,transparent,rgba(26,26,26,0.95));pointer-events:none}
+.case-meta{padding:28px 32px}
+.case-platform{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ember);margin-bottom:6px}
+.case-card.before .case-platform{color:rgba(255,255,255,0.4)}
+.case-domain{font-size:12px;color:rgba(255,255,255,0.45);font-family:'Barlow Condensed',sans-serif;margin-bottom:18px;letter-spacing:0.06em}
+.case-bullets{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:6px}
+.case-bullets li{font-size:14px;line-height:1.6;color:rgba(255,255,255,0.55);display:flex;gap:10px}
+.case-bullets li::before{content:'\2713';color:var(--fire);font-weight:700;flex-shrink:0}
+.case-card.before .case-bullets li::before{content:'\2715';color:rgba(255,255,255,0.3)}
+.case-footnote{margin-top:32px;text-align:center;font-size:13px;color:rgba(255,255,255,0.4);letter-spacing:0.04em}
+.case-footnote strong{color:var(--bone);font-weight:600}
+
 /* PROOF */
 #proof{padding:120px 48px;background:var(--dark)}
 .proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px}
@@ -137,7 +161,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-@media(max-width:1024px){.products-grid{grid-template-columns:repeat(2,1fr)}.local-grid{grid-template-columns:1fr;gap:48px}.proof-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}nav,section{padding-left:24px;padding-right:24px}}
+@media(max-width:1024px){.products-grid{grid-template-columns:repeat(2,1fr)}.local-grid{grid-template-columns:1fr;gap:48px}.case-grid{grid-template-columns:1fr;gap:20px}.proof-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}nav,section{padding-left:24px;padding-right:24px}}
 @media(max-width:640px){.products-grid,.products-grid.grid-2col{grid-template-columns:1fr}.nav-links{display:none}.footer-top{grid-template-columns:1fr}}
 </style>
 </head>
@@ -343,6 +367,54 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
         <a href="mailto:hello@twomiah.com?subject=Local%20business%20website%20—%20tell%20me%20more&amp;body=Business%20name%3A%0A%0AWhat%20do%20you%20do%3F%0A%0ACurrent%20website%20(if%20any)%3A%0A%0ABest%20way%20to%20reach%20you%3A%0A%0A" class="local-cta">Tell us about your business →</a>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="case-study">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Local Business Case Study</div>
+      <h2 class="section-title">Same business.<br><span>Different builder.</span></h2>
+      <p class="section-sub">Potato-Potahto is a local Eau Claire restaurant. Here's what their GoDaddy template looked like — and here's what we shipped instead. No words from us. The screenshots can do the talking.</p>
+    </div>
+
+    <div class="case-grid">
+      <a href="https://potato-potahto.com" target="_blank" rel="noopener" class="case-card before reveal">
+        <div class="case-stamp">Before</div>
+        <div class="case-thumb">
+          <img src="/images/case-potatopotahto-before.png" alt="Potato-Potahto on GoDaddy — generic template" loading="lazy">
+        </div>
+        <div class="case-meta">
+          <div class="case-platform">Built with GoDaddy</div>
+          <div class="case-domain">potato-potahto.com ↗</div>
+          <ul class="case-bullets">
+            <li>Generic template — same look as every other restaurant on the platform</li>
+            <li>Locked editor — can't change the layout without GoDaddy's tools</li>
+            <li>Catering form broken at launch</li>
+            <li>~$300/yr forever, no off-ramp</li>
+          </ul>
+        </div>
+      </a>
+
+      <a href="https://potato-potahto.netlify.app" target="_blank" rel="noopener" class="case-card after reveal">
+        <div class="case-stamp after">After</div>
+        <div class="case-thumb">
+          <img src="/images/case-potatopotahto-after.png" alt="Potato-Potahto rebuilt by Twomiah" loading="lazy">
+        </div>
+        <div class="case-meta">
+          <div class="case-platform">Built with Twomiah</div>
+          <div class="case-domain">potato-potahto.netlify.app ↗</div>
+          <ul class="case-bullets">
+            <li>Custom branded, owned outright — not a template</li>
+            <li>Working catering form, designed for the actual flow</li>
+            <li>Clover order-ahead integrated</li>
+            <li>Self-hosted, $1,000 flat build + $75/mo</li>
+          </ul>
+        </div>
+      </a>
+    </div>
+
+    <p class="case-footnote reveal"><strong>Potato-Potahto</strong> · Eau Claire, WI · Both screenshots above are live as of today. Click either card to see the real site.</p>
   </div>
 </section>
 
