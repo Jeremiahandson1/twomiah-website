@@ -115,7 +115,17 @@ section{padding:100px 48px;position:relative}
 .intake-field textarea{resize:vertical;min-height:90px;font-family:'Barlow',sans-serif}
 .intake-submit{margin-top:14px;background:var(--fire);color:var(--white);padding:14px;border:none;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;font-family:'Barlow',sans-serif}
 .intake-submit:hover{background:var(--ember)}
+.intake-submit:disabled{opacity:0.5;cursor:wait}
 .intake-foot{font-size:12px;color:rgba(255,255,255,0.4);text-align:center;margin-top:4px}
+.intake-file{display:flex;align-items:center;gap:10px;padding:11px 14px;background:var(--dark);border:1px dashed rgba(255,255,255,0.22);border-radius:4px;font-size:13px;color:rgba(255,255,255,0.5);cursor:pointer;transition:border-color 0.2s,background 0.2s}
+.intake-file:hover{border-color:rgba(255,109,0,0.5);background:rgba(255,109,0,0.04);color:var(--white)}
+.intake-file input[type="file"]{display:none}
+.intake-file-label{flex:1}
+.intake-file-label.intake-file-name{color:var(--ember);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.04em;font-weight:600}
+.intake-status{margin-top:6px;padding:14px 16px;border-radius:4px;font-size:14px;line-height:1.5;display:none}
+.intake-status.show{display:block}
+.intake-status.success{background:rgba(40,200,64,0.08);border:1px solid rgba(40,200,64,0.25);color:#7adb8d}
+.intake-status.error{background:rgba(255,68,68,0.08);border:1px solid rgba(255,68,68,0.3);color:#ff8a8a}
 @media(max-width:640px){.intake-row{grid-template-columns:1fr}.intake-form-wrap{padding:36px 24px}}
 
 /* CASE STUDY — Potato-Potahto before/after */
@@ -425,12 +435,30 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
           <input type="text" id="brandColors" name="brandColors" placeholder="Blue, gold, dark teal — whatever feels right">
         </div>
 
+        <div class="intake-row">
+          <div class="intake-field">
+            <label for="logo">Logo (optional)</label>
+            <label class="intake-file">
+              <input type="file" id="logo" name="logo" accept="image/png,image/jpeg,image/webp,image/svg+xml,image/gif">
+              <span class="intake-file-label" data-default="Choose a file (PNG, JPG, SVG, WEBP)">Choose a file (PNG, JPG, SVG, WEBP)</span>
+            </label>
+          </div>
+          <div class="intake-field">
+            <label for="photos">Reference Photos (optional, up to 5)</label>
+            <label class="intake-file">
+              <input type="file" id="photos" name="photos[]" accept="image/*" multiple>
+              <span class="intake-file-label" data-default="Choose files (up to 5)">Choose files (up to 5)</span>
+            </label>
+          </div>
+        </div>
+
         <div class="intake-field">
           <label for="notes">Anything else?</label>
           <textarea id="notes" name="notes" rows="4" placeholder="What does success look like? Sites you like? Anything weird about your business we should know? What does done look like?"></textarea>
         </div>
 
         <button type="submit" class="intake-submit">Send to Twomiah →</button>
+        <div class="intake-status" id="intakeStatus" role="status" aria-live="polite"></div>
         <p class="intake-foot">We'll respond within one business day from <strong>hello@twomiah.com</strong>.</p>
       </form>
     </div>
@@ -594,35 +622,95 @@ const obs = new IntersectionObserver((entries) => {
 },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// Intake form — validate required fields, then open a structured mailto.
-// Twomiah.com lives on Render, so we can't use Netlify Forms here. Mailto is
-// the lowest-friction way to land the lead in hello@twomiah.com inbox.
+// Intake form — POST multipart/form-data to the Factory API. Lead lands in
+// the tenants table with status='intake' and the team gets an email with
+// signed URLs to any uploaded logo / reference photos.
+var INTAKE_API = 'https://twomiah-factory-api.onrender.com/api/v1/factory/public/intake';
 var intakeForm = document.getElementById('intakeForm');
+var intakeStatus = document.getElementById('intakeStatus');
+
+function showIntakeStatus(msg, kind) {
+  if (!intakeStatus) return;
+  intakeStatus.textContent = msg;
+  intakeStatus.className = 'intake-status show ' + (kind || 'success');
+}
+function hideIntakeStatus() {
+  if (intakeStatus) intakeStatus.className = 'intake-status';
+}
+
+// File-input label updates so users see what they selected
+document.querySelectorAll('.intake-file input[type="file"]').forEach(function(input) {
+  input.addEventListener('change', function() {
+    var labelSpan = input.parentElement.querySelector('.intake-file-label');
+    if (!labelSpan) return;
+    if (input.files && input.files.length) {
+      labelSpan.textContent = input.multiple && input.files.length > 1
+        ? input.files.length + ' files selected'
+        : input.files[0].name;
+      labelSpan.classList.add('intake-file-name');
+    } else {
+      labelSpan.textContent = labelSpan.getAttribute('data-default') || 'Choose a file';
+      labelSpan.classList.remove('intake-file-name');
+    }
+  });
+});
+
 if (intakeForm) {
   intakeForm.addEventListener('submit', function(e) {
     e.preventDefault();
     var f = e.target;
+
     var valid = true;
     ['businessName', 'businessType', 'contactEmail'].forEach(function(id) {
       var field = f.querySelector('#' + id);
       if (!field.value.trim()) { field.classList.add('error'); valid = false; }
       else { field.classList.remove('error'); }
     });
-    if (!valid) return;
+    if (!valid) {
+      showIntakeStatus('Please fill in business name, type of business, and email.', 'error');
+      return;
+    }
 
-    var v = function(id) { return f.querySelector('#' + id).value.trim(); };
-    var body = [
-      'Business Name: ' + v('businessName'),
-      'Type of Business: ' + v('businessType'),
-      'Email: ' + v('contactEmail'),
-      v('contactPhone') ? 'Phone: ' + v('contactPhone') : '',
-      v('currentSite') ? 'Current Website: ' + v('currentSite') : '',
-      v('brandColors') ? 'Brand / Colors: ' + v('brandColors') : '',
-      v('notes') ? '\nNotes:\n' + v('notes') : ''
-    ].filter(Boolean).join('\n');
+    // 5-photo cap matches the server. If a user picks more, fail fast client-side.
+    var photoInput = f.querySelector('#photos');
+    if (photoInput && photoInput.files && photoInput.files.length > 5) {
+      showIntakeStatus('Please select up to 5 reference photos.', 'error');
+      return;
+    }
 
-    var subject = 'Website intake — ' + v('businessName');
-    window.location.href = 'mailto:hello@twomiah.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    var btn = f.querySelector('.intake-submit');
+    var originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    hideIntakeStatus();
+
+    fetch(INTAKE_API, { method: 'POST', body: new FormData(f) })
+      .then(function(res) {
+        return res.json().then(function(d) { return { ok: res.ok, data: d }; }).catch(function() {
+          return { ok: false, data: { error: 'Server returned an unexpected response.' } };
+        });
+      })
+      .then(function(r) {
+        if (r.ok && r.data && r.data.success) {
+          showIntakeStatus(r.data.message || "Thanks! We'll respond within one business day.", 'success');
+          f.reset();
+          f.querySelectorAll('.intake-file-label').forEach(function(s) {
+            s.textContent = s.getAttribute('data-default') || 'Choose a file';
+            s.classList.remove('intake-file-name');
+          });
+          btn.textContent = 'Sent ✓';
+          // Keep button disabled so the user doesn't double-submit on success
+        } else {
+          showIntakeStatus((r.data && r.data.error) || 'Something went wrong. Try again, or email hello@twomiah.com directly.', 'error');
+          btn.disabled = false;
+          btn.textContent = originalText;
+        }
+      })
+      .catch(function() {
+        showIntakeStatus('Network error. Try again, or email hello@twomiah.com directly.', 'error');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
   });
 }
 </script>
