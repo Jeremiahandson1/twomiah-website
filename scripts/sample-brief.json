@@ -1,0 +1,20 @@
+{
+  "slug": "sample-business",
+  "businessName": "Sample Business Co.",
+  "tagline": "We do one thing, exceptionally well.",
+  "description": "Sample Business Co. — short description for search results and link previews.",
+  "phone": "(715) 555-1234",
+  "email": "hello@samplebiz.com",
+  "address": "123 Main Street, Eau Claire, WI 54701",
+  "hours": "Mon–Fri 9am–5pm · Sat 10am–2pm · Closed Sun",
+  "aboutText": "We're a [type of business] based in Eau Claire. We've been doing [what you do] for [time], and we built this around [the thing that makes you different]. Replace this with the real about copy from the customer.",
+  "primaryColor": "#1a1a1a",
+  "accentColor": "#FF6D00",
+  "ctaText": "Get in Touch",
+  "ctaUrl": "#contact-section",
+  "services": [
+    { "title": "Service One", "desc": "Short description of the first thing the business does." },
+    { "title": "Service Two", "desc": "Short description of the second thing." },
+    { "title": "Service Three", "desc": "Short description of the third." }
+  ]
+}

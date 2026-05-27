@@ -13,3 +13,7 @@ Thumbs.db
 
 # Local Claude permissions (per-user, not project-shared)
 .claude/settings.local.json
+
+# Scaffolded client sites — each one becomes its own project/repo
+# once the team takes it over. Not tracked in the marketing-site repo.
+clients/

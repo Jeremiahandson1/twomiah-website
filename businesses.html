@@ -102,6 +102,22 @@ section{padding:100px 48px;position:relative}
 .local-cta{display:block;text-align:center;background:var(--fire);color:var(--white);padding:14px;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background 0.2s}
 .local-cta:hover{background:var(--ember)}
 
+/* INTAKE FORM */
+.intake-form-wrap{max-width:760px;margin:64px auto 0;padding:48px 40px;background:var(--charcoal);border:1px solid rgba(255,255,255,0.08);border-radius:8px;position:relative;z-index:1;scroll-margin-top:96px}
+.intake-header{margin-bottom:32px}
+.intake-form{display:flex;flex-direction:column;gap:18px}
+.intake-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.intake-field label{display:block;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px}
+.intake-field input,.intake-field textarea{width:100%;padding:12px 14px;background:var(--dark);border:1px solid rgba(255,255,255,0.12);border-radius:4px;color:var(--white);font-family:'Barlow',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s}
+.intake-field input:focus,.intake-field textarea:focus{border-color:var(--ember)}
+.intake-field input::placeholder,.intake-field textarea::placeholder{color:rgba(255,255,255,0.25)}
+.intake-field input.error,.intake-field textarea.error{border-color:#ff4444}
+.intake-field textarea{resize:vertical;min-height:90px;font-family:'Barlow',sans-serif}
+.intake-submit{margin-top:14px;background:var(--fire);color:var(--white);padding:14px;border:none;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;font-family:'Barlow',sans-serif}
+.intake-submit:hover{background:var(--ember)}
+.intake-foot{font-size:12px;color:rgba(255,255,255,0.4);text-align:center;margin-top:4px}
+@media(max-width:640px){.intake-row{grid-template-columns:1fr}.intake-form-wrap{padding:36px 24px}}
+
 /* CASE STUDY — Potato-Potahto before/after */
 #case-study{padding:120px 48px;background:var(--dark);position:relative;overflow:hidden}
 #case-study::before{content:'';position:absolute;top:50%;left:-15%;width:50%;height:60%;background:radial-gradient(ellipse at center,rgba(255,109,0,0.04) 0%,transparent 60%);pointer-events:none;transform:translateY(-50%)}
@@ -365,8 +381,58 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
           <li>Edits within 48 hours, no extra cost</li>
         </ul>
 
-        <a href="mailto:hello@twomiah.com?subject=Local%20business%20website%20—%20tell%20me%20more&amp;body=Business%20name%3A%0A%0AWhat%20do%20you%20do%3F%0A%0ACurrent%20website%20(if%20any)%3A%0A%0ABest%20way%20to%20reach%20you%3A%0A%0A" class="local-cta">Tell us about your business →</a>
+        <a href="#local-intake" class="local-cta">Tell us about your business →</a>
       </div>
+    </div>
+
+    <div class="intake-form-wrap reveal" id="local-intake">
+      <div class="intake-header">
+        <div class="section-label">Get Started</div>
+        <h3 class="bucket-title" style="margin-top:14px;margin-bottom:14px">Tell us about<br><span>your business.</span></h3>
+        <p class="bucket-intro">Fill out what you can — we'll respond within a business day with a few clarifying questions and a starter direction. No pressure.</p>
+      </div>
+
+      <form class="intake-form" id="intakeForm" novalidate>
+        <div class="intake-row">
+          <div class="intake-field">
+            <label for="businessName">Business Name *</label>
+            <input type="text" id="businessName" name="businessName" required placeholder="Potato-Potahto">
+          </div>
+          <div class="intake-field">
+            <label for="businessType">Type of Business *</label>
+            <input type="text" id="businessType" name="businessType" required placeholder="Restaurant, salon, contractor, etc.">
+          </div>
+        </div>
+
+        <div class="intake-row">
+          <div class="intake-field">
+            <label for="contactEmail">Email *</label>
+            <input type="email" id="contactEmail" name="contactEmail" required placeholder="you@example.com">
+          </div>
+          <div class="intake-field">
+            <label for="contactPhone">Phone (optional)</label>
+            <input type="tel" id="contactPhone" name="contactPhone" placeholder="(715) 555-1234">
+          </div>
+        </div>
+
+        <div class="intake-field">
+          <label for="currentSite">Current Website (if any)</label>
+          <input type="url" id="currentSite" name="currentSite" placeholder="https://yoursite.com">
+        </div>
+
+        <div class="intake-field">
+          <label for="brandColors">Brand Colors / Style (optional)</label>
+          <input type="text" id="brandColors" name="brandColors" placeholder="Blue, gold, dark teal — whatever feels right">
+        </div>
+
+        <div class="intake-field">
+          <label for="notes">Anything else?</label>
+          <textarea id="notes" name="notes" rows="4" placeholder="What does success look like? Sites you like? Anything weird about your business we should know? What does done look like?"></textarea>
+        </div>
+
+        <button type="submit" class="intake-submit">Send to Twomiah →</button>
+        <p class="intake-foot">We'll respond within one business day from <strong>hello@twomiah.com</strong>.</p>
+      </form>
     </div>
   </div>
 </section>
@@ -409,7 +475,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
             <li>Custom branded, owned outright — not a template</li>
             <li>Working catering form, designed for the actual flow</li>
             <li>Clover order-ahead integrated</li>
-            <li>Self-hosted, $1,000 flat build + $75/mo</li>
+            <li>Owned by you, hosted by us — $1,000 flat build + $75/mo</li>
           </ul>
         </div>
       </a>
@@ -527,6 +593,38 @@ const obs = new IntersectionObserver((entries) => {
   entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),i*60) });
 },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Intake form — validate required fields, then open a structured mailto.
+// Twomiah.com lives on Render, so we can't use Netlify Forms here. Mailto is
+// the lowest-friction way to land the lead in hello@twomiah.com inbox.
+var intakeForm = document.getElementById('intakeForm');
+if (intakeForm) {
+  intakeForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var f = e.target;
+    var valid = true;
+    ['businessName', 'businessType', 'contactEmail'].forEach(function(id) {
+      var field = f.querySelector('#' + id);
+      if (!field.value.trim()) { field.classList.add('error'); valid = false; }
+      else { field.classList.remove('error'); }
+    });
+    if (!valid) return;
+
+    var v = function(id) { return f.querySelector('#' + id).value.trim(); };
+    var body = [
+      'Business Name: ' + v('businessName'),
+      'Type of Business: ' + v('businessType'),
+      'Email: ' + v('contactEmail'),
+      v('contactPhone') ? 'Phone: ' + v('contactPhone') : '',
+      v('currentSite') ? 'Current Website: ' + v('currentSite') : '',
+      v('brandColors') ? 'Brand / Colors: ' + v('brandColors') : '',
+      v('notes') ? '\nNotes:\n' + v('notes') : ''
+    ].filter(Boolean).join('\n');
+
+    var subject = 'Website intake — ' + v('businessName');
+    window.location.href = 'mailto:hello@twomiah.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+}
 </script>
 <script src="/cookie-banner.js"></script>
 </body>

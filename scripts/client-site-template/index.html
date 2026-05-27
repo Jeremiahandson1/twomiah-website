@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{businessName}} — {{tagline}}</title>
+<meta name="description" content="{{description}}">
+<meta name="theme-color" content="{{primaryColor}}">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{businessName}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{businessName}}">
+<meta name="twitter:description" content="{{description}}">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary: {{primaryColor}};
+  --accent: {{accentColor}};
+  --ink: #1a1a1a;
+  --ink-soft: #4a4a4a;
+  --ink-muted: #888;
+  --bg: #fafaf8;
+  --card: #ffffff;
+  --line: rgba(0,0,0,0.08);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+nav{position:sticky;top:0;z-index:10;background:rgba(250,250,248,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:18px 32px;display:flex;align-items:center;justify-content:space-between}
+nav .logo{font-weight:800;font-size:18px;letter-spacing:-0.01em;text-decoration:none;color:var(--ink)}
+nav ul{display:flex;list-style:none;gap:28px;align-items:center}
+nav ul a{text-decoration:none;color:var(--ink-soft);font-size:14px;font-weight:500;transition:color 0.15s}
+nav ul a:hover{color:var(--primary)}
+
+.hero{padding:120px 32px 80px;text-align:center;max-width:900px;margin:0 auto}
+.hero h1{font-size:clamp(40px,7vw,72px);font-weight:800;letter-spacing:-0.02em;line-height:1.05;margin-bottom:20px;color:var(--ink)}
+.hero .tagline{font-size:clamp(17px,2vw,22px);color:var(--ink-soft);margin-bottom:36px;max-width:600px;margin-left:auto;margin-right:auto}
+.btn{display:inline-block;background:var(--primary);color:#fff;padding:14px 28px;text-decoration:none;border-radius:6px;font-weight:600;font-size:15px;transition:transform 0.15s,box-shadow 0.15s;box-shadow:0 6px 20px rgba(0,0,0,0.08)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,0.12)}
+
+section{padding:80px 32px;max-width:1100px;margin:0 auto}
+.section-eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h2{font-size:clamp(28px,4vw,40px);font-weight:700;letter-spacing:-0.015em;line-height:1.15;margin-bottom:24px;color:var(--ink)}
+.lead{font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:680px}
+
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.service-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:32px 28px;transition:border-color 0.2s,transform 0.2s}
+.service-card:hover{border-color:var(--primary);transform:translateY(-4px)}
+.service-card h3{font-size:20px;font-weight:700;margin-bottom:10px;color:var(--ink)}
+.service-card p{font-size:15px;color:var(--ink-soft);line-height:1.6}
+
+#contact-section{background:var(--ink);color:#fff;border-radius:12px;padding:64px 48px;margin:80px auto;max-width:1100px}
+#contact-section h2{color:#fff;margin-bottom:32px}
+#contact-section .section-eyebrow{color:var(--accent)}
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;font-size:16px}
+.contact-grid div strong{display:block;font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:8px}
+.contact-grid div p,.contact-grid div a{color:#fff;text-decoration:none;line-height:1.6}
+.contact-grid div a:hover{color:var(--accent)}
+
+footer{padding:48px 32px;text-align:center;font-size:14px;color:var(--ink-muted);border-top:1px solid var(--line)}
+footer a{color:var(--ink-soft);text-decoration:none}
+footer a:hover{color:var(--primary)}
+
+@media(max-width:780px){
+  nav{padding:14px 20px}
+  nav ul{gap:18px}
+  nav ul a{font-size:13px}
+  section{padding:60px 20px}
+  .services{grid-template-columns:1fr}
+  #contact-section{padding:48px 28px;margin:48px 20px}
+  .contact-grid{grid-template-columns:1fr;gap:24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">{{businessName}}</a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">What We Do</a></li>
+    <li><a href="#contact-section">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <h1>{{businessName}}</h1>
+  <p class="tagline">{{tagline}}</p>
+  <a href="{{ctaUrl}}" class="btn">{{ctaText}}</a>
+</section>
+
+<section id="about">
+  <span class="section-eyebrow">About</span>
+  <h2>What we're about.</h2>
+  <p class="lead">{{aboutText}}</p>
+</section>
+
+<section id="services">
+  <span class="section-eyebrow">What We Do</span>
+  <h2>The work.</h2>
+  <div class="services">
+{{services}}
+  </div>
+</section>
+
+<section id="contact-section">
+  <span class="section-eyebrow">Get In Touch</span>
+  <h2>Find us.</h2>
+  <div class="contact-grid">
+    <div>
+      <strong>Phone</strong>
+      <p><a href="tel:{{phone}}">{{phone}}</a></p>
+    </div>
+    <div>
+      <strong>Email</strong>
+      <p><a href="mailto:{{email}}">{{email}}</a></p>
+    </div>
+    <div>
+      <strong>Where</strong>
+      <p>{{address}}</p>
+    </div>
+    <div>
+      <strong>Hours</strong>
+      <p>{{hours}}</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; {{year}} {{businessName}}. Built by <a href="https://twomiah.com" target="_blank" rel="noopener">Twomiah</a>.</p>
+</footer>
+
+</body>
+</html>
