@@ -199,6 +199,21 @@ footer{background:#060606;border-top:1px solid var(--border);padding:40px 48px 2
 .reveal.visible{opacity:1;transform:translateY(0)}.reveal{opacity:1;transform:none}
 @media(max-width:1024px){.qr-inner{grid-template-columns:1fr}.qr-card-mock{display:none}.how-grid{grid-template-columns:repeat(2,1fr)}.pricing-grid{grid-template-columns:1fr}.collector-grid{grid-template-columns:1fr}nav,section{padding-left:24px;padding-right:24px}}
 @media(max-width:640px){.hero-split{grid-template-columns:1fr}.how-grid{grid-template-columns:1fr}.nav-links{display:none}}
+
+/* Mobile menu (hamburger + full-screen overlay) */
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px;width:40px;height:40px;flex-direction:column;justify-content:center;align-items:stretch;gap:5px;z-index:1001}
+.nav-toggle span{display:block;height:3px;width:100%;background:#fff;border-radius:2px;transition:transform .25s ease,opacity .2s ease}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+@media(max-width:640px){
+  .nav-toggle{display:flex}
+  .nav-links{display:none;position:fixed;inset:0;background:rgba(10,10,10,0.97);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);flex-direction:column;align-items:center;justify-content:center;padding:80px 24px 40px;margin:0;list-style:none;gap:8px;z-index:1000}
+  .nav-links.is-open{display:flex !important}
+  .nav-links li{width:100%;max-width:320px;text-align:center}
+  .nav-links li a{display:block;padding:14px 16px;font-size:18px;color:#fff !important}
+  .nav-links li a.nav-cta{margin-top:12px}
+}
 </style>
 </head>
 <body>
@@ -207,6 +222,7 @@ footer{background:#060606;border-top:1px solid var(--border);padding:40px 48px 2
     <svg class="nav-icon" viewBox="0 0 120 120" fill="none"><defs><linearGradient id="ng" x1="0" y1="120" x2="120" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FFAB00"/><stop offset="50%" stop-color="#FF6D00"/><stop offset="100%" stop-color="#FF3D00"/></linearGradient><filter id="nglow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="M42 96 L20 48 L42 60 L52 24 L62 52 L75 40 L60 96 Z" fill="url(#ng)" opacity="0.65"/><path d="M78 96 L56 44 L68 58 L78 18 L88 50 L104 36 L96 96 Z" fill="url(#ng)" filter="url(#nglow)"/><rect x="16" y="96" width="88" height="3" rx="1.5" fill="url(#ng)" opacity="0.45"/></svg>
     <span class="nav-wordmark">TWOMIAH</span>
   </a>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links" type="button"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li><a href="/businesses">For Businesses</a></li>
     <li><a href="/apps">Consumer Apps</a></li>
@@ -450,6 +466,27 @@ const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting
 document.querySelectorAll('.reveal,.stagger').forEach(el=>obs.observe(el));
 const nav=document.querySelector('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20));
+</script>
+<script>
+/* Mobile nav: hamburger toggles full-screen menu, links auto-close it */
+(function(){
+  var btn=document.querySelector('.nav-toggle');
+  var links=document.querySelector('.nav-links');
+  if(!btn||!links)return;
+  if(!links.id) links.id='nav-links';
+  function setOpen(open){
+    links.classList.toggle('is-open',open);
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    document.body.style.overflow=open?'hidden':'';
+  }
+  btn.addEventListener('click',function(){ setOpen(!links.classList.contains('is-open')); });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){ setOpen(false); });
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&links.classList.contains('is-open')) setOpen(false);
+  });
+})();
 </script>
 </body>
 </html>

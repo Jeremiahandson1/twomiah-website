@@ -237,6 +237,21 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.05);padding
 .reveal.visible{opacity:1;transform:translateY(0)}
 @media(max-width:1024px){.hero{grid-template-columns:1fr;padding:120px 24px 60px}.hero-right{display:none}.features-grid{grid-template-columns:repeat(2,1fr)}.feat-wide{grid-column:span 2}.pricing-grid{grid-template-columns:repeat(2,1fr)}.stack-grid{grid-template-columns:1fr}.bundle-compare{grid-template-columns:1fr;gap:16px}.bundle-vs{display:none}.compliance-grid{grid-template-columns:1fr}.stats-inner{grid-template-columns:repeat(2,1fr)}.stat-item:nth-child(2){border-right:none}nav,section{padding-left:24px;padding-right:24px}}
 @media(max-width:640px){.features-grid{grid-template-columns:1fr}.feat-wide{grid-column:span 1}.pricing-grid{grid-template-columns:1fr}.stack-grid{grid-template-columns:1fr}.nav-links{display:none}.stats-inner{grid-template-columns:1fr}.stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.06)}.stat-item:last-child{border-bottom:none}.mini-schedule{display:none}}
+
+/* Mobile menu (hamburger + full-screen overlay) */
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px;width:40px;height:40px;flex-direction:column;justify-content:center;align-items:stretch;gap:5px;z-index:1001}
+.nav-toggle span{display:block;height:3px;width:100%;background:#fff;border-radius:2px;transition:transform .25s ease,opacity .2s ease}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+@media(max-width:640px){
+  .nav-toggle{display:flex}
+  .nav-links{display:none;position:fixed;inset:0;background:rgba(10,10,10,0.97);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);flex-direction:column;align-items:center;justify-content:center;padding:80px 24px 40px;margin:0;list-style:none;gap:8px;z-index:1000}
+  .nav-links.is-open{display:flex !important}
+  .nav-links li{width:100%;max-width:320px;text-align:center}
+  .nav-links li a{display:block;padding:14px 16px;font-size:18px;color:#fff !important}
+  .nav-links li a.nav-cta{margin-top:12px}
+}
 </style>
 </head>
 <body>
@@ -251,6 +266,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.05);padding
     </svg>
     <span class="nav-wordmark">TWOMIAH</span>
   </a>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links" type="button"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li><a href="/businesses" style="color:var(--white)">For Businesses</a></li>
     <li><a href="/apps">Consumer Apps</a></li>
@@ -700,6 +716,27 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
 <script>
 const obs=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting)setTimeout(()=>{el.target.classList.add('visible');obs.unobserve(el.target)},i*80)})},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+<script>
+/* Mobile nav: hamburger toggles full-screen menu, links auto-close it */
+(function(){
+  var btn=document.querySelector('.nav-toggle');
+  var links=document.querySelector('.nav-links');
+  if(!btn||!links)return;
+  if(!links.id) links.id='nav-links';
+  function setOpen(open){
+    links.classList.toggle('is-open',open);
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    document.body.style.overflow=open?'hidden':'';
+  }
+  btn.addEventListener('click',function(){ setOpen(!links.classList.contains('is-open')); });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){ setOpen(false); });
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&links.classList.contains('is-open')) setOpen(false);
+  });
+})();
 </script>
 </body>
 </html>
