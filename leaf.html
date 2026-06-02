@@ -259,20 +259,22 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
   section{padding:60px 20px}
 }
 
-/* Mobile menu (hamburger + full-screen overlay) */
+/* Mobile menu (hamburger + full-screen scrollable sitemap) */
 .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px;width:40px;height:40px;flex-direction:column;justify-content:center;align-items:stretch;gap:5px;z-index:1001}
 .nav-toggle span{display:block;height:3px;width:100%;background:#fff;border-radius:2px;transition:transform .25s ease,opacity .2s ease}
 .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg)}
 .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
 .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
-@media(max-width:640px){
-  .nav-toggle{display:flex}
-  .nav-links{display:none;position:fixed;inset:0;background:rgba(10,10,10,0.97);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);flex-direction:column;align-items:center;justify-content:center;padding:80px 24px 40px;margin:0;list-style:none;gap:8px;z-index:1000}
-  .nav-links.is-open{display:flex !important}
-  .nav-links li{width:100%;max-width:320px;text-align:center}
-  .nav-links li a{display:block;padding:14px 16px;font-size:18px;color:#fff !important}
-  .nav-links li a.nav-cta{margin-top:12px}
-}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(10,10,10,0.97);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);z-index:1000;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:88px 24px 48px}
+.mobile-menu.is-open{display:block}
+.mobile-menu-inner{max-width:480px;margin:0 auto}
+.mobile-menu section{margin-bottom:24px}
+.mobile-menu section h3{color:#FFAB00;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.mobile-menu section a{display:block;padding:11px 4px;color:#fff;text-decoration:none;font-size:16px;border-radius:6px;line-height:1.3}
+.mobile-menu section a:active{background:rgba(255,255,255,0.06)}
+.mobile-menu-cta{display:block;margin-top:8px;padding:14px 16px;text-align:center;background:linear-gradient(135deg,#FFAB00,#FF6D00);color:#0a0a0a !important;font-weight:700;text-decoration:none;border-radius:10px;font-size:16px}
+@media(max-width:640px){.nav-toggle{display:flex}}
+@media(min-width:641px){.nav-toggle{display:none !important}.mobile-menu{display:none !important}}
 </style>
 </head>
 <body>
@@ -297,6 +299,44 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
     <li><a href="/signup/leaf/" class="nav-cta">Get Started</a></li>
   </ul>
 </nav>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu-inner">
+    <section>
+      <h3>For Businesses</h3>
+      <a href="/businesses">Overview</a>
+      <a href="/build.html">Build &mdash; Contractors</a>
+      <a href="/roof.html">Roof &mdash; Roofing</a>
+      <a href="/wrench.html">Wrench &mdash; Trades</a>
+      <a href="/care.html">Care &mdash; Home Care</a>
+      <a href="/leaf.html">Leaf &mdash; Dispensary</a>
+      <a href="/factory.html">Factory</a>
+      <a href="/vision.html">Vision</a>
+    </section>
+    <section>
+      <h3>Consumer Apps</h3>
+      <a href="/apps">Overview</a>
+      <a href="https://ickthatish.com" target="_blank" rel="noopener">Ick That Ish &#8599;</a>
+      <a href="https://goldstandardapp.com" target="_blank" rel="noopener">Gold Standard &#8599;</a>
+      <a href="https://whosrunningusa.com" target="_blank" rel="noopener">WhosRunningUSA &#8599;</a>
+    </section>
+    <section>
+      <h3>Card Collectors</h3>
+      <a href="/collectors">Overview</a>
+      <a href="https://cardshop.twomiah.com" target="_blank" rel="noopener">Card Shop &#8599;</a>
+      <a href="https://breakreturns.com" target="_blank" rel="noopener">BreakReturns &#8599;</a>
+    </section>
+    <section>
+      <h3>Company</h3>
+      <a href="/mission.html">Mission</a>
+      <a href="/#story">Our Story</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/security.html">Security</a>
+    </section>
+    <a href="mailto:hello@twomiah.com" class="mobile-menu-cta">Get Started</a>
+  </div>
+</div>
+
 
 <!-- ═══ HERO — SHADER BACKGROUND ═══ -->
 <section style="padding:0">
@@ -901,23 +941,23 @@ window.addEventListener('scroll', () => {
 })();
 </script>
 <script>
-/* Mobile nav: hamburger toggles full-screen menu, links auto-close it */
+/* Mobile nav: hamburger toggles full sitemap overlay (scrollable) */
 (function(){
   var btn=document.querySelector('.nav-toggle');
-  var links=document.querySelector('.nav-links');
-  if(!btn||!links)return;
-  if(!links.id) links.id='nav-links';
+  var menu=document.querySelector('.mobile-menu');
+  if(!btn||!menu)return;
   function setOpen(open){
-    links.classList.toggle('is-open',open);
+    menu.classList.toggle('is-open',open);
+    menu.setAttribute('aria-hidden',open?'false':'true');
     btn.setAttribute('aria-expanded',open?'true':'false');
     document.body.style.overflow=open?'hidden':'';
   }
-  btn.addEventListener('click',function(){ setOpen(!links.classList.contains('is-open')); });
-  links.querySelectorAll('a').forEach(function(a){
+  btn.addEventListener('click',function(){ setOpen(!menu.classList.contains('is-open')); });
+  menu.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click',function(){ setOpen(false); });
   });
   document.addEventListener('keydown',function(e){
-    if(e.key==='Escape'&&links.classList.contains('is-open')) setOpen(false);
+    if(e.key==='Escape'&&menu.classList.contains('is-open')) setOpen(false);
   });
 })();
 </script>
