@@ -1,0 +1,6 @@
+Contact: mailto:security@twomiah.com
+Expires: 2027-06-05T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://twomiah.com/.well-known/security.txt
+Policy: https://twomiah.com/security
+Acknowledgments: https://twomiah.com/security#acknowledgments

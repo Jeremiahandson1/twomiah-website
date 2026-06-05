@@ -211,25 +211,34 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
   <h2>4. Authentication &amp; Access Control</h2>
 
   <ul>
-    <li><strong>Password security</strong> &mdash; user passwords are hashed using bcrypt with a cost factor of 12. We never store plaintext passwords.</li>
-    <li><strong>Token-based authentication</strong> &mdash; API access uses short-lived JWT tokens with automatic rotation of refresh tokens.</li>
-    <li><strong>Role-based access control (RBAC)</strong> &mdash; users are assigned roles (owner, admin, editor, viewer) that determine their access level within the platform.</li>
+    <li><strong>Password security</strong> &mdash; passwords are hashed using bcrypt. Minimum 10 characters with letter + number/symbol mix. Common-password defaults rejected. We never store or log plaintext.</li>
+    <li><strong>Two-factor authentication (TOTP)</strong> &mdash; optional second factor compatible with Google Authenticator, 1Password, Authy. Ten single-use recovery codes for device loss.</li>
+    <li><strong>Session cookies</strong> &mdash; auth tokens stored as <code>HttpOnly + Secure + SameSite=Strict</code> cookies. JavaScript on the page cannot read them; cross-site requests cannot send them.</li>
+    <li><strong>Session management</strong> &mdash; customers see every active sign-in (device, IP, last-active time) in the admin and can revoke any session, or all sessions but the current one, with one click.</li>
+    <li><strong>Login rate-limiting</strong> &mdash; 10 attempts per IP per 10 minutes on the sign-in endpoint with a Retry-After header on the 429.</li>
+    <li><strong>Login notifications</strong> &mdash; every successful sign-in triggers an email to the account holder with time, IP, and device. A one-click password-reset link is included for unrecognized sessions.</li>
+    <li><strong>Password reset</strong> &mdash; one-hour single-use tokens, stored only as SHA-256 hashes server-side.</li>
+    <li><strong>Role-based access control (RBAC)</strong> &mdash; admin (full) and editor (no user management, no billing, no audit log) roles.</li>
     <li><strong>Internal access</strong> &mdash; Twomiah team access to production systems is limited to what is strictly necessary for operations and support.</li>
   </ul>
 
   <h2>5. Application Security</h2>
 
   <ul>
-    <li>Input validation and sanitization on all user inputs</li>
-    <li>Protection against OWASP Top 10 vulnerabilities (XSS, SQL injection, CSRF, etc.)</li>
-    <li>Content Security Policy (CSP) headers where applicable</li>
-    <li>Dependency monitoring and regular security updates</li>
-    <li>Environment-based secret management (API keys and credentials stored as environment variables, never in source code)</li>
+    <li><strong>SQL injection &mdash;</strong> all queries use Drizzle ORM with parameterized statements; string concatenation into SQL is structurally impossible in our code path.</li>
+    <li><strong>XSS &mdash;</strong> EJS templates auto-escape interpolated values. Blog-post markdown is HTML-escaped <em>before</em> markdown parsing. Link and image URLs are scheme-validated to block <code>javascript:</code>, <code>data:</code>, and <code>vbscript:</code>.</li>
+    <li><strong>CSRF &mdash;</strong> killed by <code>SameSite=Strict</code> cookies.</li>
+    <li><strong>Security headers &mdash;</strong> strict Content-Security-Policy, HSTS (1 year + includeSubDomains), <code>X-Frame-Options: DENY</code>, <code>X-Content-Type-Options: nosniff</code>, restrictive <code>Permissions-Policy</code> and <code>Referrer-Policy</code>.</li>
+    <li><strong>Uploads &mdash;</strong> images only, MIME-validated, 10 MB cap, re-encoded server-side via <code>sharp</code> &mdash; this strips embedded EXIF payloads and rules out polyglot file attacks.</li>
+    <li><strong>Contact-form spam &mdash;</strong> hidden honeypot field, minimum-dwell-time check, and a per-IP rate limit (5 submissions per 10 minutes).</li>
+    <li><strong>Secret management &mdash;</strong> environment variables stored encrypted by Render; never in source control. Per-tenant <code>JWT_SECRET</code>, <code>ENCRYPTION_KEY</code>, and DB password.</li>
+    <li><strong>Dependency monitoring &mdash;</strong> <code>npm audit</code> and Semgrep run in CI; high-severity vulnerabilities block deploys.</li>
   </ul>
 
   <h2>6. Monitoring &amp; Logging</h2>
 
   <ul>
+    <li><strong>Customer audit log</strong> &mdash; every admin mutation (page edit, photo upload, user added, settings changed, login attempt) writes a tamper-evident row visible to the customer in their admin panel.</li>
     <li><strong>Error monitoring</strong> &mdash; Sentry is used for real-time error tracking and performance monitoring across production services. PII scrubbing is configured to prevent sensitive data from appearing in error reports.</li>
     <li><strong>Infrastructure monitoring</strong> &mdash; Render provides service health monitoring, auto-restart on failure, and resource usage alerts.</li>
     <li><strong>Log retention</strong> &mdash; application and server logs are retained for 30&ndash;90 days for security, debugging, and audit purposes.</li>
