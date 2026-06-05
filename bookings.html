@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twomiah Bookings — Online Booking for Service Businesses</title>
+<meta name="description" content="The Calendly killer for service businesses. Customers book online, your crew's calendar updates automatically, SMS confirmations included. Built into every Twomiah Premium Website at no extra cost.">
+<meta name="theme-color" content="#FF3D00">
+<link rel="canonical" href="https://twomiah.com/bookings.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Twomiah">
+<meta property="og:title" content="Twomiah Bookings — Online Booking for Service Businesses">
+<meta property="og:description" content="Customers book online. Your crew's calendar updates automatically. SMS confirmations included.">
+<meta property="og:url" content="https://twomiah.com/bookings.html">
+<meta property="og:image" content="https://twomiah.com/og-image.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Twomiah Bookings">
+<meta name="twitter:description" content="Online booking that works like Calendly but knows about your crews, service zones, and crews.">
+<meta name="twitter:image" content="https://twomiah.com/og-image.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;900&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--fire:#FF3D00;--ember:#FF6D00;--gold:#FFAB00;--dark:#0D0D0D;--charcoal:#1A1A1A;--ash:#555;--bone:#F5F0EB;--white:#FFF;--grad:linear-gradient(135deg,#FFAB00,#FF6D00,#FF3D00)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden;line-height:1.6}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(13,13,13,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-icon{width:30px;height:30px}
+.nav-wordmark{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.12em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+
+.hero{padding:160px 48px 100px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 30%,rgba(255,61,0,0.08) 0%,transparent 70%);pointer-events:none}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,7vw,96px);letter-spacing:0.02em;line-height:0.95;position:relative;z-index:1}
+.hero h1 .fire{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:clamp(18px,1.5vw,22px);color:rgba(255,255,255,0.7);max-width:720px;margin:24px auto 36px;position:relative;z-index:1}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;padding:18px 36px;background:var(--grad);color:var(--white);text-decoration:none;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;font-size:14px;border-radius:8px;position:relative;z-index:1;box-shadow:0 8px 24px rgba(255,61,0,0.3);transition:transform 0.2s}
+.hero-cta:hover{transform:translateY(-2px)}
+
+.section{padding:80px 48px;max-width:1200px;margin:0 auto}
+.section h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,64px);letter-spacing:0.02em;margin-bottom:18px}
+.section h2 .fire{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section .lead{font-size:18px;color:rgba(255,255,255,0.7);max-width:680px;margin-bottom:48px}
+
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:32px;transition:border-color 0.2s,transform 0.2s}
+.feature:hover{border-color:rgba(255,109,0,0.4);transform:translateY(-3px)}
+.feature h3{font-size:20px;margin-bottom:12px;color:var(--white)}
+.feature p{color:rgba(255,255,255,0.65);font-size:15px}
+
+.compare{background:rgba(255,255,255,0.02);border-radius:16px;padding:48px;border:1px solid rgba(255,255,255,0.06)}
+.compare h2{margin-bottom:24px}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;align-items:start}
+.compare-grid > div{padding:20px}
+.compare-grid > div:nth-child(3n+1){color:rgba(255,255,255,0.6);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em}
+.compare-grid > div:nth-child(3n+2){color:rgba(255,255,255,0.85);font-size:15px;border-left:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,109,0,0.18)}
+.compare-grid > div:nth-child(3n+3){color:var(--white);font-size:15px;font-weight:600;background:rgba(255,109,0,0.06)}
+.compare-head{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.04em;padding:16px 20px!important;border-bottom:2px solid rgba(255,109,0,0.4)!important}
+.compare-head.them{color:rgba(255,255,255,0.7)!important}
+.compare-head.us{color:transparent!important;background:var(--grad);-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent}
+.compare-row{border-bottom:1px solid rgba(255,255,255,0.05)}
+
+.price{text-align:center;padding:48px;background:linear-gradient(135deg,rgba(255,171,0,0.06),rgba(255,61,0,0.06));border-radius:16px;border:1px solid rgba(255,109,0,0.2)}
+.price-tag{font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:0.02em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.price-sub{color:rgba(255,255,255,0.7);font-size:16px;margin:10px 0 24px}
+.price-cta{display:inline-flex;padding:16px 36px;background:var(--grad);color:var(--white);text-decoration:none;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;font-size:13px;border-radius:8px}
+
+footer{padding:48px;border-top:1px solid rgba(255,255,255,0.06);text-align:center;color:rgba(255,255,255,0.4);font-size:13px;margin-top:80px}
+footer a{color:rgba(255,255,255,0.6);text-decoration:none;margin:0 12px}
+
+@media (max-width: 760px){
+  nav{padding:14px 20px}
+  .nav-links{gap:18px}
+  .hero{padding:120px 20px 60px}
+  .section{padding:60px 20px}
+  .compare{padding:24px}
+  .compare-grid{grid-template-columns:1fr;gap:8px}
+  .compare-grid > div{padding:12px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">
+    <img class="nav-icon" src="/favicon.svg" alt="">
+    <span class="nav-wordmark">TWOMIAH</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/businesses">For Businesses</a></li>
+    <li><a href="/build">Build</a></li>
+    <li><a href="/bookings">Bookings</a></li>
+    <li><a href="https://platform.twomiah.com/start">Start</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <h1>STOP PAYING FOR<br/><span class="fire">CALENDLY.</span></h1>
+  <p>Twomiah Bookings is built into every premium website. Customers pick a time, get an SMS confirmation, the booking lands on your crew's Google or Outlook calendar automatically. No extra subscription. No separate login.</p>
+  <a href="https://platform.twomiah.com/start" class="hero-cta">Get a site with Bookings →</a>
+</section>
+
+<section class="section">
+  <h2>What it does, in <span class="fire">90 seconds</span>.</h2>
+  <p class="lead">A real booking system for service businesses — not a generic calendar grafted onto your website.</p>
+  <div class="feature-grid">
+    <div class="feature">
+      <h3>Knows your crews</h3>
+      <p>Each crew has their own hours, days off, and service zones. The booking page only offers slots a qualifying crew can actually serve.</p>
+    </div>
+    <div class="feature">
+      <h3>ZIP code aware</h3>
+      <p>Customer enters their ZIP. We filter to crews that serve that area. Nobody books a job 90 miles outside your service radius.</p>
+    </div>
+    <div class="feature">
+      <h3>Two-way calendar sync</h3>
+      <p>Bookings push to Google Calendar and Outlook automatically. When your crew blocks "doctor at 2pm" on their own calendar, that time disappears from your booking page.</p>
+    </div>
+    <div class="feature">
+      <h3>SMS confirmations</h3>
+      <p>Customer gets an SMS when they book. Another 24 hours before. Crew gets one the morning of. Powered by your Twilio account (included).</p>
+    </div>
+    <div class="feature">
+      <h3>Recurring bookings</h3>
+      <p>"Every other Tuesday, 8 weeks." Customer books once, generates 8 appointments. Cancel the series in one click.</p>
+    </div>
+    <div class="feature">
+      <h3>Stripe deposits</h3>
+      <p>Optional deposit per service. Customer pays via Stripe Checkout before the booking confirms. No-shows drop dramatically.</p>
+    </div>
+    <div class="feature">
+      <h3>Buffer time</h3>
+      <p>Configure drive time between jobs. The slot generator respects it — no booking for 2pm if you've got something ending at 1:45pm 20 minutes away.</p>
+    </div>
+    <div class="feature">
+      <h3>Self-service cancel</h3>
+      <p>Customer can cancel their own booking up to 1 hour before. The slot reopens. Their event clears from your crew's calendar. No phone tag.</p>
+    </div>
+    <div class="feature">
+      <h3>Embeddable</h3>
+      <p>Already have a website? Drop a single &lt;script&gt; tag and the booking widget appears as an iframe — even on a non-Twomiah site.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="compare">
+    <h2>Vs. <span class="fire">the alternative.</span></h2>
+    <div class="compare-grid">
+      <div class="compare-head">&nbsp;</div>
+      <div class="compare-head them">Calendly + LeadConnector</div>
+      <div class="compare-head us">Twomiah Bookings</div>
+      <div class="compare-row">Monthly cost</div>
+      <div class="compare-row">$15 + $97 = $112/mo</div>
+      <div class="compare-row">$0 — built in</div>
+      <div class="compare-row">Crew-aware scheduling</div>
+      <div class="compare-row">No — round-robin only</div>
+      <div class="compare-row">Yes — per-crew zones &amp; hours</div>
+      <div class="compare-row">ZIP-code filtering</div>
+      <div class="compare-row">No</div>
+      <div class="compare-row">Yes</div>
+      <div class="compare-row">SMS confirmations</div>
+      <div class="compare-row">$$ extra add-on</div>
+      <div class="compare-row">Included</div>
+      <div class="compare-row">Stripe deposits</div>
+      <div class="compare-row">Add-on / setup required</div>
+      <div class="compare-row">Built in</div>
+      <div class="compare-row">Lands in your CRM</div>
+      <div class="compare-row">Webhook setup required</div>
+      <div class="compare-row">Same login, same dashboard</div>
+      <div class="compare-row">Pageload weight</div>
+      <div class="compare-row">~2 MB of JS</div>
+      <div class="compare-row">~3 KB. No framework.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="price">
+    <div class="price-tag">$0</div>
+    <p class="price-sub">Bookings is included with every Twomiah Premium Website ($75/mo + $1k build).</p>
+    <a href="https://platform.twomiah.com/start" class="price-cta">Get started →</a>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Twomiah Software Ventures.
+  <a href="/">Home</a>
+  <a href="/businesses">For Businesses</a>
+  <a href="/build">Build</a>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms">Terms</a>
+  <a href="/security">Security</a>
+</footer>
+
+</body>
+</html>
