@@ -35,6 +35,8 @@
 }
 </script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--fire:#FF3D00;--ember:#FF6D00;--gold:#FFAB00;--dark:#0D0D0D;--charcoal:#1A1A1A;--ash:#555;--bone:#F5F0EB;--white:#FFF;--grad:linear-gradient(135deg,#FFAB00,#FF6D00,#FF3D00)}
@@ -101,7 +103,8 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
 .mobile-menu-cta{display:block;margin-top:8px;padding:14px 16px;text-align:center;background:linear-gradient(135deg,#FFAB00,#FF6D00);color:#0a0a0a !important;font-weight:700;text-decoration:none;border-radius:10px;font-size:16px}
 @media(max-width:640px){.nav-toggle{display:flex}}
 @media(min-width:641px){.nav-toggle{display:none !important}.mobile-menu{display:none !important}}
-</style>
+
+.mm-h{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ember);margin:0 0 12px;}</style>
 </head>
 <body>
 
@@ -127,7 +130,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
   <div class="mobile-menu-inner">
     <section>
-      <h3>For Businesses</h3>
+      <p class="mm-h">For Businesses</p>
       <a href="/businesses">Overview</a>
       <a href="/build.html">Build &mdash; Contractors</a>
       <a href="/roof.html">Roof &mdash; Roofing</a>
@@ -138,20 +141,20 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
       <a href="/vision.html">Vision</a>
     </section>
     <section>
-      <h3>Consumer Apps</h3>
+      <p class="mm-h">Consumer Apps</p>
       <a href="/apps">Overview</a>
       <a href="https://ickthatish.com" target="_blank" rel="noopener">Ick That Ish &#8599;</a>
       <a href="https://goldstandardapp.com" target="_blank" rel="noopener">Gold Standard &#8599;</a>
       <a href="https://whosrunningusa.com" target="_blank" rel="noopener">WhosRunningUSA &#8599;</a>
     </section>
     <section>
-      <h3>Card Collectors</h3>
+      <p class="mm-h">Card Collectors</p>
       <a href="/collectors">Overview</a>
       <a href="https://cardshop.twomiah.com" target="_blank" rel="noopener">Card Shop &#8599;</a>
       <a href="https://breakreturns.com" target="_blank" rel="noopener">BreakReturns &#8599;</a>
     </section>
     <section>
-      <h3>Company</h3>
+      <p class="mm-h">Company</p>
       <a href="/mission.html">Mission</a>
       <a href="/#story">Our Story</a>
       <a href="/terms.html">Terms</a>
@@ -161,6 +164,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
     <a href="mailto:support@twomiah.com" class="mobile-menu-cta">Get Started</a>
   </div>
 </div>
+<main>
 
 
 <div class="page-header">
@@ -249,6 +253,8 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
 
 </div>
 
+</main>
+</main>
 <footer>
   <div class="footer-inner">
     <span class="nav-wordmark">TWOMIAH</span>
@@ -259,7 +265,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
   </div>
 </footer>
 
-<script src="/cookie-banner.js"></script>
+<script src="/cookie-banner.js" defer></script>
 <script>
 /* Mobile nav: hamburger toggles full sitemap overlay (scrollable) */
 (function(){
