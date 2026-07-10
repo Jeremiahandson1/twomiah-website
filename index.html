@@ -709,11 +709,20 @@ document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
 /* ── Duplicate marquee content for seamless loop ── */
 var mq = document.getElementById('marquee'); if(mq) mq.innerHTML += mq.innerHTML;
 
-/* ── WebGL molten-gradient hero ── */
+/* ── WebGL molten-gradient hero — deferred until first interaction ── */
 (function(){
   var cv = document.getElementById('gl');
-  var gl = cv.getContext('webgl') || cv.getContext('experimental-webgl');
-  if(!gl){ cv.style.display='none'; return; }
+  if(!cv) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){ cv.style.display='none'; return; }
+  var booted=false;
+  /* The CSS molten gradient (see #gl background) carries the hero. ALL WebGL work
+     — context creation, shader compile, and the render loop — is deferred to the
+     first real user interaction, so initial load stays cheap and machines without
+     GPU acceleration never pay for software rendering unprompted. */
+  function boot(){
+  if(booted) return; booted=true;
+  var gl = cv.getContext('webgl',{antialias:false,depth:false,alpha:false,powerPreference:'low-power'}) || cv.getContext('experimental-webgl');
+  if(!gl){ return; }
   var vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
   var fs='precision highp float;uniform vec2 r;uniform float t;uniform vec2 m;'+
   'float w(vec2 p,float k){return sin(p.x*3.0+k)+sin(p.y*2.5-k*0.8)+sin((p.x+p.y)*2.0+k*0.6);}'+
@@ -742,19 +751,20 @@ var mq = document.getElementById('marquee'); if(mq) mq.innerHTML += mq.innerHTML
     gl.viewport(0,0,cv.width,cv.height);
   }
   size(); addEventListener('resize',size,{passive:true});
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var run=false, raf=0, start=null, last=0, FRAME=1000/30; /* cap at 30fps */
   function draw(ts){if(start===null)start=ts;mouse[0]+=(tgt[0]-mouse[0])*0.06;mouse[1]+=(tgt[1]-mouse[1])*0.06;
     gl.uniform2f(ur,cv.width,cv.height);gl.uniform1f(ut,(ts-start)/1000);gl.uniform2f(um,mouse[0],mouse[1]);gl.drawArrays(gl.TRIANGLES,0,6);}
   function frame(ts){raf=0;if(!run)return;if(ts-last>=FRAME){last=ts;draw(ts);}req();}
   function req(){if(run&&!raf)raf=requestAnimationFrame(frame);}         /* single-flight */
-  function resume(){if(reduce){draw(performance.now());return;}if(!run){run=true;req();}}
+  function resume(){if(!run){run=true;req();}}
   function pause(){run=false;}
   /* Stop rendering when the hero scrolls off-screen; resume when it returns. */
   if('IntersectionObserver' in window){new IntersectionObserver(function(en){en[0].isIntersecting?resume():pause();},{threshold:0.01}).observe(cv);}
   document.addEventListener('visibilitychange',function(){document.hidden?pause():resume();});
-  /* Defer the first frame to idle so it never competes with initial page load. */
-  (window.requestIdleCallback||function(f){setTimeout(f,300);})(function(){resume();});
+  resume();
+  }
+  var o={passive:true,once:true};
+  ['pointermove','pointerdown','touchstart','scroll','keydown','wheel'].forEach(function(ev){addEventListener(ev,boot,o);});
 })();
 
 /* ── Live site demo — six full landing pages, hero and all ── */
