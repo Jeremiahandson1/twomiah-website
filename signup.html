@@ -335,33 +335,24 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
       <div class="step-desc">Choose your plan. All plans include a 30-day free trial.</div>
 
       <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;display:block">Select a Plan *</label>
-      <div class="plan-grid" id="planGrid" style="grid-template-columns:repeat(5,1fr)">
-        <div class="plan-card" data-plan="starter" onclick="selectPlan(this)">
+      <div class="plan-grid" id="planGrid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="plan-card" data-plan="starter10" onclick="selectPlan(this)">
           <div class="plan-label">Starter</div>
-          <div class="plan-price">$49</div>
-          <div class="plan-per">/mo &middot; 2 users</div>
+          <div class="plan-price">$99</div>
+          <div class="plan-per">/mo &middot; up to 10 users</div>
         </div>
-        <div class="plan-card" data-plan="pro" onclick="selectPlan(this)">
-          <div class="plan-label">Pro</div>
-          <div class="plan-price">$149</div>
-          <div class="plan-per">/mo &middot; up to 10</div>
+        <div class="plan-card" data-plan="team25" onclick="selectPlan(this)">
+          <div class="plan-label">Team</div>
+          <div class="plan-price">$139</div>
+          <div class="plan-per">/mo &middot; up to 25 users</div>
         </div>
-        <div class="plan-card" data-plan="business" onclick="selectPlan(this)">
+        <div class="plan-card" data-plan="business50" onclick="selectPlan(this)">
           <div class="plan-label">Business</div>
-          <div class="plan-price">$299</div>
-          <div class="plan-per">/mo &middot; up to 25</div>
-        </div>
-        <div class="plan-card" data-plan="construction" onclick="selectPlan(this)">
-          <div class="plan-label">Construction</div>
-          <div class="plan-price">$599</div>
-          <div class="plan-per">/mo &middot; up to 50</div>
-        </div>
-        <div class="plan-card" data-plan="enterprise" onclick="selectPlan(this)">
-          <div class="plan-label">Enterprise</div>
           <div class="plan-price">$199</div>
-          <div class="plan-per">/user/mo &middot; 10 min</div>
+          <div class="plan-per">/mo &middot; up to 50 users</div>
         </div>
       </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.45);margin:10px 0 4px">Every feature is included on every plan — team size is the only difference. Includes your website + hosting. 50+ users? <a href="mailto:support@twomiah.com?subject=Enterprise%20plan" style="color:#FF6D00">Talk to us</a>.</p>
 
       <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;display:block">Hosting Preference</label>
       <div class="hosting-grid" id="hostingGrid">
@@ -375,7 +366,8 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
         </div>
       </div>
 
-      <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;display:block">Add-Ons (optional)</label>
+      <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:4px;display:block">Turn on what you need</label>
+      <p style="font-size:12px;color:rgba(255,255,255,0.42);margin:0 0 12px">Every feature's included <b style="color:#FFAB00">free</b> — pick what to switch on now. Add or remove anytime in your dashboard. (Texting &amp; AI are billed at cost.)</p>
       <div class="check-grid" id="addonsGrid">
         <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="sms"><span class="check-box"></span><span class="check-label">SMS &amp; Texting</span></label>
         <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="gps"><span class="check-box"></span><span class="check-label">GPS &amp; Field Tracking</span></label>
@@ -396,23 +388,18 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
     <!-- STEP 5: Deploy Service -->
     <div class="step" data-step="4">
       <div class="step-title">Deploy Service</div>
-      <div class="step-desc">How much help do you want getting set up? All options include your CRM, website, and database.</div>
+      <div class="step-desc">Your site + CRM are built and deployed automatically — included. Want it hand-customized beyond the auto-build? That's the one optional add-on.</div>
 
-      <div class="deploy-grid" id="deployGrid">
-        <div class="deploy-card" data-deploy="basic" onclick="selectDeploy(this)">
-          <h4>Basic</h4>
-          <div class="deploy-price">$299</div>
-          <p>We set up your CRM and website on our servers. You get login credentials and a live URL. Self-service onboarding.</p>
+      <div class="deploy-grid" id="deployGrid" style="grid-template-columns:1fr 1fr">
+        <div class="deploy-card selected" data-deploy="basic" onclick="selectDeploy(this)">
+          <h4>Standard</h4>
+          <div class="deploy-price">Included</div>
+          <p>We auto-build and deploy your site + CRM. Login credentials and a live URL — nothing extra to pay.</p>
         </div>
-        <div class="deploy-card selected" data-deploy="full" onclick="selectDeploy(this)">
-          <h4>Full Setup</h4>
+        <div class="deploy-card" data-deploy="custom" onclick="selectDeploy(this)">
+          <h4>True Customization</h4>
           <div class="deploy-price">$499</div>
-          <p>Everything in Basic, plus we import your existing data, configure integrations, and do a 30-min walkthrough call.</p>
-        </div>
-        <div class="deploy-card" data-deploy="white-glove" onclick="selectDeploy(this)">
-          <h4>White Glove</h4>
-          <div class="deploy-price">$699</div>
-          <p>Full concierge setup. We build your website content, migrate all data, train your team, and provide 30 days of priority support.</p>
+          <p>See what we built, then send us the changes — we hand-customize the design beyond the auto-build. One-time, optional.</p>
         </div>
       </div>
 
@@ -498,7 +485,7 @@ var currentStep = 0;
 var totalSteps = 7;
 var selectedPlan = '';
 var selectedHosting = 'saas';
-var selectedDeploy = 'full';
+var selectedDeploy = 'basic';
 var selectedTemplate = '';
 
 // Template definitions per industry category
@@ -671,11 +658,11 @@ function val(id) {
 }
 
 function planLabel(p) {
-  var map = { starter: 'Starter ($49/mo)', pro: 'Pro ($149/mo)', business: 'Business ($299/mo)', construction: 'Construction ($599/mo)', enterprise: 'Enterprise ($199/user/mo)' };
+  var map = { starter10: 'Starter — up to 10 users ($99/mo)', team25: 'Team — up to 25 users ($139/mo)', business50: 'Business — up to 50 users ($199/mo)' };
   return map[p] || p;
 }
 function deployLabel(d) {
-  var map = { basic: 'Basic ($299)', full: 'Full Setup ($499)', 'white-glove': 'White Glove ($699)' };
+  var map = { basic: 'Standard (included)', custom: 'True Customization ($499)' };
   return map[d] || d;
 }
 
@@ -727,7 +714,7 @@ function getFormData() {
   var addons = [];
   document.querySelectorAll('#addonsGrid input:checked').forEach(function(cb) { addons.push(cb.value); });
 
-  var planPrices = { starter: 49, pro: 149, business: 299, construction: 599, enterprise: 199 };
+  var planPrices = { starter10: 99, team25: 139, business50: 199 };
 
   return {
     name: val('companyName'),
