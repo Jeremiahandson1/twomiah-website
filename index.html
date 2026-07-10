@@ -177,8 +177,8 @@ section{position:relative}
 .door-price{font-size:15px;color:var(--bone);font-weight:600;margin-bottom:18px}
 .door-price small{color:var(--muted);font-weight:400}
 .door-list{list-style:none;display:flex;flex-direction:column;gap:9px;flex:1;margin-bottom:20px}
-.door-list li{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,0.6);display:flex;gap:9px}
-.door-list li::before{content:'\2713';color:var(--fire);font-weight:700;flex-shrink:0}
+.door-list li{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,0.6);position:relative;padding-left:20px}
+.door-list li::before{content:'\2713';color:var(--fire);font-weight:700;position:absolute;left:0;top:0}
 .door-note{font-size:12px;color:var(--muted);border-top:1px solid rgba(255,255,255,0.07);padding-top:14px}
 .door-badge{position:absolute;top:16px;right:16px;background:var(--fire);color:#fff;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:4px 10px;border-radius:20px}
 .door-cta{margin-top:16px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:12px 18px;border-radius:8px;font-size:14px;font-weight:700;letter-spacing:0.01em;text-decoration:none;border:1px solid rgba(255,255,255,0.18);color:#fff;transition:background 0.2s,border-color 0.2s,transform 0.2s}
@@ -198,8 +198,8 @@ section{position:relative}
 .price-per{font-size:16px;color:rgba(255,255,255,0.64)}
 .price-line{font-size:14px;color:rgba(255,255,255,0.64);margin-bottom:26px}
 .price-list{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px}
-.price-list li{font-size:14px;color:rgba(255,255,255,0.72);display:flex;gap:10px;line-height:1.45}
-.price-list li::before{content:'\2713';color:var(--fire);font-weight:700;flex-shrink:0}
+.price-list li{font-size:14px;color:rgba(255,255,255,0.72);position:relative;padding-left:22px;line-height:1.45}
+.price-list li::before{content:'\2713';color:var(--fire);font-weight:700;position:absolute;left:0;top:0}
 .price-sub2{font-size:12.5px;color:var(--muted);border-top:1px solid rgba(255,255,255,0.08);padding-top:18px;line-height:1.7}
 .price-sub2 b{color:var(--bone);font-weight:600}
 .price-cta{display:block;text-align:center;background:var(--fire);color:#fff;padding:15px;border-radius:6px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;margin-top:24px;transition:background 0.2s}
@@ -228,8 +228,8 @@ section{position:relative}
 .case-card.before .case-platform{color:rgba(255,255,255,0.62)}
 .case-domain{font-size:12px;color:rgba(255,255,255,0.62);font-family:'Barlow Condensed',sans-serif;margin-bottom:14px;letter-spacing:0.06em}
 .case-bullets{list-style:none;display:flex;flex-direction:column;gap:8px}
-.case-bullets li{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,0.64);display:flex;gap:9px}
-.case-bullets li::before{content:'\2713';color:var(--fire);font-weight:700;flex-shrink:0}
+.case-bullets li{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,0.64);position:relative;padding-left:20px}
+.case-bullets li::before{content:'\2713';color:var(--fire);font-weight:700;position:absolute;left:0;top:0}
 .case-card.before .case-bullets li::before{content:'\2715';color:rgba(255,255,255,0.64)}
 .proof-live{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1100px;margin:0 auto}
 .live-card{background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;transition:transform 0.25s,border-color 0.25s}
@@ -454,7 +454,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
     <div class="diff-card tilt reveal">
       <div class="diff-icon">💸</div>
       <h3 class="diff-name">Texting &amp; AI <span>billed at cost</span></h3>
-      <p class="diff-desc">A text message costs about <strong>$0.003</strong>. We charge you $0.003 — plus $5/mo to switch it on. Everyone else marks it up 5x and quietly pockets the difference. That markup is <em>their</em> whole business. It's not ours.</p>
+      <p class="diff-desc">A text message costs about <strong>$0.003</strong>. We charge you $0.003 — plus $10/mo to switch it on. Everyone else marks it up 5x and quietly pockets the difference. That markup is <em>their</em> whole business. It's not ours.</p>
     </div>
   </div>
   <p class="diff-foot reveal">The truth nobody in those ads mentions: most are agencies reselling one big platform (GoHighLevel &amp; friends) at <b>$297–$497/mo</b>, on contracts, marking up every text. <b>We're the software company, not the middleman.</b></p>
@@ -522,7 +522,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
       <ul class="price-list">
         <li>Every software feature included — nothing held back behind a higher tier</li>
         <li>Your website hosting folded in free</li>
-        <li>Texting, AI, calls billed <b>at cost</b> + $5/mo to enable</li>
+        <li>Texting, AI, calls billed <b>at cost</b> + $10/mo to enable</li>
         <li>No contract — cancel any month</li>
         <li>Own it outright (~36× monthly) and take the code</li>
       </ul>
