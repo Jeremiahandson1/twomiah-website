@@ -431,7 +431,43 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
     </div>
   </div>
   <p class="bl-note reveal">Every trade, a completely different look — themed live in your browser. Now imagine it <b>hand-finished by us</b> with your photos and your words. This is the site we build you <b>before you pay a thing</b>.</p>
+
+  <!-- Real template render (free, self-serve — hits the factory preview endpoint) -->
+  <div class="reveal" style="text-align:center;margin-top:30px">
+    <button id="blRealBtn" type="button" style="background:linear-gradient(120deg,#FF6D00,#e64a00);color:#fff;font-family:inherit;font-size:15px;font-weight:800;padding:16px 34px;border:0;border-radius:12px;cursor:pointer;box-shadow:0 12px 34px rgba(255,109,0,.34)">Render my real site — free &rarr;</button>
+    <p style="font-size:12px;color:var(--muted);margin-top:11px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.6">Not the animation above — the <b style="color:var(--bone)">actual page</b> we'd build you, straight from our templates. No card, no email. Takes about 15 seconds.</p>
+  </div>
 </section>
+
+<!-- Free real-preview modal -->
+<style>
+  @keyframes blspin{to{transform:rotate(360deg)}}
+  #blModal{display:none;position:fixed;inset:0;z-index:9999;background:rgba(6,8,12,.86);align-items:center;justify-content:center;padding:22px}
+  #blModal .bl-card{background:#0f1419;border:1px solid rgba(255,255,255,.12);border-radius:16px;width:100%;max-width:940px;height:86vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+</style>
+<div id="blModal" role="dialog" aria-modal="true" aria-label="Your website preview">
+  <div class="bl-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.08);flex-shrink:0">
+      <div style="display:flex;align-items:center;gap:10px;min-width:0">
+        <span style="font-size:12px;font-weight:800;color:#FF6D00;letter-spacing:.04em;white-space:nowrap">YOUR PREVIEW</span>
+        <span id="blModalName" style="font-size:13px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
+      </div>
+      <button id="blModalClose" type="button" aria-label="Close preview" style="background:rgba(255,255,255,.08);border:0;color:#fff;width:34px;height:34px;border-radius:9px;font-size:20px;line-height:1;cursor:pointer;flex-shrink:0">&times;</button>
+    </div>
+    <div style="flex:1;position:relative;background:#fff;overflow:hidden">
+      <div id="blModalLoad" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0f1419;color:#fff;gap:16px;text-align:center;padding:24px">
+        <div id="blSpinner" style="width:40px;height:40px;border:3px solid rgba(255,255,255,.15);border-top-color:#FF6D00;border-radius:50%;animation:blspin 1s linear infinite"></div>
+        <div id="blModalMsg" style="font-size:14px;font-weight:700">Warming up the factory&hellip;</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.5);max-width:280px;line-height:1.6">First render can take ~20s while our builder wakes up. Hang tight.</div>
+      </div>
+      <iframe id="blModalFrame" title="Your site preview" sandbox style="width:100%;height:100%;border:0;display:block;background:#fff"></iframe>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-top:1px solid rgba(255,255,255,.08);flex-shrink:0;flex-wrap:wrap">
+      <span style="font-size:11px;color:var(--muted);max-width:520px;line-height:1.5">A live template render — the real one gets hand-finished with your photos &amp; words.</span>
+      <a href="/signup" style="background:#FF6D00;color:#fff;text-decoration:none;font-size:13px;font-weight:800;padding:11px 20px;border-radius:9px;white-space:nowrap">Start mine &rarr;</a>
+    </div>
+  </div>
+</div>
 
 <!-- DIFFERENT -->
 <section id="different">
@@ -882,6 +918,53 @@ var mq = document.getElementById('marquee'); if(mq) mq.innerHTML += mq.innerHTML
 
   setSwatch(accent);render();
   term.innerHTML='<span class="t-dim">$ twomiah build --site '+slug()+' --roofing</span><br><span class="t-fire">▸ theming roofing layout…</span><br><span class="t-fire">▸ generating pages + SEO…</span><br><span class="t-ok">✓ deployed</span> <span class="t-url">'+slug()+'.twomiah.site</span><br><span class="t-dim">ready in 0.8s — you own the code</span> <span class="term-cursor"></span>';
+
+  /* ── Real template render — free, self-serve (factory /public/preview) ── */
+  var PREVIEW_API='https://twomiah-factory-api.onrender.com/api/v1/factory/public/preview';
+  // Map the widget's trade token to a business-type string the factory's
+  // classifier understands, so the render picks the right template.
+  var BT={roofing:'roofing',contractor:'general contractor',field_service:'HVAC and plumbing',landscaping:'landscaping',home_care:'home care',rv:'RV dealership',vet:'veterinary clinic',dispensary:'dispensary',restaurant:'restaurant',salon:'salon and spa',generic:'small business'};
+  var MSGS=['Warming up the factory…','Theming your layout…','Generating pages + SEO…','Almost there…'];
+  var modal=document.getElementById('blModal'),mFrame=document.getElementById('blModalFrame'),mLoad=document.getElementById('blModalLoad'),mMsg=document.getElementById('blModalMsg'),mName=document.getElementById('blModalName'),mSpin=document.getElementById('blSpinner'),realBtn=document.getElementById('blRealBtn');
+  var msgTimer=null;
+  function closeModal(){if(!modal)return;modal.style.display='none';mFrame.removeAttribute('srcdoc');document.body.style.overflow='';if(msgTimer){clearInterval(msgTimer);msgTimer=null;}}
+  function openReal(){
+    var bn=(name.value||'').trim();
+    if(bn.length<2){name.focus();name.style.borderColor='#ff5a3c';setTimeout(function(){name.style.borderColor='';},1500);return;}
+    mName.textContent=bn;
+    mFrame.removeAttribute('srcdoc');
+    mSpin.style.display='';mLoad.style.display='flex';
+    modal.style.display='flex';document.body.style.overflow='hidden';
+    var i=0;mMsg.textContent=MSGS[0];if(msgTimer)clearInterval(msgTimer);
+    msgTimer=setInterval(function(){i=(i+1)%MSGS.length;mMsg.textContent=MSGS[i];},4000);
+    var ctrl=('AbortController' in window)?new AbortController():null;
+    var to=setTimeout(function(){if(ctrl)ctrl.abort();},70000);
+    function fail(msg){if(msgTimer){clearInterval(msgTimer);msgTimer=null;}mSpin.style.display='none';mMsg.textContent=msg;}
+    fetch(PREVIEW_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({businessName:bn,businessType:BT[trade]||'small business'}),signal:ctrl?ctrl.signal:undefined})
+    .then(function(res){return res.text().then(function(t){return {ok:res.ok,status:res.status,body:t};});})
+    .then(function(r){
+      clearTimeout(to);
+      if(r.ok){
+        if(msgTimer){clearInterval(msgTimer);msgTimer=null;}
+        mFrame.onload=function(){mLoad.style.display='none';};
+        mFrame.setAttribute('srcdoc',r.body);
+        setTimeout(function(){mLoad.style.display='none';},1500);
+      }else{
+        var em='Something went wrong — please try again.';
+        try{em=JSON.parse(r.body).error||em;}catch(e){}
+        if(r.status===429)em='You\'ve generated a few previews already — give it a couple of minutes and try again.';
+        else if(r.status===503)em='Our builder is busy right now — try again in a few seconds.';
+        fail(em);
+      }
+    })
+    .catch(function(){clearTimeout(to);fail('That took too long — our builder may be waking up. Please try again in a moment.');});
+  }
+  if(realBtn)realBtn.addEventListener('click',openReal);
+  if(modal){
+    document.getElementById('blModalClose').addEventListener('click',closeModal);
+    modal.addEventListener('click',function(e){if(e.target===modal)closeModal();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.style.display==='flex')closeModal();});
+  }
 })();
 
 /* ── Intake → real Factory endpoint ── */
