@@ -679,6 +679,14 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
         <div class="intake-field"><label for="contactEmail">Email *</label><input type="email" id="contactEmail" name="contactEmail" required placeholder="you@example.com"></div>
         <div class="intake-field"><label for="contactPhone">Phone (optional)</label><input type="tel" id="contactPhone" name="contactPhone" placeholder="(715) 555-1234"></div>
       </div>
+      <!-- SMS consent — required disclosure at the point of phone-number collection
+           (A2P 10DLC campaign compliance: purpose, frequency, rates, opt-out). -->
+      <div class="intake-field full" style="margin-top:2px">
+        <label for="smsConsent" style="display:flex;gap:10px;align-items:flex-start;font-size:12px;font-weight:400;letter-spacing:0;text-transform:none;color:rgba(255,255,255,0.55);line-height:1.55;cursor:pointer">
+          <input type="checkbox" id="smsConsent" name="smsConsent" value="yes" style="width:auto;margin:2px 0 0;accent-color:#FF6D00;flex-shrink:0">
+          <span>By checking this box, I agree to receive text messages from <b style="color:rgba(255,255,255,0.78)">Twomiah</b> at the number provided about my website preview and account (for example, preview-ready notifications and follow-ups — up to 4&nbsp;messages/month; frequency varies). Consent is not a condition of purchase. Message &amp; data rates may apply. Reply <b style="color:rgba(255,255,255,0.78)">STOP</b> to unsubscribe or <b style="color:rgba(255,255,255,0.78)">HELP</b> for help. See our <a href="/privacy" style="color:var(--ember)">Privacy&nbsp;Policy</a> and <a href="/terms" style="color:var(--ember)">Terms</a>.</span>
+        </label>
+      </div>
       <div class="intake-field full"><label for="currentSite">Current website, if any</label><input type="url" id="currentSite" name="currentSite" placeholder="https://yoursite.com"></div>
       <div class="intake-field full"><label for="notes">Anything else?</label><textarea id="notes" name="notes" placeholder="What do you do, who do you serve, what does 'done' look like?"></textarea></div>
       <button type="submit" class="intake-submit">Build my free preview →</button>
