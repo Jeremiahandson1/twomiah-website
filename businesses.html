@@ -115,6 +115,13 @@ section{padding:100px 48px;position:relative}
 .intake-field input::placeholder,.intake-field textarea::placeholder{color:rgba(255,255,255,0.25)}
 .intake-field input.error,.intake-field textarea.error{border-color:#ff4444}
 .intake-field textarea{resize:vertical;min-height:90px;font-family:'Barlow',sans-serif}
+.intake-facts-head{margin-top:10px;padding-top:22px;border-top:1px solid rgba(255,255,255,0.08)}
+.intake-facts-head h3{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:0.04em;color:var(--white);margin:0 0 6px}
+.intake-facts-head p,.intake-hint{font-size:13px;line-height:1.5;color:rgba(255,255,255,0.62);margin:0}
+.intake-hint{margin-top:6px}
+.intake-field label.intake-check{display:flex;gap:10px;align-items:center;font-size:14px;font-weight:400;letter-spacing:0;text-transform:none;color:rgba(255,255,255,0.8);cursor:pointer;margin:0;padding-top:30px}
+.intake-field .intake-check input{width:auto;padding:0;accent-color:var(--ember)}
+@media(max-width:640px){.intake-field label.intake-check{padding-top:0}}
 .intake-submit{margin-top:14px;background:var(--fire);color:var(--white);padding:14px;border:none;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;font-family:'Barlow',sans-serif}
 .intake-submit:hover{background:var(--ember)}
 .intake-submit:disabled{opacity:0.5;cursor:wait}
@@ -540,12 +547,55 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
             </label>
           </div>
           <div class="intake-field">
-            <label for="photos">Reference Photos (optional, up to 5)</label>
+            <label for="photos">Photos of Your Own Work (optional, up to 5)</label>
             <label class="intake-file">
               <input type="file" id="photos" name="photos[]" accept="image/*" multiple>
               <span class="intake-file-label" data-default="Choose files (up to 5)">Choose files (up to 5)</span>
             </label>
+            <p class="intake-hint">Real jobs you did — these become your gallery. Not inspiration pictures.</p>
           </div>
+        </div>
+
+        <!-- Owner-supplied facts. The composed site states ONLY facts given here or in
+             the fields above — no invented prices, reviews, years or credentials — so each
+             one adds a section the site would otherwise leave out. All optional. -->
+        <div class="intake-facts-head">
+          <h3>The facts (all optional)</h3>
+          <p>Your site only states what you tell us — we never make up prices, reviews or credentials. Each answer here adds something real to it.</p>
+        </div>
+
+        <div class="intake-row">
+          <div class="intake-field">
+            <label for="yearFounded">Year You Started</label>
+            <input type="number" id="yearFounded" name="yearFounded" min="1800" max="2100" inputmode="numeric" placeholder="2014">
+          </div>
+          <div class="intake-field">
+            <label class="intake-check" for="freeEstimates">
+              <input type="checkbox" id="freeEstimates" name="freeEstimates" value="yes">
+              <span>We give free estimates</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="intake-row">
+          <div class="intake-field">
+            <label for="credentials">Licenses, Insurance, Certifications</label>
+            <input type="text" id="credentials" name="credentials" placeholder="Licensed, insured, bonded, GAF Master Elite">
+          </div>
+          <div class="intake-field">
+            <label for="hours">Business Hours</label>
+            <input type="text" id="hours" name="hours" placeholder="Mon–Fri 7am–5pm, Sat by appointment">
+          </div>
+        </div>
+
+        <div class="intake-field">
+          <label for="pricing">Prices or Starting Prices</label>
+          <textarea id="pricing" name="pricing" rows="2" placeholder="Kitchen remodels usually start around $30k. Drain cleaning $189. Leave blank and your site won't show prices."></textarea>
+        </div>
+
+        <div class="intake-field">
+          <label for="testimonials">Customer Reviews</label>
+          <textarea id="testimonials" name="testimonials" rows="5" placeholder="Paste one or two real reviews. Put a blank line between reviews, and the customer's name on its own line starting with a dash:&#10;&#10;They finished on time and cleaned up every day.&#10;— Dana R."></textarea>
         </div>
 
         <div class="intake-field">
@@ -772,7 +822,7 @@ if (intakeForm) {
     // 5-photo cap matches the server. If a user picks more, fail fast client-side.
     var photoInput = f.querySelector('#photos');
     if (photoInput && photoInput.files && photoInput.files.length > 5) {
-      showIntakeStatus('Please select up to 5 reference photos.', 'error');
+      showIntakeStatus('Please select up to 5 photos of your work.', 'error');
       return;
     }
 
