@@ -309,10 +309,19 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
         <label>Company Logo</label>
         <div class="file-upload">
           <label class="file-btn" for="logoFile">Choose File</label>
-          <input type="file" id="logoFile" accept="image/*" onchange="updateFileName(this,'logoName')">
+          <input type="file" id="logoFile" accept="image/png,image/jpeg,image/webp" onchange="updateFileName(this,'logoName')">
           <span class="file-name" id="logoName">No file chosen</span>
         </div>
-        <div class="field-hint">PNG or JPG, at least 400x400px recommended</div>
+        <div class="field-hint">PNG, JPG or WEBP, at least 400x400px recommended</div>
+      </div>
+      <div class="field">
+        <label>Photo of Your Work (optional)</label>
+        <div class="file-upload">
+          <label class="file-btn" for="heroFile">Choose File</label>
+          <input type="file" id="heroFile" accept="image/png,image/jpeg,image/webp" onchange="updateFileName(this,'heroName')">
+          <span class="file-name" id="heroName">No file chosen</span>
+        </div>
+        <div class="field-hint">A real photo of your team, your place or a job you did. It becomes the big picture at the top of your website. Wide (landscape) photos work best.</div>
       </div>
       <div class="field">
         <label>Primary Brand Color</label>
@@ -609,6 +618,40 @@ function toggleCheck(el) {
   }, 10);
 }
 
+// The logo and work photo go to the API as data URLs. Shrink them first: a phone photo is
+// several MB, and a full-width hero needs about 2000px. A file that can't be read is skipped,
+// never a reason to fail the signup.
+function shrinkImage(file, maxW, type, quality) {
+  return new Promise(function(resolve) {
+    if (!file || !/^image\/(png|jpeg|webp)$/.test(file.type)) return resolve(null);
+    var url = URL.createObjectURL(file), img = new Image();
+    img.onload = function() {
+      var scale = Math.min(1, maxW / img.naturalWidth), c = document.createElement('canvas');
+      c.width = Math.round(img.naturalWidth * scale);
+      c.height = Math.round(img.naturalHeight * scale);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url);
+      try { resolve(c.toDataURL(type, quality)); } catch (e) { resolve(null); }
+    };
+    img.onerror = function() { URL.revokeObjectURL(url); resolve(null); };
+    img.src = url;
+  });
+}
+
+function signupImages() {
+  var logo = document.getElementById('logoFile').files[0];
+  var hero = document.getElementById('heroFile').files[0];
+  return Promise.all([
+    shrinkImage(logo, 600, logo && logo.type === 'image/jpeg' ? 'image/jpeg' : 'image/png', 0.9),
+    shrinkImage(hero, 2000, 'image/jpeg', 0.85),
+  ]).then(function(r) {
+    var branding = {};
+    if (r[0]) branding.logo = r[0];
+    if (r[1]) branding.heroPhoto = r[1];
+    return branding;
+  });
+}
+
 function updateFileName(input, spanId) {
   var name = input.files && input.files[0] ? input.files[0].name : 'No file chosen';
   document.getElementById(spanId).textContent = name;
@@ -764,10 +807,13 @@ function submitForm() {
   var data = getFormData();
   var API = 'https://twomiah-factory-api.onrender.com';
 
-  fetch(API + '/api/v1/factory/public/signup', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
+  signupImages().then(function(branding) {
+    data.branding = branding;
+    return fetch(API + '/api/v1/factory/public/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
   })
   .then(function(res) { return res.json().then(function(d) { return { ok: res.ok, data: d }; }); })
   .then(function(result) {
