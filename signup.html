@@ -606,6 +606,13 @@ function selectTemplate(el) {
     var hCard = document.querySelector('.hosting-card[data-hosting="' + hosting + '"]');
     if (hCard) selectHosting(hCard);
   }
+  // From the homepage preview's "Make it mine": the name, trade and city just previewed.
+  function prefill(id, v) { var el = document.getElementById(id); if (el && v && !el.value) el.value = String(v).replace(/[<>]/g, '').trim().slice(0, 80); }
+  function pick(id, v) { var el = document.getElementById(id); if (el && v && el.querySelector('option[value="' + String(v).replace(/[^A-Za-z_]/g, '') + '"]')) el.value = v; }
+  prefill('companyName', params.get('name'));
+  pick('industry', params.get('industry'));
+  prefill('city', params.get('city'));
+  pick('state', (params.get('state') || '').toUpperCase());
 })();
 
 function selectPlan(el) {
