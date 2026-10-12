@@ -221,7 +221,10 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
 @media(max-width:640px){.nav-toggle{display:flex}}
 @media(min-width:641px){.nav-toggle{display:none !important}.mobile-menu{display:none !important}}
 
-.mm-h{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ember);margin:0 0 12px;}</style>
+.mm-h{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ember);margin:0 0 12px;}
+/* Phone width: nothing may be wider than the screen */
+@media(max-width:640px){.own-grid{grid-template-columns:1fr !important}.own-addons{grid-template-columns:repeat(2,1fr) !important}}
+</style>
 </head>
 <body>
 
@@ -358,7 +361,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
         <div class="stack-icon">&#x1F3E0;</div>
         <div class="stack-name">Home Visualizer</div>
         <p class="stack-desc">Show homeowners their house with your work on it. Close deals on the spot.</p>
-        <div class="stack-price">$99<span>/mo</span></div>
+        <div class="stack-price">$49<span>/mo</span></div>
       </div>
     </div>
   </div>
@@ -557,14 +560,10 @@ document.getElementById('compareTable').innerHTML=h}
       <p class="section-sub" style="max-width:600px;margin:0 auto">Pay monthly and we host it &mdash; or buy the source code outright and never pay us again. No other CRM in this space will sell you the code. We will. That's the difference.</p>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:8px;max-width:900px">
-      <div class="own-label" style="color:var(--fire)">SaaS &mdash; We Host &amp; Maintain</div>
-      <div class="own-label" style="color:rgba(255,255,255,0.3)">Self-Hosted &mdash; Buy Once, Own Forever</div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px">
+    <div class="own-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px">
       <!-- SaaS column -->
       <div class="reveal" style="display:flex;flex-direction:column;gap:10px">
+        <div class="own-label" style="color:var(--fire);margin-bottom:0">SaaS &mdash; We Host &amp; Maintain</div>
         <div class="own-row"><div><div class="own-tier">Starter</div><div class="own-detail">Up to 10 users</div></div><div class="own-price">$99<span>/mo</span></div></div>
         <div class="own-row"><div><div class="own-tier">Team</div><div class="own-detail">Up to 25 users</div></div><div class="own-price">$139<span>/mo</span></div></div>
         <div class="own-row"><div><div class="own-tier">Business</div><div class="own-detail">Up to 50 users</div></div><div class="own-price">$199<span>/mo</span></div></div>
@@ -576,6 +575,7 @@ document.getElementById('compareTable').innerHTML=h}
 
       <!-- Self-hosted column — every license = monthly SaaS × 36, includes 3 years of updates -->
       <div class="reveal" style="display:flex;flex-direction:column;gap:10px">
+        <div class="own-label" style="color:rgba(255,255,255,0.3);margin-bottom:0">Self-Hosted &mdash; Buy Once, Own Forever</div>
         <div class="own-row"><div><div class="own-tier" style="color:rgba(255,255,255,0.3)">Starter License</div><div class="own-detail">Up to 10 users &middot; 3 yrs updates</div></div><div class="own-price" style="color:rgba(255,255,255,0.7)">$3,564<span> once</span></div></div>
         <div class="own-row"><div><div class="own-tier" style="color:rgba(255,255,255,0.3)">Team License</div><div class="own-detail">Up to 25 users &middot; 3 yrs updates</div></div><div class="own-price" style="color:rgba(255,255,255,0.7)">$5,004<span> once</span></div></div>
         <div class="own-row"><div><div class="own-tier" style="color:rgba(255,255,255,0.3)">Business License</div><div class="own-detail">Up to 50 users &middot; 3 yrs updates</div></div><div class="own-price" style="color:rgba(255,255,255,0.7)">$7,164<span> once</span></div></div>
@@ -589,7 +589,7 @@ document.getElementById('compareTable').innerHTML=h}
     <!-- Add-ons -->
     <div class="reveal" style="margin-top:48px;max-width:900px">
       <div style="font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:16px">Self-Hosted Add-Ons</div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+      <div class="own-addons" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
         <div style="background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:16px 18px"><div style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:6px">Installation Service</div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:rgba(255,255,255,0.5)">$500</div><div style="font-size:11px;color:rgba(255,255,255,0.25)">We deploy it for you</div></div>
         <div style="background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:16px 18px"><div style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:6px">Update Subscription</div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:rgba(255,255,255,0.5)">$999<span style="font-size:14px;font-family:'Barlow',sans-serif;font-weight:400">/yr</span></div><div style="font-size:11px;color:rgba(255,255,255,0.25)">Get all new features</div></div>
         <div style="background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:16px 18px"><div style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:6px">Support Contract</div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:rgba(255,255,255,0.5)">$199<span style="font-size:14px;font-family:'Barlow',sans-serif;font-weight:400">/mo</span></div><div style="font-size:11px;color:rgba(255,255,255,0.25)">Email + call support</div></div>
