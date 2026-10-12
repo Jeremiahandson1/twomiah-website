@@ -98,53 +98,23 @@ section{position:relative}
 .bl-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.62);margin:18px 0 8px}
 .bl-input{width:100%;padding:13px 15px;background:var(--dark);border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;font-family:'Barlow',sans-serif;font-size:15px;font-weight:600;outline:none;transition:border-color 0.2s}
 .bl-input:focus{border-color:var(--ember)}
-.bl-swatches{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
-.bl-sw{width:38px;height:38px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform 0.15s,border-color 0.15s;position:relative}
-.bl-sw:hover{transform:scale(1.12)}
-.bl-sw.active{border-color:#fff;box-shadow:0 0 0 3px rgba(255,255,255,0.12)}
-.bl-inds{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-.bl-ind{font-size:12px;font-weight:600;color:rgba(255,255,255,0.6);background:var(--dark);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:8px 14px;cursor:pointer;transition:all 0.15s}
-.bl-ind:hover{border-color:rgba(255,255,255,0.64);color:#fff}
-.bl-ind.active{background:rgba(255,109,0,0.12);border-color:var(--ember);color:#fff}
-.bl-term{margin-top:auto;padding-top:22px}
-.term-box{background:#060606;border:1px solid rgba(255,109,0,0.22);border-radius:8px;overflow:hidden;font-family:'Share Tech Mono',ui-monospace,monospace}
-.term-bar{background:#151515;padding:8px 12px;display:flex;align-items:center;gap:7px;border-bottom:1px solid rgba(255,255,255,0.05)}
-.term-dot{width:9px;height:9px;border-radius:50%}
-.d-r{background:#FF5F57}.d-y{background:#FFBD2E}.d-g{background:#28C840}
-.term-title{font-size:10px;color:rgba(255,255,255,0.28);margin-left:6px}
-.term-body{padding:14px 16px;font-size:12px;line-height:1.85;min-height:132px}
-.t-dim{color:rgba(255,255,255,0.64)}.t-ok{color:#28C840}.t-fire{color:var(--ember)}.t-url{color:#4FC3F7}
-.term-cursor{display:inline-block;width:7px;height:13px;background:var(--fire);animation:blink 1s steps(1) infinite;vertical-align:middle}
-@keyframes blink{50%{opacity:0}}
+.bl-go{margin-top:24px;background:linear-gradient(120deg,#FF6D00,#e64a00);color:#fff;font-family:inherit;font-size:15px;font-weight:800;padding:15px 22px;border:0;border-radius:10px;cursor:pointer;box-shadow:0 12px 34px rgba(255,109,0,.3)}
+.bl-go:disabled{opacity:.6;cursor:wait}
+.bl-fine{font-size:11.5px;color:var(--muted);margin-top:12px;line-height:1.6}
+select.bl-input{appearance:auto;cursor:pointer}
+.bl-frame-wrap{position:relative;flex:1;background:#fff}
+#blFrame{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+.bl-state{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center;background:#0f1419;color:#fff;z-index:1}
+.bl-state-msg{font-size:14px;font-weight:700;max-width:320px;line-height:1.5}
+@keyframes blspin{to{transform:rotate(360deg)}}
+.bl-spin{width:40px;height:40px;border:3px solid rgba(255,255,255,.15);border-top-color:#FF6D00;border-radius:50%;animation:blspin 1s linear infinite}
+.bl-after{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--muted)}
+.bl-mine{background:#FF6D00;color:#fff;text-decoration:none;font-size:14px;font-weight:800;padding:12px 22px;border-radius:9px;white-space:nowrap}
+[hidden]{display:none!important}
 
 /* BROWSER PREVIEW */
 .bl-preview{background:var(--charcoal);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:16px;display:flex;flex-direction:column}
 .browser{background:#fff;border-radius:14px;overflow:hidden;height:600px;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,0.55),0 0 0 1px rgba(255,255,255,0.07)}
-.site{flex:1;overflow-y:auto;overflow-x:hidden}
-.site::-webkit-scrollbar{width:0;height:0}
-.site-nav{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:#fff;border-bottom:1px solid #eee}
-.site-brand{font-weight:800;font-size:15px;color:#1a1a1a;letter-spacing:-0.01em}
-.site-brand b{color:var(--acc)}
-.site-menu{display:flex;gap:14px}
-.site-menu span{font-size:9px;font-weight:600;color:#888}
-.site-cta{font-size:9px;font-weight:700;color:#fff;background:var(--acc);padding:6px 12px;border-radius:5px;transition:background 0.4s}
-.site-hero{padding:34px 24px 26px;text-align:center;background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 12%,#fff),#fff);transition:background 0.4s}
-.site-badge{display:inline-block;font-size:8px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--acc);background:color-mix(in srgb,var(--acc) 14%,#fff);padding:4px 10px;border-radius:20px;margin-bottom:12px}
-.site-h1{font-size:26px;font-weight:900;color:#141414;line-height:1.05;letter-spacing:-0.02em;margin-bottom:8px}
-.site-h1 b{color:var(--acc)}
-.site-p{font-size:11px;color:#666;max-width:280px;margin:0 auto 16px;line-height:1.5}
-.site-btns{display:flex;gap:8px;justify-content:center}
-.site-btn{font-size:10px;font-weight:700;padding:9px 16px;border-radius:6px}
-.site-btn.pri{background:var(--acc);color:#fff}
-.site-btn.sec{background:#f0f0f0;color:#333}
-.site-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:18px}
-.site-card{background:#fafafa;border:1px solid #eee;border-radius:8px;padding:14px 10px;text-align:center}
-.site-card .ci{width:30px;height:30px;border-radius:7px;background:color-mix(in srgb,var(--acc) 16%,#fff);color:var(--acc);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:15px;transition:background 0.4s}
-.site-card .ct{font-size:10px;font-weight:700;color:#222;margin-bottom:3px}
-.site-card .cd{font-size:8px;color:#999;line-height:1.4}
-.site-foot{margin-top:auto;padding:12px;text-align:center;font-size:8px;color:#fff;background:#1a1a1a}
-.bl-note{text-align:center;font-size:12.5px;color:var(--muted);margin-top:26px}
-.bl-note b{color:var(--bone)}
 
 /* DIFFERENT */
 #different{padding:120px 48px;background:var(--charcoal);overflow:hidden}
@@ -345,7 +315,6 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
   .intake-row{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr}
   .hero{padding:110px 22px 60px}
-  .site-cards{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -396,96 +365,63 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
   </div>
 </section>
 
-<!-- LIVE BUILD DEMO -->
+<!-- LIVE BUILD DEMO — the real factory render (POST /public/preview), not a mock-up -->
 <section id="build-live">
   <div class="bl-head reveal">
     <div class="section-label center">Try it — right here</div>
-    <h2 class="section-title">Type your name.<br><span>Watch it come alive.</span></h2>
-    <p class="section-sub">Pick a trade — each one's a <em>genuinely different</em> custom design, not a recolored template. Change the name, change the color, watch it rebuild in real time. And if your industry isn't listed? We build a custom CRM for it.</p>
+    <h2 class="section-title">Type your name.<br><span>See your real site.</span></h2>
+    <p class="section-sub">This is the actual starting site our factory builds for your trade, with your name on it. Add your photos, services and story and it becomes yours.</p>
   </div>
   <div class="bl-stage">
-    <div class="bl-controls reveal">
-      <div class="bl-step">Step 1 · Your business</div>
+    <form class="bl-controls reveal" id="blForm" novalidate>
+      <div class="bl-step">Your business</div>
       <label class="bl-label" for="blName">Business name</label>
-      <input class="bl-input" id="blName" type="text" value="" placeholder="Your business name" maxlength="26" autocomplete="off">
+      <input class="bl-input" id="blName" type="text" value="" placeholder="Your business name" maxlength="60" autocomplete="organization">
       <label class="bl-label" for="blCity">City</label>
-      <input class="bl-input" id="blCity" type="text" value="" placeholder="e.g. Eau Claire, WI" maxlength="60" autocomplete="off">
-      <label class="bl-label">Brand color</label>
-      <div class="bl-swatches" id="blSwatches">
-        <span class="bl-sw active" style="background:#FF6D00" data-c="#FF6D00"></span>
-        <span class="bl-sw" style="background:#2563EB" data-c="#2563EB"></span>
-        <span class="bl-sw" style="background:#16A34A" data-c="#16A34A"></span>
-        <span class="bl-sw" style="background:#0D9488" data-c="#0D9488"></span>
-        <span class="bl-sw" style="background:#7C3AED" data-c="#7C3AED"></span>
-        <span class="bl-sw" style="background:#DC2626" data-c="#DC2626"></span>
-      </div>
-      <label class="bl-label">Your trade — each is a different design</label>
-      <div class="bl-inds" id="blInds">
-        <span class="bl-ind active" data-trade="roofing">Roofing</span>
-        <span class="bl-ind" data-trade="contractor">Contractor</span>
-        <span class="bl-ind" data-trade="field_service">HVAC / Plumbing</span>
-        <span class="bl-ind" data-trade="landscaping">Landscaping</span>
-        <span class="bl-ind" data-trade="home_care">Home Care</span>
-        <span class="bl-ind" data-trade="rv">RV / Powersports</span>
-        <span class="bl-ind" data-trade="vet">Vet Clinic</span>
-        <span class="bl-ind" data-trade="dispensary">Dispensary</span>
-        <span class="bl-ind" data-trade="restaurant">Restaurant</span>
-        <span class="bl-ind" data-trade="salon">Salon &amp; Spa</span>
-        <span class="bl-ind" data-trade="generic">Something else</span>
-      </div>
-      <p style="font-size:11px;color:var(--muted);margin-top:12px;line-height:1.6">Any business works — this is a <b style="color:var(--bone)">real, custom-themed site</b>, not a stock template. Don't see your trade? Pick <b style="color:var(--bone)">"Something else,"</b> or just tell us what you do and we'll design around it.</p>
-      <div class="bl-term">
-        <div class="term-box">
-          <div class="term-bar"><span class="term-dot d-r"></span><span class="term-dot d-y"></span><span class="term-dot d-g"></span><span class="term-title">twomiah factory</span></div>
-          <div class="term-body" id="term"></div>
-        </div>
-      </div>
-    </div>
+      <input class="bl-input" id="blCity" type="text" value="" placeholder="e.g. Eau Claire, WI" maxlength="60" autocomplete="address-level2">
+      <label class="bl-label" for="blTrade">Your trade</label>
+      <select class="bl-input" id="blTrade">
+          <option value="roofing">Roofing</option>
+          <option value="general_contractor">General Contractor</option>
+          <option value="remodeler">Remodeler</option>
+          <option value="painter">Painter</option>
+          <option value="concrete">Concrete / Masonry</option>
+          <option value="flooring">Flooring</option>
+          <option value="hvac">HVAC</option>
+          <option value="plumbing">Plumbing</option>
+          <option value="electrical">Electrical</option>
+          <option value="landscaping">Landscaping / Lawn Care</option>
+          <option value="home_care">Home Care</option>
+          <option value="veterinary">Veterinary Clinic</option>
+          <option value="rv">RV / Powersports Dealer</option>
+          <option value="dispensary">Dispensary / Cannabis</option>
+          <option value="restaurant">Restaurant / Caf&eacute;</option>
+          <option value="food_truck">Food Truck</option>
+          <option value="salon">Salon &amp; Spa</option>
+          <option value="fitness">Gym / Fitness Studio</option>
+          <option value="other">Something else</option>
+      </select>
+      <button class="bl-go" id="blGo" type="submit">Show my site &rarr;</button>
+      <p class="bl-fine">No card, no email. Takes a few seconds &mdash; up to 20 if our builder is waking up.</p>
+    </form>
 
     <div class="bl-preview reveal">
       <div class="browser">
-        <div class="site" id="site"></div>
+        <div class="bl-frame-wrap">
+          <div class="bl-state" id="blState">
+            <div class="bl-spin" id="blSpin" hidden></div>
+            <div class="bl-state-msg" id="blMsg">Your site appears here.</div>
+          </div>
+          <iframe id="blFrame" title="Your site preview" sandbox hidden></iframe>
+        </div>
+      </div>
+      <div class="bl-after" id="blAfter" hidden>
+        <span>Your starting site &mdash; the real one gets your photos, services and words.</span>
+        <a class="bl-mine" id="blMine" href="/signup.html">Make it mine &rarr;</a>
       </div>
     </div>
-  </div>
-  <p class="bl-note reveal">Every trade, a completely different look — themed live in your browser. Now imagine it <b>hand-finished by us</b> with your photos and your words. This is the site we build you <b>before you pay a thing</b>.</p>
-
-  <!-- Real template render (free, self-serve — hits the factory preview endpoint) -->
-  <div class="reveal" style="text-align:center;margin-top:30px">
-    <button id="blRealBtn" type="button" style="background:linear-gradient(120deg,#FF6D00,#e64a00);color:#fff;font-family:inherit;font-size:15px;font-weight:800;padding:16px 34px;border:0;border-radius:12px;cursor:pointer;box-shadow:0 12px 34px rgba(255,109,0,.34)">Render my real site — free &rarr;</button>
-    <p style="font-size:12px;color:var(--muted);margin-top:11px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.6">Not the animation above — the <b style="color:var(--bone)">actual page</b> we'd build you, straight from our templates. No card, no email. Takes about 15 seconds.</p>
   </div>
 </section>
-
-<!-- Free real-preview modal -->
-<style>
-  @keyframes blspin{to{transform:rotate(360deg)}}
-  #blModal{display:none;position:fixed;inset:0;z-index:9999;background:rgba(6,8,12,.86);align-items:center;justify-content:center;padding:22px}
-  #blModal .bl-card{background:#0f1419;border:1px solid rgba(255,255,255,.12);border-radius:16px;width:100%;max-width:940px;height:86vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
-</style>
-<div id="blModal" role="dialog" aria-modal="true" aria-label="Your website preview">
-  <div class="bl-card">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.08);flex-shrink:0">
-      <div style="display:flex;align-items:center;gap:10px;min-width:0">
-        <span style="font-size:12px;font-weight:800;color:#FF6D00;letter-spacing:.04em;white-space:nowrap">YOUR PREVIEW</span>
-        <span id="blModalName" style="font-size:13px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
-      </div>
-      <button id="blModalClose" type="button" aria-label="Close preview" style="background:rgba(255,255,255,.08);border:0;color:#fff;width:34px;height:34px;border-radius:9px;font-size:20px;line-height:1;cursor:pointer;flex-shrink:0">&times;</button>
-    </div>
-    <div style="flex:1;position:relative;background:#fff;overflow:hidden">
-      <div id="blModalLoad" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0f1419;color:#fff;gap:16px;text-align:center;padding:24px">
-        <div id="blSpinner" style="width:40px;height:40px;border:3px solid rgba(255,255,255,.15);border-top-color:#FF6D00;border-radius:50%;animation:blspin 1s linear infinite"></div>
-        <div id="blModalMsg" style="font-size:14px;font-weight:700">Warming up the factory&hellip;</div>
-        <div style="font-size:11px;color:rgba(255,255,255,.5);max-width:280px;line-height:1.6">First render can take ~20s while our builder wakes up. Hang tight.</div>
-      </div>
-      <iframe id="blModalFrame" title="Your site preview" sandbox style="width:100%;height:100%;border:0;display:block;background:#fff"></iframe>
-    </div>
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-top:1px solid rgba(255,255,255,.08);flex-shrink:0;flex-wrap:wrap">
-      <span style="font-size:11px;color:var(--muted);max-width:520px;line-height:1.5">A live template render — the real one gets hand-finished with your photos &amp; words.</span>
-      <a href="/signup" style="background:#FF6D00;color:#fff;text-decoration:none;font-size:13px;font-weight:800;padding:11px 20px;border-radius:9px;white-space:nowrap">Start mine &rarr;</a>
-    </div>
-  </div>
-</div>
 
 <!-- DIFFERENT -->
 <section id="different">
@@ -864,167 +800,49 @@ var mq = document.getElementById('marquee'); if(mq) mq.innerHTML += mq.innerHTML
   ['pointermove','pointerdown','touchstart','scroll','keydown','wheel'].forEach(function(ev){addEventListener(ev,boot,o);});
 })();
 
-/* ── Live site demo — six full landing pages, hero and all ── */
+/* ── Live build — the real site the factory builds (POST /public/preview) ── */
 (function(){
-  var site=document.getElementById('site'), name=document.getElementById('blName'), term=document.getElementById('term');
-  var accent='#FF6D00', trade='roofing', tTimer=null;
-  function esc(s){return (s||'').replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
-  function nm(){return (name.value||'Your Business').trim()||'Your Business';}
-  function slug(){return nm().toLowerCase().replace(/[^a-z0-9]+/g,'')||'yourbusiness';}
-  function brand(){var v=nm(),p=v.split(' ');if(p.length<2)return esc(v);var l=p.pop();return esc(p.join(' '))+' <b style="color:'+accent+'">'+esc(l)+'</b>';}
-  function map(a,f){return a.map(f).join('');}
-  function pri(a,t){return '<button style="background:'+a+';color:#fff;font-size:10px;font-weight:800;padding:11px 17px;border:0;border-radius:7px;cursor:pointer;font-family:inherit">'+t+'</button>';}
-  function gho(t,d){return '<button style="background:transparent;border:1px solid '+(d?'#d8cdb8':'rgba(255,255,255,.28)')+';color:'+(d?'#5a4b38':'#fff')+';font-size:10px;font-weight:700;padding:11px 15px;border-radius:7px;cursor:pointer;font-family:inherit">'+t+'</button>';}
-  function foot(dark){return '<div style="padding:16px 22px;font-size:9px;display:flex;justify-content:space-between;align-items:center;'+(dark?'color:rgba(255,255,255,.4);background:#0a0d12':'color:#9a8f7d;background:rgba(0,0,0,.03);border-top:1px solid rgba(0,0,0,.07)')+'">© '+esc(nm())+' · Eau Claire, WI <span style="opacity:.7">Built by Twomiah</span></div>';}
-
-  var T={
-    roofing:{label:'Roofing',accent:'#FF6D00',render:function(a){return '<div style="font-family:Barlow,system-ui,sans-serif;color:#fff;background:#0f1419">'+
-      '<div style="position:relative;overflow:hidden;background:linear-gradient(165deg,#0b0f15,#18222f);padding:16px 22px 34px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:30px"><div style="font-weight:900;font-size:15px">'+brand()+'</div><div style="display:flex;gap:11px;align-items:center;font-size:8.5px;color:rgba(255,255,255,.6);font-weight:700">SERVICES · STORM · REVIEWS '+pri(a,'FREE INSPECTION')+'</div></div>'+
-      '<svg viewBox="0 0 400 130" preserveAspectRatio="none" style="position:absolute;left:0;bottom:0;width:100%;height:130px;opacity:.16"><path d="M-20 130 L110 34 L240 130 Z M170 130 L300 24 L440 130 Z" fill="'+a+'"/></svg>'+
-      '<span style="display:inline-block;font-size:8px;font-weight:800;letter-spacing:.08em;background:rgba(255,255,255,.06);border:1px solid '+a+';color:'+a+';padding:5px 11px;border-radius:20px;margin-bottom:14px;position:relative">⚡ 24/7 STORM DAMAGE RESPONSE</span>'+
-      '<h1 style="font-size:34px;font-weight:900;line-height:.95;letter-spacing:-.01em;margin-bottom:11px;position:relative">A roof that<br>outlasts the <span style="color:'+a+'">storm.</span></h1>'+
-      '<p style="font-size:12px;color:rgba(255,255,255,.6);max-width:330px;line-height:1.55;margin-bottom:18px;position:relative">Licensed local roofers. Free drone inspection, insurance claims handled end-to-end, and a lifetime workmanship warranty.</p>'+
-      '<div style="display:flex;gap:8px;margin-bottom:24px;position:relative">'+pri(a,'GET MY FREE INSPECTION →')+gho('SEE OUR WORK')+'</div>'+
-      '<div style="display:flex;gap:18px;flex-wrap:wrap;position:relative;font-size:9px;color:rgba(255,255,255,.65)"><span>★★★★★ <b style="color:#fff">312</b> reviews</span><span>🛡️ Licensed &amp; insured</span><span>🏠 <b style="color:#fff">2,400+</b> roofs</span></div></div>'+
-      '<div style="padding:26px 22px 24px"><div style="font-size:8px;font-weight:800;letter-spacing:.15em;color:'+a+';margin-bottom:5px">WHAT WE DO</div><h2 style="font-size:19px;font-weight:900;margin-bottom:16px">Everything above your head.</h2><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">'+map([['🔨','Roof Repair','Leaks and storm damage, fixed fast and clean.'],['🏠','Full Replacement','Architectural shingle, metal, and flat systems.'],['⛑️','Storm &amp; Insurance','We document damage and handle the whole claim.']],function(x){return '<div style="background:#161f2b;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:14px 12px"><div style="font-size:20px;margin-bottom:8px">'+x[0]+'</div><div style="font-size:11px;font-weight:800;margin-bottom:5px">'+x[1]+'</div><div style="font-size:9px;color:rgba(255,255,255,.5);line-height:1.5">'+x[2]+'</div></div>';})+'</div></div>'+
-      '<div style="padding:26px 22px;text-align:center;background:linear-gradient(120deg,'+a+',#a82600)"><h2 style="font-size:19px;font-weight:900;margin-bottom:6px">Storm rolled through?</h2><p style="font-size:11px;color:rgba(255,255,255,.85);margin-bottom:14px">We&#39;ll inspect it free and deal with your insurance for you.</p><button style="background:#fff;color:#111;font-size:10px;font-weight:800;padding:11px 22px;border:0;border-radius:7px;cursor:pointer">BOOK MY FREE INSPECTION</button></div>'+foot(true)+'</div>';}},
-
-    dispensary:{label:'Dispensary',accent:'#16A34A',render:function(a){return '<div style="font-family:Barlow,system-ui,sans-serif;color:#eafaf0;background:#0a0f0b">'+
-      '<div style="position:relative;overflow:hidden;padding:16px 22px 32px;background:radial-gradient(90% 70% at 85% 0%,'+a+'33,transparent 55%),linear-gradient(170deg,#0c130d,#070b08)"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px"><div style="font-weight:900;font-size:15px">'+brand()+'</div><div style="display:flex;gap:10px;align-items:center;font-size:8.5px;color:rgba(255,255,255,.55);font-weight:700">MENU · DEALS · REWARDS <span style="border:1px solid '+a+';color:'+a+';padding:6px 10px;border-radius:20px;font-weight:900">21+</span></div></div>'+
-      '<svg viewBox="0 0 100 100" style="position:absolute;right:-8px;top:20px;width:150px;height:150px;opacity:.22"><path d="M50 8 C58 30 82 34 82 34 C82 34 66 46 60 66 C56 80 50 92 50 92 C50 92 44 80 40 66 C34 46 18 34 18 34 C18 34 42 30 50 8Z" fill="'+a+'"/><line x1="50" y1="42" x2="50" y2="90" stroke="#0a0f0b" stroke-width="1.4"/></svg>'+
-      '<span style="display:inline-block;font-size:8px;font-weight:800;letter-spacing:.12em;color:'+a+';margin-bottom:12px;position:relative">TODAY&#39;S DROP · EAU CLAIRE</span>'+
-      '<h1 style="font-size:33px;font-weight:900;line-height:.96;margin-bottom:14px;max-width:250px;position:relative">Fresh flower,<br>lab-tested,<br><span style="color:'+a+'">ready now.</span></h1>'+
-      '<div style="display:flex;gap:8px;position:relative">'+pri(a,'ORDER FOR PICKUP →')+gho('BROWSE MENU')+'</div></div>'+
-      '<div style="padding:14px 0 4px"><div style="padding:0 22px 8px;font-size:8px;font-weight:800;letter-spacing:.12em;color:'+a+'">POPULAR TODAY</div>'+map([['Blue Dream','Sativa · 24% THC','$45'],['Wedding Cake','Indica · 27% THC','$50'],['Northern Lights','Indica · 22% THC','$40'],['Sour Diesel','Sativa · 25% THC','$48'],['Gelato #33','Hybrid · 26% THC','$52']],function(r){return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 22px;border-top:1px solid rgba(255,255,255,.05)"><div style="display:flex;align-items:center;gap:11px"><div style="width:30px;height:30px;border-radius:7px;background:linear-gradient(135deg,'+a+'55,'+a+'11);flex-shrink:0"></div><div><div style="font-size:11.5px;font-weight:800">'+r[0]+'</div><div style="font-size:8.5px;color:rgba(255,255,255,.45)">'+r[1]+'</div></div></div><div style="font-size:13px;font-weight:900;color:'+a+'">'+r[2]+'</div></div>';})+'</div>'+
-      '<div style="margin:10px 22px 18px;padding:16px;border-radius:10px;background:linear-gradient(120deg,'+a+'22,transparent);border:1px solid '+a+'44;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:12px;font-weight:900">Join Rewards</div><div style="font-size:9px;color:rgba(255,255,255,.6)">Earn points on every order.</div></div>'+pri(a,'SIGN UP')+'</div>'+
-      '<div style="padding:14px 22px;font-size:8.5px;color:rgba(255,255,255,.4);background:#070b08;text-align:center">Menu synced live · METRC compliant · '+esc(nm())+' · Eau Claire, WI</div></div>';}},
-
-    restaurant:{label:'Restaurant',accent:'#DC2626',render:function(a){return '<div style="font-family:Georgia,serif;color:#2a2018;background:#fbf6ec">'+
-      '<div style="position:relative;overflow:hidden;padding:16px 24px 38px;background:radial-gradient(100% 80% at 50% -20%,#fff,transparent),linear-gradient(180deg,#fdf9f0,#f6efe0)"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:30px"><div style="font-size:17px;font-weight:700">'+brand()+'</div><div style="display:flex;gap:11px;align-items:center;font-family:Barlow,sans-serif;font-size:9px;color:#7a6b57;font-weight:600;letter-spacing:.05em">MENU · HOURS · CATERING <button style="background:'+a+';color:#fff;font-size:9px;font-weight:800;padding:8px 13px;border:0;border-radius:3px;font-family:Barlow,sans-serif;cursor:pointer">RESERVE</button></div></div>'+
-      '<div style="text-align:center"><div style="font-family:Barlow,sans-serif;font-size:9px;font-weight:700;letter-spacing:.22em;color:'+a+';margin-bottom:10px">WOOD-FIRED · LOCAL · SEASONAL</div><h1 style="font-size:38px;font-weight:700;font-style:italic;line-height:1.02;margin-bottom:12px">A table worth<br>coming back to.</h1><p style="font-family:Barlow,sans-serif;font-size:11px;color:#6a5c48;max-width:300px;margin:0 auto 18px;line-height:1.5">Handmade pasta, wood-fired everything, and a bar that knows your name.</p><div style="display:flex;gap:8px;justify-content:center;font-family:Barlow,sans-serif">'+pri(a,'ORDER ONLINE')+gho('RESERVE A TABLE',1)+'</div></div></div>'+
-      '<div style="padding:24px 26px 20px"><div style="text-align:center;font-family:Barlow,sans-serif;font-size:8px;font-weight:700;letter-spacing:.2em;color:'+a+';margin-bottom:14px">FROM THE KITCHEN</div>'+map([['Wood-Fired Margherita','San Marzano, basil, buffalo mozzarella','16'],['Braised Short Rib','Red wine, root vegetables, gremolata','29'],['Cast-Iron Walleye','Local catch, brown butter, capers','24'],['Maple Old Fashioned','Rye, house maple, black walnut','12']],function(r){return '<div style="display:flex;align-items:baseline;gap:6px;padding:9px 0;border-bottom:1px solid #ece1cb"><div style="flex:1"><div style="font-size:13px;font-weight:700">'+r[0]+'</div><div style="font-family:Barlow,sans-serif;font-size:9px;color:#9a8b73;margin-top:1px">'+r[1]+'</div></div><span style="font-family:Barlow,sans-serif;font-weight:800;color:'+a+';font-size:13px">$'+r[2]+'</span></div>';})+'</div>'+
-      '<div style="padding:26px 24px;text-align:center;background:#241c15;color:#f6efe0"><h2 style="font-size:22px;font-style:italic;font-weight:700;margin-bottom:6px">Private events &amp; catering</h2><p style="font-family:Barlow,sans-serif;font-size:10px;color:rgba(255,255,255,.6);margin-bottom:14px">From rehearsal dinners to office lunches.</p><button style="background:'+a+';color:#fff;font-family:Barlow,sans-serif;font-size:10px;font-weight:800;padding:11px 22px;border:0;border-radius:4px;cursor:pointer">PLAN AN EVENT</button></div>'+foot(false)+'</div>';}},
-
-    salon:{label:'Salon',accent:'#7C3AED',render:function(a){return '<div style="font-family:Georgia,serif;color:#3a2e30;background:#f8f1f2">'+
-      '<div style="position:relative;overflow:hidden;padding:16px 24px 40px;background:radial-gradient(80% 70% at 70% 0%,'+a+'18,transparent),linear-gradient(180deg,#fbf5f6,#f4e9ec)"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:34px"><div style="font-size:17px;font-weight:700;letter-spacing:.06em">'+brand()+'</div><div style="display:flex;gap:12px;align-items:center;font-family:Barlow,sans-serif;font-size:9px;color:#9a8285;letter-spacing:.08em">SERVICES · TEAM <button style="background:'+a+';color:#fff;font-family:Barlow,sans-serif;font-size:9px;font-weight:700;padding:8px 14px;border:0;border-radius:20px;cursor:pointer">BOOK NOW</button></div></div>'+
-      '<div style="text-align:center"><div style="font-family:Barlow,sans-serif;font-size:8px;font-weight:600;letter-spacing:.28em;color:'+a+';margin-bottom:12px">EAU CLAIRE · EST. 2019</div><h1 style="font-size:40px;font-weight:400;font-style:italic;line-height:1.02;margin-bottom:12px">Look like<br>the best you.</h1><p style="font-family:Barlow,sans-serif;font-size:11px;color:#8a7679;max-width:280px;margin:0 auto 18px;line-height:1.5">Precision cuts, dimensional color, and a chair you actually look forward to.</p><button style="background:'+a+';color:#fff;font-family:Barlow,sans-serif;font-size:10px;font-weight:800;padding:12px 26px;border:0;border-radius:24px;letter-spacing:.04em;cursor:pointer">BOOK YOUR APPOINTMENT</button></div></div>'+
-      '<div style="padding:24px 30px 18px"><div style="text-align:center;font-family:Barlow,sans-serif;font-size:8px;font-weight:700;letter-spacing:.2em;color:'+a+';margin-bottom:12px">THE MENU</div>'+map([['Cut &amp; Style','from $65'],['Balayage','from $185'],['Full Color &amp; Gloss','from $120'],['Bridal Updo','from $95'],['Keratin Treatment','from $150']],function(r){return '<div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #ecdede"><span style="font-size:13px">'+r[0]+'</span><span style="font-family:Barlow,sans-serif;font-weight:700;color:'+a+';font-size:11px">'+r[1]+'</span></div>';})+'</div>'+
-      '<div style="padding:26px 24px;text-align:center;background:'+a+'"><h2 style="font-size:22px;font-style:italic;font-weight:400;color:#fff;margin-bottom:6px">New here?</h2><p style="font-family:Barlow,sans-serif;font-size:10px;color:rgba(255,255,255,.85);margin-bottom:14px">20% off your first visit.</p><button style="background:#fff;color:'+a+';font-family:Barlow,sans-serif;font-size:10px;font-weight:800;padding:11px 24px;border:0;border-radius:22px;cursor:pointer">CLAIM MY OFFER</button></div>'+foot(false)+'</div>';}},
-
-    rv:{label:'RV / Powersports',accent:'#2563EB',render:function(a){return '<div style="font-family:Barlow,system-ui,sans-serif;color:#fff;background:#0e1117">'+
-      '<div style="position:relative;overflow:hidden;padding:16px 22px 30px;background:linear-gradient(180deg,#12233a 0%,#0e1117 80%)"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;position:relative;z-index:2"><div style="font-weight:900;font-size:15px">'+brand()+'</div><div style="display:flex;gap:10px;align-items:center;font-size:8.5px;color:rgba(255,255,255,.6);font-weight:700">INVENTORY · SERVICE · FINANCE '+pri(a,'GET PRE-QUALIFIED')+'</div></div>'+
-      '<svg viewBox="0 0 400 90" preserveAspectRatio="none" style="position:absolute;left:0;bottom:0;width:100%;height:90px"><path d="M0 90 L0 55 L80 30 L150 50 L240 22 L330 48 L400 34 L400 90Z" fill="#0e1117" opacity="0.85"/><path d="M0 90 L0 68 L120 46 L220 62 L400 42 L400 90Z" fill="#0b0e13"/></svg>'+
-      '<div style="position:relative;z-index:2"><span style="display:inline-block;font-size:8px;font-weight:800;letter-spacing:.1em;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:5px 11px;border-radius:20px;margin-bottom:12px">🏕️ ADVENTURE STARTS HERE</span><h1 style="font-size:33px;font-weight:900;line-height:.96;margin-bottom:10px">Your next trip<br>is <span style="color:'+a+'">in stock.</span></h1><p style="font-size:11px;color:rgba(255,255,255,.6);max-width:300px;margin-bottom:16px;line-height:1.5">RVs, campers, and powersports — 42 units on the lot, financing in minutes, trades welcome.</p><div style="display:flex;gap:8px">'+pri(a,'BROWSE INVENTORY →')+gho('VALUE MY TRADE')+'</div></div></div>'+
-      '<div style="padding:18px 16px 8px;display:flex;justify-content:space-between;align-items:center"><div style="font-size:15px;font-weight:900">Featured units</div><span style="font-size:8.5px;color:rgba(255,255,255,.5)">Updated today</span></div>'+
-      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:2px 16px 14px">'+map([['🚐','2024 Forest River','Class C · 28ft','$38,900'],['🏕️','2023 Grand Design','5th Wheel · Sleeps 8','$52,400'],['🏍️','2024 Polaris RZR','Turbo R · 181hp','$24,995'],['🛥️','2022 Yamaha 212X','Jet Boat · 21ft','$46,200']],function(r){return '<div style="background:#161b24;border:1px solid rgba(255,255,255,.07);border-radius:9px;overflow:hidden"><div style="height:52px;background:linear-gradient(135deg,'+a+'33,#0e1117);display:flex;align-items:center;justify-content:center;font-size:26px">'+r[0]+'</div><div style="padding:9px 11px"><div style="font-size:10px;font-weight:800">'+r[1]+'</div><div style="font-size:8px;color:rgba(255,255,255,.5);margin:2px 0 4px">'+r[2]+'</div><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:12px;font-weight:900;color:'+a+'">'+r[3]+'</span><span style="font-size:7px;color:#37c46a;font-weight:800">● IN STOCK</span></div></div></div>';})+'</div>'+
-      '<div style="padding:22px;text-align:center;background:linear-gradient(120deg,'+a+',#123a7a)"><h2 style="font-size:18px;font-weight:900;margin-bottom:5px">Get pre-qualified in 2 minutes</h2><p style="font-size:10px;color:rgba(255,255,255,.85);margin-bottom:12px">Soft credit check — won&#39;t affect your score.</p><button style="background:#fff;color:#123a7a;font-size:10px;font-weight:800;padding:11px 22px;border:0;border-radius:7px;cursor:pointer">START MY APPLICATION</button></div>'+foot(true)+'</div>';}},
-
-    vet:{label:'Vet Clinic',accent:'#0D9488',render:function(a){return '<div style="font-family:Barlow,system-ui,sans-serif;color:#193b3a;background:#f0faf9">'+
-      '<div style="position:relative;overflow:hidden;padding:16px 20px 32px;background:radial-gradient(90% 80% at 80% 0%,'+a+'22,transparent),linear-gradient(180deg,#eafaf7,#f0faf9)"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:26px"><div style="font-size:15px;font-weight:900;display:flex;align-items:center;gap:6px">🐾 '+brand()+'</div><div style="display:flex;gap:10px;align-items:center;font-size:8.5px;color:#5f8a88;font-weight:600">SERVICES · NEW PATIENTS <button style="background:'+a+';color:#fff;font-size:9px;font-weight:700;padding:8px 13px;border:0;border-radius:20px;cursor:pointer">BOOK VISIT</button></div></div>'+
-      '<div style="text-align:center"><span style="display:inline-block;font-size:8px;font-weight:800;letter-spacing:.14em;color:'+a+';margin-bottom:10px">COMPASSIONATE CARE · EAU CLAIRE</span><h1 style="font-size:34px;font-weight:900;line-height:.98;color:#12302f;margin-bottom:10px">Your pet&#39;s<br>whole-life vet.</h1><p style="font-size:11px;color:#4a6b69;max-width:290px;margin:0 auto 16px;line-height:1.5">Wellness, dental, surgery, and same-day sick visits — from a team that treats your pet like their own.</p><div style="display:flex;gap:8px;justify-content:center">'+pri(a,'BOOK AN APPOINTMENT')+gho('NEW PATIENT FORM',1)+'</div></div></div>'+
-      '<div style="padding:22px 20px 8px"><div style="text-align:center;font-size:8px;font-weight:800;letter-spacing:.14em;color:'+a+';margin-bottom:12px">HOW WE HELP</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">'+map([['🩺','Wellness Exams','Annual checkups &amp; preventive care'],['🦷','Dental Care','Cleanings &amp; oral surgery'],['💉','Vaccinations','On-schedule, with reminders'],['🏥','Surgery','Spay/neuter &amp; soft tissue']],function(r){return '<div style="background:#fff;border:1px solid #dcefed;border-radius:11px;padding:12px 13px"><div style="font-size:18px;margin-bottom:6px">'+r[0]+'</div><div style="font-size:11px;font-weight:800">'+r[1]+'</div><div style="font-size:8.5px;color:#6a908e;margin-top:2px;line-height:1.4">'+r[2]+'</div></div>';})+'</div></div>'+
-      '<div style="margin:16px 20px;padding:16px;border-radius:12px;background:linear-gradient(120deg,'+a+',#0b6b62);text-align:center;color:#fff"><h2 style="font-size:17px;font-weight:900;margin-bottom:4px">New patients welcome 🐶</h2><p style="font-size:9.5px;color:rgba(255,255,255,.85);margin-bottom:12px">Free first exam for rescues &amp; adoptions.</p><button style="background:#fff;color:'+a+';font-size:10px;font-weight:800;padding:10px 20px;border:0;border-radius:20px;cursor:pointer">SCHEDULE ONLINE</button></div>'+
-      '<div style="padding:13px 20px;font-size:8.5px;color:#5f8a88;background:#fff;text-align:center;border-top:1px solid #e2f0ee">Same-day sick visits · Online booking · '+esc(nm())+'</div></div>';}},
-
-    contractor:{label:'Contractor',accent:'#C2410C',render:function(a){return '<div style="font-family:Barlow,system-ui,sans-serif;color:#fff;background:#14110e">'+
-      '<div style="position:relative;overflow:hidden;padding:16px 22px 32px;background:linear-gradient(165deg,#1c1712,#0f0c09)"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px"><div style="font-weight:900;font-size:15px">'+brand()+'</div><div style="display:flex;gap:11px;align-items:center;font-size:8.5px;color:rgba(255,255,255,.6);font-weight:700">PROJECTS · SERVICES · REVIEWS '+pri(a,'GET A QUOTE')+'</div></div>'+
-      '<span style="display:inline-block;font-size:8px;font-weight:800;letter-spacing:.1em;background:rgba(255,255,255,.06);border:1px solid '+a+';color:'+a+';padding:5px 11px;border-radius:20px;margin-bottom:14px">🔨 LICENSED GENERAL CONTRACTOR</span>'+
-      '<h1 style="font-size:34px;font-weight:900;line-height:.95;margin-bottom:11px;max-width:330px">Built right,<br>the <span style="color:'+a+'">first time.</span></h1>'+
-      '<p style="font-size:12px;color:rgba(255,255,255,.62);max-width:330px;line-height:1.55;margin-bottom:18px">Kitchens, additions, decks, and full remodels — on schedule, on budget, and finished like it&#39;s our own home.</p>'+
-      '<div style="display:flex;gap:8px;margin-bottom:22px">'+pri(a,'GET MY FREE QUOTE →')+gho('SEE OUR PROJECTS')+'</div>'+
-      '<div style="display:flex;gap:18px;flex-wrap:wrap;font-size:9px;color:rgba(255,255,255,.65)"><span>🏗️ <b style="color:#fff">18</b> yrs building</span><span>🛡️ Licensed &amp; insured</span><span>★★★★★ <b style="color:#fff">240+</b> jobs</span></div></div>'+
-      '<div style="padding:22px 22px 8px"><div style="font-size:8px;font-weight:800;letter-spacing:.15em;color:'+a+';margin-bottom:12px">RECENT WORK</div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">'+map([['🏡','Whole-Home Remodel'],['🍳','Kitchen &amp; Bath'],['🪵','Decks &amp; Additions']],function(x){return '<div style="border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,.07)"><div style="height:60px;background:linear-gradient(135deg,'+a+'40,#14110e);display:flex;align-items:center;justify-content:center;font-size:24px">'+x[0]+'</div><div style="padding:8px 10px;font-size:9px;font-weight:800">'+x[1]+'</div></div>';})+'</div></div>'+
-      '<div style="padding:24px 22px;text-align:center;background:linear-gradient(120deg,'+a+',#7c2d12)"><h2 style="font-size:19px;font-weight:900;margin-bottom:6px">Got a project in mind?</h2><p style="font-size:11px;color:rgba(255,255,255,.85);margin-bottom:14px">Free on-site estimate and a clear, itemized quote.</p><button style="background:#fff;color:#111;font-size:10px;font-weight:800;padding:11px 22px;border:0;border-radius:7px;cursor:pointer">REQUEST MY ESTIMATE</button></div>'+foot(true)+'</div>';}},
-
-    field_service:{label:'HVAC / Plumbing',accent:'#2563EB',render:function(a){return '<div style="font-family:Barlow,system-ui,sans-serif;color:#0f2033;background:#f1f6fc">'+
-      '<div style="position:relative;overflow:hidden;padding:16px 22px 32px;background:radial-gradient(88% 76% at 80% 0%,'+a+'20,transparent),linear-gradient(180deg,#e9f2fd,#f1f6fc)"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:26px"><div style="font-weight:900;font-size:15px">'+brand()+'</div><div style="display:flex;gap:10px;align-items:center;font-size:8.5px;color:#5a7593;font-weight:700">SERVICES · BOOK · PLANS <button style="background:'+a+';color:#fff;font-size:9px;font-weight:700;padding:8px 13px;border:0;border-radius:7px;cursor:pointer">BOOK ONLINE</button></div></div>'+
-      '<div style="max-width:340px"><span style="display:inline-block;font-size:8px;font-weight:800;letter-spacing:.1em;background:#fff;border:1px solid '+a+';color:'+a+';padding:5px 11px;border-radius:20px;margin-bottom:12px">⚡ SAME-DAY SERVICE · 24/7</span><h1 style="font-size:33px;font-weight:900;line-height:.97;color:#0c1a2b;margin-bottom:10px">Comfort,<br>restored <span style="color:'+a+'">fast.</span></h1><p style="font-size:12px;color:#456485;line-height:1.55;margin-bottom:18px">Heating, cooling, and plumbing repairs done right the first time — upfront pricing and techs who respect your home.</p><div style="display:flex;gap:8px">'+pri(a,'BOOK A TECH →')+gho('SEE SERVICE PLANS',1)+'</div></div></div>'+
-      '<div style="padding:22px 22px 6px"><div style="font-size:8px;font-weight:800;letter-spacing:.15em;color:'+a+';margin-bottom:12px">WHAT WE FIX</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">'+map([['❄️','Cooling','AC repair, tune-ups &amp; installs.'],['🔥','Heating','Furnaces, heat pumps &amp; boilers.'],['🚰','Plumbing','Leaks, water heaters &amp; drains.'],['🛠️','Maintenance Plans','Priority service &amp; seasonal tune-ups.']],function(x){return '<div style="background:#fff;border:1px solid #d7e6f7;border-radius:11px;padding:13px 13px"><div style="font-size:19px;margin-bottom:6px">'+x[0]+'</div><div style="font-size:11px;font-weight:800;margin-bottom:4px">'+x[1]+'</div><div style="font-size:9px;color:#5f7ea1;line-height:1.5">'+x[2]+'</div></div>';})+'</div></div>'+
-      '<div style="display:flex;gap:14px;flex-wrap:wrap;padding:16px 22px;font-size:9px;color:#5a7593;font-weight:600"><span>💳 Upfront, flat-rate pricing</span><span>🛡️ Licensed &amp; insured</span><span>★★★★★ 4.9 (800+)</span></div>'+
-      '<div style="margin:2px 22px 18px;padding:18px;border-radius:12px;background:linear-gradient(120deg,'+a+',#123a7a);text-align:center;color:#fff"><h2 style="font-size:17px;font-weight:900;margin-bottom:5px">No heat? No AC? No problem.</h2><p style="font-size:9.5px;color:rgba(255,255,255,.85);margin-bottom:12px">Book online in 60 seconds — same-day slots available.</p><button style="background:#fff;color:'+a+';font-size:10px;font-weight:800;padding:10px 22px;border:0;border-radius:7px;cursor:pointer">BOOK MY SERVICE</button></div>'+foot(false)+'</div>';}},
-
-    landscaping:{label:'Landscaping',accent:'#16A34A',render:function(a){return '<div style="font-family:Barlow,system-ui,sans-serif;color:#13291b;background:#f2faf3">'+
-      '<div style="position:relative;overflow:hidden;padding:16px 22px 32px;background:radial-gradient(90% 78% at 82% 0%,'+a+'26,transparent),linear-gradient(180deg,#eafaee,#f2faf3)"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:26px"><div style="font-weight:900;font-size:15px;display:flex;align-items:center;gap:6px">🌿 '+brand()+'</div><div style="display:flex;gap:10px;align-items:center;font-size:8.5px;color:#4f7a5c;font-weight:700">SERVICES · GALLERY · QUOTE '+pri(a,'FREE ESTIMATE')+'</div></div>'+
-      '<div style="max-width:330px"><span style="display:inline-block;font-size:8px;font-weight:800;letter-spacing:.12em;color:#177d3e;margin-bottom:12px">LAWN &amp; LANDSCAPE · EAU CLAIRE</span><h1 style="font-size:34px;font-weight:900;line-height:.96;color:#0f2e1c;margin-bottom:10px">A yard the<br>whole street <span style="color:#177d3e">notices.</span></h1><p style="font-size:12px;color:#3f6b4d;line-height:1.55;margin-bottom:18px">Weekly mowing, clean design, and hardscapes that last — one crew that shows up when they say they will.</p><div style="display:flex;gap:8px">'+pri(a,'GET MY FREE ESTIMATE →')+gho('SEE THE GALLERY',1)+'</div></div></div>'+
-      '<div style="padding:22px 22px 6px"><div style="font-size:8px;font-weight:800;letter-spacing:.15em;color:#177d3e;margin-bottom:12px">WHAT WE DO</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">'+map([['🚜','Lawn Care','Mowing, edging, fertilizing &amp; cleanups.'],['🌳','Landscape Design','Plantings, beds, mulch &amp; seasonal color.'],['🧱','Hardscaping','Patios, walls, walkways &amp; fire pits.'],['❄️','Snow &amp; Ice','Seasonal plowing &amp; salting.']],function(x){return '<div style="background:#fff;border:1px solid #d5eeda;border-radius:11px;padding:13px 13px"><div style="font-size:19px;margin-bottom:6px">'+x[0]+'</div><div style="font-size:11px;font-weight:800;margin-bottom:4px">'+x[1]+'</div><div style="font-size:9px;color:#5f8a6c;line-height:1.5">'+x[2]+'</div></div>';})+'</div></div>'+
-      '<div style="margin:16px 22px;padding:16px;border-radius:12px;background:linear-gradient(120deg,#177d3e,#0d5128);text-align:center;color:#fff"><h2 style="font-size:17px;font-weight:900;margin-bottom:4px">Book your season now 🌱</h2><p style="font-size:9.5px;color:rgba(255,255,255,.85);margin-bottom:12px">Lock in weekly service before the spring rush fills up.</p><button style="background:#fff;color:#177d3e;font-size:10px;font-weight:800;padding:10px 22px;border:0;border-radius:8px;cursor:pointer">GET MY QUOTE</button></div>'+foot(false)+'</div>';}},
-
-    home_care:{label:'Home Care',accent:'#0891B2',render:function(a){return '<div style="font-family:Barlow,system-ui,sans-serif;color:#12363b;background:#f2fbfc">'+
-      '<div style="position:relative;overflow:hidden;padding:16px 22px 32px;background:radial-gradient(85% 75% at 78% 0%,'+a+'1f,transparent),linear-gradient(180deg,#eafafc,#f2fbfc)"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:26px"><div style="font-weight:900;font-size:15px;display:flex;align-items:center;gap:6px">🏡 '+brand()+'</div><div style="display:flex;gap:10px;align-items:center;font-size:8.5px;color:#5b8288;font-weight:700">SERVICES · CAREGIVERS · FAMILIES <button style="background:'+a+';color:#fff;font-size:9px;font-weight:700;padding:8px 13px;border:0;border-radius:20px;cursor:pointer">FREE ASSESSMENT</button></div></div>'+
-      '<div style="max-width:340px"><span style="display:inline-block;font-size:8px;font-weight:800;letter-spacing:.12em;color:'+a+';margin-bottom:12px">IN-HOME SENIOR CARE · EAU CLAIRE</span><h1 style="font-size:33px;font-weight:900;line-height:.98;color:#0f3034;margin-bottom:11px">Care that feels<br>like <span style="color:'+a+'">family.</span></h1><p style="font-size:12px;color:#456e73;line-height:1.55;margin-bottom:18px">Compassionate caregivers helping your loved ones stay safe, independent, and comfortable at home — from a few hours a week to around-the-clock.</p><div style="display:flex;gap:8px">'+pri(a,'BOOK A FREE ASSESSMENT →')+gho('MEET OUR CAREGIVERS',1)+'</div></div></div>'+
-      '<div style="padding:22px 22px 6px"><div style="font-size:8px;font-weight:800;letter-spacing:.15em;color:'+a+';margin-bottom:12px">HOW WE HELP</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">'+map([['🛁','Personal Care','Bathing, dressing, mobility &amp; daily living.'],['🤝','Companionship','Conversation, errands, meals &amp; activities.'],['💊','Medication Reminders','On-schedule support &amp; wellness checks.'],['🌙','24/7 &amp; Respite','Overnight care and a break for family.']],function(x){return '<div style="background:#fff;border:1px solid #d6eef0;border-radius:11px;padding:13px 13px"><div style="font-size:19px;margin-bottom:6px">'+x[0]+'</div><div style="font-size:11px;font-weight:800;margin-bottom:4px">'+x[1]+'</div><div style="font-size:9px;color:#6a9297;line-height:1.5">'+x[2]+'</div></div>';})+'</div></div>'+
-      '<div style="display:flex;gap:14px;flex-wrap:wrap;padding:16px 22px;font-size:9px;color:#5b8288;font-weight:600"><span>🛡️ Licensed, bonded &amp; insured</span><span>✔️ Background-checked caregivers</span><span>❤️ 4.9★ family rating</span></div>'+
-      '<div style="margin:2px 22px 18px;padding:18px;border-radius:12px;background:linear-gradient(120deg,'+a+',#0b5b66);text-align:center;color:#fff"><h2 style="font-size:17px;font-weight:900;margin-bottom:5px">Not sure what you need?</h2><p style="font-size:9.5px;color:rgba(255,255,255,.85);margin-bottom:12px">A free in-home assessment builds the right care plan — no obligation.</p><button style="background:#fff;color:'+a+';font-size:10px;font-weight:800;padding:10px 22px;border:0;border-radius:20px;cursor:pointer">SCHEDULE MY ASSESSMENT</button></div>'+foot(false)+'</div>';}},
-
-    generic:{label:'Something else',accent:'#FF6D00',render:function(a){return '<div style="font-family:Barlow,system-ui,sans-serif;color:#16181d;background:#f6f7f9">'+
-      '<div style="position:relative;overflow:hidden;padding:16px 22px 32px;background:radial-gradient(88% 76% at 80% 0%,'+a+'1c,transparent),linear-gradient(180deg,#eef0f4,#f6f7f9)"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:26px"><div style="font-weight:900;font-size:15px">'+brand()+'</div><div style="display:flex;gap:10px;align-items:center;font-size:8.5px;color:#6a7180;font-weight:700">SERVICES · ABOUT · CONTACT <button style="background:'+a+';color:#fff;font-size:9px;font-weight:700;padding:8px 13px;border:0;border-radius:7px;cursor:pointer">GET A QUOTE</button></div></div>'+
-      '<div style="max-width:340px"><span style="display:inline-block;font-size:8px;font-weight:800;letter-spacing:.1em;color:'+a+';margin-bottom:12px">LOCAL &amp; TRUSTED · EAU CLAIRE</span><h1 style="font-size:33px;font-weight:900;line-height:.97;color:#111318;margin-bottom:10px">Your business,<br>done <span style="color:'+a+'">right.</span></h1><p style="font-size:12px;color:#525a68;line-height:1.55;margin-bottom:18px">Whatever you do, we build you a site that looks the part and turns visitors into booked customers.</p><div style="display:flex;gap:8px">'+pri(a,'GET STARTED →')+gho('SEE WHAT WE DO',1)+'</div></div></div>'+
-      '<div style="padding:22px 22px 6px"><div style="font-size:8px;font-weight:800;letter-spacing:.15em;color:'+a+';margin-bottom:12px">WHAT WE OFFER</div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px">'+map([['⭐','Quality Work','Done right, on time.'],['🤝','Local Service','Real people who answer.'],['💬','Easy Booking','Quote or book online.']],function(x){return '<div style="background:#fff;border:1px solid #e2e5ea;border-radius:11px;padding:13px 12px"><div style="font-size:19px;margin-bottom:6px">'+x[0]+'</div><div style="font-size:11px;font-weight:800;margin-bottom:4px">'+x[1]+'</div><div style="font-size:9px;color:#6a7180;line-height:1.5">'+x[2]+'</div></div>';})+'</div></div>'+
-      '<div style="display:flex;gap:14px;flex-wrap:wrap;padding:16px 22px;font-size:9px;color:#6a7180;font-weight:600"><span>🛡️ Licensed &amp; insured</span><span>★★★★★ 5-star rated</span><span>📍 Serving your area</span></div>'+
-      '<div style="margin:2px 22px 18px;padding:18px;border-radius:12px;background:linear-gradient(120deg,'+a+',#a82600);text-align:center;color:#fff"><h2 style="font-size:17px;font-weight:900;margin-bottom:5px">Ready when you are.</h2><p style="font-size:9.5px;color:rgba(255,255,255,.88);margin-bottom:12px">Tell us what you need and we&#39;ll take it from there.</p><button style="background:#fff;color:#111;font-size:10px;font-weight:800;padding:10px 22px;border:0;border-radius:7px;cursor:pointer">CONTACT US</button></div>'+foot(false)+'</div>';}}
-  };
-
-  function render(){site.scrollTop=0;site.innerHTML=T[trade].render(accent);}
-  function setSwatch(c){document.querySelectorAll('.bl-sw').forEach(function(x){x.classList.toggle('active',(x.dataset.c||'').toUpperCase()===(c||'').toUpperCase());});}
-  function typeDeploy(){var s=slug();var lines=[['<span class="t-dim">$ twomiah build --site '+s+' --'+trade+'</span>',60],['<span class="t-fire">▸ theming '+T[trade].label.toLowerCase()+' layout…</span>',420],['<span class="t-fire">▸ generating pages + SEO…</span>',420],['<span class="t-ok">✓ deployed</span> <span class="t-url">'+s+'.twomiah.site</span>',420],['<span class="t-dim">ready in 0.8s — you own the code</span>',1]];if(tTimer)clearTimeout(tTimer);term.innerHTML='';var i=0;(function step(){if(i>=lines.length){term.innerHTML+=' <span class="term-cursor"></span>';return;}term.innerHTML+=lines[i][0]+'<br>';var d=lines[i][1];i++;tTimer=setTimeout(step,d);})();}
-
-  name.addEventListener('input',function(){render();typeDeploy();});
-  document.querySelectorAll('.bl-sw').forEach(function(s){s.addEventListener('click',function(){accent=s.dataset.c;setSwatch(accent);render();typeDeploy();});});
-  document.querySelectorAll('.bl-ind').forEach(function(el){el.addEventListener('click',function(){document.querySelectorAll('.bl-ind').forEach(function(x){x.classList.remove('active')});el.classList.add('active');trade=el.dataset.trade;accent=T[trade].accent;setSwatch(accent);render();typeDeploy();});});
-
-  setSwatch(accent);render();
-  term.innerHTML='<span class="t-dim">$ twomiah build --site '+slug()+' --roofing</span><br><span class="t-fire">▸ theming roofing layout…</span><br><span class="t-fire">▸ generating pages + SEO…</span><br><span class="t-ok">✓ deployed</span> <span class="t-url">'+slug()+'.twomiah.site</span><br><span class="t-dim">ready in 0.8s — you own the code</span> <span class="term-cursor"></span>';
-
-  /* ── Real template render — free, self-serve (factory /public/preview) ── */
   var PREVIEW_API='https://twomiah-factory-api.onrender.com/api/v1/factory/public/preview';
-  // Map the widget's trade token to a business-type string the factory's
-  // classifier understands, so the render picks the right template.
-  var BT={roofing:'roofing',contractor:'general contractor',field_service:'HVAC and plumbing',landscaping:'landscaping',home_care:'home care',rv:'RV dealership',vet:'veterinary clinic',dispensary:'dispensary',restaurant:'restaurant',salon:'salon and spa',generic:'small business'};
-  var MSGS=['Warming up the factory…','Theming your layout…','Generating pages + SEO…','Almost there…'];
-  var modal=document.getElementById('blModal'),mFrame=document.getElementById('blModalFrame'),mLoad=document.getElementById('blModalLoad'),mMsg=document.getElementById('blModalMsg'),mName=document.getElementById('blModalName'),mSpin=document.getElementById('blSpinner'),realBtn=document.getElementById('blRealBtn');
-  var msgTimer=null;
-  function closeModal(){if(!modal)return;modal.style.display='none';mFrame.removeAttribute('srcdoc');document.body.style.overflow='';if(msgTimer){clearInterval(msgTimer);msgTimer=null;}}
-  function openReal(){
-    var bn=(name.value||'').trim();
-    if(bn.length<2){name.focus();name.style.borderColor='#ff5a3c';setTimeout(function(){name.style.borderColor='';},1500);return;}
-    // "Eau Claire, WI" → city + state; the preview says "Roofing in <city>", or "Your City" without one.
-    var cityEl=document.getElementById('blCity'),cv=cityEl?(cityEl.value||'').trim():'',ci=cv.lastIndexOf(',');
-    var city=(ci>-1?cv.slice(0,ci):cv).trim(),state=(ci>-1?cv.slice(ci+1):'').trim();
-    if(cityEl&&city.length<2){cityEl.focus();cityEl.style.borderColor='#ff5a3c';setTimeout(function(){cityEl.style.borderColor='';},1500);return;}
-    mName.textContent=bn;
-    mFrame.removeAttribute('srcdoc');
-    mSpin.style.display='';mLoad.style.display='flex';
-    modal.style.display='flex';document.body.style.overflow='hidden';
-    var i=0;mMsg.textContent=MSGS[0];if(msgTimer)clearInterval(msgTimer);
-    msgTimer=setInterval(function(){i=(i+1)%MSGS.length;mMsg.textContent=MSGS[i];},4000);
-    var ctrl=('AbortController' in window)?new AbortController():null;
-    var to=setTimeout(function(){if(ctrl)ctrl.abort();},70000);
-    function fail(msg){if(msgTimer){clearInterval(msgTimer);msgTimer=null;}mSpin.style.display='none';mMsg.textContent=msg;}
-    fetch(PREVIEW_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({businessName:bn,businessType:BT[trade]||'small business',city:city,state:state}),signal:ctrl?ctrl.signal:undefined})
+  var form=document.getElementById('blForm');if(!form)return;
+  var name=document.getElementById('blName'),cityEl=document.getElementById('blCity'),trade=document.getElementById('blTrade'),
+      go=document.getElementById('blGo'),frame=document.getElementById('blFrame'),state=document.getElementById('blState'),
+      spin=document.getElementById('blSpin'),msg=document.getElementById('blMsg'),after=document.getElementById('blAfter'),mine=document.getElementById('blMine');
+  var MSGS=['Building your site…','Laying out your pages…','Adding your photos…','Almost there…'],msgTimer=null,busy=false;
+  function flag(el){el.focus();el.style.borderColor='#ff5a3c';setTimeout(function(){el.style.borderColor='';},1500);}
+  function show(text,loading){state.hidden=false;spin.hidden=!loading;msg.textContent=text;}
+  function stopMsgs(){if(msgTimer){clearInterval(msgTimer);msgTimer=null;}}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();if(busy)return;
+    var bn=(name.value||'').trim();if(bn.length<2)return flag(name);
+    // "Eau Claire, WI" → city + state.
+    var cv=(cityEl.value||'').trim(),ci=cv.lastIndexOf(','),city=(ci>-1?cv.slice(0,ci):cv).trim(),st=(ci>-1?cv.slice(ci+1):'').trim();
+    if(city.length<2)return flag(cityEl);
+    busy=true;go.disabled=true;after.hidden=true;frame.hidden=true;frame.removeAttribute('srcdoc');
+    // Stacked layout (phones): the preview is below the form — bring it into view.
+    if(window.innerWidth<=1024){var pv=document.querySelector('.bl-preview');if(pv&&pv.scrollIntoView)pv.scrollIntoView({behavior:'smooth',block:'start'});}
+    var i=0;show(MSGS[0],true);stopMsgs();msgTimer=setInterval(function(){i=(i+1)%MSGS.length;msg.textContent=MSGS[i];},3500);
+    var ctrl=('AbortController' in window)?new AbortController():null,to=setTimeout(function(){if(ctrl)ctrl.abort();},70000);
+    function done(){busy=false;go.disabled=false;clearTimeout(to);stopMsgs();}
+    fetch(PREVIEW_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({businessName:bn,businessType:trade.value,city:city,state:st}),signal:ctrl?ctrl.signal:undefined})
     .then(function(res){return res.text().then(function(t){return {ok:res.ok,status:res.status,body:t};});})
     .then(function(r){
-      clearTimeout(to);
+      done();
       if(r.ok){
-        if(msgTimer){clearInterval(msgTimer);msgTimer=null;}
-        mFrame.onload=function(){mLoad.style.display='none';};
-        mFrame.setAttribute('srcdoc',r.body);
-        setTimeout(function(){mLoad.style.display='none';},1500);
+        frame.onload=function(){state.hidden=true;};
+        frame.hidden=false;frame.setAttribute('srcdoc',r.body);
+        setTimeout(function(){state.hidden=true;},1500);
+        var q='?name='+encodeURIComponent(bn)+'&industry='+encodeURIComponent(trade.value)+'&city='+encodeURIComponent(city)+(st?'&state='+encodeURIComponent(st):'');
+        mine.href='/signup.html'+q;after.hidden=false;
       }else{
         var em='Something went wrong — please try again.';
-        try{em=JSON.parse(r.body).error||em;}catch(e){}
-        if(r.status===429)em='You\'ve generated a few previews already — give it a couple of minutes and try again.';
+        try{em=JSON.parse(r.body).error||em;}catch(x){}
+        if(r.status===429)em='You\'ve built a few previews already — give it a couple of minutes and try again.';
         else if(r.status===503)em='Our builder is busy right now — try again in a few seconds.';
-        fail(em);
+        show(em,false);
       }
     })
-    .catch(function(){clearTimeout(to);fail('That took too long — our builder may be waking up. Please try again in a moment.');});
-  }
-  if(realBtn)realBtn.addEventListener('click',openReal);
-  if(modal){
-    document.getElementById('blModalClose').addEventListener('click',closeModal);
-    modal.addEventListener('click',function(e){if(e.target===modal)closeModal();});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.style.display==='flex')closeModal();});
-  }
+    .catch(function(){done();show('That took too long — our builder may be waking up. Please try again in a moment.',false);});
+  });
 })();
 
 /* ── Intake → real Factory endpoint ── */
