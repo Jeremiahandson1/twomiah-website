@@ -103,7 +103,8 @@ section{position:relative}
 .bl-fine{font-size:11.5px;color:var(--muted);margin-top:12px;line-height:1.6}
 select.bl-input{appearance:auto;cursor:pointer}
 .bl-frame-wrap{position:relative;flex:1;background:#fff}
-#blFrame{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+.bl-frame-wrap{overflow:hidden}
+#blFrame{position:absolute;top:0;left:0;width:100%;height:100%;border:0;background:#fff;transform-origin:0 0}
 .bl-state{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center;background:#0f1419;color:#fff;z-index:1}
 .bl-state-msg{font-size:14px;font-weight:700;max-width:320px;line-height:1.5}
 @keyframes blspin{to{transform:rotate(360deg)}}
@@ -808,6 +809,15 @@ var mq = document.getElementById('marquee'); if(mq) mq.innerHTML += mq.innerHTML
       go=document.getElementById('blGo'),frame=document.getElementById('blFrame'),state=document.getElementById('blState'),
       spin=document.getElementById('blSpin'),msg=document.getElementById('blMsg'),after=document.getElementById('blAfter'),mine=document.getElementById('blMine');
   var MSGS=['Building your site…','Laying out your pages…','Adding your photos…','Almost there…'],msgTimer=null,busy=false;
+  // Show the site the way its owner's visitors will: laid out at a real desktop width (a real
+  // phone width on phones) and scaled down to fit the frame — not squeezed into the frame's
+  // ~640px, which switches the site to its tablet layout.
+  function fitFrame(){
+    var wrap=frame.parentNode,w=wrap.clientWidth,h=wrap.clientHeight;if(!w||!h)return;
+    var vw=w>=520?1280:390,s=w/vw;
+    frame.style.width=vw+'px';frame.style.height=Math.ceil(h/s)+'px';frame.style.transform='scale('+s+')';
+  }
+  window.addEventListener('resize',fitFrame);
   function flag(el){el.focus();el.style.borderColor='#ff5a3c';setTimeout(function(){el.style.borderColor='';},1500);}
   function show(text,loading){state.hidden=false;spin.hidden=!loading;msg.textContent=text;}
   function stopMsgs(){if(msgTimer){clearInterval(msgTimer);msgTimer=null;}}
@@ -829,7 +839,10 @@ var mq = document.getElementById('marquee'); if(mq) mq.innerHTML += mq.innerHTML
       done();
       if(r.ok){
         frame.onload=function(){state.hidden=true;};
-        frame.hidden=false;frame.setAttribute('srcdoc',r.body);
+        frame.hidden=false;fitFrame();
+        // The site's font loads with display=optional (fine on a real visit); inside a fresh
+        // frame it never arrives in time and the preview falls back to Arial, so swap it in.
+        frame.setAttribute('srcdoc',r.body.replace(/display=optional/g,'display=swap'));
         setTimeout(function(){state.hidden=true;},1500);
         var q='?name='+encodeURIComponent(bn)+'&industry='+encodeURIComponent(trade.value)+'&city='+encodeURIComponent(city)+(st?'&state='+encodeURIComponent(st):'');
         mine.href='/signup.html'+q;after.hidden=false;
