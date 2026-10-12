@@ -230,7 +230,12 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
 @media(max-width:640px){.nav-toggle{display:flex}}
 @media(min-width:641px){.nav-toggle{display:none !important}.mobile-menu{display:none !important}}
 
-.mm-h{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ember);margin:0 0 12px;}</style>
+.mm-h{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ember);margin:0 0 12px;}
+/* Phone width: nothing may be wider than the screen */
+@media(max-width:640px){.nav-links{display:none}}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding:120px 24px 60px;gap:40px}.problem-inner{grid-template-columns:1fr}.features-grid{grid-template-columns:1fr}.who-grid{grid-template-columns:1fr}.vs-grid{grid-template-columns:1fr;gap:24px}.vs-divider{flex-direction:row;height:auto}.vs-line{width:100%;height:1px;flex:1}nav{padding:14px 20px}body>section{padding:60px 20px}footer{padding:32px 20px}}
+.footer-links{flex-wrap:wrap}
+</style>
 </head>
 <body>
 

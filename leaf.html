@@ -278,7 +278,12 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
 @media(max-width:640px){.nav-toggle{display:flex}}
 @media(min-width:641px){.nav-toggle{display:none !important}.mobile-menu{display:none !important}}
 
-.mm-h{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ember);margin:0 0 12px;}</style>
+.mm-h{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ember);margin:0 0 12px;}
+/* Phone width: nothing may be wider than the screen */
+@media(max-width:640px){.nav-links{display:none}}
+.footer-links{flex-wrap:wrap}
+@media(max-width:640px){footer{padding:32px 20px}}
+</style>
 </head>
 <body>
 
