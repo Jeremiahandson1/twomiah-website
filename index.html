@@ -408,6 +408,8 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
       <div class="bl-step">Step 1 · Your business</div>
       <label class="bl-label" for="blName">Business name</label>
       <input class="bl-input" id="blName" type="text" value="" placeholder="Your business name" maxlength="26" autocomplete="off">
+      <label class="bl-label" for="blCity">City</label>
+      <input class="bl-input" id="blCity" type="text" value="" placeholder="e.g. Eau Claire, WI" maxlength="60" autocomplete="off">
       <label class="bl-label">Brand color</label>
       <div class="bl-swatches" id="blSwatches">
         <span class="bl-sw active" style="background:#FF6D00" data-c="#FF6D00"></span>
@@ -985,6 +987,10 @@ var mq = document.getElementById('marquee'); if(mq) mq.innerHTML += mq.innerHTML
   function openReal(){
     var bn=(name.value||'').trim();
     if(bn.length<2){name.focus();name.style.borderColor='#ff5a3c';setTimeout(function(){name.style.borderColor='';},1500);return;}
+    // "Eau Claire, WI" → city + state; the preview says "Roofing in <city>", or "Your City" without one.
+    var cityEl=document.getElementById('blCity'),cv=cityEl?(cityEl.value||'').trim():'',ci=cv.lastIndexOf(',');
+    var city=(ci>-1?cv.slice(0,ci):cv).trim(),state=(ci>-1?cv.slice(ci+1):'').trim();
+    if(cityEl&&city.length<2){cityEl.focus();cityEl.style.borderColor='#ff5a3c';setTimeout(function(){cityEl.style.borderColor='';},1500);return;}
     mName.textContent=bn;
     mFrame.removeAttribute('srcdoc');
     mSpin.style.display='';mLoad.style.display='flex';
@@ -994,7 +1000,7 @@ var mq = document.getElementById('marquee'); if(mq) mq.innerHTML += mq.innerHTML
     var ctrl=('AbortController' in window)?new AbortController():null;
     var to=setTimeout(function(){if(ctrl)ctrl.abort();},70000);
     function fail(msg){if(msgTimer){clearInterval(msgTimer);msgTimer=null;}mSpin.style.display='none';mMsg.textContent=msg;}
-    fetch(PREVIEW_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({businessName:bn,businessType:BT[trade]||'small business'}),signal:ctrl?ctrl.signal:undefined})
+    fetch(PREVIEW_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({businessName:bn,businessType:BT[trade]||'small business',city:city,state:state}),signal:ctrl?ctrl.signal:undefined})
     .then(function(res){return res.text().then(function(t){return {ok:res.ok,status:res.status,body:t};});})
     .then(function(r){
       clearTimeout(to);
