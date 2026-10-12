@@ -358,44 +358,23 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
 
       <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:16px;display:block">Select a Plan *</label>
       <div class="plan-grid" id="planGrid">
-        <div class="plan-card" data-plan="starter" onclick="selectPlan(this)">
+        <div class="plan-card" data-plan="starter10" onclick="selectPlan(this)">
           <div class="plan-label">Starter</div>
-          <div class="plan-price">$149</div>
-          <div class="plan-per">/month</div>
-          <ul class="plan-features">
-            <li>POS + Menu + Website</li>
-            <li>Up to 100 products</li>
-            <li>2 team members</li>
-            <li>Email support</li>
-          </ul>
+          <div class="plan-price">$99</div>
+          <div class="plan-per">/mo &middot; up to 10 users</div>
         </div>
-        <div class="plan-card" data-plan="growth" onclick="selectPlan(this)">
-          <div class="plan-badge">Most Popular</div>
-          <div class="plan-label">Growth</div>
-          <div class="plan-price">$249</div>
-          <div class="plan-per">/month</div>
-          <ul class="plan-features">
-            <li>Everything in Starter</li>
-            <li>Loyalty &amp; rewards</li>
-            <li>Delivery management</li>
-            <li>Analytics dashboard</li>
-            <li>Up to 10 team members</li>
-          </ul>
+        <div class="plan-card" data-plan="team25" onclick="selectPlan(this)">
+          <div class="plan-label">Team</div>
+          <div class="plan-price">$139</div>
+          <div class="plan-per">/mo &middot; up to 25 users</div>
         </div>
-        <div class="plan-card" data-plan="enterprise" onclick="selectPlan(this)">
-          <div class="plan-label">Enterprise</div>
-          <div class="plan-price">$399</div>
-          <div class="plan-per">/month</div>
-          <ul class="plan-features">
-            <li>Everything in Growth</li>
-            <li>Multi-location</li>
-            <li>Merch store (Stripe)</li>
-            <li>API access</li>
-            <li>Unlimited team members</li>
-            <li>Priority support</li>
-          </ul>
+        <div class="plan-card" data-plan="business50" onclick="selectPlan(this)">
+          <div class="plan-label">Business</div>
+          <div class="plan-price">$199</div>
+          <div class="plan-per">/mo &middot; up to 50 users</div>
         </div>
       </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.45);margin:10px 0 4px">Every feature is included on every plan — team size is the only difference. Includes your website + hosting. 50+ users? <a href="mailto:support@twomiah.com?subject=Enterprise%20plan" style="color:var(--leaf)">Talk to us</a>.</p>
 
       <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;display:block">Hosting Preference</label>
       <div class="hosting-grid" id="hostingGrid">
@@ -712,7 +691,7 @@ function getStoreHours() {
 }
 
 function planLabel(p) {
-  var map = { starter: 'Starter ($149/mo)', growth: 'Growth ($249/mo)', enterprise: 'Enterprise ($399/mo)' };
+  var map = { starter10: 'Starter — up to 10 users ($99/mo)', team25: 'Team — up to 25 users ($139/mo)', business50: 'Business — up to 50 users ($199/mo)' };
   return map[p] || p;
 }
 
@@ -782,7 +761,7 @@ function submitForm() {
   var features = ['pos', 'menu', 'website', 'customers'];
   document.querySelectorAll('#featuresGrid input:checked').forEach(function(cb) { features.push(cb.value); });
 
-  var planPrices = { starter: 149, growth: 249, enterprise: 399 };
+  var planPrices = { starter10: 99, team25: 139, business50: 199 };
 
   var data = {
     name: val('companyName'),

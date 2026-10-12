@@ -318,51 +318,37 @@ footer{background:#060E1C;border-top:1px solid rgba(255,255,255,0.05);padding:40
     <div class="step" data-step="2">
       <div class="step-title">Plan &amp; Billing</div>
       <div class="step-desc">Pick the plan that fits your crew. All plans include the customer portal and $9 measurement reports.</div>
-      <div class="plan-grid">
-        <div class="plan-card" onclick="selectPlan('starter',this)">
+      <div class="plan-grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="plan-card" onclick="selectPlan('starter10',this)">
           <div class="plan-label">Starter</div>
-          <div class="plan-price">$49</div>
-          <div class="plan-per">/mo &middot; 2 users</div>
+          <div class="plan-price">$99</div>
+          <div class="plan-per">/mo &middot; up to 10 users</div>
         </div>
-        <div class="plan-card" onclick="selectPlan('pro',this)">
-          <div class="plan-label">Pro</div>
-          <div class="plan-price">$149</div>
-          <div class="plan-per">/mo &middot; up to 5</div>
+        <div class="plan-card" onclick="selectPlan('team25',this)">
+          <div class="plan-label">Team</div>
+          <div class="plan-price">$139</div>
+          <div class="plan-per">/mo &middot; up to 25 users</div>
         </div>
-        <div class="plan-card" onclick="selectPlan('business',this)">
+        <div class="plan-card" onclick="selectPlan('business50',this)">
           <div class="plan-label">Business</div>
-          <div class="plan-price">$299</div>
-          <div class="plan-per">/mo &middot; up to 15</div>
-        </div>
-        <div class="plan-card" onclick="selectPlan('storm',this)">
-          <div class="plan-label">Storm</div>
-          <div class="plan-price">$599</div>
-          <div class="plan-per">/mo &middot; up to 20</div>
-        </div>
-        <div class="plan-card" onclick="selectPlan('enterprise',this)">
-          <div class="plan-label">Enterprise</div>
           <div class="plan-price">$199</div>
-          <div class="plan-per">/user/mo &middot; 10+</div>
+          <div class="plan-per">/mo &middot; up to 50 users</div>
         </div>
       </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.45);margin:10px 0 4px">Every feature is included on every plan — team size is the only difference. Includes your website + hosting. 50+ users? <a href="mailto:support@twomiah.com?subject=Enterprise%20plan" style="color:var(--accent)">Talk to us</a>.</p>
       <div class="field">
         <label>Deploy Service</label>
       </div>
-      <div class="deploy-grid">
-        <div class="deploy-card" onclick="selectDeploy('basic',this)">
-          <h4>Basic</h4>
-          <div class="deploy-price">$299</div>
-          <p>We set up your CRM with default config. You customize from there.</p>
+      <div class="deploy-grid" style="grid-template-columns:1fr 1fr">
+        <div class="deploy-card selected" onclick="selectDeploy('basic',this)">
+          <h4>Standard</h4>
+          <div class="deploy-price">Included</div>
+          <p>We auto-build and deploy your site + CRM. Login credentials and a live URL — nothing extra to pay.</p>
         </div>
-        <div class="deploy-card" onclick="selectDeploy('full',this)">
-          <h4>Full Setup</h4>
+        <div class="deploy-card" onclick="selectDeploy('custom',this)">
+          <h4>True Customization</h4>
           <div class="deploy-price">$499</div>
-          <p>We import your contacts, configure your pipeline stages, and set up SMS templates.</p>
-        </div>
-        <div class="deploy-card" onclick="selectDeploy('white-glove',this)">
-          <h4>White Glove</h4>
-          <div class="deploy-price">$699</div>
-          <p>Everything in Full Setup plus data migration, canvasser zone setup, and 1-on-1 training.</p>
+          <p>See what we built, then send us the changes — we hand-customize the design beyond the auto-build. One-time, optional.</p>
         </div>
       </div>
       <div class="field">
@@ -504,7 +490,7 @@ footer{background:#060E1C;border-top:1px solid rgba(255,255,255,0.05);padding:40
 var currentStep = 0;
 var totalSteps = 6;
 var selectedPlan = null;
-var selectedDeploy = null;
+var selectedDeploy = 'basic';
 var serviceZips = [];
 
 // ZIP tag input
@@ -700,17 +686,11 @@ function val(id) {
 }
 
 function planLabel(p) {
-  var map = {
-    starter: 'Starter ($49/mo)',
-    pro: 'Pro ($149/mo)',
-    business: 'Business ($299/mo)',
-    storm: 'Storm ($599/mo)',
-    enterprise: 'Enterprise ($199/user/mo)'
-  };
+  var map = { starter10: 'Starter — up to 10 users ($99/mo)', team25: 'Team — up to 25 users ($139/mo)', business50: 'Business — up to 50 users ($199/mo)' };
   return map[p] || p;
 }
 function deployLabel(d) {
-  var map = { basic: 'Basic ($299)', full: 'Full Setup ($499)', 'white-glove': 'White Glove ($699)' };
+  var map = { basic: 'Standard (included)', custom: 'True Customization ($499)' };
   return map[d] || d;
 }
 
@@ -761,7 +741,7 @@ function getFormData() {
   var features = [];
   document.querySelectorAll('#featuresGrid input:checked').forEach(function(cb) { features.push(cb.value); });
 
-  var planPrices = { starter: 49, pro: 149, business: 299, storm: 599, enterprise: 199 };
+  var planPrices = { starter10: 99, team25: 139, business50: 199 };
 
   return {
     name: val('companyName'),

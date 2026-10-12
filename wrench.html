@@ -38,7 +38,7 @@
   "description": "Field service software for HVAC, plumbing, and electrical contractors. Dispatch, service agreements, flat-rate pricebook, and field tech mobile app.",
   "publisher": {"@type": "Organization", "name": "Twomiah Software Ventures", "url": "https://twomiah.com/"},
   "image": "https://twomiah.com/og/og-wrench.png",
-  "offers": {"@type": "AggregateOffer", "url": "https://twomiah.com/signup/wrench/", "lowPrice": "49.00", "highPrice": "599.00", "priceCurrency": "USD", "offerCount": 4}
+  "offers": {"@type": "AggregateOffer", "url": "https://twomiah.com/signup/wrench/", "lowPrice": "99.00", "highPrice": "199.00", "priceCurrency": "USD", "offerCount": 3}
 }
 </script>
 
@@ -170,6 +170,7 @@ section{padding:100px 48px}
 /* PRICING */
 #pricing{background:var(--charcoal)}
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+@media(max-width:768px){.price-grid{grid-template-columns:1fr}}
 .price-card{background:var(--dark);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:32px 28px;display:flex;flex-direction:column;position:relative;transition:border-color 0.2s}
 .price-card:hover{border-color:rgba(14,165,233,0.2)}
 .price-card.featured{border-color:var(--steel);background:#08111E}
@@ -488,7 +489,7 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
         <button class="vs-toggle" onclick="showCompare('housecall')">vs Housecall Pro</button>
       </div>
       <div id="compareTable" class="reveal"></div>
-      <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Twomiah Wrench: $49&ndash;$599/mo &mdash; all-inclusive with website at Pro+. Competitors: $300+/mo + add-ons for most features.</p>
+      <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Twomiah Wrench: $99&ndash;$199/mo &mdash; every feature and your website on every plan. Competitors: $300+/mo + add-ons for most features.</p>
     </div>
   </div>
 </section>
@@ -529,10 +530,10 @@ var cats={
 var wrenchTiers={crm:'Starter',quotes:'Starter',invoicing:'Starter',scheduling:'Starter',dispatch:'Pro',gps:'Pro',routing:'Pro',time:'Starter',photo:'Starter',equipment:'Business',fleet:'Business',sms:'Pro',email:'Business',portal:'Starter',booking:'Pro',calltrack:'Fleet',qb:'Pro',pricebook:'Pro',financing:'Business',inventory:'Business',agreements:'Pro',automations:'Business',forms:'Business',reporting:'Business',mobile:'Starter',api:'Enterprise'};
 var tierColors={Starter:'#22c55e',Pro:'#3b82f6',Business:'#a855f7',Fleet:'#FF6D00',Enterprise:'#f59e0b'};
 function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
-function wrenchCk(f){var t=wrenchTiers[f];return '<span style="color:'+tierColors[t]+';font-size:10px;font-weight:700;letter-spacing:0.05em">'+t.toUpperCase()+'</span>'}
+function wrenchCk(f){if(wrenchTiers[f]==='Enterprise')return '<span class="cmp-a">ENTERPRISE</span>';return '<span class="cmp-y">&#10003;</span>'}
 function toggleCmp(){var c=document.getElementById('cmpContent'),b=document.getElementById('cmpToggleBtn');if(c.style.display==='none'){c.style.display='block';b.innerHTML='Hide comparison &nbsp;&uarr;';showCompareInit('servicetitan')}else{c.style.display='none';b.innerHTML='Compare vs. ServiceTitan, Jobber &amp; Housecall Pro &nbsp;&darr;'}}
 function showCompareInit(key){document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});document.querySelector('.vs-toggle[onclick*="'+key+'"]').classList.add('active');renderCmp(key)}
-function renderCmp(key){var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Wrench (Tier)</th></tr></thead><tbody>';Object.keys(cats).forEach(function(cat){h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+wrenchCk(f)+'</td></tr>'})});h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$49</span> / <span style="color:#3b82f6">$149</span> / <span style="color:#a855f7">$299</span> / <span style="color:#FF6D00">$599</span> / <span style="color:#f59e0b">$199/user</span></td></tr>';h+='</tbody></table>';document.getElementById('compareTable').innerHTML=h}
+function renderCmp(key){var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Wrench</th></tr></thead><tbody>';Object.keys(cats).forEach(function(cat){h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+wrenchCk(f)+'</td></tr>'})});h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$99</span> / <span style="color:#3b82f6">$139</span> / <span style="color:#a855f7">$199</span></td></tr>';h+='</tbody></table>';document.getElementById('compareTable').innerHTML=h}
 function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});event.target.classList.add('active');renderCmp(key)}
 // Comparison hidden by default; expand button initializes it.
 </script>
@@ -543,96 +544,59 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
     <div class="reveal" style="margin-bottom:16px">
       <div class="section-label">Pricing</div>
       <h2 class="section-title">Flat Rate.<br><span class="steel-line">Website Built In.</span></h2>
-      <p class="section-sub">Pro and higher include a website at no extra cost. Annual billing saves 2 months. 30-day money-back guarantee.</p>
+      <p class="section-sub">Every plan includes every feature and your website &mdash; team size is the only difference. 30-day money-back guarantee &middot; No contract.</p>
     </div>
-    <div class="price-grid" style="grid-template-columns:repeat(4,1fr)">
-      <!-- Starter -->
+    <div class="price-grid">
       <div class="price-card reveal">
-        <div class="price-tier">Solo Operator</div>
+        <div class="price-tier">Up to 10 Users</div>
         <div class="price-name">Starter</div>
         <div class="price-amount">
-          <div class="price-dollar">$49</div>
+          <div class="price-dollar">$99</div>
           <div class="price-per">/mo</div>
         </div>
-        <div class="price-annual">or <span>$490/yr</span> — 2 months free</div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Jobs &amp; scheduling</li>
-          <li class="bold-item">Quotes &amp; invoices</li>
-          <li class="bold-item">Stripe payments</li>
-          <li class="bold-item">Customer portal</li>
-          <li class="bold-item">Mobile tech app</li>
-          <li>2 users included</li>
-          <li>Pair with any website tier</li>
+          <li class="bold-item">Every Wrench feature &mdash; nothing tier-locked</li>
+          <li class="bold-item">Your website + hosting</li>
+          <li>Texting &amp; AI billed at cost</li>
+          <li>No contract &mdash; cancel any month</li>
         </ul>
-        <a href="/signup/wrench?plan=starter" class="price-cta">Get Started</a>
+        <a href="/signup/wrench?plan=starter10" class="price-cta">Get Started</a>
       </div>
-      <!-- Pro -->
-      <div class="price-card featured reveal">
-        <div class="price-tier featured">2–10 Techs</div>
-        <div class="price-name">Pro</div>
-        <div class="price-amount">
-          <div class="price-dollar">$149</div>
-          <div class="price-per">/mo</div>
-        </div>
-        <div class="price-annual">or <span>$1,490/yr</span> — 2 months free</div>
-        <div class="price-divider"></div>
-        <ul class="price-features">
-          <li class="bold-item">Everything in Starter</li>
-          <li class="bold-item">GPS tracking + geofencing</li>
-          <li class="bold-item">Route optimization</li>
-          <li class="bold-item">Flat-rate pricebook</li>
-          <li class="bold-item">Service agreements</li>
-          <li class="bold-item">Two-way SMS</li>
-          <li class="bold-item">Showcase website included ($49 value)</li>
-          <li>5 users included</li>
-        </ul>
-        <a href="/signup/wrench?plan=pro" class="price-cta">Get Started</a>
-      </div>
-      <!-- Business -->
       <div class="price-card reveal">
-        <div class="price-tier">10–25 Techs</div>
+        <div class="price-tier">Up to 25 Users</div>
+        <div class="price-name">Team</div>
+        <div class="price-amount">
+          <div class="price-dollar">$139</div>
+          <div class="price-per">/mo</div>
+        </div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li class="bold-item">Every Wrench feature &mdash; nothing tier-locked</li>
+          <li class="bold-item">Your website + hosting</li>
+          <li>Texting &amp; AI billed at cost</li>
+          <li>No contract &mdash; cancel any month</li>
+        </ul>
+        <a href="/signup/wrench?plan=team25" class="price-cta">Get Started</a>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-tier">Up to 50 Users</div>
         <div class="price-name">Business</div>
         <div class="price-amount">
-          <div class="price-dollar">$299</div>
+          <div class="price-dollar">$199</div>
           <div class="price-per">/mo</div>
         </div>
-        <div class="price-annual">or <span>$2,990/yr</span> — 2 months free</div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Everything in Pro</li>
-          <li class="bold-item">Customer equipment tracking</li>
-          <li class="bold-item">Parts inventory</li>
-          <li class="bold-item">Fleet management</li>
-          <li class="bold-item">Maintenance contracts</li>
-          <li class="bold-item">Book Jobs website included ($99 value)</li>
-          <li>15 users included</li>
+          <li class="bold-item">Every Wrench feature &mdash; nothing tier-locked</li>
+          <li class="bold-item">Your website + hosting</li>
+          <li>Texting &amp; AI billed at cost</li>
+          <li>No contract &mdash; cancel any month</li>
         </ul>
-        <a href="/signup/wrench?plan=business" class="price-cta">Get Started</a>
-      </div>
-      <!-- Fleet -->
-      <div class="price-card reveal">
-        <div class="price-tier">Multi-Location</div>
-        <div class="price-name">Fleet</div>
-        <div class="price-amount">
-          <div class="price-dollar">$599</div>
-          <div class="price-per">/mo</div>
-        </div>
-        <div class="price-annual">or <span>$5,990/yr</span> — 2 months free</div>
-        <div class="price-divider"></div>
-        <ul class="price-features">
-          <li class="bold-item">Everything in Business</li>
-          <li class="bold-item">Multi-location dispatch</li>
-          <li class="bold-item">Advanced scheduling &amp; routing</li>
-          <li class="bold-item">Call tracking &amp; recording</li>
-          <li class="bold-item">Commission tracking</li>
-          <li class="bold-item">Service area pages on website</li>
-          <li>20 users included</li>
-        </ul>
-        <a href="/signup/wrench?plan=fleet" class="price-cta">Get Started</a>
+        <a href="/signup/wrench?plan=business50" class="price-cta">Get Started</a>
       </div>
     </div>
-    <p style="text-align:center;font-size:12px;color:rgba(255,255,255,0.3);margin-top:24px">Just need a website? Standalone tiers: <strong>Presence $19/mo</strong>, <strong>Showcase $49/mo</strong>, <strong>Book Jobs $99/mo</strong>. Enterprise (white-label, $199/user/mo, min 10) also available.</p>
+    <p style="text-align:center;font-size:12px;color:rgba(255,255,255,0.3);margin-top:24px">Just need a website? <strong>$49/mo</strong> &mdash; includes our CMS. 50+ users? <a href="mailto:support@twomiah.com?subject=Enterprise%20plan" style="color:var(--steel)">Talk to us</a>.</p>
   </div>
 </section>
 
@@ -668,7 +632,7 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
       <!-- SaaS column -->
       <div style="background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.2);border-radius:6px;padding:32px">
         <div style="font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--steel);margin-bottom:8px">SaaS &mdash; We Host &amp; Maintain</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:white;margin-bottom:24px">From $49<span style="font-size:14px;color:rgba(255,255,255,0.4);font-family:'Barlow',sans-serif">/mo</span></div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:white;margin-bottom:24px">From $99<span style="font-size:14px;color:rgba(255,255,255,0.4);font-family:'Barlow',sans-serif">/mo</span></div>
         <ul style="list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:8px">
           <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--steel)">&check;</span>We host, update, and maintain everything</li>
           <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--steel)">&check;</span>Support included on every tier</li>
@@ -680,7 +644,7 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
       <!-- Self-hosted column — every license = monthly SaaS × 36 (3 years equivalent) -->
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:32px">
         <div style="font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px">Self-Hosted &mdash; Buy Once, Own Forever</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:white;margin-bottom:24px">From $1,764<span style="font-size:14px;color:rgba(255,255,255,0.4);font-family:'Barlow',sans-serif"> once</span></div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:white;margin-bottom:24px">From $3,564<span style="font-size:14px;color:rgba(255,255,255,0.4);font-family:'Barlow',sans-serif"> once</span></div>
         <ul style="list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:8px">
           <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--steel)">&check;</span>Full source code + database schema</li>
           <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--steel)">&check;</span>Deploy on your own server &mdash; pay us nothing again</li>
@@ -688,8 +652,8 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
           <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--steel)">&check;</span>Every license = 3 years of SaaS, paid once</li>
         </ul>
         <div style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.6;margin-bottom:16px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.06)">
-          Starter $1,764 &middot; Pro $5,364 &middot; Business $10,764<br>
-          Fleet $21,564 &middot; <strong style="color:var(--steel)">Enterprise $71,640 (unlimited users, 3 yrs support)</strong>
+          Starter $3,564 &middot; Team $5,004 &middot; Business $7,164<br>
+          50+ users? <a href="mailto:support@twomiah.com?subject=Enterprise%20plan" style="color:var(--steel)">Talk to us</a>.
         </div>
         <a href="/signup/wrench?hosting=self-hosted" style="display:block;text-align:center;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);padding:13px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase">Get Self-Hosted &rarr;</a>
       </div>
