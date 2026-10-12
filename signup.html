@@ -398,7 +398,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
         </div>
         <div class="hosting-card" data-hosting="self-hosted" onclick="selectHosting(this)">
           <h4>Self-Hosted (Own It)</h4>
-          <p>One-time purchase. Full source code. Deploy on your own server or we deploy for you.</p>
+          <p>One-time license. Full source code. Deploy on your own server or we deploy for you. We set licenses up with you by email &mdash; nothing is charged online.</p>
         </div>
       </div>
 
@@ -618,6 +618,7 @@ function selectHosting(el) {
   document.querySelectorAll('.hosting-card').forEach(function(c) { c.classList.remove('selected'); });
   el.classList.add('selected');
   selectedHosting = el.getAttribute('data-hosting');
+  syncSubmitLabel();
 }
 
 function selectDeploy(el) {
@@ -817,7 +818,7 @@ function buildSummary() {
     ['Brand Color', val('colorHex')],
     ['Website Template', selectedTemplate || 'Default'],
     ['Plan', planLabel(selectedPlan)],
-    ['Hosting', selectedHosting === 'saas' ? 'SaaS (Hosted)' : 'Self-Hosted'],
+    ['Hosting', selectedHosting === 'saas' ? 'SaaS (Hosted)' : 'Self-Hosted (license request — not charged online)'],
     ['Deploy Service', deployLabel(selectedDeploy)],
     ['Add-Ons', addons.length ? addons.join(', ') : 'None'],
     ['Migration From', migSrc || 'None'],
@@ -882,7 +883,57 @@ function getFormData() {
   };
 }
 
+// Self-hosted licenses are set up by email, not online checkout (checkout only sells the
+// monthly plans), so with Self-Hosted picked the last step sends a request instead.
+var LICENSE_EMAIL = 'support@twomiah.com';
+var LICENSE_PLANS = {
+  starter10: 'Starter license — up to 10 users ($3,564 once)',
+  team25: 'Team license — up to 25 users ($5,004 once)',
+  business50: 'Business license — up to 50 users ($7,164 once)'
+};
+// No initializer: a ?hosting= link can call syncSubmitLabel() before this line runs.
+var submitLabel;
+function syncSubmitLabel() {
+  var btn = document.getElementById('submitBtn');
+  if (!btn) return;
+  if (submitLabel === undefined) submitLabel = btn.innerHTML;
+  btn.innerHTML = selectedHosting === 'saas' ? submitLabel : 'Request My License &rarr;';
+}
+function fieldVal(id) {
+  var el = document.getElementById(id);
+  return el && el.value ? String(el.value).trim() : '';
+}
+function requestLicense() {
+  var company = fieldVal('companyName');
+  var who = (fieldVal('firstName') + ' ' + fieldVal('lastName')).trim();
+  var place = [fieldVal('city'), fieldVal('state')].filter(Boolean).join(', ');
+  var body = [
+    'I\'d like a self-hosted license.',
+    '',
+    'License: ' + (LICENSE_PLANS[selectedPlan] || 'not sure yet'),
+    'Company: ' + company,
+    'Name: ' + who,
+    'Email: ' + fieldVal('email'),
+    'Phone: ' + fieldVal('phone'),
+    'Location: ' + place,
+    'Website: ' + fieldVal('domain')
+  ].join('\n');
+  var href = 'mailto:' + LICENSE_EMAIL + '?subject=' + encodeURIComponent('Self-hosted license request — ' + (company || 'new customer')) + '&body=' + encodeURIComponent(body);
+  var step = document.getElementById('submitBtn').closest('.step');
+  var desc = step && step.querySelector('.step-desc');
+  if (step && step.querySelector('.step-title')) step.querySelector('.step-title').textContent = 'Send Your License Request';
+  if (desc) {
+    desc.textContent = 'Nothing is charged online for a self-hosted license. Your email app should open with your details filled in — just hit send and we\'ll reply with next steps. If it didn\'t open, email ';
+    var a = document.createElement('a');
+    a.href = href; a.textContent = LICENSE_EMAIL; a.style.color = 'inherit'; a.style.textDecoration = 'underline';
+    desc.appendChild(a);
+    desc.appendChild(document.createTextNode('.'));
+  }
+  window.location.href = href;
+}
+
 function submitForm() {
+  if (selectedHosting !== 'saas') return requestLicense();
   var btn = document.getElementById('submitBtn');
   btn.disabled = true;
   btn.textContent = 'Submitting...';
