@@ -38,7 +38,7 @@
   "description": "Cannabis dispensary platform: POS, loyalty, delivery, inventory, age-verified website with GPU-rendered effects, and METRC integration.",
   "publisher": {"@type": "Organization", "name": "Twomiah Software Ventures", "url": "https://twomiah.com/"},
   "image": "https://twomiah.com/og/og-leaf.png",
-  "offers": {"@type": "AggregateOffer", "url": "https://twomiah.com/signup/leaf/", "lowPrice": "299.00", "highPrice": "1299.00", "priceCurrency": "USD", "offerCount": 4}
+  "offers": {"@type": "AggregateOffer", "url": "https://twomiah.com/signup/leaf/", "lowPrice": "99.00", "highPrice": "199.00", "priceCurrency": "USD", "offerCount": 3}
 }
 </script>
 
@@ -620,7 +620,7 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
       <button class="vs-toggle" onclick="showCompare('cova')">vs Cova</button>
     </div>
     <div id="compareTable" class="reveal"></div>
-    <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Leaf: $299&ndash;$1,299/mo &mdash; all-inclusive, no add-ons. Competitors: $500+/mo + add-ons for loyalty, marketing, scheduling.</p>
+    <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Leaf: $99&ndash;$199/mo &mdash; every feature on every plan. Competitors: $500+/mo + add-ons for loyalty, marketing, scheduling.</p>
   </div>
 </section>
 <style>
@@ -665,16 +665,17 @@ var cats={
 var leafTiers={pos:'Starter',id_scan:'Starter',checkin:'Starter',kiosk:'Business',ai:'Business',metrc:'Pro',biotrack:'Pro',leafdata:'Pro',multi:'Business',rfid:'Business',batch:'Pro',labels:'Pro',delivery:'Pro',routing:'Pro',gps:'Pro',loyalty:'Pro',gamified:'Business',referral:'Pro',paybank:'Business',wallet:'Business',sms:'Pro',email:'Pro',ordering:'Pro',website:'Pro',seo:'Pro',grow_trace:'Pro',cultivation:'Enterprise',mfg:'Enterprise',wholesale:'Enterprise',lab:'Enterprise',scheduling:'Pro',training:'Pro',fraud:'Business',predict:'Business',bi:'Business',soc2:'Business',offline:'Starter',api:'Business'};
 var tierColors={Starter:'#22c55e',Pro:'#3b82f6',Business:'#a855f7',Enterprise:'#f59e0b'};
 function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
-function leafCk(f){var t=leafTiers[f];return '<span style="color:'+tierColors[t]+';font-size:10px;font-weight:700;letter-spacing:0.05em">'+t.toUpperCase()+'</span>'}
+function leafCk(f){if(leafTiers[f]==='Enterprise')return '<span class="cmp-a">ENTERPRISE</span>';return '<span class="cmp-y">&#10003;</span>'}
 function showCompare(key){
 document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});
-event.target.classList.add('active');
-var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Leaf (Tier)</th></tr></thead><tbody>';
+// Also runs on load (no click event): mark the button for this competitor.
+var btn=document.querySelector('.vs-toggle[onclick*="'+key+'"]');if(btn)btn.classList.add('active');
+var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Leaf</th></tr></thead><tbody>';
 Object.keys(cats).forEach(function(cat){
 h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';
 cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+leafCk(f)+'</td></tr>'});
 });
-h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$299</span> / <span style="color:#3b82f6">$499</span> / <span style="color:#a855f7">$799</span> / <span style="color:#f59e0b">$1,299</span></td></tr>';
+h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$99</span> / <span style="color:#3b82f6">$139</span> / <span style="color:#a855f7">$199</span></td></tr>';
 h+='</tbody></table>';
 document.getElementById('compareTable').innerHTML=h}
 showCompare('dutchie');
@@ -685,100 +686,60 @@ showCompare('dutchie');
   <div class="inner">
     <div class="reveal" style="margin-bottom:16px">
       <div class="section-label">Pricing</div>
-      <h2 class="section-title">Everything Included.<br><span class="leaf-line">No Add-Ons.</span></h2>
-      <p class="section-sub">POS, website, loyalty, delivery, analytics, compliance &mdash; one price. No per-transaction fees. No 'contact sales' nonsense. You see the price, you pay the price.</p>
+      <h2 class="section-title">Every Feature Included.<br><span class="leaf-line">No Tier Games.</span></h2>
+      <p class="section-sub">POS, website, loyalty, delivery, analytics, compliance &mdash; every feature on every plan; team size is the only difference. No per-transaction fees. You see the price, you pay the price.</p>
     </div>
-    <div class="price-grid" style="grid-template-columns:repeat(4,1fr)">
+    <div class="price-grid">
       <div class="price-card reveal">
-        <div class="price-tier">Single Location</div>
+        <div class="price-tier">Up to 10 Users</div>
         <div class="price-name">Starter</div>
-        <div class="price-amount"><div class="price-dollar">$299</div><div class="price-per">/mo</div></div>
-        <div class="price-annual">or <span>$239/mo billed annually</span></div>
+        <div class="price-amount">
+          <div class="price-dollar">$99</div>
+          <div class="price-per">/mo</div>
+        </div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Full POS system</li>
-          <li class="bold-item">ID scanning + verification</li>
-          <li class="bold-item">Customer check-in queue</li>
-          <li class="bold-item">Cash sessions + reconciliation</li>
-          <li class="bold-item">Offline POS mode</li>
-          <li>Inventory management</li>
-          <li>Purchase limit enforcement</li>
-          <li>QR code scanning</li>
-          <li>Tip management</li>
-          <li>EOD reconciliation reports</li>
-          <li>5 users included</li>
+          <li class="bold-item">Every Leaf feature &mdash; nothing tier-locked</li>
+          <li class="bold-item">Your website + hosting</li>
+          <li>Texting &amp; AI billed at cost</li>
+          <li>No contract &mdash; cancel any month</li>
         </ul>
-        <a href="/signup/leaf/?plan=starter" class="price-cta">Launch Your System</a>
-      </div>
-      <div class="price-card featured reveal">
-        <div class="price-tier featured">Most Popular</div>
-        <div class="price-name">Pro</div>
-        <div class="price-amount"><div class="price-dollar">$499</div><div class="price-per">/mo</div></div>
-        <div class="price-annual">or <span>$399/mo billed annually</span></div>
-        <div class="price-divider"></div>
-        <ul class="price-features">
-          <li class="bold-item">Everything in Starter</li>
-          <li class="bold-item">Metrc / BioTrack / Leaf Data</li>
-          <li class="bold-item">Delivery + GPS tracking</li>
-          <li class="bold-item">Loyalty + referral program</li>
-          <li class="bold-item">Label printing + QR codes</li>
-          <li class="bold-item">SMS + email marketing</li>
-          <li class="bold-item">Analytics dashboard</li>
-          <li>Employee scheduling</li>
-          <li>Training LMS</li>
-          <li>Online ordering + website</li>
-          <li>Batch/lot tracking</li>
-          <li>Grow input traceability</li>
-          <li>15 users included</li>
-        </ul>
-        <a href="/signup/leaf/?plan=pro" class="price-cta">Launch Your System</a>
+        <a href="/signup/leaf/?plan=starter10" class="price-cta">Launch Your System</a>
       </div>
       <div class="price-card reveal">
-        <div class="price-tier">Scale Without Limits</div>
+        <div class="price-tier">Up to 25 Users</div>
+        <div class="price-name">Team</div>
+        <div class="price-amount">
+          <div class="price-dollar">$139</div>
+          <div class="price-per">/mo</div>
+        </div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li class="bold-item">Every Leaf feature &mdash; nothing tier-locked</li>
+          <li class="bold-item">Your website + hosting</li>
+          <li>Texting &amp; AI billed at cost</li>
+          <li>No contract &mdash; cancel any month</li>
+        </ul>
+        <a href="/signup/leaf/?plan=team25" class="price-cta">Launch Your System</a>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-tier">Up to 50 Users</div>
         <div class="price-name">Business</div>
-        <div class="price-amount"><div class="price-dollar">$799</div><div class="price-per">/mo</div></div>
-        <div class="price-annual">or <span>$639/mo billed annually</span></div>
+        <div class="price-amount">
+          <div class="price-dollar">$199</div>
+          <div class="price-per">/mo</div>
+        </div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Everything in Pro</li>
-          <li class="bold-item">Multi-location (up to 10)</li>
-          <li class="bold-item">AI budtender (Claude-powered)</li>
-          <li class="bold-item">Self-service kiosk</li>
-          <li class="bold-item">RFID inventory scanning</li>
-          <li class="bold-item">BI dashboard + custom reports</li>
-          <li class="bold-item">Predictive inventory</li>
-          <li>Gamified loyalty</li>
-          <li>Pay by Bank (ACH)</li>
-          <li>Fraud detection</li>
-          <li>SOC 2 controls</li>
-          <li>30 users included</li>
+          <li class="bold-item">Every Leaf feature &mdash; nothing tier-locked</li>
+          <li class="bold-item">Your website + hosting</li>
+          <li>Texting &amp; AI billed at cost</li>
+          <li>No contract &mdash; cancel any month</li>
         </ul>
-        <a href="/signup/leaf/?plan=business" class="price-cta">Launch Your System</a>
-      </div>
-      <div class="price-card reveal">
-        <div class="price-tier">Seed-to-Sale</div>
-        <div class="price-name">Enterprise</div>
-        <div class="price-amount"><div class="price-dollar">$1,299</div><div class="price-per">/mo</div></div>
-        <div class="price-annual">or <span>$1,039/mo billed annually</span></div>
-        <div class="price-divider"></div>
-        <ul class="price-features">
-          <li class="bold-item">Everything in Business</li>
-          <li class="bold-item">Cultivation / grow tracking</li>
-          <li class="bold-item">Manufacturing / processing</li>
-          <li class="bold-item">Wholesale / distribution</li>
-          <li class="bold-item">Lab testing + CoA</li>
-          <li class="bold-item">Franchise management</li>
-          <li class="bold-item">Open API + marketplace</li>
-          <li>Dedicated success manager</li>
-          <li>Unlimited locations</li>
-          <li>Consumer mobile app</li>
-          <li>White-label option</li>
-          <li>100+ users</li>
-        </ul>
-        <a href="/signup/leaf/?plan=enterprise" class="price-cta">Contact Sales</a>
+        <a href="/signup/leaf/?plan=business50" class="price-cta">Launch Your System</a>
       </div>
     </div>
-    <p class="price-note reveal">All plans include unlimited products, a fully hosted website, and no per-transaction fees. 30-day money-back guarantee. No setup fees.</p>
+    <p class="price-note reveal">All plans include unlimited products, a fully hosted website, and no per-transaction fees. 30-day money-back guarantee. No setup fees. 50+ users? <a href="mailto:support@twomiah.com?subject=Enterprise%20plan" style="color:var(--leaf)">Talk to us</a>.</p>
   </div>
 </section>
 
