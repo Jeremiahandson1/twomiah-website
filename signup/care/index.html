@@ -181,6 +181,14 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
   .summary-grid{grid-template-columns:1fr}
   .form-card{padding:28px 20px}
 }
+.svc-hint{font-size:12px;color:rgba(255,255,255,0.45);margin:0 0 10px;line-height:1.5}
+#svcGrid{margin-bottom:10px}
+#svcGrid .check-item{display:flex;font-size:inherit;font-weight:400;letter-spacing:normal;text-transform:none;margin-bottom:0}
+.svc-add{display:flex;gap:8px}
+.svc-add input{flex:1;min-width:0}
+.svc-add-btn{padding:0 18px;background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;border-radius:4px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.svc-add-btn:hover{border-color:var(--fire)}
+.svc-empty{font-size:12px;color:rgba(255,255,255,0.35);grid-column:1/-1}
 </style>
 </head>
 <body>
@@ -243,6 +251,15 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
         <div class="field">
           <label>Phone</label>
           <input type="tel" id="phone" placeholder="(555) 123-4567">
+        </div>
+      </div>
+      <div class="field" id="svcField">
+        <label>Services You Offer (optional)</label>
+        <p class="svc-hint">Your website lists exactly what you pick here and nothing else. Tick what you do, or add your own.</p>
+        <div class="check-grid" id="svcGrid"></div>
+        <div class="svc-add">
+          <input type="text" id="svcCustom" maxlength="60" placeholder="Add another service you offer">
+          <button type="button" class="svc-add-btn" onclick="addOwnerService()">Add</button>
         </div>
       </div>
       <div class="field">
@@ -603,6 +620,70 @@ function selectDeploy(el) {
   selectedDeploy = el.getAttribute('data-deploy');
 }
 
+// ── Services you offer: the website's services section lists exactly these ──
+var SVC_FIXED_INDUSTRY = "";
+var SVC_SUGGEST = {"general_contractor":["Kitchen Remodeling","Bathroom Remodeling","Additions","Decks","Basement Finishing","New Construction"],"remodeler":["Kitchen Remodeling","Bathroom Remodeling","Basement Finishing","Additions","Flooring Installation"],"roofing":["Roof Replacement","Roof Repair","Storm Damage Repair","Roof Inspections","Gutters","Siding"],"hvac":["Furnace Repair","Furnace Installation","AC Repair","AC Installation","Heat Pumps","Maintenance Plans","Duct Cleaning"],"plumbing":["Drain Cleaning","Leak Repair","Water Heaters","Sewer Lines","Fixture Installation","Repiping"],"electrical":["Panel Upgrades","Wiring & Rewiring","Lighting Installation","EV Charger Installation","Generator Installation","Troubleshooting & Repair"],"landscaping":["Lawn Mowing","Landscape Design","Patios & Hardscaping","Mulching & Planting","Tree & Shrub Care","Spring & Fall Cleanups","Snow Removal"],"painter":["Interior Painting","Exterior Painting","Cabinet Painting","Deck & Fence Staining","Drywall Repair"],"concrete":["Driveways","Patios","Sidewalks","Foundations","Retaining Walls","Brick & Stone Work"],"flooring":["Hardwood Floors","Tile","Luxury Vinyl","Carpet","Floor Refinishing"],"general_handyman":["Home Repairs","Drywall Repair","Fixture Installation","Furniture Assembly","Painting"],"appliance_repair":["Washer & Dryer Repair","Refrigerator Repair","Dishwasher Repair","Oven & Range Repair"],"garage_door":["Garage Door Repair","Garage Door Installation","Opener Repair","Spring Replacement"],"locksmith":["Lockouts","Lock Rekeying","Lock Installation","Key Duplication","Commercial Locks"],"pest_control":["General Pest Control","Termites","Rodents","Bed Bugs","Mosquito Treatment","Wildlife Removal"],"chimney_fireplace":["Chimney Sweeping","Chimney Inspections","Chimney Repair","Fireplace Installation"],"pool_spa":["Pool Cleaning","Pool Opening & Closing","Equipment Repair","Hot Tub Service"],"home_care":["Personal Care","Companion Care","Respite Care","Meal Preparation","Medication Reminders","Light Housekeeping","Transportation"],"home_care_nonmedical":["Personal Care","Companion Care","Respite Care","Meal Preparation","Medication Reminders","Light Housekeeping","Transportation"],"personal_care":["Personal Care","Companion Care","Respite Care","Meal Preparation","Medication Reminders","Light Housekeeping","Transportation"],"companion_care":["Personal Care","Companion Care","Respite Care","Meal Preparation","Medication Reminders","Light Housekeeping","Transportation"],"respite_care":["Personal Care","Companion Care","Respite Care","Meal Preparation","Medication Reminders","Light Housekeeping","Transportation"],"home_health_skilled":["Skilled Nursing","Physical Therapy","Occupational Therapy","Wound Care","Medication Management"],"hospice":["Hospice Care","Pain & Symptom Management","Family Support","Bereavement Support"],"senior_living":["Independent Living","Assisted Living","Memory Care","Respite Stays"],"pediatric_home_care":["Pediatric Nursing","Personal Care","Respite Care"],"disability_services":["Personal Care","Community Support","Respite Care","Life Skills Support"],"veterinary":["Wellness Exams","Vaccinations","Dental Care","Surgery","Diagnostics"],"dispensary":["Flower","Pre-Rolls","Edibles","Vapes","Concentrates","Topicals","Accessories"],"rv":["New Sales","Used Sales","Consignment","Service & Repair","Parts & Accessories"],"food_truck":["Catering","Private Events","Lunch Service"],"restaurant":["Dine-In","Takeout","Catering","Private Events"],"salon":["Haircuts","Color","Highlights","Blowouts","Nails","Waxing","Facials"],"fitness":["Personal Training","Group Classes","Memberships","Nutrition Coaching"],"plumber":["Drain Cleaning","Leak Repair","Water Heaters","Sewer Lines","Fixture Installation","Repiping"],"electrician":["Panel Upgrades","Wiring & Rewiring","Lighting Installation","EV Charger Installation","Generator Installation","Troubleshooting & Repair"],"landscaper":["Lawn Mowing","Landscape Design","Patios & Hardscaping","Mulching & Planting","Tree & Shrub Care","Spring & Fall Cleanups","Snow Removal"]};
+var SVC_MAX = 12;
+var svcCustom = [];
+function svcLc(s) { return String(s).toLowerCase(); }
+function svcIndustry() { var el = document.getElementById('industry'); return el ? el.value : SVC_FIXED_INDUSTRY; }
+function ownerServices() {
+  var out = [];
+  document.querySelectorAll('#svcGrid input:checked').forEach(function(cb) { out.push(cb.value); });
+  return out;
+}
+function renderServiceChoices() {
+  var grid = document.getElementById('svcGrid');
+  if (!grid) return;
+  var ticked = ownerServices();
+  var keep = ticked.map(svcLc);
+  var names = (SVC_SUGGEST[svcIndustry()] || []).slice();
+  // Anything already ticked (even under another trade) and anything typed stays on the list.
+  ticked.concat(svcCustom).forEach(function(n) { if (names.map(svcLc).indexOf(svcLc(n)) === -1) names.push(n); });
+  grid.innerHTML = '';
+  if (!names.length) { grid.innerHTML = '<div class="svc-empty">Add the services you offer below.</div>'; return; }
+  names.forEach(function(n) {
+    var lab = document.createElement('label');
+    lab.className = 'check-item';
+    lab.setAttribute('onclick', 'toggleCheck(this)');
+    var cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.value = n;
+    if (keep.indexOf(svcLc(n)) > -1) { cb.checked = true; lab.classList.add('checked'); }
+    var box = document.createElement('span'); box.className = 'check-box';
+    var txt = document.createElement('span'); txt.className = 'check-label'; txt.textContent = n;
+    lab.appendChild(cb); lab.appendChild(box); lab.appendChild(txt);
+    grid.appendChild(lab);
+  });
+}
+function addOwnerService() {
+  var inp = document.getElementById('svcCustom');
+  var n = (inp.value || '').replace(/[<>{}]/g, '').replace(/\s+/g, ' ').trim().slice(0, 60);
+  if (n.length < 2) return;
+  var picked = ownerServices().map(svcLc);
+  if (picked.indexOf(svcLc(n)) === -1 && picked.length >= SVC_MAX) { toast('Up to ' + SVC_MAX + ' services here; you can add more later in your website editor.', 'error'); return; }
+  if (svcCustom.map(svcLc).indexOf(svcLc(n)) === -1) svcCustom.push(n);
+  renderServiceChoices();
+  document.querySelectorAll('#svcGrid input').forEach(function(cb) {
+    if (svcLc(cb.value) === svcLc(n) && !cb.checked) { cb.checked = true; cb.parentNode.classList.add('checked'); }
+  });
+  inp.value = '';
+}
+(function() {
+  var sel = document.getElementById('industry');
+  if (sel) sel.addEventListener('change', renderServiceChoices);
+  var inp = document.getElementById('svcCustom');
+  if (inp) inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); addOwnerService(); } });
+  var grid = document.getElementById('svcGrid');
+  if (grid) grid.addEventListener('change', function(e) {
+    if (e.target.checked && ownerServices().length > SVC_MAX) {
+      e.target.checked = false;
+      toast('Up to ' + SVC_MAX + ' services here; you can add more later in your website editor.', 'error');
+    }
+  });
+  renderServiceChoices();
+})();
+
 function toggleCheck(el) {
   setTimeout(function() {
     var cb = el.querySelector('input[type="checkbox"]');
@@ -718,6 +799,7 @@ function buildSummary() {
     ['Company', val('companyName')],
     ['Industry', val('industry') || '--'],
     ['Phone', val('phone') || '--'],
+    ['Services', ownerServices().join(', ') || '--'],
     ['Location', [val('city'), val('state'), val('zip')].filter(Boolean).join(', ') || '--'],
     ['Address', val('address') || '--'],
     ['Domain', val('domain') || '--'],
@@ -766,6 +848,7 @@ function getFormData() {
     admin_email: val('email'),
     phone: val('phone'),
     industry: val('industry'),
+    services: ownerServices(),
     address: val('address'),
     city: val('city'),
     state: val('state'),
