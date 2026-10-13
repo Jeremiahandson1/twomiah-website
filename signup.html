@@ -208,7 +208,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
 
 <div class="container">
   <h1 class="page-title">Get Started with <span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Twomiah</span></h1>
-  <p class="page-sub">Fill out the form below and we'll have your CRM ready in minutes.</p>
+  <p class="page-sub" id="pageSub">Fill out the form below and we'll have your CRM ready in minutes.</p>
 
   <!-- Progress dots -->
   <div class="progress" id="progress">
@@ -371,7 +371,12 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
       <div class="step-desc">Choose your plan. Every plan is backed by our 30-day money-back guarantee.</div>
 
       <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;display:block">Select a Plan *</label>
-      <div class="plan-grid" id="planGrid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="plan-grid" id="planGrid">
+        <div class="plan-card" data-plan="website" onclick="selectPlan(this)">
+          <div class="plan-label">Website</div>
+          <div class="plan-price">$49</div>
+          <div class="plan-per">/mo &middot; website only</div>
+        </div>
         <div class="plan-card" data-plan="starter10" onclick="selectPlan(this)">
           <div class="plan-label">Starter</div>
           <div class="plan-price">$99</div>
@@ -388,7 +393,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
           <div class="plan-per">/mo &middot; up to 50 users</div>
         </div>
       </div>
-      <p style="font-size:12px;color:rgba(255,255,255,0.45);margin:10px 0 4px">Every feature is included on every plan — team size is the only difference. Includes your website + hosting. 50+ users? <a href="mailto:support@twomiah.com?subject=Enterprise%20plan" style="color:#FF6D00">Talk to us</a>.</p>
+      <p id="planNote" style="font-size:12px;color:rgba(255,255,255,0.45);margin:10px 0 4px">Every feature is included on every plan — team size is the only difference. Includes your website + hosting. 50+ users? <a href="mailto:support@twomiah.com?subject=Enterprise%20plan" style="color:#FF6D00">Talk to us</a>.</p>
 
       <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;display:block">Hosting Preference</label>
       <div class="hosting-grid" id="hostingGrid">
@@ -619,6 +624,36 @@ function selectPlan(el) {
   document.querySelectorAll('.plan-card').forEach(function(c) { c.classList.remove('selected'); });
   el.classList.add('selected');
   selectedPlan = el.getAttribute('data-plan');
+  applyPlanMode();
+}
+
+// Website only: no CRM steps (add-ons, own-it license), and the wording says "website".
+// No initializer: a ?plan= link calls applyPlanMode() before this line runs.
+var CRM_TEXT;
+function applyPlanMode() {
+  var w = selectedPlan === 'website';
+  var hosting = document.getElementById('hostingGrid'), addons = document.getElementById('addonsGrid');
+  [hosting, hosting && hosting.previousElementSibling, addons, addons && addons.previousElementSibling, addons && addons.previousElementSibling && addons.previousElementSibling.previousElementSibling]
+    .forEach(function(el) { if (el) el.style.display = w ? 'none' : ''; });
+  if (w && selectedHosting !== 'saas') { var saas = document.querySelector('.hosting-card[data-hosting="saas"]'); if (saas) selectHosting(saas); }
+  var d = function(n) { return document.querySelector('.step[data-step="' + n + '"] .step-desc'); };
+  if (!CRM_TEXT) {
+    CRM_TEXT = [0, 1, 4, 5].map(function(n) { return d(n) ? d(n).textContent : ''; });
+    CRM_TEXT.sub = document.getElementById('pageSub').textContent;
+    CRM_TEXT.note = document.getElementById('planNote').innerHTML;
+    CRM_TEXT.plan = d(3) ? d(3).textContent : '';
+  }
+  document.getElementById('pageSub').textContent = w ? "Fill out the form below and we'll have your website ready in minutes." : CRM_TEXT.sub;
+  document.getElementById('planNote').innerHTML = w ? 'Website only: your site, hosting and your own editor. Add the CRM any time.' : CRM_TEXT.note;
+  if (d(3)) d(3).textContent = w ? 'Choose your plan.' : CRM_TEXT.plan;
+  var WEB_TEXT = [
+    'Tell us about your business so we can set up your website.',
+    'Upload your logo and choose your brand color. We\'ll theme your website to match.',
+    'Your site is built and deployed automatically \u2014 included. Want it hand-customized beyond the auto-build? That\'s the one optional add-on.',
+    'This will be the owner login for your website editor.'
+  ];
+  [0, 1, 4, 5].forEach(function(n, i) { if (d(n)) d(n).textContent = w ? WEB_TEXT[i] : CRM_TEXT[i]; });
+  syncSubmitLabel();
 }
 
 function selectHosting(el) {
@@ -800,7 +835,7 @@ function val(id) {
 }
 
 function planLabel(p) {
-  var map = { starter10: 'Starter — up to 10 users ($99/mo)', team25: 'Team — up to 25 users ($139/mo)', business50: 'Business — up to 50 users ($199/mo)' };
+  var map = { website: 'Website only ($49/mo)', starter10: 'Starter — up to 10 users ($99/mo)', team25: 'Team — up to 25 users ($139/mo)', business50: 'Business — up to 50 users ($199/mo)' };
   return map[p] || p;
 }
 function deployLabel(d) {
@@ -857,7 +892,7 @@ function getFormData() {
   var addons = [];
   document.querySelectorAll('#addonsGrid input:checked').forEach(function(cb) { addons.push(cb.value); });
 
-  var planPrices = { starter10: 99, team25: 139, business50: 199 };
+  var planPrices = { website: 49, starter10: 99, team25: 139, business50: 199 };
 
   return {
     name: val('companyName'),
@@ -878,7 +913,7 @@ function getFormData() {
     deployment_model: selectedHosting === 'saas' ? 'saas' : 'owned',
     monthly_amount: selectedHosting === 'saas' ? planPrices[selectedPlan] || 0 : null,
     billing_type: selectedHosting === 'saas' ? 'subscription' : 'one_time',
-    products: ['crm', 'website'],
+    products: selectedPlan === 'website' ? ['website'] : ['crm', 'website'],
     features: addons,
     notes: [
       'Deploy service: ' + deployLabel(selectedDeploy),
@@ -904,7 +939,7 @@ function syncSubmitLabel() {
   var btn = document.getElementById('submitBtn');
   if (!btn) return;
   if (submitLabel === undefined) submitLabel = btn.innerHTML;
-  btn.innerHTML = selectedHosting === 'saas' ? submitLabel : 'Request My License &rarr;';
+  btn.innerHTML = selectedHosting !== 'saas' ? 'Request My License &rarr;' : selectedPlan === 'website' ? 'Submit &amp; Create My Website' : submitLabel;
 }
 function fieldVal(id) {
   var el = document.getElementById(id);
@@ -966,18 +1001,18 @@ function submitForm() {
       } else {
         btn.textContent = 'Account Created!';
         document.querySelector('.step[data-step="6"] .step-title').textContent = 'You\'re All Set!';
-        document.querySelector('.step[data-step="6"] .step-desc').textContent = 'Your CRM is being built. Check your email (' + val('email') + ') for login instructions.';
+        document.querySelector('.step[data-step="6"] .step-desc').textContent = (selectedPlan === 'website' ? 'Your website' : 'Your CRM') + ' is being built. Check your email (' + val('email') + ') for login instructions.';
       }
     } else {
       toast(result.data.error || 'Something went wrong. Please try again.', 'error');
       btn.disabled = false;
-      btn.textContent = 'Submit & Create My CRM';
+      syncSubmitLabel();
     }
   })
   .catch(function() {
     toast('Network error. Please check your connection and try again.', 'error');
     btn.disabled = false;
-    btn.textContent = 'Submit & Create My CRM';
+    syncSubmitLabel();
   });
 }
 </script>

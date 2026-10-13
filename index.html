@@ -72,6 +72,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:0 auto 36px;max-width:660px;animation:fadeUp 0.8s 0.45s both}
 .hero-badge{font-size:11px;font-weight:600;letter-spacing:0.04em;color:rgba(255,255,255,0.72);background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:7px 15px;backdrop-filter:blur(6px)}
 .hero-badge b{color:var(--gold);font-weight:700}
+.hero-choices{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:780px;margin:8px auto 0;animation:fadeUp 0.8s 0.5s both}
+.hero-choice{display:flex;flex-direction:column;gap:8px;text-align:left;text-decoration:none;color:var(--white);background:rgba(20,20,20,0.72);border:1px solid rgba(255,255,255,0.14);border-radius:14px;padding:24px 24px 22px;backdrop-filter:blur(8px);transition:border-color 0.2s,transform 0.2s,background 0.2s}
+.hero-choice:hover{border-color:var(--fire);transform:translateY(-3px);background:rgba(30,18,12,0.85)}
+.hc-tag{font-size:10.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ember)}
+.hc-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:0.03em;line-height:1}
+.hc-desc{font-size:14px;line-height:1.6;color:rgba(255,255,255,0.7)}
+.hc-desc b{color:var(--gold)}
+.hc-go{margin-top:6px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--white)}
+.hero-custom{margin-top:22px;font-size:13px;color:rgba(255,255,255,0.6);animation:fadeUp 0.8s 0.6s both}
+.hero-custom a{color:var(--gold);font-weight:700;text-decoration:none}
+.bl-keep{display:flex;gap:10px;flex-wrap:wrap}
+.bl-plus{background:transparent!important;border:1px solid var(--fire);color:#fff!important}
+.hub-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+@media(max-width:700px){.hero-choices{grid-template-columns:1fr}}
 .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.8s 0.5s both}
 .btn-primary{background:var(--fire);color:var(--white);padding:15px 32px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;transition:background 0.2s,box-shadow 0.2s;box-shadow:0 4px 20px rgba(255,61,0,0.35);will-change:transform}
 .btn-primary:hover{background:var(--ember);box-shadow:0 8px 34px rgba(255,61,0,0.5)}
@@ -341,35 +355,41 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
     <span class="nav-wordmark">TWOMIAH</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#build-live">Try it</a></li>
-    <li><a href="#different">Why us</a></li>
-    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#build-live">Websites</a></li>
+    <li><a href="#crm">CRM</a></li>
+    <li><a href="#doors">Pricing</a></li>
     <li><a href="#proof">Our work</a></li>
-    <li><a href="#build-live" class="nav-cta">Get my free preview</a></li>
+    <li><a href="#top" class="nav-cta">Get started</a></li>
   </ul>
 </nav>
 
 <main>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="top">
   <canvas id="gl"></canvas>
   <div class="hero-glow"></div>
   <div class="hero-veil"></div>
   <div class="hero-wm">TWOMIAH</div>
   <div class="hero-content">
     <p class="hero-eyebrow">Websites + software for local &amp; service business</p>
-    <h1 class="hero-headline">See your new website.<br><span class="fire-line">Then decide.</span></h1>
-    <p class="hero-sub">We build it <em>first</em> — your real site, your brand, finished. You look before you pay a dime. Then run the whole business on a CRM built for your trade.</p>
-    <div class="hero-badges">
-      <span class="hero-badge"><b>$99/mo</b> · every feature included</span>
-      <span class="hero-badge"><b>No contract</b> · own it whenever</span>
-      <span class="hero-badge">Texting &amp; AI <b>billed at cost</b></span>
+    <h1 class="hero-headline">What does your<br><span class="fire-line">business need?</span></h1>
+    <p class="hero-sub">Pick where to start. Either way you see it <em>before</em> you pay — no contract, and you can own it outright whenever you want.</p>
+    <div class="hero-choices">
+      <a href="#build-live" class="hero-choice">
+        <span class="hc-tag">A website</span>
+        <span class="hc-title">See your site in seconds</span>
+        <span class="hc-desc">Type your business name and see your real site, free. Keep it for <b>$49/mo</b>.</span>
+        <span class="hc-go">Show me my site &rarr;</span>
+      </a>
+      <a href="#crm" class="hero-choice">
+        <span class="hc-tag">Software to run my business</span>
+        <span class="hc-title">A CRM built for your trade</span>
+        <span class="hc-desc">Leads, quotes, scheduling, jobs, invoices and payments. <b>$99/mo</b> &mdash; your website included.</span>
+        <span class="hc-go">Show me the CRM &rarr;</span>
+      </a>
     </div>
-    <div class="hero-actions">
-      <a href="#build-live" class="btn-primary magnetic">Build one right now →</a>
-      <a href="#different" class="btn-ghost magnetic">Why we're different</a>
-    </div>
+    <p class="hero-custom">Have something unique in mind? <a href="#custom">Custom sites &rarr;</a></p>
   </div>
 </section>
 
@@ -424,8 +444,11 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
         </div>
       </div>
       <div class="bl-after" id="blAfter" hidden>
-        <span>Your starting site &mdash; the real one gets your photos, services and words.</span>
-        <a class="bl-mine" id="blMine" href="/signup.html">Make it mine &rarr;</a>
+        <span>Your starting site &mdash; the real one gets your photos, services and words. How do you want it?</span>
+        <div class="bl-keep">
+          <a class="bl-mine" id="blMine" href="/signup.html?plan=website">Keep the website &mdash; $49/mo &rarr;</a>
+          <a class="bl-mine bl-plus" id="blPlus" href="/signup.html?plan=starter10">Website + CRM &mdash; $99/mo &rarr;</a>
+        </div>
       </div>
     </div>
   </div>
@@ -442,7 +465,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
     <div class="diff-card tilt reveal">
       <div class="diff-icon">🔨</div>
       <h3 class="diff-name">We build it <span>before you buy it</span></h3>
-      <p class="diff-desc">Not a template you fill in yourself. We hand-build your <strong>actual website</strong> and show you the finished thing. Look first, pay after. Nobody sending you into a drag-and-drop builder can do that.</p>
+      <p class="diff-desc">Not a blank template you fill in yourself. We build your <strong>actual website</strong> and show it to you finished. Look first, pay after. Nobody sending you into a drag-and-drop builder can do that.</p>
     </div>
     <div class="diff-card tilt reveal">
       <div class="diff-icon">🔑</div>
@@ -459,7 +482,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
 </section>
 
 <!-- HUB -->
-<section id="hub">
+<section id="crm">
   <div class="diff-head reveal">
     <div class="section-label center">One place to run it</div>
     <h2 class="section-title">The hub for your business.<br><span>Not a cage.</span></h2>
@@ -471,7 +494,11 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
       <ul class="hub-tags">
         <li>Website</li><li>Leads &amp; CRM</li><li>Quotes</li><li>Scheduling</li><li>Jobs</li><li>Invoices</li><li>Payments</li><li>Team &amp; time</li><li>Payroll calculations</li><li>Customer texting</li><li>Reviews</li><li>Your trade's own tools</li>
       </ul>
-      <p class="hub-price"><b>$99/mo</b> for all of it, up to 10 users. Every feature included. Turn on what you use, turn off what you don't.</p>
+      <p class="hub-price"><b>$99/mo</b> for all of it, up to 10 users &mdash; your website included. Every feature included. Turn on what you use, turn off what you don't.</p>
+      <div class="hub-ctas">
+        <a href="/signup.html?plan=starter10" class="btn-primary">Start &mdash; $99/mo &rarr;</a>
+        <a href="#build-live" class="btn-ghost">See the website you'd also get</a>
+      </div>
     </div>
     <div class="hub-col reveal">
       <div class="hub-kicker">Keep what <span>already works</span></div>
@@ -491,9 +518,9 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
 <!-- DOORS -->
 <section id="doors">
   <div class="doors-head reveal">
-    <div class="section-label center">Pick your door</div>
-    <h2 class="section-title">Need a site? The software?<br><span>Both?</span> Your call.</h2>
-    <p class="section-sub">Some folks just need a website. Some just need the software to run the job. Most want both. You only pay for what you actually use.</p>
+    <div class="section-label center">Pricing</div>
+    <h2 class="section-title">A website, the software,<br><span>or something custom.</span></h2>
+    <p class="section-sub">Every plan: see it before you pay, no contract, cancel any month.</p>
   </div>
   <div class="doors-grid">
     <div class="door reveal">
@@ -502,12 +529,12 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
       <div class="door-price">$49<small>/mo</small> <small>· see it before you pay</small></div>
       <ul class="door-list">
         <li>A real site we build <em>for</em> you — not a blank builder</li>
-        <li>Built-in SEO, mobile, contact + booking</li>
-        <li>Hosting, SSL, backups — and your own CMS to edit it</li>
+        <li>Built-in SEO, mobile, contact form</li>
+        <li>Hosting, SSL, backups — and your own editor to change it</li>
         <li>You keep the domain, always</li>
       </ul>
-      <div class="door-note">See what we build you — <b>free</b>. Something unique in mind? <a href="#custom" style="color:var(--gold);font-weight:700">Custom sites, $499 one-time.</a></div>
-      <a href="#start" class="door-cta">See my free site →</a>
+      <div class="door-note">See your site <b>free</b> in seconds, then decide. Add the CRM any time.</div>
+      <a href="#build-live" class="door-cta">See my site free →</a>
     </div>
     <div class="door hot reveal">
       <div class="door-badge">Most pick this</div>
@@ -515,26 +542,26 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
       <div class="door-name">Website + CRM</div>
       <div class="door-price">$99<small>/mo · every feature in</small></div>
       <ul class="door-list">
-        <li>Your custom website, hosting <b style="color:var(--gold)">included free</b></li>
-        <li>Full CRM built for your trade</li>
+        <li>Your website, hosting <b style="color:var(--gold)">included</b></li>
+        <li>A CRM built for your trade — leads, quotes, jobs, invoices</li>
         <li>Every CRM feature — no tiers, no upsells</li>
-        <li>Add-ons (texting, AI) billed at cost</li>
+        <li>Texting &amp; AI billed at cost</li>
       </ul>
-      <div class="door-note">Up to 10 users included; scales to $139 (25) / $199 (50). The website's hosting is free inside it — costs us ~nothing, so it costs you nothing. The Exterior Visualizer is a separate product, priced on its own.</div>
+      <div class="door-note">Up to 10 users; $139 for up to 25, $199 for up to 50. The Exterior Visualizer is a separate product, priced on its own.</div>
       <a href="/signup.html?plan=starter10" class="door-cta solid">Start — $99/mo →</a>
     </div>
     <div class="door reveal">
-      <div class="door-tag">Just the software</div>
-      <div class="door-name">CRM</div>
-      <div class="door-price">$99<small>/mo</small></div>
+      <div class="door-tag">Something unique</div>
+      <div class="door-name">Custom site</div>
+      <div class="door-price">$499<small> one-time</small></div>
       <ul class="door-list">
-        <li>Jobs, quotes, invoices, scheduling, payments</li>
-        <li>Built for your trade — not a generic tool</li>
-        <li>Every feature included, no tier games</li>
-        <li>Own it / self-host option available</li>
+        <li>Designed and built around what you have in mind</li>
+        <li>A rep works out the details with you first</li>
+        <li>Then $49/mo for the site, or $99/mo with the CRM</li>
+        <li>You keep the domain, always</li>
       </ul>
-      <div class="door-note">Up to 10 users. Bigger team scales: $139 (to 25), $199 (to 50). Comes with a website too.</div>
-      <a href="/signup.html?plan=starter10" class="door-cta">Start with the CRM →</a>
+      <div class="door-note">Tell us what you're picturing and we'll get back to you.</div>
+      <a href="#custom" class="door-cta">Request a custom site →</a>
     </div>
   </div>
 </section>
@@ -544,7 +571,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
   <div class="price-wrap">
     <div class="price-card reveal">
       <div class="price-flag">No games</div>
-      <div class="price-tier">One plan · every feature</div>
+      <div class="price-tier">Website + CRM · every feature</div>
       <div class="price-amount"><span class="price-num">$99</span><span class="price-per">/ month</span></div>
       <p class="price-line">Website + industry CRM + hosting, up to 10 users. Every feature — nothing tier-locked.</p>
       <ul class="price-list">
@@ -554,8 +581,8 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
         <li>No contract — cancel any month</li>
         <li>Own it outright (~36× monthly) and take the code</li>
       </ul>
-      <div class="price-sub2"><b>Why one price?</b> Most features cost us nothing to run, so we don't nickel-and-dime them. The few that cost real money — texting, AI — you pay what they actually cost, not a 5x markup. Bigger teams scale by real cost: <b>$139</b> up to 25 users, <b>$199</b> up to 50. Just need a website? <b>$49/mo.</b> One specialist tool sits outside the plan and is priced separately: the <b>Exterior Visualizer</b>.</div>
-      <a href="#build-live" class="price-cta magnetic">Get my free preview →</a>
+      <div class="price-sub2"><b>Why every feature at one price?</b> Most features cost us nothing to run, so we don't nickel-and-dime them. The few that cost real money — texting, AI — you pay what they actually cost, not a 5x markup. Bigger teams scale by real cost: <b>$139</b> up to 25 users, <b>$199</b> up to 50. Just need a website? <b>$49/mo.</b> Something custom? <b>$499</b> one-time. One specialist tool sits outside the plan and is priced separately: the <b>Exterior Visualizer</b>.</div>
+      <a href="/signup.html?plan=starter10" class="price-cta magnetic">Start — $99/mo →</a>
     </div>
     <div class="price-compare reveal">
       <div class="section-label">What the others charge</div>
@@ -658,37 +685,10 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
 <!-- START -->
 <section id="start">
   <div class="start-inner">
-    <div class="reveal">
-      <h2 class="start-title">Just need a website?<br>We'll build it for you.</h2>
-      <p class="start-sub">Tell us about your business and we'll build you a site — see it free before you pay anything, keep it for $49/mo. No fees, no call, no contract.</p>
-    </div>
-    <form class="intake reveal" id="intakeForm" novalidate>
-      <div class="intake-row">
-        <div class="intake-field"><label for="businessName">Business name *</label><input type="text" id="businessName" name="businessName" required placeholder="Summit Roofing"></div>
-        <div class="intake-field"><label for="businessType">Type of business *</label><input type="text" id="businessType" name="businessType" required placeholder="Contractor, salon, home care…"></div>
-      </div>
-      <div class="intake-row">
-        <div class="intake-field"><label for="contactEmail">Email *</label><input type="email" id="contactEmail" name="contactEmail" required placeholder="you@example.com"></div>
-        <div class="intake-field"><label for="contactPhone">Phone (optional)</label><input type="tel" id="contactPhone" name="contactPhone" placeholder="(715) 555-1234"></div>
-      </div>
-      <!-- SMS consent — required disclosure at the point of phone-number collection
-           (A2P 10DLC campaign compliance: purpose, frequency, rates, opt-out). -->
-      <div class="intake-field full" style="margin-top:2px">
-        <label for="smsConsent" style="display:flex;gap:10px;align-items:flex-start;font-size:12px;font-weight:400;letter-spacing:0;text-transform:none;color:rgba(255,255,255,0.55);line-height:1.55;cursor:pointer">
-          <input type="checkbox" id="smsConsent" name="smsConsent" value="yes" style="width:auto;margin:2px 0 0;accent-color:#FF6D00;flex-shrink:0">
-          <span>By checking this box, I agree to receive text messages from <b style="color:rgba(255,255,255,0.78)">Twomiah</b> at the number provided about my website preview and account (for example, preview-ready notifications and follow-ups — up to 4&nbsp;messages/month; frequency varies). Consent is not a condition of purchase. Message &amp; data rates may apply. Reply <b style="color:rgba(255,255,255,0.78)">STOP</b> to unsubscribe or <b style="color:rgba(255,255,255,0.78)">HELP</b> for help. See our <a href="/privacy" style="color:var(--ember)">Privacy&nbsp;Policy</a> and <a href="/terms" style="color:var(--ember)">Terms</a>.</span>
-        </label>
-      </div>
-      <div class="intake-field full"><label for="currentSite">Current website, if any</label><input type="url" id="currentSite" name="currentSite" placeholder="https://yoursite.com"></div>
-      <div class="intake-field full"><label for="notes">Anything else?</label><textarea id="notes" name="notes" placeholder="What do you do, who do you serve, what does 'done' look like?"></textarea></div>
-      <button type="submit" class="intake-submit">Build my free site →</button>
-      <div class="intake-status" id="intakeStatus" role="status" aria-live="polite"></div>
-      <p class="intake-foot">We'll reply within one business day from <b>support@twomiah.com</b>.</p>
-    </form>
     <div class="custom-site reveal" id="custom">
       <h3>Have something unique in mind?</h3>
-      <p>Tell us what you're picturing. A rep will contact you to work out the details, then we'll design and build a site that's yours alone. <b>Custom sites: $499 one-time.</b></p>
-      <a class="custom-cta" href="mailto:support@twomiah.com?subject=Custom%20site%20request%20%28%24499%29&amp;body=Hi%20Twomiah%20%E2%80%94%20I%27d%20like%20a%20custom%20website.%0A%0ABusiness%20name%3A%0AWhat%20I%20have%20in%20mind%3A%0ASites%20I%20like%20%28links%29%3A%0ABest%20way%20to%20reach%20me%20%28phone/email%29%3A%0A">Request a custom site →</a>
+      <p>Tell us what you're picturing. A rep will contact you to work out the details, then we'll design and build a site that's yours alone. <b>Custom sites: $499 one-time</b>, then $49/mo for the site &mdash; or $99/mo with the CRM.</p>
+      <a class="custom-cta" href="mailto:support@twomiah.com?subject=Custom%20site%20request%20%28%24499%29&amp;body=Hi%20Twomiah%20%E2%80%94%20I%27d%20like%20a%20custom%20website.%0A%0ABusiness%20name%3A%0AWhat%20I%20have%20in%20mind%3A%0ASites%20I%20like%20%28links%29%3A%0ABest%20way%20to%20reach%20me%20%28phone/email%29%3A%0A">Request a custom site &rarr;</a>
       <p class="custom-fine">Opens an email to <b>support@twomiah.com</b>, or write to us there directly.</p>
     </div>
   </div>
@@ -702,7 +702,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
       <span class="nav-wordmark">TWOMIAH</span>
       <p class="footer-tagline">Websites and software for the people who actually do the work. Built in Eau Claire, Wisconsin — you own what we build.</p>
     </div>
-    <div class="footer-col"><h2 class="footer-h">What we do</h2><ul><li><a href="#doors">Websites</a></li><li><a href="#doors">Industry CRMs</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#how">How it works</a></li></ul></div>
+    <div class="footer-col"><h2 class="footer-h">What we do</h2><ul><li><a href="#build-live">Websites</a></li><li><a href="#crm">Industry CRMs</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#how">How it works</a></li></ul></div>
     <div class="footer-col"><h2 class="footer-h">For your trade</h2><ul><li><a href="/build.html">Contractors</a></li><li><a href="/roof.html">Roofing</a></li><li><a href="/wrench.html">HVAC · Trades</a></li><li><a href="/care.html">Home Care</a></li><li><a href="/leaf.html">Dispensary</a></li></ul></div>
     <div class="footer-col"><h2 class="footer-h">Company</h2><ul><li><a href="#story">Our story</a></li><li><a href="mailto:support@twomiah.com">Contact</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/privacy.html">Privacy</a></li></ul></div>
   </div>
@@ -820,7 +820,7 @@ var mq = document.getElementById('marquee'); if(mq) mq.innerHTML += mq.innerHTML
   var form=document.getElementById('blForm');if(!form)return;
   var name=document.getElementById('blName'),cityEl=document.getElementById('blCity'),trade=document.getElementById('blTrade'),
       go=document.getElementById('blGo'),frame=document.getElementById('blFrame'),state=document.getElementById('blState'),
-      spin=document.getElementById('blSpin'),msg=document.getElementById('blMsg'),after=document.getElementById('blAfter'),mine=document.getElementById('blMine');
+      spin=document.getElementById('blSpin'),msg=document.getElementById('blMsg'),after=document.getElementById('blAfter'),mine=document.getElementById('blMine'),plus=document.getElementById('blPlus');
   var MSGS=['Building your site…','Laying out your pages…','Adding your photos…','Almost there…'],msgTimer=null,busy=false;
   // Show the site the way its owner's visitors will: laid out at a real desktop width (a real
   // phone width on phones) and scaled down to fit the frame — not squeezed into the frame's
@@ -858,7 +858,7 @@ var mq = document.getElementById('marquee'); if(mq) mq.innerHTML += mq.innerHTML
         frame.setAttribute('srcdoc',r.body.replace(/display=optional/g,'display=swap'));
         setTimeout(function(){state.hidden=true;},1500);
         var q='?name='+encodeURIComponent(bn)+'&industry='+encodeURIComponent(trade.value)+'&city='+encodeURIComponent(city)+(st?'&state='+encodeURIComponent(st):'');
-        mine.href='/signup.html'+q;after.hidden=false;
+        mine.href='/signup.html'+q+'&plan=website';plus.href='/signup.html'+q+'&plan=starter10';after.hidden=false;
       }else{
         var em='Something went wrong — please try again.';
         try{em=JSON.parse(r.body).error||em;}catch(x){}
@@ -871,19 +871,6 @@ var mq = document.getElementById('marquee'); if(mq) mq.innerHTML += mq.innerHTML
   });
 })();
 
-/* ── Intake → real Factory endpoint ── */
-var INTAKE_API='https://twomiah-factory-api.onrender.com/api/v1/factory/public/intake';
-var form=document.getElementById('intakeForm'),statusEl=document.getElementById('intakeStatus');
-function showStatus(m,k){statusEl.textContent=m;statusEl.className='intake-status show '+(k||'success');}
-if(form){form.addEventListener('submit',function(e){e.preventDefault();var f=e.target,ok=true;
-  ['businessName','businessType','contactEmail'].forEach(function(id){var el=f.querySelector('#'+id);if(!el.value.trim()){el.style.borderColor='#ff4444';ok=false;}else{el.style.borderColor='';}});
-  if(!ok)return showStatus('Please fill in business name, type, and email.','error');
-  var b=f.querySelector('.intake-submit'),o=b.textContent;b.disabled=true;b.textContent='Sending…';
-  fetch(INTAKE_API,{method:'POST',body:new FormData(f)}).then(function(r){return r.json().then(function(d){return{ok:r.ok,d:d}}).catch(function(){return{ok:false,d:{}}})}).then(function(r){
-    if(r.ok&&r.d&&r.d.success){showStatus(r.d.message||"Got it! We'll build your preview and reply within a business day.",'success');f.reset();b.textContent='Sent ✓';}
-    else{showStatus((r.d&&r.d.error)||'Something went wrong — email support@twomiah.com directly.','error');b.disabled=false;b.textContent=o;}
-  }).catch(function(){showStatus('Network error — email support@twomiah.com directly.','error');b.disabled=false;b.textContent=o;});
-});}
 </script>
 </body>
 </html>
