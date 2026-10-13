@@ -358,6 +358,11 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
 
       <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:16px;display:block">Select a Plan *</label>
       <div class="plan-grid" id="planGrid">
+        <div class="plan-card" data-plan="website" onclick="selectPlan(this)">
+          <div class="plan-label">Website</div>
+          <div class="plan-price">$49</div>
+          <div class="plan-per">/mo &middot; website only</div>
+        </div>
         <div class="plan-card" data-plan="starter10" onclick="selectPlan(this)">
           <div class="plan-label">Starter</div>
           <div class="plan-price">$99</div>
@@ -374,7 +379,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
           <div class="plan-per">/mo &middot; up to 50 users</div>
         </div>
       </div>
-      <p style="font-size:12px;color:rgba(255,255,255,0.45);margin:10px 0 4px">Every feature is included on every plan — team size is the only difference. Includes your website + hosting. 50+ users? <a href="mailto:support@twomiah.com?subject=Enterprise%20plan" style="color:var(--leaf)">Talk to us</a>.</p>
+      <p id="planNote" style="font-size:12px;color:rgba(255,255,255,0.45);margin:10px 0 4px">Every feature is included on every plan — team size is the only difference. Includes your website + hosting. 50+ users? <a href="mailto:support@twomiah.com?subject=Enterprise%20plan" style="color:var(--leaf)">Talk to us</a>.</p>
 
       <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;display:block">Hosting Preference</label>
       <div class="hosting-grid" id="hostingGrid">
@@ -507,6 +512,46 @@ function selectPlan(el) {
   document.querySelectorAll('.plan-card').forEach(function(c) { c.classList.remove('selected'); });
   el.classList.add('selected');
   selectedPlan = el.getAttribute('data-plan');
+  applyPlanMode();
+}
+
+// Website only ($49/mo): no CRM add-ons or own-it license, and the steps say "website".
+// No initializer: a ?plan= link can call applyPlanMode() before this line runs.
+var PLAN_ORIG;
+function toWebsiteText(t) {
+  return t
+    .replace(/Choose your plan\. Every plan is backed by our 30-day money-back guarantee\./, 'Choose your plan.')
+    .replace(/Pick the plan that fits your crew\..*$/, 'Choose your plan.')
+    .replace(/owner\/admin login for your (new )?[a-z ]*(CRM|platform)/i, 'owner login for your website editor')
+    .replace(/theme your entire (CRM|platform) to match/, 'theme your website to match')
+    .replace(/set up your [a-z ]*(CRM|platform)/i, 'set up your website')
+    .replace(/Your site \+ CRM are built and deployed automatically/, 'Your site is built and deployed automatically')
+    .replace(/^All features below are included with your plan\..*$/, 'Website only: nothing to choose here. These are CRM features, part of the $99 plan.')
+    .replace(/^Choose which modules you want enabled\..*$/, 'Website only: nothing to choose here. These are CRM features, part of the $99 plan.')
+    .replace(/owner account for your [a-z ]*(CRM|platform)/i, 'owner login for your website editor')
+    .replace(/(create|build) your [a-z ]*(CRM|platform)/i, '$1 your website')
+    .replace(/^(Pick|Choose|Select)[^.]*features[^.]*\..*$/i, 'Website only: nothing to choose here. These are CRM features, part of the $99 plan.');
+}
+function applyPlanMode() {
+  var w = selectedPlan === 'website';
+  var descs = document.querySelectorAll('.step-desc'), sub = document.querySelector('.page-sub'), note = document.getElementById('planNote');
+  if (!PLAN_ORIG) PLAN_ORIG = { descs: [].map.call(descs, function(e) { return e.textContent; }), sub: sub ? sub.textContent : '', note: note ? note.innerHTML : '' };
+  [].forEach.call(descs, function(e, i) { e.textContent = w ? toWebsiteText(PLAN_ORIG.descs[i]) : PLAN_ORIG.descs[i]; });
+  if (sub) sub.textContent = w ? "Fill out the form below and we'll have your website ready in minutes." : PLAN_ORIG.sub;
+  if (note) note.innerHTML = w ? 'Website only: your site, hosting and your own editor. The online menu, ordering and loyalty run on the CRM \u2014 add it any time.' : PLAN_ORIG.note;
+  var feats = document.getElementById('featuresGrid'); if (feats) feats.style.display = w ? 'none' : '';
+  var hosting = document.getElementById('hostingGrid'), addons = document.getElementById('addonsGrid');
+  [hosting, hosting && hosting.previousElementSibling, addons, addons && addons.previousElementSibling,
+   addons && addons.previousElementSibling && addons.previousElementSibling.tagName === 'P' ? null : null]
+    .forEach(function(el) { if (el) el.style.display = w ? 'none' : ''; });
+  if (addons && addons.previousElementSibling && addons.previousElementSibling.previousElementSibling) {
+    var lbl = addons.previousElementSibling.previousElementSibling;
+    if (/^(LABEL|P)$/.test(lbl.tagName)) lbl.style.display = w ? 'none' : '';
+  }
+  if (w && typeof selectedHosting !== 'undefined' && selectedHosting !== 'saas') {
+    var saas = document.querySelector('.hosting-card[data-hosting="saas"]'); if (saas && typeof selectHosting === 'function') selectHosting(saas);
+  }
+  syncSubmitLabel();
 }
 
 function selectHosting(el) {
@@ -692,7 +737,7 @@ function getStoreHours() {
 }
 
 function planLabel(p) {
-  var map = { starter10: 'Starter — up to 10 users ($99/mo)', team25: 'Team — up to 25 users ($139/mo)', business50: 'Business — up to 50 users ($199/mo)' };
+  var map = { website: 'Website only ($49/mo)', starter10: 'Starter — up to 10 users ($99/mo)', team25: 'Team — up to 25 users ($139/mo)', business50: 'Business — up to 50 users ($199/mo)' };
   return map[p] || p;
 }
 
@@ -764,7 +809,7 @@ function syncSubmitLabel() {
   var btn = document.getElementById('submitBtn');
   if (!btn) return;
   if (submitLabel === undefined) submitLabel = btn.innerHTML;
-  btn.innerHTML = selectedHosting === 'saas' ? submitLabel : 'Request My License &rarr;';
+  btn.innerHTML = selectedHosting !== 'saas' ? 'Request My License &rarr;' : selectedPlan === 'website' ? 'Launch My Website &rarr;' : submitLabel;
 }
 function fieldVal(id) {
   var el = document.getElementById(id);
@@ -812,7 +857,7 @@ function submitForm() {
   var features = ['pos', 'menu', 'website', 'customers'];
   document.querySelectorAll('#featuresGrid input:checked').forEach(function(cb) { features.push(cb.value); });
 
-  var planPrices = { starter10: 99, team25: 139, business50: 199 };
+  var planPrices = { website: 49, starter10: 99, team25: 139, business50: 199 };
 
   var data = {
     name: val('companyName'),
@@ -834,7 +879,7 @@ function submitForm() {
     deployment_model: selectedHosting === 'saas' ? 'saas' : 'owned',
     monthly_amount: selectedHosting === 'saas' ? planPrices[selectedPlan] || 0 : null,
     billing_type: selectedHosting === 'saas' ? 'subscription' : 'one_time',
-    products: ['crm', 'website'],
+    products: selectedPlan === 'website' ? ['website'] : ['crm', 'website'],
     features: features,
     notes: [
       'License: ' + val('licenseType'),
@@ -865,7 +910,7 @@ function submitForm() {
       } else {
         btn.textContent = 'Platform Created!';
         document.querySelector('.step[data-step="5"] .step-title').textContent = 'You\'re All Set!';
-        document.querySelector('.step[data-step="5"] .step-desc').textContent = 'Your dispensary platform is being built. Check your email (' + val('email') + ') for login instructions. Your website will be live in under 5 minutes.';
+        document.querySelector('.step[data-step="5"] .step-desc').textContent = (selectedPlan === 'website' ? 'Your website' : 'Your dispensary platform') + ' is being built. Check your email (' + val('email') + ') for login instructions. Your website will be live in under 5 minutes.';
       }
     } else {
       toast(result.data.error || 'Something went wrong. Please try again.', 'error');
