@@ -1,5 +1,8 @@
-# 301 redirects for retired/moved pages.
-# Render serves this file natively for static sites — Netlify-style syntax.
+# 301 redirects for retired/moved pages — THE RECORD ONLY. Render static sites do NOT
+# read this file. The live rules are the service's Redirects/Rewrites (dashboard or
+# POST /v1/services/{id}/routes), and Render skips a rule while a file exists at
+# that path — so a redirected page's .html must be deleted from the repo.
+# Change a rule there, then mirror it here.
 # Format: <source>  <destination>  <status>
 
 # The Gold Standard moved to its own domain.
