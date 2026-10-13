@@ -397,17 +397,12 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
         </div>
       </div>
 
-      <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:4px;display:block">Turn on what you need</label>
-      <p style="font-size:12px;color:rgba(255,255,255,0.42);margin:0 0 12px">Every feature's included <b style="color:#FFAB00">free</b> — pick what to switch on now. Add or remove anytime in your dashboard. (Texting &amp; AI: $10/mo each to switch on — what our providers charge us to offer them — then usage at cost.)</p>
-      <div class="check-grid" id="addonsGrid">
-        <label class="check-item"><input type="checkbox" value="sms" onchange="toggleCheck(this.closest('.check-item'))"><span class="check-box"></span><span class="check-label">SMS &amp; Texting</span></label>
-        <label class="check-item"><input type="checkbox" value="gps" onchange="toggleCheck(this.closest('.check-item'))"><span class="check-box"></span><span class="check-label">GPS &amp; Field Tracking</span></label>
-        <label class="check-item"><input type="checkbox" value="inventory" onchange="toggleCheck(this.closest('.check-item'))"><span class="check-box"></span><span class="check-label">Inventory Management</span></label>
-        <label class="check-item"><input type="checkbox" value="fleet" onchange="toggleCheck(this.closest('.check-item'))"><span class="check-box"></span><span class="check-label">Fleet Management</span></label>
-        <label class="check-item"><input type="checkbox" value="equipment" onchange="toggleCheck(this.closest('.check-item'))"><span class="check-box"></span><span class="check-label">Equipment Tracking</span></label>
-        <label class="check-item"><input type="checkbox" value="marketing" onchange="toggleCheck(this.closest('.check-item'))"><span class="check-box"></span><span class="check-label">Marketing &amp; Reviews</span></label>
-        <label class="check-item"><input type="checkbox" value="payments" onchange="toggleCheck(this.closest('.check-item'))"><span class="check-box"></span><span class="check-label">Online Payments (Stripe)</span></label>
-        <label class="check-item"><input type="checkbox" value="portal" onchange="toggleCheck(this.closest('.check-item'))"><span class="check-box"></span><span class="check-label">Client Portal</span></label>
+      <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:4px;display:block">A few quick questions</label>
+      <p style="font-size:12px;color:rgba(255,255,255,0.42);margin:0 0 12px">Every feature is already included. These just tell us how to set you up.</p>
+      <div class="check-grid" id="addonsGrid" style="grid-template-columns:1fr">
+        <label class="check-item" data-ask="bookings" onclick="toggleCheck(this)"><input type="checkbox" value="bookings" data-kind="goal" data-label="Bookings"><span class="check-box"></span><span class="check-label"><b>We take bookings or appointments</b><br><span style="font-weight:400;opacity:0.7;font-size:11.5px">Online booking is included free &mdash; we'll set it up with you.</span></span></label>
+        <label class="check-item" data-ask="online_payments" onclick="toggleCheck(this)"><input type="checkbox" value="online_payments" data-kind="goal" data-label="Online payments"><span class="check-box"></span><span class="check-label"><b>We want to take payments online</b><br><span style="font-weight:400;opacity:0.7;font-size:11.5px">Free &mdash; connect your Stripe account after setup. Card fees are Stripe's.</span></span></label>
+        <label class="check-item" data-ask="texting" onclick="toggleCheck(this)"><input type="checkbox" value="texting" data-kind="addon" data-label="Texting"><span class="check-box"></span><span class="check-label"><b>We want to text our customers</b><br><span style="font-weight:400;opacity:0.7;font-size:11.5px">$10/mo to switch on &mdash; what our phone carrier charges us to offer texting &mdash; then texts at cost. You'll go to that checkout right after your plan.</span></span></label>
       </div>
 
       <div class="btn-row">
@@ -833,6 +828,20 @@ function val(id) {
   return el ? el.value.trim() : '';
 }
 
+// The answers to "A few quick questions" (CRM plans only): goals for the factory to set up,
+// paid add-ons (texting → its $10/mo checkout right after the plan), and labels for the notes.
+function signupAsk() {
+  var out = { goals: [], addons: [], labels: [] };
+  if (selectedPlan === 'website') return out;
+  document.querySelectorAll('#addonsGrid input:checked').forEach(function(cb) {
+    var row = cb.closest('[data-ask]');
+    if (row && row.style.display === 'none') return;
+    (cb.getAttribute('data-kind') === 'addon' ? out.addons : out.goals).push(cb.value);
+    out.labels.push(cb.getAttribute('data-label') || cb.value);
+  });
+  return out;
+}
+
 function planLabel(p) {
   var map = { website: 'Website only ($49/mo)', starter10: 'Starter — up to 10 users ($99/mo)', team25: 'Team — up to 25 users ($139/mo)', business50: 'Business — up to 50 users ($199/mo)' };
   return map[p] || p;
@@ -843,8 +852,7 @@ function deployLabel(d) {
 }
 
 function buildSummary() {
-  var addons = [];
-  document.querySelectorAll('#addonsGrid input:checked').forEach(function(cb) { addons.push(cb.value); });
+  var ask = signupAsk(), addons = ask.labels;
   var migSrc = val('migrationSource');
 
   var items = [
@@ -861,7 +869,7 @@ function buildSummary() {
     ['Plan', planLabel(selectedPlan)],
     ['Hosting', selectedHosting === 'saas' ? 'SaaS (Hosted)' : 'Self-Hosted (license request — not charged online)'],
     ['Deploy Service', deployLabel(selectedDeploy)],
-    ['Add-Ons', addons.length ? addons.join(', ') : 'None'],
+    ['You asked for', addons.length ? addons.join(', ') : 'Nothing extra'],
     ['Migration From', migSrc || 'None'],
     ['Admin Name', val('firstName') + ' ' + val('lastName')],
     ['Admin Email', val('email')],
@@ -888,8 +896,7 @@ function toast(msg, type) {
 }
 
 function getFormData() {
-  var addons = [];
-  document.querySelectorAll('#addonsGrid input:checked').forEach(function(cb) { addons.push(cb.value); });
+  var ask = signupAsk(), addons = ask.labels;
 
   var planPrices = { website: 49, starter10: 99, team25: 139, business50: 199 };
 
@@ -913,8 +920,11 @@ function getFormData() {
     monthly_amount: selectedHosting === 'saas' ? planPrices[selectedPlan] || 0 : null,
     billing_type: selectedHosting === 'saas' ? 'subscription' : 'one_time',
     products: selectedPlan === 'website' ? ['website'] : ['crm', 'website'],
-    features: addons,
+    features: [],
+    goals: ask.goals,
+    addons: ask.addons,
     notes: [
+      addons.length ? 'Asked for: ' + addons.join(', ') : '',
       'Deploy service: ' + deployLabel(selectedDeploy),
       'Timezone: ' + val('timezone'),
       val('migrationSource') ? 'Migration from: ' + val('migrationSource') : '',
