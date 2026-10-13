@@ -341,6 +341,11 @@ footer{background:#060E1C;border-top:1px solid rgba(255,255,255,0.05);padding:40
         </div>
       </div>
       <p id="planNote" style="font-size:12px;color:rgba(255,255,255,0.45);margin:10px 0 4px">Every feature is included on every plan — team size is the only difference. Includes your website + hosting. 50+ users? <a href="mailto:support@twomiah.com?subject=Enterprise%20plan" style="color:var(--accent)">Talk to us</a>.</p>
+      <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:4px;display:block">A few quick questions</label>
+      <p style="font-size:12px;color:rgba(255,255,255,0.42);margin:0 0 12px">Every feature is already included. These just tell us how to set you up.</p>
+      <div class="check-grid" id="addonsGrid" style="grid-template-columns:1fr">
+        <label class="check-item" data-ask="texting" onclick="toggleCheck(this)"><input type="checkbox" value="texting" data-kind="addon" data-label="Texting"><span class="check-box"></span><span class="check-label"><b>We want to text our customers</b><br><span style="font-weight:400;opacity:0.7;font-size:11.5px">$10/mo to switch on &mdash; what our phone carrier charges us to offer texting &mdash; then texts at cost. You'll go to that checkout right after your plan.</span></span></label>
+      </div>
       <div class="field">
         <label>Deploy Service</label>
       </div>
@@ -378,7 +383,7 @@ footer{background:#060E1C;border-top:1px solid rgba(255,255,255,0.05);padding:40
     <!-- STEP 4: Features -->
     <div class="step" data-step="3">
       <div class="step-title">Features</div>
-      <div class="step-desc">All features below are included with your plan. Uncheck any you don't need right away &mdash; you can always turn them on later.</div>
+      <div class="step-desc">All features below are included with your plan and switched on. You can turn any off later in Settings &rarr; Features.</div>
       <div class="check-grid" id="featuresGrid">
         <label class="check-item checked" onclick="toggleCheck(this)">
           <input type="checkbox" value="pipeline_board" checked>
@@ -729,6 +734,20 @@ function val(id) {
   return el ? el.value.trim() : '';
 }
 
+// The answers to "A few quick questions" (CRM plans only): goals for the factory to set up,
+// paid add-ons (texting → its $10/mo checkout right after the plan), and labels for the notes.
+function signupAsk() {
+  var out = { goals: [], addons: [], labels: [] };
+  if (selectedPlan === 'website') return out;
+  document.querySelectorAll('#addonsGrid input:checked').forEach(function(cb) {
+    var row = cb.closest('[data-ask]');
+    if (row && row.style.display === 'none') return;
+    (cb.getAttribute('data-kind') === 'addon' ? out.addons : out.goals).push(cb.value);
+    out.labels.push(cb.getAttribute('data-label') || cb.value);
+  });
+  return out;
+}
+
 function planLabel(p) {
   var map = { website: 'Website only ($49/mo)', starter10: 'Starter — up to 10 users ($99/mo)', team25: 'Team — up to 25 users ($139/mo)', business50: 'Business — up to 50 users ($199/mo)' };
   return map[p] || p;
@@ -756,6 +775,7 @@ function buildSummary() {
     ['Plan', planLabel(selectedPlan)],
     ['Deploy Service', deployLabel(selectedDeploy)],
     ['Features', features.length ? features.join(', ') : 'None'],
+    ['You asked for', signupAsk().labels.length ? signupAsk().labels.join(', ') : 'Nothing extra'],
     ['Migration From', val('migrationSource') || 'None'],
     ['Admin Name', val('firstName') + ' ' + val('lastName')],
     ['Admin Email', val('email')],
@@ -806,10 +826,13 @@ function getFormData() {
     monthly_amount: planPrices[selectedPlan] || 0,
     billing_type: 'subscription',
     products: selectedPlan === 'website' ? ['website'] : ['crm-roof', 'website'],
+    goals: signupAsk().goals,
+    addons: signupAsk().addons,
     features: features,
     service_area_zips: serviceZips,
     crew_size: val('crewSize'),
     notes: [
+      signupAsk().labels.length ? 'Asked for: ' + signupAsk().labels.join(', ') : '',
       'Deploy service: ' + deployLabel(selectedDeploy),
       'Timezone: ' + val('timezone'),
       val('migrationSource') ? 'Migration from: ' + val('migrationSource') : '',

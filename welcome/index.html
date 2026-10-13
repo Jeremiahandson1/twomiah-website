@@ -32,6 +32,7 @@
   <div class="check">✓</div>
   <h1>Payment received. <span>We're building your system right now.</span></h1>
   <p class="sub">The factory is generating your website and setting up your accounts as you read this. No further action needed — here's what happens next:</p>
+  <p class="sub" id="textingNote" hidden></p>
 
   <div class="steps">
     <div class="step"><span class="ico">🏗️</span><div><b>Right now — your system is being built</b><p>Your website, content editor, and business dashboard are being created and deployed on your own dedicated infrastructure.</p></div></div>
@@ -46,5 +47,16 @@
     <span class="guarantee">Every plan is backed by our 30-day money-back guarantee.</span>
   </div>
 </main>
+<script>
+// Back from the texting checkout a signup chained after the plan (?texting=on|later).
+(function(){
+  var t = new URLSearchParams(location.search).get('texting'), el = document.getElementById('textingNote');
+  if (!el || !t) return;
+  el.textContent = t === 'on'
+    ? 'Texting is on. Add funds to your texting balance from your dashboard to start sending — texts are billed at cost.'
+    : "Texting isn't on yet. You can switch it on any time from your dashboard ($10/mo — what our phone carrier charges us to offer it — then texts at cost).";
+  el.hidden = false;
+})();
+</script>
 </body>
 </html>

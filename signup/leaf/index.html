@@ -314,7 +314,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
     <!-- STEP 3: Features -->
     <div class="step" data-step="2">
       <div class="step-title">Platform Features</div>
-      <div class="step-desc">Choose which modules you want enabled. All plans include POS, menu, and website.</div>
+      <div class="step-desc">Every module below is included with your plan and switched on. You can turn any off later in Settings &rarr; Features.</div>
 
       <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;display:block">Included in all plans</label>
       <div class="check-grid" style="margin-bottom:24px">
@@ -380,6 +380,11 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
         </div>
       </div>
       <p id="planNote" style="font-size:12px;color:rgba(255,255,255,0.45);margin:10px 0 4px">Every feature is included on every plan — team size is the only difference. Includes your website + hosting. 50+ users? <a href="mailto:support@twomiah.com?subject=Enterprise%20plan" style="color:var(--leaf)">Talk to us</a>.</p>
+      <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:4px;display:block">A few quick questions</label>
+      <p style="font-size:12px;color:rgba(255,255,255,0.42);margin:0 0 12px">Every feature is already included. These just tell us how to set you up.</p>
+      <div class="check-grid" id="addonsGrid" style="grid-template-columns:1fr">
+        <label class="check-item" data-ask="texting" onclick="toggleCheck(this)"><input type="checkbox" value="texting" data-kind="addon" data-label="Texting"><span class="check-box"></span><span class="check-label"><b>We want to text our customers</b><br><span style="font-weight:400;opacity:0.7;font-size:11.5px">$10/mo to switch on &mdash; what our phone carrier charges us to offer texting &mdash; then texts at cost. You'll go to that checkout right after your plan.</span></span></label>
+      </div>
 
       <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;display:block">Hosting Preference</label>
       <div class="hosting-grid" id="hostingGrid">
@@ -527,7 +532,7 @@ function toWebsiteText(t) {
     .replace(/set up your [a-z ]*(CRM|platform)/i, 'set up your website')
     .replace(/Your site \+ CRM are built and deployed automatically/, 'Your site is built and deployed automatically')
     .replace(/^All features below are included with your plan\..*$/, 'Website only: nothing to choose here. These are CRM features, part of the $99 plan.')
-    .replace(/^Choose which modules you want enabled\..*$/, 'Website only: nothing to choose here. These are CRM features, part of the $99 plan.')
+    .replace(/^Every module below is included.*$/, 'Website only: nothing to choose here. These are CRM features, part of the $99 plan.')
     .replace(/owner account for your [a-z ]*(CRM|platform)/i, 'owner login for your website editor')
     .replace(/(create|build) your [a-z ]*(CRM|platform)/i, '$1 your website')
     .replace(/^(Pick|Choose|Select)[^.]*features[^.]*\..*$/i, 'Website only: nothing to choose here. These are CRM features, part of the $99 plan.');
@@ -736,6 +741,20 @@ function getStoreHours() {
   return hours;
 }
 
+// The answers to "A few quick questions" (CRM plans only): goals for the factory to set up,
+// paid add-ons (texting → its $10/mo checkout right after the plan), and labels for the notes.
+function signupAsk() {
+  var out = { goals: [], addons: [], labels: [] };
+  if (selectedPlan === 'website') return out;
+  document.querySelectorAll('#addonsGrid input:checked').forEach(function(cb) {
+    var row = cb.closest('[data-ask]');
+    if (row && row.style.display === 'none') return;
+    (cb.getAttribute('data-kind') === 'addon' ? out.addons : out.goals).push(cb.value);
+    out.labels.push(cb.getAttribute('data-label') || cb.value);
+  });
+  return out;
+}
+
 function planLabel(p) {
   var map = { website: 'Website only ($49/mo)', starter10: 'Starter — up to 10 users ($99/mo)', team25: 'Team — up to 25 users ($139/mo)', business50: 'Business — up to 50 users ($199/mo)' };
   return map[p] || p;
@@ -880,8 +899,11 @@ function submitForm() {
     monthly_amount: selectedHosting === 'saas' ? planPrices[selectedPlan] || 0 : null,
     billing_type: selectedHosting === 'saas' ? 'subscription' : 'one_time',
     products: selectedPlan === 'website' ? ['website'] : ['crm', 'website'],
+    goals: signupAsk().goals,
+    addons: signupAsk().addons,
     features: features,
     notes: [
+      signupAsk().labels.length ? 'Asked for: ' + signupAsk().labels.join(', ') : '',
       'License: ' + val('licenseType'),
       'Timezone: ' + val('timezone'),
       'Products: ~' + val('productCount'),
