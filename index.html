@@ -276,6 +276,13 @@ select.bl-input{appearance:auto;cursor:pointer}
 .intake-submit{width:100%;margin-top:6px;background:var(--fire);color:#fff;padding:15px;border:none;border-radius:6px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;font-family:'Barlow',sans-serif}
 .intake-submit:hover{background:var(--ember)}
 .intake-foot{font-size:12px;color:var(--muted);text-align:center;margin-top:14px}
+.custom-site{margin-top:28px;background:var(--dark);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:30px 32px;text-align:center}
+.custom-site h3{font-size:20px;font-weight:800;color:#fff;margin-bottom:10px}
+.custom-site p{font-size:14px;color:var(--muted);line-height:1.6;max-width:520px;margin:0 auto}
+.custom-site p b{color:var(--gold)}
+.custom-cta{display:inline-block;margin-top:18px;border:1px solid var(--fire);color:#fff;padding:12px 22px;border-radius:6px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none}
+.custom-cta:hover{background:var(--fire)}
+.custom-fine{font-size:11.5px!important;margin-top:12px!important}
 .intake-status{margin-top:12px;padding:13px 16px;border-radius:6px;font-size:14px;line-height:1.5;display:none}
 .intake-status.show{display:block}
 .intake-status.success{background:rgba(40,200,64,0.08);border:1px solid rgba(40,200,64,0.25);color:#7adb8d}
@@ -338,7 +345,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
     <li><a href="#different">Why us</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#proof">Our work</a></li>
-    <li><a href="#start" class="nav-cta">Get my free preview</a></li>
+    <li><a href="#build-live" class="nav-cta">Get my free preview</a></li>
   </ul>
 </nav>
 
@@ -499,8 +506,8 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
         <li>Hosting, SSL, backups — and your own CMS to edit it</li>
         <li>You keep the domain, always</li>
       </ul>
-      <div class="door-note">See what we build you — <b>free</b>. Want it truly custom? <b style="color:var(--gold)">$499 one-time.</b></div>
-      <a href="#start" class="door-cta">See my free preview →</a>
+      <div class="door-note">See what we build you — <b>free</b>. Something unique in mind? <a href="#custom" style="color:var(--gold);font-weight:700">Custom sites, $499 one-time.</a></div>
+      <a href="#start" class="door-cta">See my free site →</a>
     </div>
     <div class="door hot reveal">
       <div class="door-badge">Most pick this</div>
@@ -548,7 +555,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
         <li>Own it outright (~36× monthly) and take the code</li>
       </ul>
       <div class="price-sub2"><b>Why one price?</b> Most features cost us nothing to run, so we don't nickel-and-dime them. The few that cost real money — texting, AI — you pay what they actually cost, not a 5x markup. Bigger teams scale by real cost: <b>$139</b> up to 25 users, <b>$199</b> up to 50. Just need a website? <b>$49/mo.</b> One specialist tool sits outside the plan and is priced separately: the <b>Exterior Visualizer</b>.</div>
-      <a href="#start" class="price-cta magnetic">Get my free preview →</a>
+      <a href="#build-live" class="price-cta magnetic">Get my free preview →</a>
     </div>
     <div class="price-compare reveal">
       <div class="section-label">What the others charge</div>
@@ -652,8 +659,8 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
 <section id="start">
   <div class="start-inner">
     <div class="reveal">
-      <h2 class="start-title">See your site.<br>Then decide.</h2>
-      <p class="start-sub">Tell us about your business and we'll build you a real preview — free. Look at it before you pay anything. No call, no pressure, no contract.</p>
+      <h2 class="start-title">Just need a website?<br>We'll build it for you.</h2>
+      <p class="start-sub">Tell us about your business and we'll build you a site — see it free before you pay anything, keep it for $49/mo. No fees, no call, no contract.</p>
     </div>
     <form class="intake reveal" id="intakeForm" novalidate>
       <div class="intake-row">
@@ -674,10 +681,16 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
       </div>
       <div class="intake-field full"><label for="currentSite">Current website, if any</label><input type="url" id="currentSite" name="currentSite" placeholder="https://yoursite.com"></div>
       <div class="intake-field full"><label for="notes">Anything else?</label><textarea id="notes" name="notes" placeholder="What do you do, who do you serve, what does 'done' look like?"></textarea></div>
-      <button type="submit" class="intake-submit">Build my free preview →</button>
+      <button type="submit" class="intake-submit">Build my free site →</button>
       <div class="intake-status" id="intakeStatus" role="status" aria-live="polite"></div>
       <p class="intake-foot">We'll reply within one business day from <b>support@twomiah.com</b>.</p>
     </form>
+    <div class="custom-site reveal" id="custom">
+      <h3>Have something unique in mind?</h3>
+      <p>Tell us what you're picturing. A rep will contact you to work out the details, then we'll design and build a site that's yours alone. <b>Custom sites: $499 one-time.</b></p>
+      <a class="custom-cta" href="mailto:support@twomiah.com?subject=Custom%20site%20request%20%28%24499%29&amp;body=Hi%20Twomiah%20%E2%80%94%20I%27d%20like%20a%20custom%20website.%0A%0ABusiness%20name%3A%0AWhat%20I%20have%20in%20mind%3A%0ASites%20I%20like%20%28links%29%3A%0ABest%20way%20to%20reach%20me%20%28phone/email%29%3A%0A">Request a custom site →</a>
+      <p class="custom-fine">Opens an email to <b>support@twomiah.com</b>, or write to us there directly.</p>
+    </div>
   </div>
 </section>
 
