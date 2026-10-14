@@ -887,6 +887,8 @@ function getFormData() {
     slug: val('companyName').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
     email: val('email'),
     admin_email: val('email'),
+    owner_first_name: val('firstName'),
+    owner_last_name: val('lastName'),
     phone: val('phone'),
     industry: val('industry'),
     services: ownerServices(),
