@@ -68,6 +68,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
 .field-hint{font-size:11px;color:rgba(255,255,255,0.25);margin-top:4px}
+.domain-hint{color:rgba(255,255,255,0.65);line-height:1.5}
 
 /* Color picker */
 .color-row{display:flex;align-items:center;gap:12px}
@@ -209,6 +210,7 @@ footer{background:#060E1C;border-top:1px solid rgba(255,255,255,0.05);padding:40
         <div class="field">
           <label>Domain (if you have one)</label>
           <input type="text" id="domain" placeholder="summitroofing.com">
+          <div class="field-hint domain-hint" id="domainHint"><strong>Don&rsquo;t have one yet? Leave this blank.</strong> Once your site is live you can find and buy one from your site&rsquo;s admin (Domain) &mdash; you&rsquo;ll see the first-year price and the yearly renewal before you pay. Already own one? Enter it here and connect it from that same Domain page after launch.</div>
         </div>
       </div>
       <div class="field" id="svcField">
@@ -834,6 +836,7 @@ function getFormData() {
     service_area_zips: serviceZips,
     crew_size: val('crewSize'),
     notes: [
+      val('domain') ? 'Own domain (to connect from the Domain page after launch): ' + val('domain') : '',
       signupAsk().labels.length ? 'Asked for: ' + signupAsk().labels.join(', ') : '',
       'Deploy service: ' + deployLabel(selectedDeploy),
       'Timezone: ' + val('timezone'),
