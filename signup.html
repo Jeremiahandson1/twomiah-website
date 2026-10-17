@@ -305,14 +305,10 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
         </div>
         <div class="field">
           <label>Timezone</label>
-          <select id="timezone">
-            <option value="America/New_York">Eastern</option>
-            <option value="America/Chicago">Central</option>
-            <option value="America/Denver">Mountain</option>
-            <option value="America/Los_Angeles">Pacific</option>
-            <option value="America/Anchorage">Alaska</option>
-            <option value="Pacific/Honolulu">Hawaii</option>
-          </select>
+          <!-- From the state, the way your CRM decides it (Factory config/stateTimezone.ts). It started on Eastern
+               whatever the state, and a Wisconsin bar read "Eastern" on its review (Bar Run 1, 10/17). -->
+          <input type="hidden" id="timezone" value="">
+          <div class="field-hint" id="timezoneLabel" aria-live="polite">Pick your state and we&rsquo;ll set it. You can change it later in your CRM.</div>
         </div>
       </div>
       <div class="btn-row">
@@ -547,12 +543,40 @@ var TEMPLATES = {
 function getIndustryCategory() {
   var ind = val('industry');
   if (ind === 'home_care') return 'homecare';
+  // A retail shop's storefront is website-store, which takes the general designs (Factory briefBuilder THEME_ALLOW).
+  if (ind === 'retail') return 'general';
   if (ind && ind !== 'other') return 'contractor';
   return 'general';
 }
 
+// Every signup but a retail shop gets a site WRITTEN for its business from these answers (the Factory's premium
+// engine), which no design picked here changes — so it is not offered as a choice. Bar Run 1: a bar was shown
+// "Service 1" contractor mock-ups and asked to pick one that did nothing. A retail storefront still takes a design.
+function websiteIsComposed() { return val('industry') !== 'retail'; }
+
+function industryLabel() {
+  var el = document.getElementById('industry');
+  return el && el.value && el.selectedIndex >= 0 ? el.options[el.selectedIndex].text : '';
+}
+
 function renderTemplates() {
+  var step = document.querySelector('.step[data-step="2"]');
+  if (websiteIsComposed()) {
+    selectedTemplate = '';
+    step.querySelector('.step-title').textContent = 'Your Website';
+    step.querySelector('.step-desc').textContent = 'Nothing to pick here.';
+    var g = document.getElementById('templateGrid');
+    g.style.gridTemplateColumns = '1fr';
+    g.innerHTML = '<div class="template-card selected" style="cursor:default;padding:20px">'
+      + '<div class="tpl-name" style="font-size:15px;margin-bottom:6px">Written for ' + escapeHtml(val('companyName') || 'your business') + '</div>'
+      + '<div class="tpl-desc" style="font-size:13px;line-height:1.6;color:rgba(255,255,255,0.7)">We design your site around your business from your answers: your services, your city and your brand color. You&rsquo;ll see it when it&rsquo;s ready and can change any words, photos or pages in your website admin.</div>'
+      + '</div>';
+    return;
+  }
+  step.querySelector('.step-title').textContent = 'Website Template';
+  step.querySelector('.step-desc').textContent = 'Choose a design for your storefront. Your company name and brand color are previewed live.';
   var category = getIndustryCategory();
+  var shop = val('industry') === 'retail';   // the storefront: products and a Shop button, not a trade's services
   var templates = TEMPLATES[category] || TEMPLATES.general;
   var companyName = val('companyName') || 'Your Company';
   var primaryColor = val('colorHex') || '#FF3D00';
@@ -570,17 +594,17 @@ function renderTemplates() {
       + '<div class="tpl-mini" style="font-family:' + tpl.fontStyle + '">'
       + '<div class="tpl-mini-nav" style="background:' + tpl.navBg + '">'
       + '<span>' + escapeHtml(companyName) + '</span>'
-      + '<span style="font-size:6px;opacity:0.6">Home &nbsp; Services &nbsp; About &nbsp; Contact</span>'
+      + '<span style="font-size:6px;opacity:0.6">' + (shop ? 'Home &nbsp; Shop &nbsp; About &nbsp; Contact' : 'Home &nbsp; Services &nbsp; About &nbsp; Contact') + '</span>'
       + '</div>'
       + '<div class="tpl-mini-hero" style="background:' + tpl.heroBg + ';color:' + tpl.heroText + '">'
       + '<h3 style="font-size:' + (tpl.fontStyle.includes('Impact') ? '14px' : '11px') + ';letter-spacing:' + (tpl.fontStyle.includes('Impact') ? '0.05em' : '0') + '">' + escapeHtml(companyName) + '</h3>'
-      + '<p>Your services, in your words</p>'
-      + '<span class="tpl-btn" style="background:' + primaryColor + ';border-radius:' + tpl.btnRadius + '">Contact Us</span>'
+      + '<p>' + (shop ? 'Your products, ready to buy' : 'Your services, in your words') + '</p>'
+      + '<span class="tpl-btn" style="background:' + primaryColor + ';border-radius:' + tpl.btnRadius + '">' + (shop ? 'Shop now' : 'Contact Us') + '</span>'
       + '</div>'
       + '<div class="tpl-mini-cards" style="background:' + (tpl.heroText === '#fff' ? '#f5f5f5' : '#fff') + '">'
-      + '<div class="tpl-mini-card" style="background:' + tpl.cardBg + ';color:' + tpl.cardText + '"><div class="card-icon">&#x1F527;</div><div class="card-label">Service 1</div></div>'
-      + '<div class="tpl-mini-card" style="background:' + tpl.cardBg + ';color:' + tpl.cardText + '"><div class="card-icon">&#x1F3E0;</div><div class="card-label">Service 2</div></div>'
-      + '<div class="tpl-mini-card" style="background:' + tpl.cardBg + ';color:' + tpl.cardText + '"><div class="card-icon">&#x2B50;</div><div class="card-label">Service 3</div></div>'
+      + '<div class="tpl-mini-card" style="background:' + tpl.cardBg + ';color:' + tpl.cardText + '"><div class="card-icon">' + (shop ? '&#x1F6CD;' : '&#x1F527;') + '</div><div class="card-label">' + (shop ? 'Product 1' : 'Service 1') + '</div></div>'
+      + '<div class="tpl-mini-card" style="background:' + tpl.cardBg + ';color:' + tpl.cardText + '"><div class="card-icon">' + (shop ? '&#x1F6CD;' : '&#x1F3E0;') + '</div><div class="card-label">' + (shop ? 'Product 2' : 'Service 2') + '</div></div>'
+      + '<div class="tpl-mini-card" style="background:' + tpl.cardBg + ';color:' + tpl.cardText + '"><div class="card-icon">' + (shop ? '&#x1F6CD;' : '&#x2B50;') + '</div><div class="card-label">' + (shop ? 'Product 3' : 'Service 3') + '</div></div>'
       + '</div>'
       + '<div class="tpl-mini-footer" style="background:' + tpl.navBg + ';color:#fff">&copy; ' + escapeHtml(companyName) + '</div>'
       + '</div>'
@@ -832,6 +856,38 @@ function val(id) {
   return el ? el.value.trim() : '';
 }
 
+// The same table as the Factory's config/stateTimezone.ts (which the CRM's own zone also follows).
+var STATE_ZONES = {
+  AL:'America/Chicago', AK:'America/Anchorage', AZ:'America/Phoenix', AR:'America/Chicago', CA:'America/Los_Angeles', CO:'America/Denver',
+  CT:'America/New_York', DE:'America/New_York', DC:'America/New_York', FL:'America/New_York', GA:'America/New_York', HI:'Pacific/Honolulu',
+  ID:'America/Boise', IL:'America/Chicago', IN:'America/Indiana/Indianapolis', IA:'America/Chicago', KS:'America/Chicago', KY:'America/New_York',
+  LA:'America/Chicago', ME:'America/New_York', MD:'America/New_York', MA:'America/New_York', MI:'America/Detroit', MN:'America/Chicago',
+  MS:'America/Chicago', MO:'America/Chicago', MT:'America/Denver', NE:'America/Chicago', NV:'America/Los_Angeles', NH:'America/New_York',
+  NJ:'America/New_York', NM:'America/Denver', NY:'America/New_York', NC:'America/New_York', ND:'America/Chicago', OH:'America/New_York',
+  OK:'America/Chicago', OR:'America/Los_Angeles', PA:'America/New_York', RI:'America/New_York', SC:'America/New_York', SD:'America/Chicago',
+  TN:'America/Chicago', TX:'America/Chicago', UT:'America/Denver', VT:'America/New_York', VA:'America/New_York', WA:'America/Los_Angeles',
+  WV:'America/New_York', WI:'America/Chicago', WY:'America/Denver'
+};
+var ZONE_NAMES = { 'America/New_York':'Eastern', 'America/Detroit':'Eastern', 'America/Indiana/Indianapolis':'Eastern', 'America/Chicago':'Central',
+  'America/Denver':'Mountain', 'America/Boise':'Mountain', 'America/Phoenix':'Mountain (Arizona, no daylight saving)', 'America/Los_Angeles':'Pacific',
+  'America/Anchorage':'Alaska', 'Pacific/Honolulu':'Hawaii' };
+function timezoneName(z) { return z ? (ZONE_NAMES[z] || z) : ''; }
+function syncTimezone() {
+  var z = STATE_ZONES[val('state')] || '';
+  document.getElementById('timezone').value = z;
+  document.getElementById('timezoneLabel').innerHTML = z
+    ? '<strong>' + timezoneName(z) + '</strong> &mdash; from your state. You can change it later in your CRM.'
+    : 'Pick your state and we&rsquo;ll set it. You can change it later in your CRM.';
+}
+document.getElementById('state').addEventListener('change', syncTimezone);
+syncTimezone();
+function templateName(id) {
+  var all = [];
+  Object.keys(TEMPLATES).forEach(function(k) { all = all.concat(TEMPLATES[k]); });
+  var t = all.filter(function(x) { return x.id === id; })[0];
+  return t ? t.name : 'Default';
+}
+
 // The answers to "A few quick questions" (CRM plans only): goals for the factory to set up,
 // paid add-ons (texting → its $10/mo checkout right after the plan), and labels for the notes.
 function signupAsk() {
@@ -889,15 +945,15 @@ function buildSummary() {
 
   var items = [
     ['Company', val('companyName')],
-    ['Industry', val('industry') || '--'],
+    ['Industry', industryLabel() || '--'],
     ['Phone', val('phone') || '--'],
     ['Services', ownerServices().join(', ') || '--'],
     ['Location', [val('city'), val('state'), val('zip')].filter(Boolean).join(', ') || '--'],
     ['Address', val('address') || '--'],
     ['Domain', val('domain') || '--'],
-    ['Timezone', val('timezone')],
+    ['Timezone', timezoneName(val('timezone')) || '--'],
     ['Brand Color', val('colorHex')],
-    ['Website Template', selectedTemplate || 'Default'],
+    ['Website', websiteIsComposed() ? 'Written for your business' : templateName(selectedTemplate)],
     ['Plan', planLabel(selectedPlan)],
     ['Hosting', selectedHosting === 'saas' ? 'SaaS (Hosted)' : 'Self-Hosted (license request — not charged online)'],
     ['Deploy Service', deployLabel(selectedDeploy)],
