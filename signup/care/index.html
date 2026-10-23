@@ -69,6 +69,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
 .field-hint{font-size:11px;color:rgba(255,255,255,0.25);margin-top:4px}
 .domain-hint{color:rgba(255,255,255,0.65);line-height:1.5}
+/* The password box's show/hide eye — the same control the CRM's sign-in page has (PasswordInput). */
+.pw-wrap{position:relative}
+.pw-wrap input{padding-right:48px}
+.pw-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:none;border:0;border-radius:4px;color:rgba(255,255,255,0.7);cursor:pointer}
+.pw-eye:hover,.pw-eye:focus-visible{color:var(--white);background:rgba(255,255,255,0.08);outline:none}
+.pw-eye svg{width:18px;height:18px}
+.ask-note{font-size:12px;color:rgba(255,255,255,0.6);margin:-4px 0 12px;line-height:1.5}
 
 /* Color picker */
 .color-row{display:flex;align-items:center;gap:12px}
@@ -231,6 +238,14 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
       <div class="field">
         <label>Company Name *</label>
         <input type="text" id="companyName" placeholder="e.g. Sunrise Home Care LLC" required>
+      </div>
+      <!-- The business's own address, with the company's other details (live test 10/22: it was asked only as the login, in
+           the admin step). It is what customers see — the website's contact email, quotes and invoices. The login is
+           asked in Admin Account and starts as this one. -->
+      <div class="field">
+        <label for="companyEmail">Business Email *</label>
+        <input type="email" id="companyEmail" placeholder="office@yourbusiness.com" autocomplete="email">
+        <div class="field-hint domain-hint">Where customers reach you &mdash; shown on your website, quotes and invoices.</div>
       </div>
       <div class="row">
         <div class="field">
@@ -465,12 +480,16 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
         </div>
       </div>
       <div class="field">
-        <label>Email Address *</label>
-        <input type="email" id="email" placeholder="john@sunrisehomecare.com">
+        <label for="email">Login Email *</label>
+        <input type="email" id="email" placeholder="john@sunrisehomecare.com" autocomplete="username">
+        <div class="field-hint domain-hint">You sign in with this. It starts as your business email &mdash; change it if you sign in with your own address.</div>
       </div>
       <div class="field">
-        <label>Password *</label>
-        <input type="password" id="password" placeholder="At least 8 characters">
+        <label for="password">Password *</label>
+        <div class="pw-wrap">
+          <input type="password" id="password" placeholder="At least 8 characters" autocomplete="new-password">
+          <button type="button" class="pw-eye" id="pwEye" aria-label="Show password" aria-pressed="false" aria-controls="password" onclick="togglePassword()"></button>
+        </div>
         <div class="field-hint">This will be your CRM admin login password.</div>
       </div>
       <div class="btn-row">
@@ -531,6 +550,21 @@ function getIndustryCategory() {
 }
 
 function renderTemplates() {
+  // Every signup on this page gets a site WRITTEN for its business from these answers, which no design picked here
+  // changes — so none is offered (twomiah.com/signup's websiteIsComposed; Bar Run 1: a design was picked that did nothing).
+  var step = document.getElementById('templateGrid').closest('.step');
+  selectedTemplate = '';
+  step.querySelector('.step-title').textContent = 'Your Website';
+  step.querySelector('.step-desc').textContent = 'There is no template to choose: we design your site for your business. You can change any of it once it is live.';
+  var g = document.getElementById('templateGrid');
+  g.style.gridTemplateColumns = '1fr';
+  g.innerHTML = '<div class="template-card selected" style="cursor:default;padding:20px">'
+    + '<div class="tpl-name" style="font-size:15px;margin-bottom:6px">Written for ' + escapeHtml(val('companyName') || 'your business') + '</div>'
+    + '<div class="tpl-desc" style="font-size:13px;line-height:1.6;color:rgba(255,255,255,0.7)">We design your site around your business from your answers: your services, your city and your brand color. You&rsquo;ll see it when it&rsquo;s ready and can change any words, photos or pages in your website admin.</div>'
+    + '</div>';
+}
+
+function renderTemplateChoices() {
   var category = getIndustryCategory();
   var templates = TEMPLATES[category] || TEMPLATES.homecare;
   var companyName = val('companyName') || 'Your Company';
@@ -778,12 +812,19 @@ function showStep(n) {
   document.querySelector('.step[data-step="' + n + '"]').classList.add('active');
   currentStep = n;
   updateProgress();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // At once, not smoothly. A smooth scroll moved the new step under the pointer for half a second, so a click on a plan
+  // card made straight after "Next" landed on the space the card had just left — the Starter card "needed two clicks"
+  // (live test 10/22; reproduced in Edge from a scrolled step: first click selected nothing).
+  window.scrollTo({ top: 0, behavior: 'instant' });   // 'instant': the page's CSS asks for smooth scrolling
+  // The login starts as the business email; the owner changes it if they sign in with their own address.
+  var login = document.querySelector('.step.active #email');
+  if (login && !login.value.trim() && val('companyEmail')) login.value = val('companyEmail');
 }
 
 function nextStep() {
   if (currentStep === 0) {
     if (!val('companyName')) return toast('Company name is required.', 'error');
+    if (!validEmail(val('companyEmail'))) return toast('Enter your business email, like office@yourbusiness.com.', 'error');
   }
   if (currentStep === 1) {
     renderTemplates();
@@ -793,13 +834,28 @@ function nextStep() {
   }
   if (currentStep === 5) {
     if (!val('firstName') || !val('lastName')) return toast('Name is required.', 'error');
-    if (!val('email') || !val('email').includes('@')) return toast('Valid email is required.', 'error');
+    if (!validEmail(val('email'))) return toast('Enter the email you will sign in with.', 'error');
     if (!val('password') || val('password').length < 8) return toast('Password must be at least 8 characters.', 'error');
   }
   if (currentStep === 5) buildSummary();
 
   if (currentStep < totalSteps - 1) showStep(currentStep + 1);
 }
+
+// The eye on the password box: shows or hides what was typed (the CRM's PasswordInput does the same).
+var EYE_OPEN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>';
+var EYE_SHUT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 19c-6.5 0-10-7-10-7a18.5 18.5 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 5c6.5 0 10 7 10 7a18.5 18.5 0 0 1-2.16 3.19"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="2" y1="2" x2="22" y2="22"/></svg>';
+function togglePassword() {
+  var input = document.getElementById('password'), eye = document.getElementById('pwEye');
+  var show = input.type === 'password';
+  input.type = show ? 'text' : 'password';
+  eye.innerHTML = show ? EYE_SHUT : EYE_OPEN;
+  eye.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+  eye.setAttribute('aria-pressed', show ? 'true' : 'false');
+}
+document.getElementById('pwEye').innerHTML = EYE_OPEN;
+
+function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 
 function prevStep() {
   if (currentStep > 0) showStep(currentStep - 1);
@@ -840,6 +896,7 @@ function buildSummary() {
   var items = [
     ['Company', val('companyName')],
     ['Industry', val('industry') || '--'],
+    ['Business Email', val('companyEmail') || '--'],
     ['Phone', val('phone') || '--'],
     ['Services', ownerServices().join(', ') || '--'],
     ['Location', [val('city'), val('state'), val('zip')].filter(Boolean).join(', ') || '--'],
@@ -847,14 +904,14 @@ function buildSummary() {
     ['Domain', val('domain') || '--'],
     ['Timezone', val('timezone')],
     ['Brand Color', val('colorHex')],
-    ['Website Template', selectedTemplate || 'Default'],
+    ['Website', 'Written for your business'],
     ['Plan', planLabel(selectedPlan)],
     ['Hosting', selectedHosting === 'saas' ? 'SaaS (Hosted)' : 'Self-Hosted (license request — not charged online)'],
     ['Deploy Service', deployLabel(selectedDeploy)],
     ['You asked for', addons.length ? addons.join(', ') : 'Nothing extra'],
     ['Migration From', migSrc || 'None'],
     ['Admin Name', val('firstName') + ' ' + val('lastName')],
-    ['Admin Email', val('email')],
+    ['Login Email', val('email')],
   ];
 
   var html = '';
@@ -885,7 +942,8 @@ function getFormData() {
   return {
     name: val('companyName'),
     slug: val('companyName').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
-    email: val('email'),
+    // The business's address (its site, quotes and invoices) and the owner's login — two answers now, one before.
+    email: val('companyEmail') || val('email'),
     admin_email: val('email'),
     owner_first_name: val('firstName'),
     owner_last_name: val('lastName'),
@@ -949,7 +1007,8 @@ function requestLicense() {
     'License: ' + (LICENSE_PLANS[selectedPlan] || 'not sure yet'),
     'Company: ' + company,
     'Name: ' + who,
-    'Email: ' + fieldVal('email'),
+    'Business email: ' + fieldVal('companyEmail'),
+    'Login email: ' + fieldVal('email'),
     'Phone: ' + fieldVal('phone'),
     'Location: ' + place,
     'Website: ' + fieldVal('domain')
