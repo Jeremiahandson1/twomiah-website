@@ -33,9 +33,9 @@
   "name": "Twomiah Wrench",
   "applicationCategory": "BusinessApplication",
   "applicationSubCategory": "Field Service Management",
-  "operatingSystem": "Web, iOS, Android",
+  "operatingSystem": "Web",
   "url": "https://twomiah.com/wrench.html",
-  "description": "Field service software for HVAC, plumbing, and electrical contractors. Dispatch, service agreements, flat-rate pricebook, and field tech mobile app.",
+  "description": "Field service software for HVAC, plumbing, and electrical contractors. Dispatch, service agreements, flat-rate pricebook, and a field view techs open on their phones.",
   "publisher": {"@type": "Organization", "name": "Twomiah Software Ventures", "url": "https://twomiah.com/"},
   "image": "https://twomiah.com/og/og-wrench.png",
   "offers": {"@type": "AggregateOffer", "url": "https://twomiah.com/signup/wrench/", "lowPrice": "99.00", "highPrice": "199.00", "priceCurrency": "USD", "offerCount": 3}
@@ -457,7 +457,7 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
         <div class="who-icon">❄️</div>
         <div class="who-trade">HVAC</div>
         <p class="who-desc">Seasonal demand swings, maintenance agreements, equipment serial tracking, and the spring/fall tune-up rush — all handled.</p>
-        <div class="who-win">→ Seasonal ad automation built in</div>
+        <div class="who-win">→ Service agreements and equipment history built in</div>
       </div>
       <div class="who-card reveal">
         <div class="who-icon">🔧</div>
@@ -531,10 +531,12 @@ var cats={
 'Financial':['qb','pricebook','financing','inventory','agreements'],
 'Advanced':['automations','forms','reporting','mobile','api']
 };
-var wrenchTiers={crm:'Starter',quotes:'Starter',invoicing:'Starter',scheduling:'Starter',dispatch:'Pro',gps:'Pro',routing:'Pro',time:'Starter',photo:'Starter',equipment:'Business',fleet:'Business',sms:'Pro',email:'Business',portal:'Starter',booking:'Pro',calltrack:'Fleet',qb:'Pro',pricebook:'Pro',financing:'Business',inventory:'Business',agreements:'Pro',automations:'Business',forms:'Business',reporting:'Business',mobile:'Starter',api:'Enterprise'};
+var wrenchTiers={crm:'Starter',quotes:'Starter',invoicing:'Starter',scheduling:'Starter',dispatch:'Pro',gps:'Pro',time:'Starter',photo:'Starter',equipment:'Business',fleet:'Business',email:'Business',portal:'Starter',booking:'Pro',calltrack:'Fleet',qb:'Pro',pricebook:'Pro',inventory:'Business',agreements:'Pro',reporting:'Business'};
 var tierColors={Starter:'#22c55e',Pro:'#3b82f6',Business:'#a855f7',Fleet:'#FF6D00',Enterprise:'#f59e0b'};
 function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
-function wrenchCk(f){if(wrenchTiers[f]==='Enterprise')return '<span class="cmp-a">ENTERPRISE</span>';return '<span class="cmp-y">&#10003;</span>'}
+// Not offered by this system (the Factory's feature registry, 2026-10-23) — never claimed: the owner's rule is that nothing is advertised until it is live and working. The competitor's column still shows theirs.
+var NOT_OFFERED=['financing', 'routing', 'automations', 'forms', 'sms', 'mobile', 'api'];
+function wrenchCk(f){if(NOT_OFFERED.indexOf(f)>-1)return '<span class="cmp-n">&#10007;</span>';if(wrenchTiers[f]==='Enterprise')return '<span class="cmp-a">ENTERPRISE</span>';return '<span class="cmp-y">&#10003;</span>'}
 function toggleCmp(){var c=document.getElementById('cmpContent'),b=document.getElementById('cmpToggleBtn');if(c.style.display==='none'){c.style.display='block';b.innerHTML='Hide comparison &nbsp;&uarr;';showCompareInit('servicetitan')}else{c.style.display='none';b.innerHTML='Compare vs. ServiceTitan, Jobber &amp; Housecall Pro &nbsp;&darr;'}}
 function showCompareInit(key){document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});document.querySelector('.vs-toggle[onclick*="'+key+'"]').classList.add('active');renderCmp(key)}
 function renderCmp(key){var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Wrench</th></tr></thead><tbody>';Object.keys(cats).forEach(function(cat){h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+wrenchCk(f)+'</td></tr>'})});h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$99</span> / <span style="color:#3b82f6">$139</span> / <span style="color:#a855f7">$199</span></td></tr>';h+='</tbody></table>';document.getElementById('compareTable').innerHTML=h}

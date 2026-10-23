@@ -33,7 +33,7 @@
   "name": "Twomiah Build",
   "applicationCategory": "BusinessApplication",
   "applicationSubCategory": "Construction CRM",
-  "operatingSystem": "Web, iOS, Android",
+  "operatingSystem": "Web",
   "url": "https://twomiah.com/build.html",
   "description": "All-in-one CRM, website, and AI home visualizer for general contractors. Jobs, quotes, invoicing, scheduling, project management, crew coordination.",
   "publisher": {"@type": "Organization", "name": "Twomiah Software Ventures", "url": "https://twomiah.com/"},
@@ -441,10 +441,12 @@ var cats={
 'Financial':['quickbooks','budget_tracking','financing','pricebook','job_costing'],
 'Platform':['mobile_app','api','visualizer','automations']
 };
-var buildTiers={crm:'Starter',quotes:'Starter',invoicing:'Starter',scheduling:'Starter',time_tracking:'Pro',project_mgmt:'Construction',change_orders:'Construction',rfis:'Construction',daily_logs:'Construction',punch_lists:'Construction',gantt:'Construction',submittals:'Construction',drawings:'Construction',bidding:'Construction',takeoffs:'Construction',customer_portal:'Starter',sub_portal:'Business',selections:'Construction',online_approval:'Pro',sms:'Pro',email_campaigns:'Pro',gps:'Construction',routing:'Construction',photo_capture:'Starter',quickbooks:'Pro',budget_tracking:'Business',financing:'Pro',pricebook:'Pro',job_costing:'Business',mobile_app:'Starter',api:'Enterprise',visualizer:'Pro',automations:'Business'};
+var buildTiers={crm:'Starter',quotes:'Starter',invoicing:'Starter',scheduling:'Starter',time_tracking:'Pro',project_mgmt:'Construction',change_orders:'Construction',rfis:'Construction',daily_logs:'Construction',punch_lists:'Construction',gantt:'Construction',submittals:'Construction',drawings:'Construction',bidding:'Construction',takeoffs:'Construction',customer_portal:'Starter',sub_portal:'Business',selections:'Construction',online_approval:'Pro',email_campaigns:'Pro',gps:'Construction',photo_capture:'Starter',quickbooks:'Pro',budget_tracking:'Business',pricebook:'Pro',job_costing:'Business',visualizer:'Pro'};
 var tierColors={Starter:'#22c55e',Pro:'#3b82f6',Business:'#a855f7',Construction:'#FF6D00',Enterprise:'#f59e0b'};
 function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
-function buildCk(f){if(['visualizer'].indexOf(f)>-1)return '<span class="cmp-a">SEPARATE</span>';if(buildTiers[f]==='Enterprise')return '<span class="cmp-a">ENTERPRISE</span>';return '<span class="cmp-y">&#10003;</span>'}
+// Not offered by this system (the Factory's feature registry, 2026-10-23) — never claimed: the owner's rule is that nothing is advertised until it is live and working. The competitor's column still shows theirs.
+var NOT_OFFERED=['financing', 'routing', 'api', 'automations', 'sms', 'mobile_app'];
+function buildCk(f){if(NOT_OFFERED.indexOf(f)>-1)return '<span class="cmp-n">&#10007;</span>';if(['visualizer'].indexOf(f)>-1)return '<span class="cmp-a">SEPARATE</span>';if(buildTiers[f]==='Enterprise')return '<span class="cmp-a">ENTERPRISE</span>';return '<span class="cmp-y">&#10003;</span>'}
 function toggleCmp(){
 var c=document.getElementById('cmpContent'),b=document.getElementById('cmpToggleBtn');
 if(c.style.display==='none'){c.style.display='block';b.innerHTML='Hide comparison &nbsp;&uarr;';showCompareInit('buildertrend')}

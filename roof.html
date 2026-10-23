@@ -33,7 +33,7 @@
   "name": "Twomiah Roof",
   "applicationCategory": "BusinessApplication",
   "applicationSubCategory": "Roofing CRM",
-  "operatingSystem": "Web, iOS, Android",
+  "operatingSystem": "Web",
   "url": "https://twomiah.com/roof.html",
   "description": "Roofing-specific CRM with storm tracking, insurance claim management, canvassing tools, and a customer portal.",
   "publisher": {"@type": "Organization", "name": "Twomiah Software Ventures", "url": "https://twomiah.com/"},
@@ -479,10 +479,12 @@ var cats={
 'Financial':['qb','financing','pricebook','inventory','fleet'],
 'Platform':['mobile','api']
 };
-var roofTiers={crm:'Starter',quotes:'Starter',invoicing:'Starter',scheduling:'Starter',time:'Starter',gps:'Pro',routing:'Pro',rfis:'Business',cos:'Business',punch:'Business',logs:'Business',gantt:'Business',measure:'Pro',storm:'Storm',canvas:'Storm',insurance:'Business',visualizer:'Business',estimator:'Business',sms:'Pro',email:'Business',portal:'Starter',booking:'Pro',photo:'Pro',qb:'Pro',financing:'Business',pricebook:'Pro',inventory:'Business',fleet:'Business',mobile:'Starter',api:'Enterprise'};
+var roofTiers={crm:'Starter',quotes:'Starter',invoicing:'Starter',scheduling:'Starter',storm:'Storm',canvas:'Storm',insurance:'Business',visualizer:'Business',portal:'Starter',photo:'Pro',qb:'Pro',pricebook:'Pro'};
 var tierColors={Starter:'#22c55e',Pro:'#3b82f6',Business:'#a855f7',Storm:'#FF6D00',Enterprise:'#f59e0b'};
 function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
-function roofCk(f){if(['visualizer','estimator'].indexOf(f)>-1)return '<span class="cmp-a">SEPARATE</span>';if(roofTiers[f]==='Enterprise')return '<span class="cmp-a">ENTERPRISE</span>';return '<span class="cmp-y">&#10003;</span>'}
+// Not offered by this system (the Factory's feature registry, 2026-10-23) — never claimed: the owner's rule is that nothing is advertised until it is live and working. The competitor's column still shows theirs.
+var NOT_OFFERED=['time', 'gps', 'routing', 'rfis', 'cos', 'punch', 'logs', 'gantt', 'measure', 'estimator', 'sms', 'email', 'booking', 'inventory', 'fleet', 'financing', 'mobile', 'api'];
+function roofCk(f){if(NOT_OFFERED.indexOf(f)>-1)return '<span class="cmp-n">&#10007;</span>';if(['visualizer','estimator'].indexOf(f)>-1)return '<span class="cmp-a">SEPARATE</span>';if(roofTiers[f]==='Enterprise')return '<span class="cmp-a">ENTERPRISE</span>';return '<span class="cmp-y">&#10003;</span>'}
 function toggleCmp(){var c=document.getElementById('cmpContent'),b=document.getElementById('cmpToggleBtn');if(c.style.display==='none'){c.style.display='block';b.innerHTML='Hide comparison &nbsp;&uarr;';showCompareInit('acculynx')}else{c.style.display='none';b.innerHTML='Compare vs. AccuLynx, JobNimbus &amp; Roofr &nbsp;&darr;'}}
 function showCompareInit(key){document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});document.querySelector('.vs-toggle[onclick*="'+key+'"]').classList.add('active');renderCmp(key)}
 function renderCmp(key){var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Roof</th></tr></thead><tbody>';Object.keys(cats).forEach(function(cat){h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+roofCk(f)+'</td></tr>'})});h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$99</span> / <span style="color:#3b82f6">$139</span> / <span style="color:#a855f7">$199</span></td></tr>';h+='</tbody></table>';document.getElementById('compareTable').innerHTML=h}
