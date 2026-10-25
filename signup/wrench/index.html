@@ -865,7 +865,7 @@ function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 // and the Factory drops any other answer (routes/factory/intake.ts signupChoices). This page asked every trade, home
 // care and roofing included (live test 10/22).
 var ASK_HIDDEN_FOR = {
-  bookings: ['home_care', 'roofing', 'dispensary', 'rv', 'restaurant', 'bar_and_grill', 'retail'],
+  bookings: ['home_care', 'roofing', 'dispensary', 'rv', 'food_truck', 'restaurant', 'bar_and_grill', 'retail'],
   online_payments: ['roofing', 'dispensary', 'retail']
 };
 var ASK_WORDS = { bookings: 'online booking', online_payments: 'online invoice payments' };
