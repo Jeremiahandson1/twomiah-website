@@ -577,10 +577,11 @@ function getIndustryCategory() {
   return 'general';
 }
 
-// Every signup but a retail shop gets a site WRITTEN for its business from these answers (the Factory's premium
-// engine), which no design picked here changes — so it is not offered as a choice. Bar Run 1: a bar was shown
-// "Service 1" contractor mock-ups and asked to pick one that did nothing. A retail storefront still takes a design.
-function websiteIsComposed() { return val('industry') !== 'retail'; }
+// Every signup gets a site WRITTEN for its business from these answers (the Factory's premium engine), which no
+// design picked here changes — so it is not offered as a choice. Bar Run 1: a bar was shown "Service 1" contractor
+// mock-ups and asked to pick one that did nothing. A retail shop too since the store moved to the new system
+// (store live test, 2026-10-26): its site is composed at signup, with its products on the home page.
+function websiteIsComposed() { return true; }
 
 function industryLabel() {
   var el = document.getElementById('industry');
@@ -599,7 +600,7 @@ function renderTemplates() {
     g.style.gridTemplateColumns = '1fr';
     g.innerHTML = '<div class="template-card selected" style="cursor:default;padding:20px">'
       + '<div class="tpl-name" style="font-size:15px;margin-bottom:6px">Written for ' + escapeHtml(val('companyName') || 'your business') + '</div>'
-      + '<div class="tpl-desc" style="font-size:13px;line-height:1.6;color:rgba(255,255,255,0.7)">We design your site around your business from your answers: your services, your city and your brand color. You&rsquo;ll see it when it&rsquo;s ready and can change any words, photos or pages in your website admin.</div>'
+      + '<div class="tpl-desc" style="font-size:13px;line-height:1.6;color:rgba(255,255,255,0.7)">We design your site around your business from your answers: your ' + (val('industry') === 'retail' ? 'products' : 'services') + ', your city and your brand color. You&rsquo;ll see it when it&rsquo;s ready and can change any words, photos or pages in your website admin.</div>'
       + '</div>';
     return;
   }
@@ -996,6 +997,37 @@ function syncDomainHint() {
 }
 document.addEventListener('change', function(e) { if (e.target && e.target.id === 'industry') syncDomainHint(); });
 document.addEventListener('DOMContentLoaded', syncDomainHint);
+
+// "Migrating from" names the systems THIS kind of business moves from. A Retail Shop signup was offered only
+// field-service tools (Jobber, ServiceTitan, …) — store live test, 2026-10-26. One list per kind; trades keep theirs.
+var MIGRATION_SOURCES = {
+  trade: [['jobber','Jobber'],['servicetitan','ServiceTitan'],['housecallpro','Housecall Pro'],['buildertrend','Buildertrend'],['fieldedge','FieldEdge'],['kickserv','Kickserv']],
+  roofing: [['acculynx','AccuLynx'],['jobnimbus','JobNimbus'],['roofr','Roofr'],['jobber','Jobber'],['servicetitan','ServiceTitan']],
+  landscaping: [['lmn','LMN'],['aspire','Aspire'],['jobber','Jobber'],['servicetitan','ServiceTitan']],
+  home_care: [['axiscare','AxisCare'],['wellsky','WellSky (ClearCare)'],['alayacare','AlayaCare']],
+  salon: [['vagaro','Vagaro'],['boulevard','Boulevard'],['fresha','Fresha'],['booksy','Booksy'],['square','Square Appointments'],['mindbody','Mindbody']],
+  food: [['toast','Toast'],['square','Square'],['tripleseat','Tripleseat'],['opentable','OpenTable']],
+  veterinary: [['ezyvet','ezyVet'],['avimark','AVImark'],['cornerstone','Cornerstone']],
+  rv: [['lightspeed','Lightspeed EVO'],['dealersocket','DealerSocket']],
+  retail: [['shopify','Shopify'],['woocommerce','WooCommerce'],['squareonline','Square Online'],['etsy','Etsy'],['wix','Wix'],['bigcommerce','BigCommerce']],
+};
+function migrationKind(ind) {
+  if (ind === 'roofing' || ind === 'landscaping' || ind === 'home_care' || ind === 'salon' || ind === 'veterinary' || ind === 'rv' || ind === 'retail') return ind;
+  if (ind === 'restaurant' || ind === 'bar_and_grill' || ind === 'food_truck') return 'food';
+  return ind && ind !== 'other' ? 'trade' : null;
+}
+function syncMigrationSources() {
+  var sel = document.getElementById('migrationSource');
+  if (!sel) return;
+  var kind = migrationKind((document.getElementById('industry') || {}).value || '');
+  var list = kind ? MIGRATION_SOURCES[kind] : [];
+  var keep = sel.value;
+  var opts = [['', 'No migration needed']].concat(list, [['spreadsheet', 'Spreadsheets / Manual'], ['other', 'Other']]);
+  sel.innerHTML = opts.map(function (o) { return '<option value="' + o[0] + '">' + escapeHtml(o[1]) + '</option>'; }).join('');
+  sel.value = opts.some(function (o) { return o[0] === keep; }) ? keep : '';
+}
+document.addEventListener('change', function(e) { if (e.target && e.target.id === 'industry') syncMigrationSources(); });
+document.addEventListener('DOMContentLoaded', syncMigrationSources);
 
 
 function planLabel(p) {
