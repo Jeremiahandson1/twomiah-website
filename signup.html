@@ -282,6 +282,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
       </div>
       <!-- SMS disclosure — required at the point of phone-number collection (A2P compliance) -->
       <p style="font-size:11.5px;color:rgba(255,255,255,0.45);line-height:1.55;margin:2px 0 14px">By providing your phone number, you agree Twomiah may send you text messages about your account and setup (up to 4&nbsp;messages/month; frequency varies). Consent is not a condition of purchase. Message &amp; data rates may apply. Reply <b style="color:rgba(255,255,255,0.65)">STOP</b> to unsubscribe or <b style="color:rgba(255,255,255,0.65)">HELP</b> for help. See our <a href="/privacy" style="color:#FF6D00">Privacy&nbsp;Policy</a> and <a href="/terms" style="color:#FF6D00">Terms</a>.</p>
+      <p class="svc-hint" style="margin:0 0 10px">The more you tell us, the more complete your website starts: pick your services and add a photo, and you launch with a page for each service. You can add everything else later.</p>
       <div class="field" id="svcField">
         <label>Services You Offer (optional)</label>
         <p class="svc-hint">Your website lists exactly what you pick here and nothing else. Tick what you do, or add your own.</p>
@@ -290,6 +291,11 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
           <input type="text" id="svcCustom" maxlength="60" placeholder="Add another service you offer">
           <button type="button" class="svc-add-btn" onclick="addOwnerService()">Add</button>
         </div>
+      </div>
+      <div class="field">
+        <label for="aboutBusiness">About Your Business (optional)</label>
+        <textarea id="aboutBusiness" maxlength="2000" placeholder="A few sentences in your own words: who you are, what you do, the area you serve."></textarea>
+        <div class="field-hint">Your website&rsquo;s About page starts with exactly these words. We never add facts you didn&rsquo;t give us.</div>
       </div>
       <div class="field">
         <label>Address</label>
@@ -1062,6 +1068,8 @@ function getFormData() {
     phone: val('phone'),
     industry: val('industry'),
     services: ownerServices(),
+    // "About your business": the site's About page and its copy start from these words (Factory signupSite.ts).
+    description: val('aboutBusiness'),
     address: val('address'),
     city: val('city'),
     state: val('state'),

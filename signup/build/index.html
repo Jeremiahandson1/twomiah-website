@@ -271,6 +271,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
           <input type="tel" id="phone" placeholder="(555) 123-4567">
         </div>
       </div>
+      <p class="svc-hint" style="margin:0 0 10px">The more you tell us, the more complete your website starts: pick your services and add a photo, and you launch with a page for each service. You can add everything else later.</p>
       <div class="field" id="svcField">
         <label>Services You Offer (optional)</label>
         <p class="svc-hint">Your website lists exactly what you pick here and nothing else. Tick what you do, or add your own.</p>
@@ -279,6 +280,11 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
           <input type="text" id="svcCustom" maxlength="60" placeholder="Add another service you offer">
           <button type="button" class="svc-add-btn" onclick="addOwnerService()">Add</button>
         </div>
+      </div>
+      <div class="field">
+        <label for="aboutBusiness">About Your Business (optional)</label>
+        <textarea id="aboutBusiness" maxlength="2000" placeholder="A few sentences in your own words: who you are, what you do, the area you serve."></textarea>
+        <div class="field-hint">Your website&rsquo;s About page starts with exactly these words. We never add facts you didn&rsquo;t give us.</div>
       </div>
       <div class="field">
         <label>Address</label>
@@ -1001,6 +1007,8 @@ function getFormData() {
     phone: val('phone'),
     industry: val('industry'),
     services: ownerServices(),
+    // "About your business": the site's About page and its copy start from these words (Factory signupSite.ts).
+    description: val('aboutBusiness'),
     address: val('address'),
     city: val('city'),
     state: val('state'),
