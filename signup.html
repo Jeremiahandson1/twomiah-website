@@ -267,8 +267,13 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
             <option value="restaurant">Restaurant / Caf&eacute;</option>
             <option value="bar_and_grill">Bar &amp; Grill / Tavern / Pub</option>
             <option value="salon">Salon &amp; Spa</option>
+            <option value="veterinary" hidden disabled data-closed>Veterinary Clinic</option>
+            <option value="rv" hidden disabled data-closed>RV / Powersports Dealer</option>
+            <option value="retail" hidden disabled data-closed>Retail Shop</option>
+            <option value="other" hidden disabled data-closed>Other</option>
           </select>
-          <!-- Open as each is tested (Factory UNIFIED_LIVE_VERTICALS): Veterinary, Dispensary, RV / Powersports, Gym, Retail and Other come back here then. -->
+          <!-- Industries not open yet (Factory UNIFIED_LIVE_VERTICALS) stay hidden; ?show=all shows them for a test signup (the
+               Factory still refuses a real one). Open one by deleting its hidden/disabled/data-closed. -->
         </div>
         <div class="field">
           <label>Phone</label>
@@ -1046,6 +1051,9 @@ function toast(msg, type) {
   t.className = 'toast ' + (type || 'success') + ' show';
   setTimeout(function() { t.classList.remove('show'); }, 4000);
 }
+
+// A test signup for an industry not open yet: twomiah.com/signup?show=all shows them (the Factory still refuses real ones).
+if (/[?&]show=all/.test(location.search)) document.querySelectorAll('option[data-closed]').forEach(function (o) { o.hidden = false; o.disabled = false; });
 
 function getFormData() {
   var ask = signupAsk(), addons = ask.labels;
