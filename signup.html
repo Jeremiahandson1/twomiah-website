@@ -282,7 +282,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
       </div>
       <!-- SMS disclosure — required at the point of phone-number collection (A2P compliance) -->
       <p style="font-size:11.5px;color:rgba(255,255,255,0.45);line-height:1.55;margin:2px 0 14px">By providing your phone number, you agree Twomiah may send you text messages about your account and setup (up to 4&nbsp;messages/month; frequency varies). Consent is not a condition of purchase. Message &amp; data rates may apply. Reply <b style="color:rgba(255,255,255,0.65)">STOP</b> to unsubscribe or <b style="color:rgba(255,255,255,0.65)">HELP</b> for help. See our <a href="/privacy" style="color:#FF6D00">Privacy&nbsp;Policy</a> and <a href="/terms" style="color:#FF6D00">Terms</a>.</p>
-      <p class="svc-hint" style="margin:0 0 10px">The more you tell us, the more complete your website starts: pick your services and add a photo, and you launch with a page for each service. You can add everything else later.</p>
+      <p class="svc-hint" id="moreHint" style="margin:0 0 10px">The more you tell us, the more complete your website starts: pick your services and add a photo, and you launch with a page for each service. You can add everything else later.</p>
       <div class="field" id="svcField">
         <label>Services You Offer (optional)</label>
         <p class="svc-hint">Your website lists exactly what you pick here and nothing else. Tick what you do, or add your own.</p>
@@ -352,7 +352,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
         <div class="field-hint">PNG, JPG or WEBP, at least 400x400px recommended</div>
       </div>
       <div class="field">
-        <label>Photo of Your Work (optional)</label>
+        <label id="heroLabel">Photo of Your Work (optional)</label>
         <div class="file-upload">
           <label class="file-btn" for="heroFile">Choose File</label>
           <input type="file" id="heroFile" accept="image/png,image/jpeg,image/webp" onchange="updateFileName(this,'heroName')">
@@ -998,6 +998,21 @@ function syncDomainHint() {
 document.addEventListener('change', function(e) { if (e.target && e.target.id === 'industry') syncDomainHint(); });
 document.addEventListener('DOMContentLoaded', syncDomainHint);
 
+// A Retail Shop is asked about its shop, not "services": its website is its products (store final check, 2026-10-26 —
+// step 1 offered "Services you offer" and step 2 a "Photo of your work" to a shop).
+var MORE_HINT_DEFAULT = null, HERO_LABEL_DEFAULT = null;
+function syncShopWords() {
+  var shop = ((document.getElementById('industry') || {}).value || '') === 'retail';
+  var hint = document.getElementById('moreHint'), field = document.getElementById('svcField'), label = document.getElementById('heroLabel');
+  if (hint && MORE_HINT_DEFAULT === null) MORE_HINT_DEFAULT = hint.textContent;
+  if (label && HERO_LABEL_DEFAULT === null) HERO_LABEL_DEFAULT = label.textContent;
+  if (field) field.style.display = shop ? 'none' : '';
+  if (hint) hint.textContent = shop ? 'The more you tell us, the more complete your website starts: tell us about your shop and add a photo. You add your products once you are in.' : MORE_HINT_DEFAULT;
+  if (label) label.textContent = shop ? 'Photo of Your Shop or Products (optional)' : HERO_LABEL_DEFAULT;
+}
+document.addEventListener('change', function(e) { if (e.target && e.target.id === 'industry') syncShopWords(); });
+document.addEventListener('DOMContentLoaded', syncShopWords);
+
 // "Migrating from" names the systems THIS kind of business moves from. A Retail Shop signup was offered only
 // field-service tools (Jobber, ServiceTitan, …) — store live test, 2026-10-26. One list per kind; trades keep theirs.
 var MIGRATION_SOURCES = {
@@ -1048,7 +1063,7 @@ function buildSummary() {
     ['Industry', industryLabel() || '--'],
     ['Business Email', val('companyEmail') || '--'],
     ['Phone', val('phone') || '--'],
-    ['Services', ownerServices().join(', ') || '--'],
+    ...(val('industry') === 'retail' ? [] : [['Services', ownerServices().join(', ') || '--']]),
     ['Location', [val('city'), val('state'), val('zip')].filter(Boolean).join(', ') || '--'],
     ['Address', val('address') || '--'],
     ['Domain', val('domain') || '--'],
@@ -1102,7 +1117,8 @@ function getFormData() {
     owner_last_name: val('lastName'),
     phone: val('phone'),
     industry: val('industry'),
-    services: ownerServices(),
+    // A shop sells products, not services: its site is its catalogue, so nothing ticked under another industry is sent.
+    services: val('industry') === 'retail' ? [] : ownerServices(),
     // "About your business": the site's About page and its copy start from these words (Factory signupSite.ts).
     description: val('aboutBusiness'),
     address: val('address'),
