@@ -373,7 +373,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
     <li><a href="#crm">CRM</a></li>
     <li><a href="#doors">Pricing</a></li>
     <li><a href="#proof">Our work</a></li>
-    <li><a href="#top" class="nav-cta">Get started</a></li>
+    <li><a href="#build-live" class="nav-cta" id="navStart">Get started</a></li>
   </ul>
 </nav>
 
@@ -913,8 +913,29 @@ var mq = document.getElementById('marquee'); if(mq) mq.innerHTML += mq.innerHTML
     .catch(function(){done();show('That took too long — our builder may be waking up. Please try again in a moment.',false);});
   }
   for(var k=0;k<lookBtns.length;k++)lookBtns[k].addEventListener('click',function(){if(!busy&&cur)build(this.getAttribute('data-design'));});
+  // "Get started" (top right): to the form, ready to type — at the top of the page a jump to #top looked like nothing happened.
+  var navStart=document.getElementById('navStart');
+  if(navStart)navStart.addEventListener('click',function(){setTimeout(function(){try{name.focus({preventScroll:true});}catch(x){name.focus();}},450);});
+  // A ZIP typed where the city goes ("54701") becomes "Eau Claire, WI" before the preview is built (api.zippopotam.us:
+  // free, no key, open to browsers); one that matches nothing asks for the city instead of naming a business "in 54701".
+  var ZIP=/^\s*(\d{5})(?:-\d{4})?\s*$/;
   form.addEventListener('submit',function(e){
     e.preventDefault();if(busy)return;
+    var zm=ZIP.exec(cityEl.value||'');
+    if(zm){
+      busy=true;go.disabled=true;
+      fetch('https://api.zippopotam.us/us/'+zm[1]).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}).then(function(d){
+        busy=false;go.disabled=false;
+        var p=d&&d.places&&d.places[0];
+        if(!p){show('We couldn\'t find that ZIP — type your city, like "Eau Claire, WI".',false);return flag(cityEl);}
+        cityEl.value=p['place name']+', '+p['state abbreviation'];
+        start();
+      });
+      return;
+    }
+    start();
+  });
+  function start(){
     var bn=(name.value||'').trim();if(bn.length<2)return flag(name);
     // "Eau Claire, WI" → city + state.
     var cv=(cityEl.value||'').trim(),ci=cv.lastIndexOf(','),city=(ci>-1?cv.slice(0,ci):cv).trim(),st=(ci>-1?cv.slice(ci+1):'').trim();
@@ -923,7 +944,7 @@ var mq = document.getElementById('marquee'); if(mq) mq.innerHTML += mq.innerHTML
     // Stacked layout (phones): the preview is below the form — bring it into view.
     if(window.innerWidth<=1024){var pv=document.querySelector('.bl-preview');if(pv&&pv.scrollIntoView)pv.scrollIntoView({behavior:'smooth',block:'start'});}
     build(look);
-  });
+  }
 })();
 
 </script>

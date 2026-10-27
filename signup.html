@@ -693,6 +693,39 @@ function selectTemplate(el) {
   pick('state', (params.get('state') || '').toUpperCase());
 })();
 
+// A ZIP is enough to place a business: typed into City, it becomes the city, the state and the ZIP; typed into ZIP with the
+// city still empty, it fills the city and state (api.zippopotam.us: free, no key, open to browsers). A ZIP that matches
+// nothing is left as typed for the owner to fix, never guessed at.
+(function () {
+  var ZIP = /^\s*(\d{5})(?:-\d{4})?\s*$/;
+  var city = document.getElementById('city'), state = document.getElementById('state'), zip = document.getElementById('zip');
+  if (!city || !state || !zip) return;
+  function place(code, done) {
+    fetch('https://api.zippopotam.us/us/' + code).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+      .then(function (d) { var p = d && d.places && d.places[0]; if (p) done(p['place name'], p['state abbreviation']); });
+  }
+  function fromCity() {
+    var m = ZIP.exec(city.value || ''); if (!m) return;
+    place(m[1], function (name, st) {
+      if (!ZIP.test(city.value || '')) return;   // they typed a city meanwhile
+      city.value = name;
+      if (state.querySelector('option[value="' + st + '"]')) state.value = st;
+      if (!zip.value) zip.value = m[1];
+    });
+  }
+  function fromZip() {
+    var m = ZIP.exec(zip.value || ''); if (!m || (city.value || '').trim()) return;
+    place(m[1], function (name, st) {
+      if ((city.value || '').trim()) return;
+      city.value = name;
+      if (!state.value && state.querySelector('option[value="' + st + '"]')) state.value = st;
+    });
+  }
+  city.addEventListener('blur', fromCity);
+  zip.addEventListener('blur', fromZip);
+  fromCity();   // a ZIP that arrived in ?city= from an older link
+})();
+
 function selectPlan(el) {
   document.querySelectorAll('.plan-card').forEach(function(c) { c.classList.remove('selected'); });
   el.classList.add('selected');
