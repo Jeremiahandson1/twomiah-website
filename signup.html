@@ -616,8 +616,9 @@ function renderTemplates() {
     g.style.gridTemplateColumns = '';
     g.innerHTML = LOOKS.map(function (l) {
       return '<div class="template-card' + (selectedLook === l.id ? ' selected' : '') + '" data-look="' + l.id + '" role="button" tabindex="0" aria-pressed="' + (selectedLook === l.id) + '" onclick="selectLook(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();selectLook(this)}">'
-        + '<div class="tpl-badge">Selected</div>'
-        + '<div class="tpl-preview"><img src="/images/looks/' + l.id + '.jpg" alt="The ' + l.name + ' look" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top"></div>'
+        + '<div class="tpl-badge" style="z-index:2">Selected</div>'
+        // The thumbnail is a desktop page (720×550): the frame takes its shape so the whole width shows, not a cropped middle.
+        + '<div class="tpl-preview" style="height:auto;aspect-ratio:720/550"><img src="/images/looks/' + l.id + '.jpg" alt="The ' + l.name + ' look" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top"></div>'
         + '<div class="tpl-info"><div class="tpl-name">' + l.name + '</div><div class="tpl-desc">' + l.desc + '</div></div>'
         + '</div>';
     }).join('');
