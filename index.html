@@ -125,6 +125,12 @@ select.bl-input{appearance:auto;cursor:pointer}
 .bl-spin{width:40px;height:40px;border:3px solid rgba(255,255,255,.15);border-top-color:#FF6D00;border-radius:50%;animation:blspin 1s linear infinite}
 .bl-after{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--muted)}
 .bl-mine{background:#FF6D00;color:#fff;text-decoration:none;font-size:14px;font-weight:800;padding:12px 22px;border-radius:9px;white-space:nowrap}
+/* The three looks (the Factory's choosable designs): switch the preview, and the signup is built in the one picked. */
+.bl-looks{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--muted)}
+.bl-look{background:transparent;border:1px solid rgba(255,255,255,0.22);color:#fff;font-family:inherit;font-size:13px;font-weight:700;padding:8px 14px;border-radius:999px;cursor:pointer}
+.bl-look:hover{border-color:var(--fire)}
+.bl-look[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:#fff}
+.bl-look:disabled{opacity:.6;cursor:wait}
 [hidden]{display:none!important}
 
 /* BROWSER PREVIEW */
@@ -452,6 +458,12 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
           </div>
           <iframe id="blFrame" title="Your site preview" sandbox hidden></iframe>
         </div>
+      </div>
+      <div class="bl-looks" id="blLooks" hidden>
+        <span>Pick a look:</span>
+        <button type="button" class="bl-look" data-design="studio" aria-pressed="true">Studio</button>
+        <button type="button" class="bl-look" data-design="heritage" aria-pressed="false">Heritage</button>
+        <button type="button" class="bl-look" data-design="foundry" aria-pressed="false">Foundry</button>
       </div>
       <div class="bl-after" id="blAfter" hidden>
         <span>Your starting site &mdash; the real one gets your photos, services and words. How do you want it?</span>
@@ -859,40 +871,58 @@ var mq = document.getElementById('marquee'); if(mq) mq.innerHTML += mq.innerHTML
   function flag(el){el.focus();el.style.borderColor='#ff5a3c';setTimeout(function(){el.style.borderColor='';},1500);}
   function show(text,loading){state.hidden=false;spin.hidden=!loading;msg.textContent=text;}
   function stopMsgs(){if(msgTimer){clearInterval(msgTimer);msgTimer=null;}}
+  // The look (the Factory's choosable designs: POST /public/preview and /public/signup take `design`). Each look is fetched
+  // once per business and kept here, so switching back costs no request against the preview's rate limit.
+  var looksBar=document.getElementById('blLooks'),lookBtns=looksBar?looksBar.querySelectorAll('.bl-look'):[],look='studio',cur=null,pages={};
+  function setLook(d){look=d;for(var k=0;k<lookBtns.length;k++)lookBtns[k].setAttribute('aria-pressed',lookBtns[k].getAttribute('data-design')===d?'true':'false');}
+  function lockLooks(on){for(var k=0;k<lookBtns.length;k++)lookBtns[k].disabled=on;}
+  function links(){
+    if(!cur)return;
+    var q='?name='+encodeURIComponent(cur.bn)+'&industry='+encodeURIComponent(cur.trade)+'&city='+encodeURIComponent(cur.city)+(cur.st?'&state='+encodeURIComponent(cur.st):'')+'&design='+encodeURIComponent(look);
+    mine.href='/signup.html'+q+'&plan=website';plus.href='/signup.html'+q+'&plan=starter10';
+  }
+  function paint(html){
+    frame.onload=function(){state.hidden=true;};
+    frame.hidden=false;fitFrame();
+    // The site's font loads with display=optional (fine on a real visit); inside a fresh
+    // frame it never arrives in time and the preview falls back to Arial, so swap it in.
+    frame.setAttribute('srcdoc',html.replace(/display=optional/g,'display=swap'));
+    setTimeout(function(){state.hidden=true;},1500);
+    links();after.hidden=false;if(looksBar)looksBar.hidden=false;
+  }
+  function build(d){
+    if(pages[d]){setLook(d);paint(pages[d]);return;}
+    busy=true;go.disabled=true;lockLooks(true);frame.hidden=true;frame.removeAttribute('srcdoc');
+    var i=0;show(MSGS[0],true);stopMsgs();msgTimer=setInterval(function(){i=(i+1)%MSGS.length;msg.textContent=MSGS[i];},3500);
+    var ctrl=('AbortController' in window)?new AbortController():null,to=setTimeout(function(){if(ctrl)ctrl.abort();},70000);
+    function done(){busy=false;go.disabled=false;lockLooks(false);clearTimeout(to);stopMsgs();}
+    fetch(PREVIEW_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({businessName:cur.bn,businessType:cur.trade,city:cur.city,state:cur.st,design:d}),signal:ctrl?ctrl.signal:undefined})
+    .then(function(res){return res.text().then(function(t){return {ok:res.ok,status:res.status,body:t};});})
+    .then(function(r){
+      done();
+      if(r.ok){pages[d]=r.body;setLook(d);paint(r.body);}
+      else{
+        var em='Something went wrong — please try again.';
+        try{em=JSON.parse(r.body).error||em;}catch(x){}
+        if(r.status===429)em='You\'ve built a few previews already — give it a couple of minutes and try again.';
+        else if(r.status===503)em='Our builder is busy right now — try again in a few seconds.';
+        // A look that failed to load: the one already chosen stays the choice (its button brings its page back).
+        show(em,false);
+      }
+    })
+    .catch(function(){done();show('That took too long — our builder may be waking up. Please try again in a moment.',false);});
+  }
+  for(var k=0;k<lookBtns.length;k++)lookBtns[k].addEventListener('click',function(){if(!busy&&cur)build(this.getAttribute('data-design'));});
   form.addEventListener('submit',function(e){
     e.preventDefault();if(busy)return;
     var bn=(name.value||'').trim();if(bn.length<2)return flag(name);
     // "Eau Claire, WI" → city + state.
     var cv=(cityEl.value||'').trim(),ci=cv.lastIndexOf(','),city=(ci>-1?cv.slice(0,ci):cv).trim(),st=(ci>-1?cv.slice(ci+1):'').trim();
     if(city.length<2)return flag(cityEl);
-    busy=true;go.disabled=true;after.hidden=true;frame.hidden=true;frame.removeAttribute('srcdoc');
+    cur={bn:bn,trade:trade.value,city:city,st:st};pages={};after.hidden=true;if(looksBar)looksBar.hidden=true;
     // Stacked layout (phones): the preview is below the form — bring it into view.
     if(window.innerWidth<=1024){var pv=document.querySelector('.bl-preview');if(pv&&pv.scrollIntoView)pv.scrollIntoView({behavior:'smooth',block:'start'});}
-    var i=0;show(MSGS[0],true);stopMsgs();msgTimer=setInterval(function(){i=(i+1)%MSGS.length;msg.textContent=MSGS[i];},3500);
-    var ctrl=('AbortController' in window)?new AbortController():null,to=setTimeout(function(){if(ctrl)ctrl.abort();},70000);
-    function done(){busy=false;go.disabled=false;clearTimeout(to);stopMsgs();}
-    fetch(PREVIEW_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({businessName:bn,businessType:trade.value,city:city,state:st}),signal:ctrl?ctrl.signal:undefined})
-    .then(function(res){return res.text().then(function(t){return {ok:res.ok,status:res.status,body:t};});})
-    .then(function(r){
-      done();
-      if(r.ok){
-        frame.onload=function(){state.hidden=true;};
-        frame.hidden=false;fitFrame();
-        // The site's font loads with display=optional (fine on a real visit); inside a fresh
-        // frame it never arrives in time and the preview falls back to Arial, so swap it in.
-        frame.setAttribute('srcdoc',r.body.replace(/display=optional/g,'display=swap'));
-        setTimeout(function(){state.hidden=true;},1500);
-        var q='?name='+encodeURIComponent(bn)+'&industry='+encodeURIComponent(trade.value)+'&city='+encodeURIComponent(city)+(st?'&state='+encodeURIComponent(st):'');
-        mine.href='/signup.html'+q+'&plan=website';plus.href='/signup.html'+q+'&plan=starter10';after.hidden=false;
-      }else{
-        var em='Something went wrong — please try again.';
-        try{em=JSON.parse(r.body).error||em;}catch(x){}
-        if(r.status===429)em='You\'ve built a few previews already — give it a couple of minutes and try again.';
-        else if(r.status===503)em='Our builder is busy right now — try again in a few seconds.';
-        show(em,false);
-      }
-    })
-    .catch(function(){done();show('That took too long — our builder may be waking up. Please try again in a moment.',false);});
+    build(look);
   });
 })();
 

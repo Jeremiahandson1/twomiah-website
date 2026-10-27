@@ -548,6 +548,22 @@ var selectedPlan = '';
 var selectedHosting = 'saas';
 var selectedDeploy = 'basic';
 var selectedTemplate = '';
+// The three looks a signup chooses between (the Factory's SITE_DESIGN_SPECS `choosable`; it refuses any other id).
+var LOOKS = [
+  { id: 'studio', name: 'Studio', desc: 'Modern and clean: rounded cards, a floating header, frosted panels.' },
+  { id: 'heritage', name: 'Heritage', desc: 'Warm and classic: cream pages, elegant serif type, arched photos.' },
+  { id: 'foundry', name: 'Foundry', desc: 'Bold and rugged: heavy uppercase headings, big numbers, square edges.' },
+];
+var selectedLook = (function () {
+  var d = new URLSearchParams(window.location.search).get('design');
+  return LOOKS.some(function (l) { return l.id === d; }) ? d : 'studio';
+})();
+function selectLook(el) {
+  selectedLook = el.getAttribute('data-look');
+  document.querySelectorAll('.template-card[data-look]').forEach(function (c) {
+    var on = c === el; c.classList.toggle('selected', on); c.setAttribute('aria-pressed', String(on));
+  });
+}
 
 // Template definitions per industry category
 var TEMPLATES = {
@@ -592,16 +608,19 @@ function renderTemplates() {
   var step = document.querySelector('.step[data-step="2"]');
   if (websiteIsComposed()) {
     selectedTemplate = '';
-    step.querySelector('.step-title').textContent = 'Your Website';
-    // Live test 10/22 read "no website template picker" as a missing step. There is no design to choose because the site
-    // is written for the business — say that, rather than "Nothing to pick here".
-    step.querySelector('.step-desc').textContent = 'There is no template to choose: we design your site for your business. You can change any of it once it is live.';
+    step.querySelector('.step-title').textContent = 'Your Look';
+    // The site's words and pages are written for the business; the look is theirs to pick (the Factory's choosable designs,
+    // POST /public/signup `design`). The homepage preview's choice arrives as ?design= and is selected here.
+    step.querySelector('.step-desc').textContent = 'Pick the look for your website. We write the pages for your business; you can switch looks any time in your website settings.';
     var g = document.getElementById('templateGrid');
-    g.style.gridTemplateColumns = '1fr';
-    g.innerHTML = '<div class="template-card selected" style="cursor:default;padding:20px">'
-      + '<div class="tpl-name" style="font-size:15px;margin-bottom:6px">Written for ' + escapeHtml(val('companyName') || 'your business') + '</div>'
-      + '<div class="tpl-desc" style="font-size:13px;line-height:1.6;color:rgba(255,255,255,0.7)">We design your site around your business from your answers: your ' + (val('industry') === 'retail' ? 'products' : 'services') + ', your city and your brand color. You&rsquo;ll see it when it&rsquo;s ready and can change any words, photos or pages in your website admin.</div>'
-      + '</div>';
+    g.style.gridTemplateColumns = '';
+    g.innerHTML = LOOKS.map(function (l) {
+      return '<div class="template-card' + (selectedLook === l.id ? ' selected' : '') + '" data-look="' + l.id + '" role="button" tabindex="0" aria-pressed="' + (selectedLook === l.id) + '" onclick="selectLook(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();selectLook(this)}">'
+        + '<div class="tpl-badge">Selected</div>'
+        + '<div class="tpl-preview"><img src="/images/looks/' + l.id + '.jpg" alt="The ' + l.name + ' look" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top"></div>'
+        + '<div class="tpl-info"><div class="tpl-name">' + l.name + '</div><div class="tpl-desc">' + l.desc + '</div></div>'
+        + '</div>';
+    }).join('');
     return;
   }
   step.querySelector('.step-title').textContent = 'Website Template';
@@ -1069,7 +1088,7 @@ function buildSummary() {
     ['Domain', val('domain') || '--'],
     ['Timezone', timezoneName(val('timezone')) || '--'],
     ['Brand Color', val('colorHex')],
-    ['Website', websiteIsComposed() ? 'Written for your business' : templateName(selectedTemplate)],
+    ['Website', websiteIsComposed() ? 'Written for your business, ' + ((LOOKS.find(function (l) { return l.id === selectedLook; }) || {}).name || '') + ' look' : templateName(selectedTemplate)],
     ['Plan', planLabel(selectedPlan)],
     ['Hosting', selectedHosting === 'saas' ? 'SaaS (Hosted)' : 'Self-Hosted (license request — not charged online)'],
     ['Deploy Service', deployLabel(selectedDeploy)],
@@ -1128,6 +1147,7 @@ function getFormData() {
     domain: val('domain'),
     primary_color: val('colorHex'),
     website_theme: selectedTemplate,
+    design: selectedLook,
     plan: selectedPlan,
     deployment_model: selectedHosting === 'saas' ? 'saas' : 'owned',
     monthly_amount: selectedHosting === 'saas' ? planPrices[selectedPlan] || 0 : null,
