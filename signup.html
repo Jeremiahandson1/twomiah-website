@@ -158,7 +158,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .tpl-mini-card .card-label{font-size:6px;font-weight:600;opacity:0.8}
 .tpl-mini-footer{padding:4px 10px;text-align:center;font-size:5px;opacity:0.5;color:white}
 .tpl-note{font-size:12px;color:rgba(255,255,255,0.3);text-align:center;margin-top:8px}
-@media(max-width:768px){.template-grid{grid-template-columns:1fr}}
+/* The four looks: two by two, so none sits alone on a row. */
+.template-grid.looks-grid{grid-template-columns:repeat(2,1fr)}
+@media(max-width:768px){.template-grid,.template-grid.looks-grid{grid-template-columns:1fr}}
 
 /* Summary */
 .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin-bottom:24px}
@@ -269,7 +271,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
             <option value="salon">Salon &amp; Spa</option>
             <option value="veterinary" hidden disabled data-closed>Veterinary Clinic</option>
             <option value="rv" hidden disabled data-closed>RV / Powersports Dealer</option>
-            <option value="retail" hidden disabled data-closed>Retail Shop</option>
+            <option value="retail">Retail Shop</option>
             <option value="other">Other</option>
           </select>
           <!-- Industries not open yet (Factory UNIFIED_LIVE_VERTICALS) stay hidden; ?show=all shows them for a test signup (the
@@ -553,13 +555,18 @@ var LOOKS = [
   { id: 'studio', name: 'Studio', desc: 'Modern and clean: rounded cards, a floating header, frosted panels.' },
   { id: 'heritage', name: 'Heritage', desc: 'Warm and classic: cream pages, elegant serif type, arched photos.' },
   { id: 'foundry', name: 'Foundry', desc: 'Bold and rugged: heavy uppercase headings, big numbers, square edges.' },
+  { id: 'market', name: 'Market', desc: 'Made for shops: photos first, prices you can read, a strong Add to cart.' },
 ];
-var selectedLook = (function () {
+// The look someone picked (here or in the homepage preview) is kept; until they pick, a shop starts in Market — the look
+// made for one, which is also the store's own default in the Factory — and everyone else in Studio.
+var lookPicked = (function () {
   var d = new URLSearchParams(window.location.search).get('design');
-  return LOOKS.some(function (l) { return l.id === d; }) ? d : 'studio';
+  return LOOKS.some(function (l) { return l.id === d; }) ? d : '';
 })();
+var selectedLook = lookPicked || 'studio';
+function defaultLook() { return lookPicked || (val('industry') === 'retail' ? 'market' : 'studio'); }
 function selectLook(el) {
-  selectedLook = el.getAttribute('data-look');
+  selectedLook = lookPicked = el.getAttribute('data-look');
   document.querySelectorAll('.template-card[data-look]').forEach(function (c) {
     var on = c === el; c.classList.toggle('selected', on); c.setAttribute('aria-pressed', String(on));
   });
@@ -612,8 +619,10 @@ function renderTemplates() {
     // The site's words and pages are written for the business; the look is theirs to pick (the Factory's choosable designs,
     // POST /public/signup `design`). The homepage preview's choice arrives as ?design= and is selected here.
     step.querySelector('.step-desc').textContent = 'Pick the look for your website. We write the pages for your business; you can switch looks any time in your website settings.';
+    selectedLook = defaultLook();
     var g = document.getElementById('templateGrid');
     g.style.gridTemplateColumns = '';
+    g.classList.add('looks-grid');
     g.innerHTML = LOOKS.map(function (l) {
       return '<div class="template-card' + (selectedLook === l.id ? ' selected' : '') + '" data-look="' + l.id + '" role="button" tabindex="0" aria-pressed="' + (selectedLook === l.id) + '" onclick="selectLook(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();selectLook(this)}">'
         + '<div class="tpl-badge" style="z-index:2">Selected</div>'
