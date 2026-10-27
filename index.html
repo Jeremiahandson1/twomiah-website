@@ -428,9 +428,11 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
           <option value="electrical">Electrical</option>
           <option value="landscaping">Landscaping / Lawn Care</option>
           <option value="home_care">Home Care</option>
-          <option value="veterinary">Veterinary Clinic</option>
-          <option value="rv">RV / Powersports Dealer</option>
-          <option value="dispensary">Dispensary / Cannabis</option>
+          <!-- Not open yet (Factory UNIFIED_LIVE_VERTICALS refuses their signup) — hidden like signup.html's; reopen one by
+               deleting its hidden/disabled/data-closed. -->
+          <option value="veterinary" hidden disabled data-closed>Veterinary Clinic</option>
+          <option value="rv" hidden disabled data-closed>RV / Powersports Dealer</option>
+          <option value="dispensary" hidden disabled data-closed>Dispensary / Cannabis</option>
           <option value="restaurant">Restaurant / Caf&eacute;</option>
           <option value="food_truck">Food Truck</option>
           <option value="salon">Salon &amp; Spa</option>
@@ -473,7 +475,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
     <div class="diff-card tilt reveal">
       <div class="diff-icon">🔨</div>
       <h3 class="diff-name">We build it <span>before you buy it</span></h3>
-      <p class="diff-desc">Not a blank template you fill in yourself. We build your <strong>actual website</strong> and show it to you finished. Look first, pay after. Nobody sending you into a drag-and-drop builder can do that.</p>
+      <p class="diff-desc">Not a blank template you fill in yourself. We build a <strong>real website</strong> for your business and show it to you, free. Look first, pay after. Nobody sending you into a drag-and-drop builder can do that.</p>
     </div>
     <div class="diff-card tilt reveal">
       <div class="diff-icon">🔑</div>
@@ -483,7 +485,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
     <div class="diff-card tilt reveal">
       <div class="diff-icon">💸</div>
       <h3 class="diff-name">Texting &amp; AI <span>billed at cost</span></h3>
-      <p class="diff-desc">A text message costs about <strong>$0.003</strong>. We charge you $0.003. The $10/mo to switch it on isn't a markup — it's what our providers charge us to offer texting, passed straight through. Everyone else marks it up 5x and quietly pockets the difference. That markup is <em>their</em> whole business. It's not ours.</p>
+      <p class="diff-desc">A text message costs us about <strong>a penny</strong>, carrier fees included. We charge you a penny. The $10/mo to switch it on isn't a markup — it's what our providers charge us to offer texting, passed straight through. Everyone else marks it up 5x and quietly pockets the difference. That markup is <em>their</em> whole business. It's not ours.</p>
     </div>
   </div>
   <p class="diff-foot reveal">The truth nobody in those ads mentions: most are agencies reselling one big platform (GoHighLevel &amp; friends) at <b>$297–$497/mo</b>, on contracts, marking up every text. <b>We're the software company, not the middleman.</b></p>
@@ -610,24 +612,25 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
   <div class="proof-head reveal">
     <div class="section-label center">See it for yourself</div>
     <h2 class="section-title">Real businesses.<br><span>Real sites. Real proof.</span></h2>
-    <p class="section-sub">A local Eau Claire restaurant, stuck on a GoDaddy template — and what we shipped instead. Both live right now. Click either one.</p>
+    <p class="section-sub">A local Eau Claire restaurant, stuck on a GoDaddy template — and what we shipped instead. The new one is live at their own domain now. Click it.</p>
   </div>
   <div class="case-grid">
-    <a href="https://potato-potahto.com" target="_blank" rel="noopener" class="case-card before reveal">
+    <!-- Not a link: potato-potahto.com is OUR site now (cut over from GoDaddy, checked 2026-10-26), so "Before" is the screenshot. -->
+    <div class="case-card before reveal">
       <div class="case-stamp">Before</div>
       <div class="case-thumb"><img src="/images/case-potatopotahto-before.png" alt="Potato-Potahto on GoDaddy" loading="lazy" width="1600" height="6346"></div>
       <div class="case-meta">
         <div class="case-platform">Built with GoDaddy</div>
-        <div class="case-domain">potato-potahto.com ↗</div>
+        <div class="case-domain">Their old site (screenshot)</div>
         <ul class="case-bullets"><li>Generic template — looks like every other restaurant</li><li>Locked editor, broken catering form</li><li>~$300/yr forever, no way out</li></ul>
       </div>
-    </a>
-    <a href="https://potato-potahto.netlify.app" target="_blank" rel="noopener" class="case-card after reveal">
+    </div>
+    <a href="https://potato-potahto.com" target="_blank" rel="noopener" class="case-card after reveal">
       <div class="case-stamp after">After</div>
       <div class="case-thumb"><img src="/images/case-potatopotahto-after.jpg" alt="Potato-Potahto — new site built by Twomiah" loading="lazy" width="1600" height="1000"></div>
       <div class="case-meta">
         <div class="case-platform">Built with Twomiah</div>
-        <div class="case-domain">potato-potahto.netlify.app ↗</div>
+        <div class="case-domain">potato-potahto.com ↗</div>
         <ul class="case-bullets"><li>Custom branded, owned outright — not a template</li><li>Working catering form, Clover order-ahead built in</li><li>Owned by you, hosted by us</li></ul>
       </div>
     </a>
@@ -652,7 +655,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
   </div>
   <div class="steps">
     <div class="step reveal"><span class="step-num">01</span><div class="step-title">Tell us about you</div><p class="step-desc">Two minutes. Your business, what you do, a few photos if you've got them. No call required, no pressure.</p></div>
-    <div class="step reveal"><span class="step-num">02</span><div class="step-title">We build your site</div><p class="step-desc">We hand-build your real website — your brand, your services, your town. Then we send you a link to see the finished thing.</p></div>
+    <div class="step reveal"><span class="step-num">02</span><div class="step-title">We build your site</div><p class="step-desc">We build your real website — your brand, your services, your town. Then we send you a link to see it.</p></div>
     <div class="step reveal"><span class="step-num">03</span><div class="step-title">You look. You own it.</div><p class="step-desc">Love it? Go live. Add the CRM to run the business for $99/mo. Cancel any time, or buy it outright — it's yours.</p></div>
   </div>
 </section>
@@ -663,7 +666,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
   <p class="trades-sub">We already run these industries. Don't see yours? We build a custom CRM for it — same honest price, same you-own-it deal.</p>
   <div class="marquee-mask">
     <div class="marquee" id="marquee">
-      <span class="chip">🏗️ <b>Contractors</b></span><span class="chip">🏠 <b>Roofing</b></span><span class="chip">🔧 <b>HVAC · Plumbing · Electrical</b></span><span class="chip">💚 <b>Home Care</b></span><span class="chip">🌿 <b>Dispensary</b></span><span class="chip">🌱 <b>Landscaping</b></span><span class="chip">🚐 <b>RV · Powersports</b></span><span class="chip">🐾 <b>Veterinary</b></span><span class="chip">🍽️ <b>Restaurants</b></span><span class="chip">✂️ <b>Salons</b></span><span class="chip">🏪 <b>Retail &amp; Boutique</b></span><span class="chip" style="border-color:rgba(255,109,0,0.5);color:var(--gold)">✦ <b>Custom-built for anything</b></span>
+      <span class="chip">🏗️ <b>Contractors</b></span><span class="chip">🏠 <b>Roofing</b></span><span class="chip">🔧 <b>HVAC · Plumbing · Electrical</b></span><span class="chip">💚 <b>Home Care</b></span><span class="chip">🌱 <b>Landscaping</b></span><span class="chip">🍽️ <b>Restaurants</b></span><span class="chip">🍺 <b>Bars &amp; Taverns</b></span><span class="chip">✂️ <b>Salons</b></span><span class="chip" style="border-color:rgba(255,109,0,0.5);color:var(--gold)">✦ <b>Custom-built for anything</b></span>
     </div>
   </div>
 </section>
@@ -725,7 +728,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
       <p class="footer-tagline">Websites and software for the people who actually do the work. Built in Eau Claire, Wisconsin — you own what we build.</p>
     </div>
     <div class="footer-col"><h2 class="footer-h">What we do</h2><ul><li><a href="#build-live">Websites</a></li><li><a href="#crm">Industry CRMs</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#how">How it works</a></li></ul></div>
-    <div class="footer-col"><h2 class="footer-h">For your trade</h2><ul><li><a href="/build.html">Contractors</a></li><li><a href="/roof.html">Roofing</a></li><li><a href="/wrench.html">HVAC · Trades</a></li><li><a href="/care.html">Home Care</a></li><li><a href="/leaf.html">Dispensary</a></li></ul></div>
+    <div class="footer-col"><h2 class="footer-h">For your trade</h2><ul><li><a href="/build.html">Contractors</a></li><li><a href="/roof.html">Roofing</a></li><li><a href="/wrench.html">HVAC · Trades</a></li><li><a href="/care.html">Home Care</a></li></ul></div>
     <div class="footer-col"><h2 class="footer-h">Company</h2><ul><li><a href="#story">Our story</a></li><li><a href="mailto:support@twomiah.com">Contact</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/privacy.html">Privacy</a></li></ul></div>
   </div>
   <div class="footer-also">Also from Twomiah:
