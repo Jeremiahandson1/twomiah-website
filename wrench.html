@@ -371,7 +371,7 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
     </div>
     <div class="problem-card">
       <div class="problem-num">0</div>
-      <p class="problem-text"><strong>CRM platforms bundle a real website with online booking</strong>. You pay separately for that. We include it at every tier.</p>
+      <p class="problem-text"><strong>CRM platforms bundle a real website with online booking</strong>. You pay separately for that. We include it on every plan.</p>
     </div>
   </div>
 </section>
@@ -389,55 +389,46 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
         <div class="feat-icon">📋</div>
         <div class="feat-title">Never Lose Track of a Call</div>
         <p class="feat-desc">Every job, every note, every photo, every part &mdash; attached to the job, not scattered across texts and voicemails. Open it up and know exactly where things stand.</p>
-        <span class="feat-tag">All Tiers</span>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">📅</div>
         <div class="feat-title">Know Where Every Tech Is</div>
         <p class="feat-desc">Visual calendar with real-time locations. Drag a job onto a tech. They get notified instantly. No radio. No group text. Done.</p>
-        <span class="feat-tag">Pro +</span>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">🌐</div>
         <div class="feat-title">Customers Book. Jobs Appear.</div>
         <p class="feat-desc">Professional website with live booking built in. Customer picks a slot, job drops into dispatch. You didn't lift a finger.</p>
-        <span class="feat-tag">All Tiers</span>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">🔁</div>
         <div class="feat-title">Revenue That Shows Up Every Month</div>
         <p class="feat-desc">Maintenance agreements, seasonal tune-ups, service contracts &mdash; automated scheduling, renewal reminders, and billing. Recurring revenue you don't have to chase.</p>
-        <span class="feat-tag">Pro +</span>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">📍</div>
         <div class="feat-title">Kill the 'Where's the Guy?' Calls</div>
         <p class="feat-desc">Customers see their tech on a live map &mdash; like tracking a delivery. The call you used to get ten times a day? Gone.</p>
-        <span class="feat-tag">Pro +</span>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">💬</div>
         <div class="feat-title">Stop Playing Phone Tag</div>
         <p class="feat-desc">Appointment confirmations, arrival texts, review requests, estimate follow-ups &mdash; all automated from one inbox. You focus on the work.</p>
-        <span class="feat-tag">Pro +</span>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">🗺️</div>
         <div class="feat-title">More Jobs. Less Windshield Time.</div>
         <p class="feat-desc">Auto-sequence your tech's stops for the best route. Cut drive time, fit more jobs, save on gas. Your guys do more work in less time.</p>
-        <span class="feat-tag">Business +</span>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">📢</div>
         <div class="feat-title">Reviews and Leads on Autopilot</div>
         <p class="feat-desc">After every job, a review request goes out automatically. Seasonal ad campaigns run themselves &mdash; tune-up season, winter prep, summer rush. The phone rings without you chasing it.</p>
-        <span class="feat-tag">Business +</span>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">💰</div>
         <div class="feat-title">Get Paid Before You Leave</div>
         <p class="feat-desc">Pre-built pricebook for common services. Generate an invoice on the job, collect payment on the spot. No more mailing invoices and hoping.</p>
-        <span class="feat-tag">All Tiers</span>
       </div>
     </div>
   </div>
@@ -530,15 +521,13 @@ var cats={
 'Financial':['qb','pricebook','financing','inventory','agreements'],
 'Advanced':['automations','forms','reporting','mobile','api']
 };
-var wrenchTiers={crm:'Starter',quotes:'Starter',invoicing:'Starter',scheduling:'Starter',dispatch:'Pro',gps:'Pro',time:'Starter',photo:'Starter',equipment:'Business',fleet:'Business',email:'Business',portal:'Starter',booking:'Pro',calltrack:'Fleet',qb:'Pro',pricebook:'Pro',inventory:'Business',agreements:'Pro',reporting:'Business'};
-var tierColors={Starter:'#22c55e',Pro:'#3b82f6',Business:'#a855f7',Fleet:'#FF6D00',Enterprise:'#f59e0b'};
 function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
 // Not offered by this system (the Factory's feature registry, 2026-10-23) — never claimed: the owner's rule is that nothing is advertised until it is live and working. The competitor's column still shows theirs.
 var NOT_OFFERED=['financing', 'routing', 'automations', 'forms', 'sms', 'mobile', 'api'];
-function wrenchCk(f){if(NOT_OFFERED.indexOf(f)>-1)return '<span class="cmp-n">&#10007;</span>';if(wrenchTiers[f]==='Enterprise')return '<span class="cmp-a">ENTERPRISE</span>';return '<span class="cmp-y">&#10003;</span>'}
+function wrenchCk(f){if(NOT_OFFERED.indexOf(f)>-1)return '<span class="cmp-n">&#10007;</span>';return '<span class="cmp-y">&#10003;</span>'}
 function toggleCmp(){var c=document.getElementById('cmpContent'),b=document.getElementById('cmpToggleBtn');if(c.style.display==='none'){c.style.display='block';b.innerHTML='Hide comparison &nbsp;&uarr;';showCompareInit('servicetitan')}else{c.style.display='none';b.innerHTML='Compare vs. ServiceTitan, Jobber &amp; Housecall Pro &nbsp;&darr;'}}
 function showCompareInit(key){document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});document.querySelector('.vs-toggle[onclick*="'+key+'"]').classList.add('active');renderCmp(key)}
-function renderCmp(key){var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Wrench</th></tr></thead><tbody>';Object.keys(cats).forEach(function(cat){h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+wrenchCk(f)+'</td></tr>'})});h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$99</span> / <span style="color:#3b82f6">$139</span> / <span style="color:#a855f7">$199</span></td></tr>';h+='</tbody></table>';document.getElementById('compareTable').innerHTML=h}
+function renderCmp(key){var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Wrench</th></tr></thead><tbody>';Object.keys(cats).forEach(function(cat){h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+wrenchCk(f)+'</td></tr>'})});h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td>$99 / $139 / $199</td></tr>';h+='</tbody></table>';document.getElementById('compareTable').innerHTML=h}
 function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});event.target.classList.add('active');renderCmp(key)}
 // Comparison hidden by default; expand button initializes it.
 </script>
@@ -561,7 +550,7 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
         </div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Every Wrench feature &mdash; nothing tier-locked</li>
+          <li class="bold-item">Every Wrench feature included</li>
           <li class="bold-item">Your website + hosting</li>
           <li>Texting &amp; AI: $10/mo each to switch on (what our providers charge us to offer it), usage at cost</li>
           <li>No contract &mdash; cancel any month</li>
@@ -577,7 +566,7 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
         </div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Every Wrench feature &mdash; nothing tier-locked</li>
+          <li class="bold-item">Every Wrench feature included</li>
           <li class="bold-item">Your website + hosting</li>
           <li>Texting &amp; AI: $10/mo each to switch on (what our providers charge us to offer it), usage at cost</li>
           <li>No contract &mdash; cancel any month</li>
@@ -593,7 +582,7 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
         </div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Every Wrench feature &mdash; nothing tier-locked</li>
+          <li class="bold-item">Every Wrench feature included</li>
           <li class="bold-item">Your website + hosting</li>
           <li>Texting &amp; AI: $10/mo each to switch on (what our providers charge us to offer it), usage at cost</li>
           <li>No contract &mdash; cancel any month</li>
@@ -640,7 +629,7 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
         <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:white;margin-bottom:24px">From $99<span style="font-size:14px;color:rgba(255,255,255,0.4);font-family:'Barlow',sans-serif">/mo</span></div>
         <ul style="list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:8px">
           <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--steel)">&check;</span>We host, update, and maintain everything</li>
-          <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--steel)">&check;</span>Support included on every tier</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--steel)">&check;</span>Support is free &mdash; email us or ask in your CRM&#39;s help chat</li>
           <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--steel)">&check;</span>New features automatically</li>
           <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--steel)">&check;</span>30-day money-back guarantee &middot; cancel anytime</li>
         </ul>

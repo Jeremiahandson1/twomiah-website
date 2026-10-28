@@ -669,10 +669,8 @@ var cats={
 'Supply Chain':['grow_trace','cultivation','mfg','wholesale','lab'],
 'Operations':['scheduling','training','fraud','bi','soc2','api']
 };
-var leafTiers={pos:'Starter',id_scan:'Starter',checkin:'Starter',kiosk:'Business',ai:'Business',metrc:'Pro',biotrack:'Pro',leafdata:'Pro',multi:'Business',rfid:'Business',batch:'Pro',labels:'Pro',delivery:'Pro',routing:'Pro',gps:'Pro',loyalty:'Pro',gamified:'Business',referral:'Pro',paybank:'Business',wallet:'Business',sms:'Pro',email:'Pro',ordering:'Pro',website:'Pro',seo:'Pro',grow_trace:'Pro',cultivation:'Enterprise',mfg:'Enterprise',wholesale:'Enterprise',lab:'Enterprise',scheduling:'Pro',training:'Pro',fraud:'Business',predict:'Business',bi:'Business',soc2:'Business',offline:'Starter',api:'Business'};
-var tierColors={Starter:'#22c55e',Pro:'#3b82f6',Business:'#a855f7',Enterprise:'#f59e0b'};
 function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
-function leafCk(f){if(leafTiers[f]==='Enterprise')return '<span class="cmp-a">ENTERPRISE</span>';return '<span class="cmp-y">&#10003;</span>'}
+function leafCk(f){if(['cultivation','mfg','wholesale','lab'].indexOf(f)>-1)return '<span class="cmp-n">&#10007;</span>';return '<span class="cmp-y">&#10003;</span>'}
 function showCompare(key){
 document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});
 // Also runs on load (no click event): mark the button for this competitor.
@@ -682,7 +680,7 @@ Object.keys(cats).forEach(function(cat){
 h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';
 cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+leafCk(f)+'</td></tr>'});
 });
-h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$99</span> / <span style="color:#3b82f6">$139</span> / <span style="color:#a855f7">$199</span></td></tr>';
+h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td>$99 / $139 / $199</td></tr>';
 h+='</tbody></table>';
 document.getElementById('compareTable').innerHTML=h}
 showCompare('dutchie');
@@ -693,7 +691,7 @@ showCompare('dutchie');
   <div class="inner">
     <div class="reveal" style="margin-bottom:16px">
       <div class="section-label">Pricing</div>
-      <h2 class="section-title">Every Feature Included.<br><span class="leaf-line">No Tier Games.</span></h2>
+      <h2 class="section-title">Every Feature Included.<br><span class="leaf-line">Pick Your Team Size.</span></h2>
       <p class="section-sub">POS, website, loyalty, delivery, analytics, compliance &mdash; every feature on every plan; team size is the only difference. No per-transaction fees. You see the price, you pay the price.</p>
     </div>
     <div class="price-grid">
@@ -706,7 +704,7 @@ showCompare('dutchie');
         </div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Every Leaf feature &mdash; nothing tier-locked</li>
+          <li class="bold-item">Every Leaf feature included</li>
           <li class="bold-item">Your website + hosting</li>
           <li>Texting &amp; AI: $10/mo each to switch on (what our providers charge us to offer it), usage at cost</li>
           <li>No contract &mdash; cancel any month</li>
@@ -722,7 +720,7 @@ showCompare('dutchie');
         </div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Every Leaf feature &mdash; nothing tier-locked</li>
+          <li class="bold-item">Every Leaf feature included</li>
           <li class="bold-item">Your website + hosting</li>
           <li>Texting &amp; AI: $10/mo each to switch on (what our providers charge us to offer it), usage at cost</li>
           <li>No contract &mdash; cancel any month</li>
@@ -738,7 +736,7 @@ showCompare('dutchie');
         </div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Every Leaf feature &mdash; nothing tier-locked</li>
+          <li class="bold-item">Every Leaf feature included</li>
           <li class="bold-item">Your website + hosting</li>
           <li>Texting &amp; AI: $10/mo each to switch on (what our providers charge us to offer it), usage at cost</li>
           <li>No contract &mdash; cancel any month</li>

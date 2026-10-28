@@ -440,12 +440,10 @@ var cats={
 'Financial':['quickbooks','budget_tracking','financing','pricebook','job_costing'],
 'Platform':['mobile_app','api','visualizer','automations']
 };
-var buildTiers={crm:'Starter',quotes:'Starter',invoicing:'Starter',scheduling:'Starter',time_tracking:'Pro',project_mgmt:'Construction',change_orders:'Construction',rfis:'Construction',daily_logs:'Construction',punch_lists:'Construction',gantt:'Construction',submittals:'Construction',drawings:'Construction',bidding:'Construction',takeoffs:'Construction',customer_portal:'Starter',sub_portal:'Business',selections:'Construction',online_approval:'Pro',email_campaigns:'Pro',gps:'Construction',photo_capture:'Starter',quickbooks:'Pro',budget_tracking:'Business',pricebook:'Pro',job_costing:'Business',visualizer:'Pro'};
-var tierColors={Starter:'#22c55e',Pro:'#3b82f6',Business:'#a855f7',Construction:'#FF6D00',Enterprise:'#f59e0b'};
 function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
 // Not offered by this system (the Factory's feature registry, 2026-10-23) — never claimed: the owner's rule is that nothing is advertised until it is live and working. The competitor's column still shows theirs.
 var NOT_OFFERED=['financing', 'routing', 'api', 'automations', 'sms', 'mobile_app'];
-function buildCk(f){if(NOT_OFFERED.indexOf(f)>-1)return '<span class="cmp-n">&#10007;</span>';if(['visualizer'].indexOf(f)>-1)return '<span class="cmp-a">SEPARATE</span>';if(buildTiers[f]==='Enterprise')return '<span class="cmp-a">ENTERPRISE</span>';return '<span class="cmp-y">&#10003;</span>'}
+function buildCk(f){if(NOT_OFFERED.indexOf(f)>-1)return '<span class="cmp-n">&#10007;</span>';if(['visualizer'].indexOf(f)>-1)return '<span class="cmp-a">SEPARATE</span>';return '<span class="cmp-y">&#10003;</span>'}
 function toggleCmp(){
 var c=document.getElementById('cmpContent'),b=document.getElementById('cmpToggleBtn');
 if(c.style.display==='none'){c.style.display='block';b.innerHTML='Hide comparison &nbsp;&uarr;';showCompareInit('buildertrend')}
@@ -456,7 +454,7 @@ document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('
 document.querySelector('.vs-toggle[onclick*="'+key+'"]').classList.add('active');
 var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Build</th></tr></thead><tbody>';
 Object.keys(cats).forEach(function(cat){h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+buildCk(f)+'</td></tr>'})});
-h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$99</span> / <span style="color:#3b82f6">$139</span> / <span style="color:#a855f7">$199</span></td></tr>';
+h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td>$99 / $139 / $199</td></tr>';
 h+='</tbody></table>';document.getElementById('compareTable').innerHTML=h}
 function showCompare(key){
 document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});
@@ -466,7 +464,7 @@ Object.keys(cats).forEach(function(cat){
 h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';
 cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+buildCk(f)+'</td></tr>'});
 });
-h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$99</span> / <span style="color:#3b82f6">$139</span> / <span style="color:#a855f7">$199</span></td></tr>';
+h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td>$99 / $139 / $199</td></tr>';
 h+='</tbody></table>';
 document.getElementById('compareTable').innerHTML=h}
 // Comparison hidden by default; clicking the expand button initializes it.
@@ -489,7 +487,7 @@ document.getElementById('compareTable').innerHTML=h}
         <div class="price-users">Every feature included</div>
         <div class="price-includes">Includes</div>
         <ul class="price-features">
-          <li>Every Build feature &mdash; nothing tier-locked</li>
+          <li>Every Build feature included</li>
           <li>Your website + hosting</li>
           <li>Texting &amp; AI: $10/mo each to switch on (what our providers charge us to offer it), usage at cost</li>
           <li>No contract &mdash; cancel any month</li>
@@ -504,7 +502,7 @@ document.getElementById('compareTable').innerHTML=h}
         <div class="price-users">Every feature included</div>
         <div class="price-includes">Includes</div>
         <ul class="price-features">
-          <li>Every Build feature &mdash; nothing tier-locked</li>
+          <li>Every Build feature included</li>
           <li>Your website + hosting</li>
           <li>Texting &amp; AI: $10/mo each to switch on (what our providers charge us to offer it), usage at cost</li>
           <li>No contract &mdash; cancel any month</li>
@@ -519,7 +517,7 @@ document.getElementById('compareTable').innerHTML=h}
         <div class="price-users">Every feature included</div>
         <div class="price-includes">Includes</div>
         <ul class="price-features">
-          <li>Every Build feature &mdash; nothing tier-locked</li>
+          <li>Every Build feature included</li>
           <li>Your website + hosting</li>
           <li>Texting &amp; AI: $10/mo each to switch on (what our providers charge us to offer it), usage at cost</li>
           <li>No contract &mdash; cancel any month</li>
@@ -589,11 +587,10 @@ document.getElementById('compareTable').innerHTML=h}
     <!-- Add-ons -->
     <div class="reveal" style="margin-top:48px;max-width:900px">
       <div style="font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:16px">Self-Hosted Add-Ons</div>
-      <div class="own-addons" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+      <div class="own-addons" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
         <div style="background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:16px 18px"><div style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:6px">Installation Service</div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:rgba(255,255,255,0.5)">$500</div><div style="font-size:11px;color:rgba(255,255,255,0.25)">We deploy it for you</div></div>
         <div style="background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:16px 18px"><div style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:6px">Update Subscription</div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:rgba(255,255,255,0.5)">$999<span style="font-size:14px;font-family:'Barlow',sans-serif;font-weight:400">/yr</span></div><div style="font-size:11px;color:rgba(255,255,255,0.25)">Get all new features</div></div>
-        <div style="background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:16px 18px"><div style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:6px">Support Contract</div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:rgba(255,255,255,0.5)">$199<span style="font-size:14px;font-family:'Barlow',sans-serif;font-weight:400">/mo</span></div><div style="font-size:11px;color:rgba(255,255,255,0.25)">Email + call support</div></div>
-        <div style="background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:16px 18px"><div style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:6px">Custom Dev</div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:rgba(255,255,255,0.5)">$150<span style="font-size:14px;font-family:'Barlow',sans-serif;font-weight:400">/hr</span></div><div style="font-size:11px;color:rgba(255,255,255,0.25)">Feature development</div></div>
+        <div style="background:var(--charcoal);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:16px 18px"><div style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:6px">Support</div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:rgba(255,255,255,0.7)">Free</div><div style="font-size:11px;color:rgba(255,255,255,0.65)">Support is free &mdash; email us or ask in your CRM&#39;s help chat.</div></div>
       </div>
     </div>
   </div>

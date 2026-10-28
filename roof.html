@@ -391,31 +391,26 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
         <div class="feat-icon">&#x1F6E1;</div>
         <div class="feat-title">Never Lose an Insurance Job</div>
         <p class="feat-desc">Track every claim from filed to paid. Auto-generate Xactimate-ready scopes. The paperwork that used to kill deals? It handles itself now.</p>
-        <span class="feat-tag">All Tiers</span>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">&#x1F4CA;</div>
         <div class="feat-title">See Every Job at a Glance</div>
         <p class="feat-desc">Drag-and-drop Kanban built for roofing. Lead to inspection to signed to production to complete. Open it up and know exactly where you stand.</p>
-        <span class="feat-tag">All Tiers</span>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">&#x1F6AA;</div>
         <div class="feat-title">Hit More Doors. Track Every Knock.</div>
         <p class="feat-desc">Drop pins on a map, assign zones, track outcomes in real time. GPS-verified with photo proof. You'll know who knocked where and what happened.</p>
-        <span class="feat-tag">Starter +</span>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">&#x26A1;</div>
         <div class="feat-title">Be the First Crew Knocking</div>
         <p class="feat-desc">NOAA hail and wind data mapped to your area. Auto-generate lead lists by zip after every storm. While everyone else is checking the weather, you're already knocking.</p>
-        <span class="feat-tag">Pro +</span>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">&#x1F464;</div>
         <div class="feat-title">Fewer Phone Calls. More Trust.</div>
         <p class="feat-desc">Homeowners log in to see project status, photos, invoices, and warranty info. They stop calling because they already know. That's how you build referrals.</p>
-        <span class="feat-tag">All Tiers</span>
       </div>
     </div>
   </div>
@@ -478,15 +473,13 @@ var cats={
 'Financial':['qb','financing','pricebook','inventory','fleet'],
 'Platform':['mobile','api']
 };
-var roofTiers={crm:'Starter',quotes:'Starter',invoicing:'Starter',scheduling:'Starter',storm:'Storm',canvas:'Storm',insurance:'Business',visualizer:'Business',portal:'Starter',photo:'Pro',qb:'Pro',pricebook:'Pro'};
-var tierColors={Starter:'#22c55e',Pro:'#3b82f6',Business:'#a855f7',Storm:'#FF6D00',Enterprise:'#f59e0b'};
 function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
 // Not offered by this system (the Factory's feature registry, 2026-10-23) — never claimed: the owner's rule is that nothing is advertised until it is live and working. The competitor's column still shows theirs.
 var NOT_OFFERED=['time', 'gps', 'routing', 'rfis', 'cos', 'punch', 'logs', 'gantt', 'measure', 'estimator', 'sms', 'email', 'booking', 'inventory', 'fleet', 'financing', 'mobile', 'api'];
-function roofCk(f){if(NOT_OFFERED.indexOf(f)>-1)return '<span class="cmp-n">&#10007;</span>';if(['visualizer','estimator'].indexOf(f)>-1)return '<span class="cmp-a">SEPARATE</span>';if(roofTiers[f]==='Enterprise')return '<span class="cmp-a">ENTERPRISE</span>';return '<span class="cmp-y">&#10003;</span>'}
+function roofCk(f){if(NOT_OFFERED.indexOf(f)>-1)return '<span class="cmp-n">&#10007;</span>';if(['visualizer','estimator'].indexOf(f)>-1)return '<span class="cmp-a">SEPARATE</span>';return '<span class="cmp-y">&#10003;</span>'}
 function toggleCmp(){var c=document.getElementById('cmpContent'),b=document.getElementById('cmpToggleBtn');if(c.style.display==='none'){c.style.display='block';b.innerHTML='Hide comparison &nbsp;&uarr;';showCompareInit('acculynx')}else{c.style.display='none';b.innerHTML='Compare vs. AccuLynx, JobNimbus &amp; Roofr &nbsp;&darr;'}}
 function showCompareInit(key){document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});document.querySelector('.vs-toggle[onclick*="'+key+'"]').classList.add('active');renderCmp(key)}
-function renderCmp(key){var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Roof</th></tr></thead><tbody>';Object.keys(cats).forEach(function(cat){h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+roofCk(f)+'</td></tr>'})});h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td><span style="color:#22c55e">$99</span> / <span style="color:#3b82f6">$139</span> / <span style="color:#a855f7">$199</span></td></tr>';h+='</tbody></table>';document.getElementById('compareTable').innerHTML=h}
+function renderCmp(key){var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Roof</th></tr></thead><tbody>';Object.keys(cats).forEach(function(cat){h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+roofCk(f)+'</td></tr>'})});h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td>$99 / $139 / $199</td></tr>';h+='</tbody></table>';document.getElementById('compareTable').innerHTML=h}
 function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});event.target.classList.add('active');renderCmp(key)}
 // Comparison hidden by default; expand button initializes it.
 </script>
@@ -509,7 +502,7 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
         </div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Every Roof feature &mdash; nothing tier-locked</li>
+          <li class="bold-item">Every Roof feature included</li>
           <li class="bold-item">Your website + hosting</li>
           <li>Texting &amp; AI: $10/mo each to switch on (what our providers charge us to offer it), usage at cost</li>
           <li>No contract &mdash; cancel any month</li>
@@ -525,7 +518,7 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
         </div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Every Roof feature &mdash; nothing tier-locked</li>
+          <li class="bold-item">Every Roof feature included</li>
           <li class="bold-item">Your website + hosting</li>
           <li>Texting &amp; AI: $10/mo each to switch on (what our providers charge us to offer it), usage at cost</li>
           <li>No contract &mdash; cancel any month</li>
@@ -541,7 +534,7 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
         </div>
         <div class="price-divider"></div>
         <ul class="price-features">
-          <li class="bold-item">Every Roof feature &mdash; nothing tier-locked</li>
+          <li class="bold-item">Every Roof feature included</li>
           <li class="bold-item">Your website + hosting</li>
           <li>Texting &amp; AI: $10/mo each to switch on (what our providers charge us to offer it), usage at cost</li>
           <li>No contract &mdash; cancel any month</li>
@@ -589,7 +582,7 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
         <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:white;margin-bottom:24px">From $99<span style="font-size:14px;color:rgba(255,255,255,0.4);font-family:'Barlow',sans-serif">/mo</span></div>
         <ul style="list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:8px">
           <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--accent)">&check;</span>We host, update, and maintain everything</li>
-          <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--accent)">&check;</span>Support included on every tier</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--accent)">&check;</span>Support is free &mdash; email us or ask in your CRM&#39;s help chat</li>
           <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--accent)">&check;</span>New features automatically</li>
           <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--accent)">&check;</span>30-day money-back guarantee &middot; cancel anytime</li>
         </ul>
