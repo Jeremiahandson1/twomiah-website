@@ -443,7 +443,9 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
           <option value="dispensary" hidden disabled data-closed>Dispensary / Cannabis</option>
           <option value="restaurant">Restaurant / Caf&eacute;</option>
           <option value="food_truck">Food Truck</option>
+          <option value="bar_and_grill">Bar &amp; Grill / Tavern / Pub</option>
           <option value="salon">Salon &amp; Spa</option>
+          <option value="retail">Retail Shop</option>
           <option value="fitness">Gym / Fitness Studio</option>
           <option value="other">Something else</option>
       </select>
@@ -466,6 +468,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
         <button type="button" class="bl-look" data-design="studio" aria-pressed="true">Studio</button>
         <button type="button" class="bl-look" data-design="heritage" aria-pressed="false">Heritage</button>
         <button type="button" class="bl-look" data-design="foundry" aria-pressed="false">Foundry</button>
+        <button type="button" class="bl-look" data-design="market" aria-pressed="false">Market</button>
       </div>
       <div class="bl-after" id="blAfter" hidden>
         <span>That&rsquo;s an example with sample content &mdash; your real site uses your own services, photos and words. How do you want it?</span>
@@ -944,6 +947,8 @@ var mq = document.getElementById('marquee'); if(mq) mq.innerHTML += mq.innerHTML
     var cv=(cityEl.value||'').trim(),ci=cv.lastIndexOf(','),city=(ci>-1?cv.slice(0,ci):cv).trim(),st=(ci>-1?cv.slice(ci+1):'').trim();
     if(city.length<2)return flag(cityEl);
     cur={bn:bn,trade:trade.value,city:city,st:st};pages={};after.hidden=true;if(looksBar)looksBar.hidden=true;
+    // A shop starts in Market, the look made for shops (signup.html does the same); every other trade in Studio.
+    setLook(trade.value==='retail'?'market':'studio');
     // Stacked layout (phones): the preview is below the form — bring it into view.
     if(window.innerWidth<=1024){var pv=document.querySelector('.bl-preview');if(pv&&pv.scrollIntoView)pv.scrollIntoView({behavior:'smooth',block:'start'});}
     build(look);
