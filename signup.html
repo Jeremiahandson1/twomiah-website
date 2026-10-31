@@ -90,7 +90,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .file-name{font-size:13px;color:rgba(255,255,255,0.35)}
 
 /* Plan cards */
-.plan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.plan-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px}
 .plan-card{background:var(--dark);border:2px solid rgba(255,255,255,0.08);border-radius:6px;padding:20px 16px;cursor:pointer;transition:all 0.2s;text-align:center}
 .plan-card:hover{border-color:rgba(255,255,255,0.2)}
 .plan-card.selected{border-color:var(--fire);background:rgba(255,61,0,0.06)}
@@ -394,6 +394,11 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
 
       <label style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;display:block">Select a Plan *</label>
       <div class="plan-grid" id="planGrid">
+        <div class="plan-card" data-plan="webpresence" onclick="selectPlan(this)">
+          <div class="plan-label">One page</div>
+          <div class="plan-price">$19</div>
+          <div class="plan-per">/mo &middot; one-page site</div>
+        </div>
         <div class="plan-card" data-plan="website" onclick="selectPlan(this)">
           <div class="plan-label">Website</div>
           <div class="plan-price">$49</div>
@@ -503,7 +508,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
         <input type="email" id="email" placeholder="you@yourbusiness.com" autocomplete="username">
         <div class="field-hint domain-hint">You sign in with this. It starts as your business email &mdash; change it if you sign in with your own address.</div>
       </div>
-      <div class="field">
+      <div class="field" id="passwordField">
         <label for="password">Password *</label>
         <div class="pw-wrap">
           <input type="password" id="password" placeholder="At least 8 characters" autocomplete="new-password">
@@ -746,10 +751,17 @@ function selectPlan(el) {
 // No initializer: a ?plan= link calls applyPlanMode() before this line runs.
 var CRM_TEXT;
 function applyPlanMode() {
-  var w = selectedPlan === 'website';
+  // The $19 one-page plan is a website-only signup too, and smaller still: no password (the owner signs in from a link we
+  // email), no logo, photo or colour here (all set in the page's own editor), no $499 customization and no migration.
+  var p = selectedPlan === 'webpresence';
+  var w = selectedPlan === 'website' || p;
   var hosting = document.getElementById('hostingGrid'), addons = document.getElementById('addonsGrid');
   [hosting, hosting && hosting.previousElementSibling, addons, addons && addons.previousElementSibling, addons && addons.previousElementSibling && addons.previousElementSibling.previousElementSibling, document.getElementById('askNote')]
     .forEach(function(el) { if (el) el.style.display = w ? 'none' : ''; });
+  var field = function(id) { var el = document.getElementById(id); return el && el.closest('.field'); };
+  [field('logoFile'), field('heroFile'), field('colorPicker'), document.getElementById('deployGrid'), field('migrationSource'), document.getElementById('passwordField')]
+    .forEach(function(el) { if (el) el.style.display = p ? 'none' : ''; });
+  if (p && selectedDeploy !== 'basic') { var basic = document.querySelector('.deploy-card[data-deploy="basic"]'); if (basic) selectDeploy(basic); }
   if (w && selectedHosting !== 'saas') { var saas = document.querySelector('.hosting-card[data-hosting="saas"]'); if (saas) selectHosting(saas); }
   var d = function(n) { return document.querySelector('.step[data-step="' + n + '"] .step-desc'); };
   if (!CRM_TEXT) {
@@ -759,7 +771,9 @@ function applyPlanMode() {
     CRM_TEXT.plan = d(3) ? d(3).textContent : '';
   }
   document.getElementById('pageSub').textContent = w ? "Fill out the form below and we'll have your website ready in minutes." : CRM_TEXT.sub;
-  document.getElementById('planNote').innerHTML = w ? 'Website only: your site, hosting and your own editor. Add the CRM any time.' : CRM_TEXT.note;
+  document.getElementById('planNote').innerHTML = p
+    ? 'One page: your business found online &mdash; what you do, hours, service area, reviews &mdash; with a quote form and a now-hiring form, each emailed straight to you. Hosting and your own editor included. More pages, the CRM or a store? Move up any time.'
+    : w ? 'Website only: your site, hosting and your own editor. Add the CRM any time.' : CRM_TEXT.note;
   if (d(3)) d(3).textContent = w ? 'Choose your plan.' : CRM_TEXT.plan;
   var WEB_TEXT = [
     'Tell us about your business so we can set up your website.',
@@ -767,7 +781,13 @@ function applyPlanMode() {
     'Your site is built and deployed automatically \u2014 included. Want it hand-customized beyond the auto-build? That\'s the one optional add-on.',
     'This will be the owner login for your website editor.'
   ];
-  [0, 1, 4, 5].forEach(function(n, i) { if (d(n)) d(n).textContent = w ? WEB_TEXT[i] : CRM_TEXT[i]; });
+  var PAGE_TEXT = [
+    'Tell us about your business so we can write your page.',
+    'Your logo, photos and colours are added in your page\'s own editor once it is live — nothing to do here.',
+    'Your page is built and put online automatically — included.',
+    'Where we send your sign-in link. No password: you sign in to your editor from the link we email you.'
+  ];
+  [0, 1, 4, 5].forEach(function(n, i) { if (d(n)) d(n).textContent = p ? PAGE_TEXT[i] : w ? WEB_TEXT[i] : CRM_TEXT[i]; });
   syncSubmitLabel();
 }
 
@@ -941,7 +961,7 @@ function nextStep() {
   if (currentStep === 5) {
     if (!val('firstName') || !val('lastName')) return toast('Name is required.', 'error');
     if (!validEmail(val('email'))) return toast('Enter the email you will sign in with.', 'error');
-    if (!val('password') || val('password').length < 8) return toast('Password must be at least 8 characters.', 'error');
+    if (selectedPlan !== 'webpresence' && (!val('password') || val('password').length < 8)) return toast('Password must be at least 8 characters.', 'error');
   }
   // Build summary on step 5 (admin account)
   if (currentStep === 5) buildSummary();
@@ -1108,7 +1128,7 @@ document.addEventListener('DOMContentLoaded', syncMigrationSources);
 
 
 function planLabel(p) {
-  var map = { website: 'Website only ($49/mo)', starter10: 'Starter — up to 10 users ($99/mo)', team25: 'Team — up to 25 users ($139/mo)', business50: 'Business — up to 50 users ($199/mo)' };
+  var map = { webpresence: 'One page ($19/mo)', website: 'Website only ($49/mo)', starter10: 'Starter — up to 10 users ($99/mo)', team25: 'Team — up to 25 users ($139/mo)', business50: 'Business — up to 50 users ($199/mo)' };
   return map[p] || p;
 }
 function deployLabel(d) {
@@ -1140,6 +1160,11 @@ function buildSummary() {
     ['Admin Name', val('firstName') + ' ' + val('lastName')],
     ['Login Email', val('email')],
   ];
+  // The $19 page asks none of these, so it lists none of them.
+  if (selectedPlan === 'webpresence') {
+    var notAsked = ['Brand Color', 'Hosting', 'Deploy Service', 'You asked for', 'Migration From'];
+    items = items.filter(function (item) { return notAsked.indexOf(item[0]) < 0; });
+  }
 
   var html = '';
   items.forEach(function(item) {
@@ -1167,7 +1192,7 @@ if (/[?&]show=all/.test(location.search)) document.querySelectorAll('option[dat
 function getFormData() {
   var ask = signupAsk(), addons = ask.labels;
 
-  var planPrices = { website: 49, starter10: 99, team25: 139, business50: 199 };
+  var planPrices = { webpresence: 19, website: 49, starter10: 99, team25: 139, business50: 199 };
 
   return {
     name: val('companyName'),
@@ -1195,7 +1220,7 @@ function getFormData() {
     deployment_model: selectedHosting === 'saas' ? 'saas' : 'owned',
     monthly_amount: selectedHosting === 'saas' ? planPrices[selectedPlan] || 0 : null,
     billing_type: selectedHosting === 'saas' ? 'subscription' : 'one_time',
-    products: selectedPlan === 'website' ? ['website'] : ['crm', 'website'],
+    products: selectedPlan === 'website' || selectedPlan === 'webpresence' ? ['website'] : ['crm', 'website'],
     features: [],
     goals: ask.goals,
     addons: ask.addons,
@@ -1207,7 +1232,8 @@ function getFormData() {
       val('migrationSource') ? 'Migration from: ' + val('migrationSource') : '',
       'Admin: ' + val('firstName') + ' ' + val('lastName'),
     ].filter(Boolean).join(' | '),
-    admin_password: val('password'),
+    // The $19 page has no password: its owner signs in from an emailed link.
+    admin_password: selectedPlan === 'webpresence' ? undefined : val('password'),
   };
 }
 
@@ -1225,7 +1251,7 @@ function syncSubmitLabel() {
   var btn = document.getElementById('submitBtn');
   if (!btn) return;
   if (submitLabel === undefined) submitLabel = btn.innerHTML;
-  btn.innerHTML = selectedHosting !== 'saas' ? 'Request My License &rarr;' : selectedPlan === 'website' ? 'Submit &amp; Create My Website' : submitLabel;
+  btn.innerHTML = selectedHosting !== 'saas' ? 'Request My License &rarr;' : selectedPlan === 'webpresence' ? 'Submit &amp; Create My Page' : selectedPlan === 'website' ? 'Submit &amp; Create My Website' : submitLabel;
 }
 function fieldVal(id) {
   var el = document.getElementById(id);
@@ -1288,7 +1314,7 @@ function submitForm() {
       } else {
         btn.textContent = 'Account Created!';
         document.querySelector('.step[data-step="6"] .step-title').textContent = 'You\'re All Set!';
-        document.querySelector('.step[data-step="6"] .step-desc').textContent = (selectedPlan === 'website' ? 'Your website' : 'Your CRM') + ' is being built. Check your email (' + val('email') + ') for login instructions.';
+        document.querySelector('.step[data-step="6"] .step-desc').textContent = (selectedPlan === 'webpresence' ? 'Your page' : selectedPlan === 'website' ? 'Your website' : 'Your CRM') + ' is being built. Check your email (' + val('email') + ') for login instructions.';
       }
     } else {
       toast(result.data.error || 'Something went wrong. Please try again.', 'error');

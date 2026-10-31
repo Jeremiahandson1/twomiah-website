@@ -173,7 +173,7 @@ select.bl-input{appearance:auto;cursor:pointer}
 #doors{padding:120px 48px}
 .doors-head{max-width:760px;margin:0 auto 56px;text-align:center}
 .doors-head .section-sub{margin:0 auto}
-.doors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:1200px;margin:0 auto;background:rgba(255,255,255,0.05)}
+.doors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:1200px;margin:0 auto;background:rgba(255,255,255,0.05)}
 .door{background:var(--charcoal);padding:40px 34px;display:flex;flex-direction:column;position:relative;border:1px solid transparent;transition:background 0.25s,border-color 0.25s}
 .door::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform 0.35s cubic-bezier(0.22,1,0.36,1)}
 .door:hover{background:#1e1e1e;border-color:rgba(255,109,0,0.15)}
@@ -551,6 +551,18 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
   </div>
   <div class="doors-grid">
     <div class="door reveal">
+      <div class="door-tag">Just be found</div>
+      <div class="door-name">One page</div>
+      <div class="door-price">$19<small>/mo</small></div>
+      <ul class="door-list">
+        <li>One page that says what you do, where, and when you're open</li>
+        <li>A quote form and a now-hiring form &mdash; each emailed straight to you</li>
+        <li>Hosting, SSL and your own editor to change it</li>
+      </ul>
+      <div class="door-note">Need more pages, the CRM or a store? Move up any time.</div>
+      <a href="/signup.html?plan=webpresence" class="door-cta">Start &mdash; $19/mo &rarr;</a>
+    </div>
+    <div class="door reveal">
       <div class="door-tag">Just a website</div>
       <div class="door-name">Website</div>
       <div class="door-price">$49<small>/mo</small> <small>· see it before you pay</small></div>
@@ -608,7 +620,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
         <li>No contract — cancel any month</li>
         <li>Own it outright (~36× monthly) and take the code</li>
       </ul>
-      <div class="price-sub2"><b>Why every feature at one price?</b> Most features cost us nothing to run, so we don't nickel-and-dime them. The few that cost real money — texting, AI — you pay what they actually cost, not a 5x markup. The $10/mo to switch each one on is simply what our providers charge us to offer it. Bigger teams scale by real cost: <b>$139</b> up to 25 users, <b>$199</b> up to 50. Just need a website? <b>$49/mo.</b> Something custom? <b>$499</b> one-time. One specialist tool sits outside the plan and is priced separately: the <b>Exterior Visualizer</b>.</div>
+      <div class="price-sub2"><b>Why every feature at one price?</b> Most features cost us nothing to run, so we don't nickel-and-dime them. The few that cost real money — texting, AI — you pay what they actually cost, not a 5x markup. The $10/mo to switch each one on is simply what our providers charge us to offer it. Bigger teams scale by real cost: <b>$139</b> up to 25 users, <b>$199</b> up to 50. Just need a website? <b>$49/mo</b> &mdash; or one page for <b>$19/mo</b>. Something custom? <b>$499</b> one-time. One specialist tool sits outside the plan and is priced separately: the <b>Exterior Visualizer</b>.</div>
       <a href="/signup.html?plan=starter10" class="price-cta magnetic">Start — $99/mo →</a>
     </div>
     <div class="price-compare reveal">

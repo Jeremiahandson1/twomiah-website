@@ -48,6 +48,20 @@
   </div>
 </main>
 <script>
+// The $19 one-page plan (?plan=webpresence): no CRM, no password — the page is put online and its owner signs in from an emailed link.
+(function(){
+  if (new URLSearchParams(location.search).get('plan') !== 'webpresence') return;
+  var h = document.querySelector('h1'), sub = document.querySelector('.sub'), steps = document.querySelectorAll('.step');
+  h.innerHTML = "Payment received. <span>We're putting your page online now.</span>";
+  sub.textContent = "Your page is being written and published as you read this. No further action needed — here's what happens next:";
+  var text = [
+    ["Right now — your page is being built", "Your one-page site is being written for your business and put online, with hosting and SSL."],
+    ["Within a few minutes — check your email", "You'll get an email with your page's address and a sign-in link to its editor. There is no password: you always sign in from a link we email you."],
+    ["Then — make it yours", "Add your logo and photos, pick your colours, and switch on the quote form, the now-hiring form, or both. Whatever people send comes straight to your inbox."]
+  ];
+  steps.forEach(function (st, i) { if (!text[i]) return; st.querySelector('b').textContent = text[i][0]; st.querySelector('p').textContent = text[i][1]; });
+  var spam = document.querySelector('.spam'); if (spam) spam.innerHTML = "<b>Don't see the email?</b> Check your spam or promotions folder first — then email us and we'll send you a new sign-in link right away.";
+})();
 // Back from the texting checkout a signup chained after the plan (?texting=on|later).
 (function(){
   var t = new URLSearchParams(location.search).get('texting'), el = document.getElementById('textingNote');
