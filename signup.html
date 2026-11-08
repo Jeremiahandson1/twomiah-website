@@ -1187,12 +1187,22 @@ function escapeHtml(s) {
   return d.innerHTML;
 }
 
+// One message at a time: a new one replaces the last and restarts its clock, and an error goes as soon as the person types or
+// picks again — a "Company name is required." stayed on screen after the name was filled in (contractor live test 11/07).
+var toastTimer = null;
 function toast(msg, type) {
   var t = document.getElementById('toast');
   t.textContent = msg;
   t.className = 'toast ' + (type || 'success') + ' show';
-  setTimeout(function() { t.classList.remove('show'); }, 4000);
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(function() { t.classList.remove('show'); toastTimer = null; }, 4000);
 }
+function clearErrorToast() {
+  var t = document.getElementById('toast');
+  if (t && t.classList.contains('error') && t.classList.contains('show')) { t.classList.remove('show'); if (toastTimer) { clearTimeout(toastTimer); toastTimer = null; } }
+}
+document.addEventListener('input', clearErrorToast, true);
+document.addEventListener('change', clearErrorToast, true);
 
 // A test signup for an industry not open yet: twomiah.com/signup?show=all shows them (the Factory still refuses real ones).
 if (/[?&]show=all/.test(location.search)) document.querySelectorAll('option[data-closed]').forEach(function (o) { o.hidden = false; o.disabled = false; });
