@@ -262,7 +262,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.05);padding
 @media(max-width:640px){.own-grid{grid-template-columns:1fr !important}.own-addons{grid-template-columns:repeat(2,1fr) !important}}
 </style>
 </head>
-<body>
+<body data-template="crm-homecare">
 
 <nav>
   <a href="index.html" class="nav-logo">
@@ -292,6 +292,10 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.05);padding
       <a href="/roof.html">Roof &mdash; Roofing</a>
       <a href="/wrench.html">Wrench &mdash; Trades</a>
       <a href="/care.html">Care &mdash; Home Care</a>
+      <a href="/landscaping.html">Landscaping</a>
+      <a href="/salon.html">Salon</a>
+      <a href="/restaurant.html">Restaurant &amp; Bar</a>
+      <a href="/store.html">Store</a>
       <a href="/vision.html">Vision</a>
     </section>
     <section>
@@ -331,7 +335,8 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.05);padding
     <p class="hero-sub">Scheduling, compliance, caregiver management, your website, and marketing &mdash; <em>all in one system</em>. No more juggling five logins to get through the day. No more audit panic. No more missed shifts.</p>
     <div class="hero-actions">
       <a href="/signup/care" class="btn-primary">Launch Your System</a>
-      <a href="#stack" class="btn-ghost">See What's Inside</a>
+      <a href="https://demo.twomiah.com/crm?trade=homecare" class="btn-ghost" target="_blank" rel="noopener">Try the demo</a>
+      <a href="#everything" class="btn-ghost">Every Feature</a>
     </div>
   </div>
   <div class="hero-right">
@@ -396,7 +401,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.05);padding
       <div class="stack-card reveal">
         <div class="stack-icon">&#x1F3E5;</div>
         <div class="stack-name">Home Care CRM</div>
-        <p class="stack-desc">Clients, caregivers, Medicare/Medicaid claims, payroll, compliance — purpose-built for home care.</p>
+        <p class="stack-desc">Clients, caregivers, visits, billing (private pay, long-term care insurance, split billing), payroll and credentials — purpose-built for home care.</p>
         <div class="stack-price">From $99<span>/mo</span></div>
       </div>
     </div>
@@ -411,10 +416,10 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.05);padding
       <h2 class="section-title">Stop Surviving.<br><span class="teal-line">Start Scaling.</span></h2>
     </div>
     <div class="features-grid">
-      <div class="feat feat-wide reveal">
+      <div class="feat feat-wide reveal" data-feature="scheduling care_shift_repeats care_cert_reminders">
         <div class="feat-icon">&#x1F4C5;</div>
         <div class="feat-title">Never Miss a Shift Again</div>
-        <p class="feat-desc">Drag-and-drop scheduling across caregivers and clients. Avoid double-bookings, match skills to needs, fill open shifts fast. The scramble is over.</p>
+        <p class="feat-desc">Scheduling across caregivers and clients, with weekly, monthly and every-few-weeks repeats. Expired credentials are flagged when you schedule.</p>
         <div class="mini-schedule">
           <div class="ms-header"></div><div class="ms-header">Mon</div><div class="ms-header">Tue</div><div class="ms-header">Wed</div><div class="ms-header">Thu</div><div class="ms-header">Fri</div>
           <div class="ms-name">Maria G.</div><div class="ms-shift morning">8a-4p</div><div class="ms-shift morning">8a-4p</div><div class="ms-shift off">Off</div><div class="ms-shift morning">8a-4p</div><div class="ms-shift evening">2p-10p</div>
@@ -422,11 +427,12 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.05);padding
           <div class="ms-name">Lisa K.</div><div class="ms-shift off">Off</div><div class="ms-shift evening">10a-6p</div><div class="ms-shift morning">8a-4p</div><div class="ms-shift evening">10a-6p</div><div class="ms-shift morning">8a-4p</div>
         </div>
       </div>
-      <div class="feat reveal"><div class="feat-icon">&#x1F465;</div><div class="feat-title">Every Client. Every Detail. Instantly.</div><p class="feat-desc">Care plans, emergency contacts, medications, doctor info, visit history &mdash; everything in one place. When a caregiver walks in, they know exactly what to do.</p></div>
-      <div class="feat reveal"><div class="feat-icon">&#x1F9D1;&zwj;&#x2695;&zwj;</div><div class="feat-title">The Right Caregiver. Every Time.</div><p class="feat-desc">Certifications, skills, availability, compliance docs, and performance &mdash; all tracked. Match the right person to each client without guessing.</p></div>
-      <div class="feat reveal"><div class="feat-icon">&#x1F4B0;</div><div class="feat-title">Payroll That Runs Itself</div><p class="feat-desc">Pay rates, overtime, mileage &mdash; all handled. Export-ready reports. Stop spending Sunday nights on spreadsheets.</p></div>
-      <div class="feat reveal"><div class="feat-icon">&#x1F4CA;</div><div class="feat-title">Know Your Numbers</div><p class="feat-desc">Revenue, hours, caregiver utilization, compliance rates &mdash; at a glance. Make decisions with real data instead of gut feelings.</p></div>
-      <div class="feat reveal"><div class="feat-icon">&#x1F4F1;</div><div class="feat-title">Your Caregivers Run It From Their Phone</div><p class="feat-desc">Clock in, view schedules, access care plans, log visit notes &mdash; all from their phone. Clocking in opens the Sandata app, which records the EVV visit for the state.</p></div>
+      <div class="feat reveal" data-feature="care_match_prefs care_visit_optimizer"><div class="feat-icon">&#x1F9D1;&zwj;&#x2695;&zwj;</div><div class="feat-title">The Right Caregiver, Suggested</div><p class="feat-desc">Suggested caregivers weigh the skills a client needs, a gender preference and a language, and say why. Fill many open visits at once with the visit optimizer.</p></div>
+      <div class="feat reveal" data-feature="care_open_shift_offers care_no_arrival"><div class="feat-icon">&#x1F4E2;</div><div class="feat-title">Open Shifts, Filled</div><p class="feat-desc">Offer open shifts with an answer-by time and see who accepted or declined. When a visit passes its start with no clock-in, the office, the caregiver and (if chosen) the family are told.</p></div>
+      <div class="feat reveal" data-feature="care_payroll_rules care_payroll_providers"><div class="feat-icon">&#x1F4B0;</div><div class="feat-title">Payroll by Your State's Rules</div><p class="feat-desc">Overtime by your own state's rule, paid travel and mileage between visits, and payroll files for ADP, Paychex and Excel &mdash; or the pay run sent straight to ADP, Paychex or Gusto.</p></div>
+      <div class="feat reveal" data-feature="care_margin_reports care_report_builder"><div class="feat-icon">&#x1F4CA;</div><div class="feat-title">Know Your Margin</div><p class="feat-desc">What each client brings in against what their caregivers cost, by referral source, payer and branch &mdash; and a report builder with your own dashboards and scheduled reports.</p></div>
+      <div class="feat reveal" data-feature="care_required_tasks care_visit_signature care_offline_saves"><div class="feat-icon">&#x1F4F1;</div><div class="feat-title">Visits Done Right on the Phone</div><p class="feat-desc">Required tasks hold clock-out until they're done or skipped with a reason, the client signs at the end of the visit, and saves made without signal are sent later, once. Clocking in opens the Sandata app, which records the EVV visit for the state.</p></div>
+      <div class="feat reveal" data-feature="care_family_texts care_family_content care_autopay"><div class="feat-icon">&#x1F46A;</div><div class="feat-title">Families in the Loop</div><p class="feat-desc">A text to relatives who asked for it when the caregiver arrives and leaves; a family portal with the visit tasks, meals and the documents you choose; invoices paid automatically by card or bank.</p></div>
     </div>
   </div>
 </section>
@@ -451,7 +457,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.05);padding
         </div>
         <div class="compliance-item">
           <div class="compliance-icon">&#x1F4CB;</div>
-          <div><div class="compliance-name">Certification Tracking</div><div class="compliance-desc">Automatic alerts for expiring certifications, licenses, TB tests, CPR, and background checks. Never miss a renewal.</div></div>
+          <div><div class="compliance-name">Credential Expiry Reminders</div><div class="compliance-desc">Reminders to the caregiver and the office, at the lead times you pick, for caregivers' and clients' credentials. An expired caregiver is flagged when scheduling.</div></div>
         </div>
         <div class="compliance-item">
           <div class="compliance-icon">&#x1F4C4;</div>
@@ -471,75 +477,174 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.05);padding
   </div>
 </section>
 
-<!-- ═══ VS COMPARISON ═══ -->
+<!-- EVERY FEATURE (generated from the Factory's feature registry: bun scripts/site-facts.ts) -->
+<section id="everything">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-label">Every Feature, Every Plan</div>
+      <h2 class="section-title">Everything<br><span class="teal-line">That's Included.</span></h2>
+      <p class="section-sub">Every feature below is in every plan &mdash; plans differ only by how many people log in. Open a group, or <a href="https://demo.twomiah.com/crm?trade=homecare" target="_blank" rel="noopener" style="color:var(--teal)">try the home care demo</a> (a sample agency; nothing you do there is saved).</p>
+    </div>
+<!-- facts:features crm-homecare -->
+<style>.fx{max-width:1100px;margin:36px auto 0;text-align:left}.fx-cat{border-top:1px solid color-mix(in srgb,currentColor 18%,transparent)}.fx-cat summary{cursor:pointer;padding:14px 4px;font-weight:700;list-style:none;display:flex;align-items:baseline;gap:10px}.fx-cat summary::-webkit-details-marker{display:none}.fx-cat summary::after{content:'+';opacity:.6;margin-left:auto}.fx-cat[open] summary::after{content:'\2212'}.fx-cat ul{list-style:none;margin:0;padding:0 4px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px 28px}.fx-cat li{font-size:14px;line-height:1.5;opacity:.85}.fx-cat li b{display:block;opacity:1}.fx-cat li i{display:block;font-size:12px;opacity:.75}.fx-n{font-weight:400;opacity:.6}.fx-h{font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin:28px 0 6px}.cx{max-width:900px;margin:0 auto;overflow-x:auto}.cx table{width:100%;border-collapse:collapse;font-size:14px;text-align:left}.cx th,.cx td{padding:10px 12px;border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent);vertical-align:top}.cx th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}.cx td.y{text-align:center;font-weight:700;white-space:nowrap}.cx .cx-note{font-size:12px;opacity:.65;margin-top:12px;line-height:1.5}.cx .cx-note a{color:inherit}@media(max-width:700px){.cx thead{display:none}.cx table,.cx tbody,.cx tr,.cx td{display:block;width:100%}.cx tr{padding:12px 0;border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent)}.cx td{border:0;padding:2px 0}.cx td:first-child{font-weight:700;padding-bottom:6px}.cx td.y{display:inline-block;width:auto;text-align:left;margin-right:14px;font-size:13px;white-space:normal}.cx td.y::before{content:attr(data-label) ' ';font-weight:400;opacity:.7}}</style>
+<div class="fx">
+<details class="fx-cat"><summary>Core <span class="fx-n">4</span></summary><ul>
+<li data-feature="contacts"><b>Contacts</b>Clients, leads and suppliers in one place</li>
+<li data-feature="scheduling"><b>Scheduling</b>Calendar and job scheduling</li>
+<li data-feature="team"><b>Team</b>Team member management</li>
+<li data-feature="dashboard"><b>Dashboard</b>Overview dashboard</li>
+</ul></details>
+<details class="fx-cat"><summary>Finance <span class="fx-n">2</span></summary><ul>
+<li data-feature="online_payments"><b>Online Payments</b>Stripe payment processing — invoices and deposits paid by card, or by bank account where you turn that on in your Stripe account</li>
+<li data-feature="quickbooks"><b>QuickBooks</b>QuickBooks sync — we integrate accounting, we do not replace it</li>
+</ul></details>
+<details class="fx-cat"><summary>Communication <span class="fx-n">6</span></summary><ul>
+<li data-feature="two_way_texting"><b>Two-Way Texting</b>Unified SMS inbox — every customer conversation logged<i>Texting add-on: $10/mo, plus each text at cost</i></li>
+<li data-feature="call_tracking_numbers"><b>Tracking Numbers</b>Buy a call tracking number for each place you advertise — calls ring your line and are logged with where they came from<i>$3/mo a number; calls and recordings at cost</i></li>
+<li data-feature="call_tracking"><b>Call Tracking</b>Inbound call tracking and recording<i>Calls and recordings at cost</i></li>
+<li data-feature="google_business"><b>Google Reviews</b>Connect your Google Business Profile — see your rating and reply to reviews from the CRM</li>
+<li data-feature="branded_email"><b>Branded Email</b>support@yourdomain addresses — forward anywhere or receive replies in the CRM email inbox</li>
+<li data-feature="lead_inbox"><b>Lead Inbox</b>Every inquiry in one inbox — marketplaces, ads, booking apps and your website</li>
+</ul></details>
+<details class="fx-cat"><summary>Advanced <span class="fx-n">3</span></summary><ul>
+<li data-feature="documents"><b>Documents</b>Document management and storage</li>
+<li data-feature="reports"><b>Reports</b>Revenue, outstanding balances and work done for any period, with CSV downloads</li>
+<li data-feature="ai_receptionist"><b>AI Receptionist</b>Missed-call text-back: replies by text or email to missed calls and voicemails, with each voicemail written out<i>Uses the texting add-on ($10/mo, texts at cost)</i></li>
+</ul></details>
+<details class="fx-cat"><summary>Home Care <span class="fx-n">31</span></summary><ul>
+<li data-feature="care_cert_reminders"><b>Credential expiry reminders</b>Reminders to the caregiver and the office (by app, phone and email) at the lead times the agency picks, for caregivers' and clients' credentials; a credential search; an expired caregiver is flagged when scheduling, or kept off shifts if the agency chooses</li>
+<li data-feature="care_medication_reminders"><b>Medication reminders</b>Dose times on each medicine; a push to the caregiver on the visit when a dose is due, and a notice to the office when a dose during a visit was never recorded</li>
+<li data-feature="care_visit_questions"><b>Clock-in and clock-out questions</b>Questions the caregiver answers when clocking in or out (safety, how the client is, breaks); required ones must be answered, and a worrying answer tells the office</li>
+<li data-feature="care_visit_items"><b>Forms, interventions and goals in a visit</b>Attach forms, interventions and goals to a client's visits (and tasks to every visit); the caregiver works through them during the visit, required ones must be finished to clock out, and the agency can require a visit note</li>
+<li data-feature="care_family_texts"><b>Family arrival texts</b>A text to relatives who asked for it when the caregiver arrives and when they leave, from the agency's own number</li>
+<li data-feature="care_required_tasks"><b>Required tasks before clock-out</b>Mark a client's task required: the caregiver cannot clock out until it is done, or skipped with a reason. A task's days of the week and AM/PM are read (a Tuesday task holds only Tuesday visits), the phone greys Clock out while one is open, and a report shows whether every assigned task was done</li>
+<li data-feature="care_visit_signature"><b>Client signature on every visit</b>The caregiver has the client sign on the phone at the end of a visit, with the time; a client who cannot sign gets a reason from a list; the agency can make it required before clock-out</li>
+<li data-feature="care_family_content"><b>Daily care, meals, vitals and documents for the family</b>The family portal shows the tasks planned for each upcoming visit, a task log for each past visit, and the meals the caregiver recorded on the phone; each relative has their own switch for vitals and for documents, and the office picks which documents the family may see</li>
+<li data-feature="care_family_comms"><b>Family requests, texts and emails in the agency's words</b>A relative can ask for a visit change, a service change or a new visit (an office task and an Open requests tile); arrival and finish notices by text and email in the agency's own wording; the relative's STOP honoured by our own record; a screen of every family text sent or held and why; the portal emails (account created, forgot password, access granted, access revoked) in the agency's words; arrival and finish notices as app notices on a relative's own phone or browser, and alert rules the agency writes for relatives, the office or the caregiver</li>
+<li data-feature="care_shift_repeats"><b>Monthly and every-few-weeks shifts</b>Repeat a shift monthly (every 2nd Tuesday) or every 3 to 12 weeks, and make one repeating shift on several weekdays at once</li>
+<li data-feature="care_match_prefs"><b>Match on skills, gender and language</b>Suggested caregivers weigh the skills a client needs, a gender preference and a language, and say why for each</li>
+<li data-feature="care_supervisory_visits"><b>Supervisory visits</b>A check-in on each client every 60 or 90 days (or a service code’s or the client’s own cycle): planned on the calendar for a named supervisor, reminded the day before, done from their phone with the agency’s own questions and both signatures, and what is due or overdue on the dashboard</li>
+<li data-feature="care_margin_reports"><b>Client margin and caregiver turnover</b>What each client brings in against what their caregivers cost (overtime and mileage included) — per client, per visit, by referral source, payer, department and branch, as a trend and a drill-down, two periods side by side, downloaded as CSV or PDF — and how many caregivers join and leave, with a stored leaving date, applicant-to-hire, hire-to-first-shift, call-outs, cost per hire and payroll accuracy</li>
+<li data-feature="care_report_builder"><b>Report builder, dashboards and scheduled reports</b>Build your own reports over every visit field (filters, sorting, grouping; saved, copied, from a standard library), financial / authorization-utilisation / caregiver dashboards and your own dashboards (profit margin by location and referral source among the tiles), a daily manager report, workforce analytics (workload, underused staff, cancellation trends), a caregiver performance report (late clock-ins and outs, visits done / missed / cancelled, ADL and form completion, client ratings), and reports emailed on a schedule as an encrypted link</li>
+<li data-feature="care_caregiver_surveys"><b>Caregiver satisfaction and retention risk</b>Ask caregivers how it is going on the phone at points the agency sets (after the first visit with a client, 90 days in, every so many days); a low score alerts the office; results by branch, manager and caregiver with a trend; and a retention-risk score per caregiver with its reasons (hours drop, call-outs, missed visits, survey, tenure) and its trend</li>
+<li data-feature="care_import"><b>Import clients, caregivers and schedules from a spreadsheet</b>Bring in a CSV of clients, caregivers or recurring shifts: match the columns, preview every row, skip duplicates, run it as a dry run first, and undo a whole import</li>
+<li data-feature="care_import_all"><b>Import every record kind</b>Beyond clients, caregivers and shifts: authorizations, certifications and client credentials, medicine lists, pay rates, payers, important contacts, past invoices, training, leave, journal entries, reviews and expenses — each with a template, a duplicate rule and undo</li>
+<li data-feature="care_import_wizard"><b>Import wizard: Excel, saved mappings, updates</b>Excel files and pasted data, column mappings saved for next time, a day/month/year choice, fixing a cell on the preview, re-imports that update the fields the owner allows (with undo), matching by reference code or name and zip, custom fields, payers in one cell, and a zip of documents or qualifications attached in bulk</li>
+<li data-feature="care_migration"><b>Assisted migration</b>Send the old system's export to Twomiah from the app; Twomiah staff load it with the same importer, compare record counts old vs new, and both sides tick a sign-off checklist</li>
+<li data-feature="care_payroll_rules"><b>Pay rules: state overtime, paid travel, ADP and Paychex files</b>Overtime by the agency's own state rule (every state, with holidays, breaks, sleepovers and limits), paid travel and mileage between visits, and payroll files for ADP, Paychex and Excel</li>
+<li data-feature="care_payroll_providers"><b>Payroll pushed to ADP, Paychex or Gusto</b>Send the pay run straight to ADP Workforce Now, Paychex Flex or Gusto, or run full-service payroll (taxes filed, caregivers paid) through an embedded provider, once the agency's provider account is connected</li>
+<li data-feature="care_autopay"><b>Automatic payment of invoices (card or bank)</b>A family saves a card or a bank account (US ACH debit, Canadian pre-authorized debit) on Stripe's own page — from the office or from their portal — and each invoice is charged to it, on the agency's own Stripe account, as the invoice is sent or on the day the office schedules, in one go or in parts; retried on the agency's own schedule if declined, with a plain notice to the family and the office, a receipt after each payment and a warning before a card expires</li>
+<li data-feature="care_billing_contacts"><b>Billing contacts</b>Who pays each client’s invoices — the client, a family member or someone else — with up to five email addresses that get every invoice, reminder and payment notice; set for many clients at once</li>
+<li data-feature="care_visit_optimizer"><b>Visit optimizer</b>Fill many open visits at once: pick the visits, say how much travel time, continuity, skills, waiting between visits and daily and weekly hours matter, review the proposed caregiver for each, then assign them or offer them</li>
+<li data-feature="care_no_arrival"><b>Caregiver not arrived alerts</b>When a scheduled visit passes its start and grace minutes with no clock-in, a No-Show alert is raised once and the office, the caregiver and (if chosen) the client’s family are told</li>
+<li data-feature="care_quickbooks"><b>Home care invoices in QuickBooks</b>Each sent invoice, its payments and write-offs go into QuickBooks on the QuickBooks sync — the client (or the payer it is billed to) as the customer — and a deleted invoice or payment is taken out there too</li>
+<li data-feature="care_split_billing"><b>Split billing</b>One visit billed to several payers in order — each a percent or an amount per hour — with the family paying the rest; no one is billed more than the visit</li>
+<li data-feature="care_ltc_billing"><b>Long-term care insurance billing</b>A long-term care insurance payer with the client's policy and claim numbers, and a claim packet (cover sheet, itemised services and visit times) for each invoice</li>
+<li data-feature="care_pickup_rewards"><b>Pickup bonus, points and rewards</b>The bonus on an open shift is paid through the pay run once the visit is worked; caregivers earn points for extra shifts, on-time clock-ins and minimum weekly hours and spend them on rewards the agency sets; a caregiver also says on the phone how many hours they want and asks for time off</li>
+<li data-feature="care_open_shift_offers"><b>Open shift offers: decline, deadlines, series and a message record</b>A caregiver can decline an open shift with a reason or hide it; each offer shows Not sent, Pending, Accepted, Declined, Expired or Closed with response counts and an answer-by time; the agency chooses what caregivers see and how many days ahead; offers go by app, text and email with each person's notification settings honoured and every message kept with how it ended; a whole recurring series can be offered at once</li>
+<li data-feature="care_offline_saves"><b>Safe saves from the phone without signal</b>A task, a medicine entry or a photo saved on the phone without signal and sent later is recorded once, at the time it was made, and a dose someone else already recorded is refused in plain words</li>
+</ul></details>
+</div>
+<!-- /facts:features -->
+  </div>
+</section>
+
 <section id="vs" style="background:var(--ink)">
   <div class="inner">
     <div class="reveal" style="text-align:center;margin-bottom:24px">
-      <div class="section-label" style="justify-content:center;color:var(--teal-light)">The Comparison</div>
-      <h2 class="section-title" style="color:var(--cream)">See How We<br><span class="teal-line">Stack Up.</span></h2>
-      <p class="section-sub" style="margin:0 auto;color:rgba(255,255,255,0.5)">Want the spec-by-spec breakdown? Click below.</p>
+      <div class="section-label" style="justify-content:center">The Comparison</div>
+      <h2 class="section-title" style="color:var(--cream)">What the Leaders Sell.<br><span class="teal-line">You Get It Here Too.</span></h2>
+      <p class="section-sub" style="margin:0 auto;color:rgba(255,255,255,.75)">Features AxisCare, WellSky and AlayaCare are known for, matched in Twomiah &mdash; on every plan.</p>
     </div>
-    <div class="reveal" style="text-align:center;margin-bottom:24px">
-      <button id="cmpToggleBtn" onclick="toggleCmp()" style="background:rgba(13,115,119,0.2);border:1px solid var(--teal-light);color:var(--teal-light);padding:14px 32px;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s">Compare Care vs. Alora, CareVoyant &amp; Axxess &nbsp;&darr;</button>
-    </div>
-    <div id="cmpContent" style="display:none">
-      <div class="reveal" style="display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap">
-        <button class="vs-toggle active" onclick="showCompare('alora')">vs Alora</button>
-        <button class="vs-toggle" onclick="showCompare('carevoyant')">vs CareVoyant</button>
-        <button class="vs-toggle" onclick="showCompare('axxess')">vs Axxess</button>
-      </div>
-      <div id="compareTable" class="reveal"></div>
-      <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Care: $99&ndash;$199/mo &mdash; every feature on every plan. Competitors charge more for less.</p>
+    <div style="color:var(--cream)">
+<!-- facts:compare crm-homecare -->
+<style>.fx{max-width:1100px;margin:36px auto 0;text-align:left}.fx-cat{border-top:1px solid color-mix(in srgb,currentColor 18%,transparent)}.fx-cat summary{cursor:pointer;padding:14px 4px;font-weight:700;list-style:none;display:flex;align-items:baseline;gap:10px}.fx-cat summary::-webkit-details-marker{display:none}.fx-cat summary::after{content:'+';opacity:.6;margin-left:auto}.fx-cat[open] summary::after{content:'\2212'}.fx-cat ul{list-style:none;margin:0;padding:0 4px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px 28px}.fx-cat li{font-size:14px;line-height:1.5;opacity:.85}.fx-cat li b{display:block;opacity:1}.fx-cat li i{display:block;font-size:12px;opacity:.75}.fx-n{font-weight:400;opacity:.6}.fx-h{font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin:28px 0 6px}.cx{max-width:900px;margin:0 auto;overflow-x:auto}.cx table{width:100%;border-collapse:collapse;font-size:14px;text-align:left}.cx th,.cx td{padding:10px 12px;border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent);vertical-align:top}.cx th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}.cx td.y{text-align:center;font-weight:700;white-space:nowrap}.cx .cx-note{font-size:12px;opacity:.65;margin-top:12px;line-height:1.5}.cx .cx-note a{color:inherit}@media(max-width:700px){.cx thead{display:none}.cx table,.cx tbody,.cx tr,.cx td{display:block;width:100%}.cx tr{padding:12px 0;border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent)}.cx td{border:0;padding:2px 0}.cx td:first-child{font-weight:700;padding-bottom:6px}.cx td.y{display:inline-block;width:auto;text-align:left;margin-right:14px;font-size:13px;white-space:normal}.cx td.y::before{content:attr(data-label) ' ';font-weight:400;opacity:.7}}</style>
+<div class="cx"><table><thead><tr><th>What the leaders sell you</th>
+<th class="y">AxisCare</th>
+<th class="y">AlayaCare</th>
+<th class="y">WellSky Personal Care</th>
+<th class="y">Twomiah</th></tr></thead><tbody>
+<tr data-feature="care_cert_reminders"><td>Caregiver credential tracking with expiry reminders</td>
+<td class="y" data-label="AxisCare">&#10003;</td>
+<td class="y" data-label="AlayaCare">&#10003;</td>
+<td class="y" data-label="WellSky Personal Care">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="care_medication_reminders"><td>Medication reminders in the caregiver app</td>
+<td class="y" data-label="AxisCare">&#10003;</td>
+<td class="y" data-label="AlayaCare">&ndash;</td>
+<td class="y" data-label="WellSky Personal Care">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="care_visit_questions"><td>Custom questions at clock-in and clock-out</td>
+<td class="y" data-label="AxisCare">&#10003;</td>
+<td class="y" data-label="AlayaCare">&ndash;</td>
+<td class="y" data-label="WellSky Personal Care">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="care_required_tasks"><td>Required tasks must be done before clock-out</td>
+<td class="y" data-label="AxisCare">&#10003;</td>
+<td class="y" data-label="AlayaCare">&#10003;</td>
+<td class="y" data-label="WellSky Personal Care">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="care_family_content"><td>Family portal with care notes, tasks and meals</td>
+<td class="y" data-label="AxisCare">&#10003;</td>
+<td class="y" data-label="AlayaCare">&ndash;</td>
+<td class="y" data-label="WellSky Personal Care">&#10003;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="care_family_comms"><td>Family can request visit and service changes</td>
+<td class="y" data-label="AxisCare">&ndash;</td>
+<td class="y" data-label="AlayaCare">&#10003;</td>
+<td class="y" data-label="WellSky Personal Care">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="care_match_prefs"><td>Client must-haves (skills, language) filter who you can match</td>
+<td class="y" data-label="AxisCare">&#10003;</td>
+<td class="y" data-label="AlayaCare">&ndash;</td>
+<td class="y" data-label="WellSky Personal Care">&#10003;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="care_open_shift_offers"><td>Send open shifts by text, email or the caregiver app</td>
+<td class="y" data-label="AxisCare">&#10003;</td>
+<td class="y" data-label="AlayaCare">&#10003;</td>
+<td class="y" data-label="WellSky Personal Care">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="care_visit_optimizer"><td>Visit optimizer fills vacant visits in bulk</td>
+<td class="y" data-label="AxisCare">&ndash;</td>
+<td class="y" data-label="AlayaCare">&#10003;</td>
+<td class="y" data-label="WellSky Personal Care">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="care_offline_saves"><td>Caregivers document visits with no signal</td>
+<td class="y" data-label="AxisCare">&#10003;</td>
+<td class="y" data-label="AlayaCare">&#10003;</td>
+<td class="y" data-label="WellSky Personal Care">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="care_margin_reports"><td>Client margin and caregiver turnover reports</td>
+<td class="y" data-label="AxisCare">&#10003;</td>
+<td class="y" data-label="AlayaCare">&#10003;</td>
+<td class="y" data-label="WellSky Personal Care">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="care_payroll_rules"><td>State overtime rules, travel pay and mileage in payroll</td>
+<td class="y" data-label="AxisCare">&ndash;</td>
+<td class="y" data-label="AlayaCare">&#10003;</td>
+<td class="y" data-label="WellSky Personal Care">&#10003;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="care_autopay"><td>Families pay invoices automatically by card or bank</td>
+<td class="y" data-label="AxisCare">&#10003;</td>
+<td class="y" data-label="AlayaCare">&ndash;</td>
+<td class="y" data-label="WellSky Personal Care">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="care_shift_repeats"><td>Recurring shifts on a repeating schedule</td>
+<td class="y" data-label="AxisCare">&ndash;</td>
+<td class="y" data-label="AlayaCare">&#10003;</td>
+<td class="y" data-label="WellSky Personal Care">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr><td><b>Starting price</b></td>
+<td class="y" data-label="AxisCare">&ndash;</td>
+<td class="y" data-label="AlayaCare">Not published (quote)</td>
+<td class="y" data-label="WellSky Personal Care">Not published (demo)</td>
+<td class="y" data-label="Twomiah">From $99/mo (up to 10 users)</td></tr></tbody></table>
+<p class="cx-note">&#10003; = the leader offers it, from its own product and help pages; &ndash; = not compared here (it may well have it), or a price we could not confirm on its own site. Twomiah: every listed feature on every plan, $99 / $139 / $199 a month for up to 10 / 25 / 50 users. Their prices: <a href="https://www.alayacare.com/pricing" target="_blank" rel="noopener">AlayaCare</a> (checked 2026-11-12), <a href="https://wellsky.com/personal-care-software/" target="_blank" rel="noopener">WellSky Personal Care</a> (checked 2026-11-12).</p></div>
+<!-- /facts:compare -->
     </div>
   </div>
 </section>
-<style>
-.vs-toggle{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);padding:8px 20px;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif}
-.vs-toggle:hover{border-color:rgba(15,163,168,0.4);color:var(--cream)}
-.vs-toggle.active{background:rgba(13,115,119,0.25);border-color:var(--teal-light);color:var(--teal-light)}
-.cmp-table{width:100%;border-collapse:collapse}
-.cmp-table th{text-align:left;padding:10px 16px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);border-bottom:1px solid rgba(255,255,255,0.06)}
-.cmp-table th:nth-child(2),.cmp-table th:nth-child(3){text-align:center}
-.cmp-table th:nth-child(3){color:var(--teal-light)}
-.cmp-cat td{padding:8px 16px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal-light);background:rgba(13,115,119,0.08);border-bottom:1px solid rgba(255,255,255,0.03)}
-.cmp-table tr{border-bottom:1px solid rgba(255,255,255,0.03)}
-.cmp-table td{padding:8px 16px;font-size:12px;color:rgba(255,255,255,0.5)}
-.cmp-table td:nth-child(2),.cmp-table td:nth-child(3){text-align:center;width:120px}
-.cmp-y{color:var(--teal-light);font-weight:700}
-.cmp-n{color:rgba(255,255,255,0.15)}
-.cmp-a{color:#fbbf24;font-size:9px;font-weight:700;letter-spacing:0.08em}
-.cmp-price td{padding:12px 16px;font-weight:700;font-size:14px;border-top:1px solid rgba(255,255,255,0.08)}
-.cmp-price td:nth-child(2){color:rgba(255,255,255,0.5)}
-.cmp-price td:nth-child(3){color:var(--teal-light)}
-@media(max-width:768px){.cmp-table td,.cmp-table th{padding:6px 8px;font-size:11px}.cmp-table td:nth-child(2),.cmp-table td:nth-child(3){width:80px}}
-</style>
-<script>
-var cmpData={
-alora:{name:'Alora',price:'$295+/mo',features:{crm:1,scheduling:1,care_notes:1,care_plans:1,evv:1,med_tracking:1,health_alerts:0,task_checklists:0,sms:0,email_campaigns:0,family_portal:0,push_notifications:0,gps:1,caregiver_matching:0,payroll:'a',billing:1,time_tracking:0,compliance_dashboard:1,insurance_billing:0,multi_state:0,custom_forms:0,mobile_app:1,api:0,automations:0,reporting:1,multi_location:1}},
-carevoyant:{name:'CareVoyant',price:'Custom',features:{crm:1,scheduling:1,care_notes:1,care_plans:1,evv:1,med_tracking:0,health_alerts:0,task_checklists:0,sms:0,email_campaigns:0,family_portal:0,push_notifications:0,gps:0,caregiver_matching:0,payroll:1,billing:1,time_tracking:0,compliance_dashboard:1,insurance_billing:0,multi_state:0,custom_forms:0,mobile_app:0,api:1,automations:0,reporting:1,multi_location:1}},
-axxess:{name:'Axxess',price:'$250+/mo',features:{crm:1,scheduling:1,care_notes:1,care_plans:0,evv:1,med_tracking:0,health_alerts:0,task_checklists:0,sms:0,email_campaigns:0,family_portal:0,push_notifications:0,gps:0,caregiver_matching:0,payroll:0,billing:1,time_tracking:0,compliance_dashboard:1,insurance_billing:0,multi_state:0,custom_forms:0,mobile_app:1,api:0,automations:0,reporting:1,multi_location:0}}
-};
-var featureNames={crm:'CRM',scheduling:'Scheduling',care_notes:'Care Notes',care_plans:'Care Plans',evv:'Electronic Visit Verification',med_tracking:'Medication Tracking',health_alerts:'Health Alerts',task_checklists:'Task Checklists',sms:'SMS Marketing',email_campaigns:'Email Campaigns',family_portal:'Family Portal',push_notifications:'Push Notifications',gps:'GPS Tracking',caregiver_matching:'Caregiver Matching',payroll:'Payroll',billing:'Billing',time_tracking:'Time Tracking',compliance_dashboard:'Compliance Dashboard',insurance_billing:'Insurance Billing',multi_state:'Multi-State Compliance',custom_forms:'Custom Forms',mobile_app:'Mobile App',api:'Open API',automations:'Automations',reporting:'Reporting',multi_location:'Multi-Location'};
-var cats={
-'Core':['crm','scheduling','care_notes','care_plans'],
-'Clinical':['evv','med_tracking','health_alerts','task_checklists'],
-'Communication':['sms','email_campaigns','family_portal','push_notifications'],
-'Operations':['gps','caregiver_matching','payroll','billing','time_tracking'],
-'Compliance':['compliance_dashboard','insurance_billing','multi_state','custom_forms'],
-'Platform':['mobile_app','api','automations','reporting','multi_location']
-};
-function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
-// Not offered by this system (the Factory's feature registry, 2026-10-23) — never claimed: the owner's rule is that nothing is advertised until it is live and working. The competitor's column still shows theirs.
-var NOT_OFFERED=['sms', 'email_campaigns', 'multi_state', 'mobile_app', 'api', 'automations', 'multi_location'];
-function careCk(f){if(NOT_OFFERED.indexOf(f)>-1)return '<span class="cmp-n">&#10007;</span>';if(f==='evv')return '<span class="cmp-a">VIA SANDATA APP</span>';return '<span class="cmp-y">&#10003;</span>'}
-function toggleCmp(){var c=document.getElementById('cmpContent'),b=document.getElementById('cmpToggleBtn');if(c.style.display==='none'){c.style.display='block';b.innerHTML='Hide comparison &nbsp;&uarr;';showCompareInit('alora')}else{c.style.display='none';b.innerHTML='Compare Care vs. Alora, CareVoyant &amp; Axxess &nbsp;&darr;'}}
-function showCompareInit(key){document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});document.querySelector('.vs-toggle[onclick*="'+key+'"]').classList.add('active');renderCmp(key)}
-function renderCmp(key){var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Care</th></tr></thead><tbody>';Object.keys(cats).forEach(function(cat){h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+careCk(f)+'</td></tr>'})});h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td>$99 / $139 / $199</td></tr>';h+='</tbody></table>';document.getElementById('compareTable').innerHTML=h}
-function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});event.target.classList.add('active');renderCmp(key)}
-// Comparison hidden by default; expand button initializes it.
-</script>
 
-<!-- PRICING -->
 <section id="pricing">
   <div class="inner">
     <div class="reveal">
@@ -624,7 +729,7 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
     <div class="reveal" style="margin-bottom:56px;text-align:center">
       <div class="section-label" style="justify-content:center">Own It</div>
       <h2 class="section-title">Most Software<br>Rents You Access.<br><span class="teal-line">We Let You Own It.</span></h2>
-      <p class="section-sub" style="max-width:600px;margin:0 auto">Pay monthly and we host it &mdash; or buy the source code outright and never pay us again. No other home care platform will sell you the code. We will. That's the difference.</p>
+      <p class="section-sub" style="max-width:600px;margin:0 auto">Pay monthly and we host it &mdash; or buy the source code outright and never pay us again. Own it outright if you'd rather.</p>
     </div>
 
     <div class="own-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px">
@@ -689,6 +794,10 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
       <a href="roof.html">Roof</a>
       <a href="wrench.html">Wrench</a>
       <a href="care.html">Care</a>
+      <a href="landscaping.html">Landscaping</a>
+      <a href="salon.html">Salon</a>
+      <a href="restaurant.html">Restaurant &amp; Bar</a>
+      <a href="store.html">Store</a>
       <a href="vision.html">Vision</a>
       <a href="https://ickthatish.com" target="_blank" rel="noopener">Ick That Ish ↗</a>
       <a href="https://cardshop.twomiah.com" target="_blank" rel="noopener">Card Shop ↗</a>

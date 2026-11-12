@@ -1,0 +1,1433 @@
+{
+ "_about": "Comparison rows: from the Factory docs/parity/*.md (each row names the leader the doc cites and its source line; only built/beats rows mapped to advertisable features). Prices: fetched from each vendor's own pricing page on the date given; a leader without an entry was not confirmed there and shows no price. Re-check prices before relying on them.",
+ "trades": {
+  "crm": {
+   "leaders": [
+    "Buildertrend",
+    "JobTread",
+    "Jobber"
+   ],
+   "rows": [
+    {
+     "capability": "Card and bank (ACH) payments on every invoice",
+     "leaders": [
+      "Buildertrend",
+      "JobTread",
+      "Jobber"
+     ],
+     "featureIds": [
+      "online_payments"
+     ],
+     "source": "contractor-payments.md: Card and ACH on every invoice (all three)"
+    },
+    {
+     "capability": "Choose card, bank or both for each invoice",
+     "leaders": [
+      "Jobber"
+     ],
+     "featureIds": [
+      "payment_method_choice"
+     ],
+     "source": "contractor-payments.md: Choose card, bank or both per quote / invoice (Jobber)"
+    },
+    {
+     "capability": "Clients pay part of an invoice online",
+     "leaders": [
+      "Jobber"
+     ],
+     "featureIds": [
+      "portal_pay_options"
+     ],
+     "source": "contractor-payments.md: Partial payments (Jobber, per invoice)"
+    },
+    {
+     "capability": "Tips on invoices",
+     "leaders": [
+      "Jobber"
+     ],
+     "featureIds": [
+      "invoice_tips"
+     ],
+     "source": "contractor-payments.md: Tips (Jobber tips on invoices)"
+    },
+    {
+     "capability": "Clients approve and e-sign quotes and pick options in their portal",
+     "leaders": [
+      "Jobber",
+      "Buildertrend",
+      "JobTread"
+     ],
+     "featureIds": [
+      "client_portal"
+     ],
+     "source": "contractor-portal.md: Quotes / estimates: read, approve with signature, pick options (Jobber, BT, JobTread)"
+    },
+    {
+     "capability": "Client portal shows the schedule, daily logs and shared photos",
+     "leaders": [
+      "Buildertrend",
+      "JobTread"
+     ],
+     "featureIds": [
+      "client_portal_plus"
+     ],
+     "source": "contractor-portal.md: The schedule (BT; JobTread) / Daily logs the builder shares (BT)"
+    },
+    {
+     "capability": "Clients pay scheduled draws from their portal",
+     "leaders": [
+      "Buildertrend"
+     ],
+     "featureIds": [
+      "client_portal_plus"
+     ],
+     "source": "contractor-portal.md: Payment schedule / draws paid online (BT draws, BT Payments)"
+    },
+    {
+     "capability": "Clients e-sign contracts and documents in their portal",
+     "leaders": [
+      "Buildertrend"
+     ],
+     "featureIds": [
+      "client_portal_plus"
+     ],
+     "source": "contractor-portal.md: Documents to e-sign (BT digital signatures)"
+    },
+    {
+     "capability": "Change orders the client approves or declines",
+     "leaders": [
+      "Buildertrend",
+      "JobTread"
+     ],
+     "featureIds": [
+      "change_orders"
+     ],
+     "source": "contractor-portal.md: Change orders approved / declined (BT, JobTread)"
+    },
+    {
+     "capability": "Selections chosen against allowances",
+     "leaders": [
+      "Buildertrend"
+     ],
+     "featureIds": [
+      "selections"
+     ],
+     "source": "contractor-portal.md: Selections chosen against allowances (BT)"
+    },
+    {
+     "capability": "Projects on the phone: daily logs, punch lists and to-dos",
+     "leaders": [
+      "Buildertrend",
+      "JobTread"
+     ],
+     "featureIds": [
+      "contractor_phone",
+      "daily_logs",
+      "punch_lists"
+     ],
+     "source": "contractor-phone.md: Projects on the phone (BT, JobTread); Daily logs; Punch list; To-dos"
+    },
+    {
+     "capability": "Formula-based estimating",
+     "leaders": [
+      "JobTread"
+     ],
+     "featureIds": [
+      "quote_formulas"
+     ],
+     "source": "contractor.md: A JobTread-style formula / parameter engine"
+    },
+    {
+     "capability": "Bid packages: send scopes to subs and compare their bids",
+     "leaders": [
+      "Buildertrend"
+     ],
+     "featureIds": [
+      "bid_packages"
+     ],
+     "source": "contractor.md: Buildertrend inventory - Bid packages to subs"
+    },
+    {
+     "capability": "Schedule baseline against actual dates",
+     "leaders": [
+      "Buildertrend"
+     ],
+     "featureIds": [
+      "schedule_baseline"
+     ],
+     "source": "contractor.md: Buildertrend inventory - Schedule baseline, and baseline vs actual"
+    }
+   ]
+  },
+  "crm-roof": {
+   "leaders": [
+    "Roofr",
+    "AccuLynx",
+    "JobNimbus"
+   ],
+   "rows": [
+    {
+     "capability": "Good / Better / Best proposals the homeowner picks from and signs",
+     "leaders": [
+      "Roofr"
+     ],
+     "featureIds": [
+      "quote_proposals"
+     ],
+     "source": "roof-gbb-proposals.md: #1 Several priced options in one proposal; #8 Signing (Roofr)"
+    },
+    {
+     "capability": "Draw arrows, circles and notes on job photos",
+     "leaders": [
+      "AccuLynx"
+     ],
+     "featureIds": [
+      "photo_markup"
+     ],
+     "source": "roof-inspection-report.md: #13 Draw on photos (annotations) - AccuLynx"
+    },
+    {
+     "capability": "Inspection photo reports shared by link and PDF",
+     "leaders": [
+      "CompanyCam",
+      "AccuLynx"
+     ],
+     "featureIds": [
+      "inspection_reports"
+     ],
+     "source": "roof-inspection-report.md: #8 Share as a PDF; #9 Share as a link - CompanyCam, AccuLynx"
+    },
+    {
+     "capability": "Homeowner portal with the job's photos and documents",
+     "leaders": [
+      "AccuLynx"
+     ],
+     "featureIds": [
+      "portal_job_files"
+     ],
+     "source": "roof-portal-documents.md: #1 The homeowner sees job photos and documents in the portal"
+    },
+    {
+     "capability": "Homeowners pay part of an invoice or toward the estimate",
+     "leaders": [
+      "JobNimbus"
+     ],
+     "featureIds": [
+      "portal_pay_options"
+     ],
+     "source": "roof-online-payments.md: #6 Part payment - JobNimbus; #13 Pay from an estimate - JobNimbus"
+    },
+    {
+     "capability": "Text a payment request from any invoice, with receipts",
+     "leaders": [
+      "JobNimbus",
+      "Leap"
+     ],
+     "featureIds": [
+      "invoice_text_requests"
+     ],
+     "source": "roof-online-payments.md: #14 One-tap text payment request - JobNimbus, Leap; #15 Receipt"
+    },
+    {
+     "capability": "Payments dashboard with payouts on the way",
+     "leaders": [
+      "Roofr",
+      "Leap"
+     ],
+     "featureIds": [
+      "payments_overview"
+     ],
+     "source": "roof-online-payments.md: #18 Payments dashboard with funding status - Roofr; Leap"
+    },
+    {
+     "capability": "Supplement tracking with your own statuses",
+     "leaders": [
+      "AccuLynx"
+     ],
+     "featureIds": [
+      "insurance_extras"
+     ],
+     "source": "roof-insurance-extras.md: #2 pre-set supplement statuses; #3 track view of supplements"
+    },
+    {
+     "capability": "Mortgage-company checks tracked on each claim",
+     "leaders": [
+      "AccuLynx"
+     ],
+     "featureIds": [
+      "insurance_extras"
+     ],
+     "source": "roof-insurance-extras.md: #4 Mortgage check recorded on the job; #5 all mortgage checks in one place"
+    },
+    {
+     "capability": "As many pipeline boards as you like, with filters",
+     "leaders": [
+      "JobNimbus"
+     ],
+     "featureIds": [
+      "pipeline_custom_boards"
+     ],
+     "source": "roof-pipeline.md: #2 make as many boards as you like; #4 filter a board (JobNimbus)"
+    },
+    {
+     "capability": "Your own job statuses and checklists under each milestone",
+     "leaders": [
+      "AccuLynx"
+     ],
+     "featureIds": [
+      "pipeline_statuses"
+     ],
+     "source": "roof-pipeline.md: #5 AccuLynx: add statuses under a milestone; checklists per status"
+    },
+    {
+     "capability": "Sales commissions on the contract or on gross profit",
+     "leaders": [
+      "AccuLynx",
+      "JobNimbus"
+     ],
+     "featureIds": [
+      "commission_tracking"
+     ],
+     "source": "roof-commissions-costing.md: #1 Commission on the total sale; #2 Commission on gross profit"
+    },
+    {
+     "capability": "Job costing: planned against actual profit",
+     "leaders": [
+      "JobNimbus",
+      "AccuLynx"
+     ],
+     "featureIds": [
+      "job_costing"
+     ],
+     "source": "roof-commissions-costing.md: #19 Planned against actual - JobNimbus; AccuLynx"
+    },
+    {
+     "capability": "Storm leads scored so reps knock the best doors first",
+     "leaders": [
+      "AccuLynx"
+     ],
+     "featureIds": [
+      "storm_data_tools"
+     ],
+     "source": "roof-storms-canvass.md: #18 Lead scoring for storm leads - AccuLynx Lead Intelligence"
+    }
+   ]
+  },
+  "crm-fieldservice": {
+   "leaders": [
+    "ServiceTitan",
+    "Housecall Pro",
+    "Jobber"
+   ],
+   "rows": [
+    {
+     "capability": "Good / better / best options the customer picks and signs",
+     "leaders": [
+      "Housecall Pro",
+      "Jobber",
+      "ServiceTitan"
+     ],
+     "featureIds": [
+      "quote_proposals"
+     ],
+     "source": "fieldservice-quote-options.md: #1 options shown side by side; #3 the customer signs"
+    },
+    {
+     "capability": "Job checklists built per job type and filled in on the phone",
+     "leaders": [
+      "Housecall Pro",
+      "Jobber",
+      "ServiceTitan"
+     ],
+     "featureIds": [
+      "job_checklists"
+     ],
+     "source": "fieldservice-checklists.md: #1 the owner builds checklists; #4 auto-add by job type"
+    },
+    {
+     "capability": "Customer signs the checklist on site",
+     "leaders": [
+      "ServiceTitan",
+      "Jobber"
+     ],
+     "featureIds": [
+      "job_checklists"
+     ],
+     "source": "fieldservice-checklists.md: #6 forms collect the customer's signature (ServiceTitan; Jobber)"
+    },
+    {
+     "capability": "Automatic visit reminders by text and email, with confirm",
+     "leaders": [
+      "Jobber"
+     ],
+     "featureIds": [
+      "job_reminders"
+     ],
+     "source": "fieldservice-job-reminders.md: #1 Visit reminders; #4 Channels; #14 Client Hub confirm link"
+    },
+    {
+     "capability": "Each tech's working hours and time off on the dispatch board",
+     "leaders": [
+      "ServiceTitan",
+      "Jobber"
+     ],
+     "featureIds": [
+      "tech_availability",
+      "dispatch_board"
+     ],
+     "source": "fieldservice-tech-availability.md: #1 working hours / shifts; #4 shifts as bars on the Dispatch Board"
+    },
+    {
+     "capability": "On my way, arrived and complete from the phone, even offline",
+     "leaders": [
+      "ServiceTitan"
+     ],
+     "featureIds": [
+      "tech_mobile_view"
+     ],
+     "source": "fieldservice-phone-job-flow.md: #1 mark arrived ... complete offline (ServiceTitan)"
+    },
+    {
+     "capability": "Timesheet starts when the tech taps On my way or Arrive",
+     "leaders": [
+      "ServiceTitan"
+     ],
+     "featureIds": [
+      "time_tracking"
+     ],
+     "source": "fieldservice-clock.md: #8 ServiceTitan: On my way / Arrive start the timesheet"
+    },
+    {
+     "capability": "Service plan reports: sold by, renewals and cancellations",
+     "leaders": [
+      "ServiceTitan",
+      "Housecall Pro"
+     ],
+     "featureIds": [
+      "plan_reports"
+     ],
+     "source": "fieldservice-plan-reports.md: #1 Sold by; #3 renewals; #5 Canceled and Expired"
+    },
+    {
+     "capability": "Revenue per tech and quote win rate per rep",
+     "leaders": [
+      "Jobber",
+      "ServiceTitan"
+     ],
+     "featureIds": [
+      "team_revenue_reports"
+     ],
+     "source": "fieldservice-team-revenue.md: #1 revenue per team member; #6 / #8 conversion and close rate"
+    },
+    {
+     "capability": "Drag-and-drop dispatch board",
+     "leaders": [
+      "ServiceTitan"
+     ],
+     "featureIds": [
+      "dispatch_board"
+     ],
+     "source": "fieldservice-servicetitan.md: Built - Drag-and-drop dispatch board, route optimiser"
+    },
+    {
+     "capability": "Flat-rate pricebook in the field",
+     "leaders": [
+      "ServiceTitan"
+     ],
+     "featureIds": [
+      "flat_rate_pricebook",
+      "pricebook"
+     ],
+     "source": "fieldservice-servicetitan.md: Built - Live pricebook in the field; flat rate"
+    },
+    {
+     "capability": "Maintenance memberships with visits scheduled for each term",
+     "leaders": [
+      "ServiceTitan"
+     ],
+     "featureIds": [
+      "maintenance_contracts",
+      "service_agreements"
+     ],
+     "source": "fieldservice-servicetitan.md: Built - Memberships / service agreements: renewals, auto-scheduled visits"
+    },
+    {
+     "capability": "Skill matching when you assign a job",
+     "leaders": [
+      "ServiceTitan"
+     ],
+     "featureIds": [
+      "skill_matching"
+     ],
+     "source": "fieldservice-servicetitan.md: Skill matching when dispatching - built 11/10"
+    },
+    {
+     "capability": "Where's-my-tech map link in the on-my-way text",
+     "leaders": [
+      "ServiceTitan"
+     ],
+     "featureIds": [
+      "tech_tracking"
+     ],
+     "source": "fieldservice-servicetitan.md: Live where's my tech map for the customer - built 11/10"
+    }
+   ]
+  },
+  "crm-homecare": {
+   "leaders": [
+    "AxisCare",
+    "AlayaCare",
+    "WellSky Personal Care"
+   ],
+   "rows": [
+    {
+     "capability": "Caregiver credential tracking with expiry reminders",
+     "leaders": [
+      "AxisCare",
+      "AlayaCare"
+     ],
+     "featureIds": [
+      "care_cert_reminders"
+     ],
+     "source": "homecare-cert-expiry.md: A certifications feature (AxisCare); Schedulers are notified (AlayaCare)"
+    },
+    {
+     "capability": "Medication reminders in the caregiver app",
+     "leaders": [
+      "AxisCare"
+     ],
+     "featureIds": [
+      "care_medication_reminders"
+     ],
+     "source": "homecare-daily-care-wording.md: Medication reminders delivered by the app (AxisCare)"
+    },
+    {
+     "capability": "Custom questions at clock-in and clock-out",
+     "leaders": [
+      "AxisCare"
+     ],
+     "featureIds": [
+      "care_visit_questions"
+     ],
+     "source": "homecare-daily-care-wording.md: Custom questions at shift start or end (AxisCare)"
+    },
+    {
+     "capability": "Required tasks must be done before clock-out",
+     "leaders": [
+      "AxisCare",
+      "AlayaCare"
+     ],
+     "featureIds": [
+      "care_required_tasks"
+     ],
+     "source": "homecare-required-tasks-repeats.md: Admin setting to require ADLs (AxisCare); Clock-out is blocked (AlayaCare)"
+    },
+    {
+     "capability": "Family portal with care notes, tasks and meals",
+     "leaders": [
+      "AxisCare",
+      "WellSky Personal Care"
+     ],
+     "featureIds": [
+      "care_family_content"
+     ],
+     "source": "homecare-daily-care-wording.md: Family sees visits with care notes (AxisCare); Family Room (WellSky Personal Care)"
+    },
+    {
+     "capability": "Family can request visit and service changes",
+     "leaders": [
+      "AlayaCare"
+     ],
+     "featureIds": [
+      "care_family_comms"
+     ],
+     "source": "homecare-family-text.md: Family can submit visit-change, service-change or new-visit requests (AlayaCare)"
+    },
+    {
+     "capability": "Client must-haves (skills, language) filter who you can match",
+     "leaders": [
+      "AxisCare",
+      "WellSky Personal Care"
+     ],
+     "featureIds": [
+      "care_match_prefs"
+     ],
+     "source": "homecare-matching.md: Client requirements act as hard filters (AxisCare); Caregivers see open shifts they qualify for (WellSky Personal Care)"
+    },
+    {
+     "capability": "Send open shifts by text, email or the caregiver app",
+     "leaders": [
+      "AxisCare",
+      "AlayaCare"
+     ],
+     "featureIds": [
+      "care_open_shift_offers"
+     ],
+     "source": "homecare-open-shift-broadcast.md: Send open visits by text, email or the mobile app (AxisCare); Channels per offer (AlayaCare)"
+    },
+    {
+     "capability": "Visit optimizer fills vacant visits in bulk",
+     "leaders": [
+      "AlayaCare"
+     ],
+     "featureIds": [
+      "care_visit_optimizer"
+     ],
+     "source": "homecare-visit-optimizer.md: Filter which vacant visits to fill; Bulk assign vacant visits (AlayaCare)"
+    },
+    {
+     "capability": "Caregivers document visits with no signal",
+     "leaders": [
+      "AlayaCare",
+      "AxisCare"
+     ],
+     "featureIds": [
+      "care_offline_saves"
+     ],
+     "source": "homecare-offline.md: Visit notes, forms ... poor connectivity (AlayaCare); Clock in ... with no signal (AxisCare)"
+    },
+    {
+     "capability": "Client margin and caregiver turnover reports",
+     "leaders": [
+      "AxisCare",
+      "AlayaCare"
+     ],
+     "featureIds": [
+      "care_margin_reports"
+     ],
+     "source": "homecare-margin-turnover.md: gross revenue / gross profit; caregiver turnover (AxisCare); Margin report (AlayaCare)"
+    },
+    {
+     "capability": "State overtime rules, travel pay and mileage in payroll",
+     "leaders": [
+      "AlayaCare",
+      "WellSky Personal Care"
+     ],
+     "featureIds": [
+      "care_payroll_rules"
+     ],
+     "source": "homecare-payroll.md: Overtime follows federal and state labour rules (AlayaCare); Travel; Mileage (WellSky Personal Care)"
+    },
+    {
+     "capability": "Families pay invoices automatically by card or bank",
+     "leaders": [
+      "AxisCare"
+     ],
+     "featureIds": [
+      "care_autopay"
+     ],
+     "source": "homecare-private-pay.md: Families view invoices, pay online ...; Autopay (AxisCare Bill & Collect)"
+    },
+    {
+     "capability": "Recurring shifts on a repeating schedule",
+     "leaders": [
+      "AlayaCare"
+     ],
+     "featureIds": [
+      "care_shift_repeats"
+     ],
+     "source": "homecare-required-tasks-repeats.md: Recurring schedule patterns - Create recurring shifts (AlayaCare)"
+    }
+   ]
+  },
+  "crm-landscaping": {
+   "leaders": [
+    "Jobber",
+    "LMN",
+    "Aspire"
+   ],
+   "rows": [
+    {
+     "capability": "Weekly routes: drag stops into order and optimise the route",
+     "leaders": [
+      "Jobber"
+     ],
+     "featureIds": [
+      "recurring_routes",
+      "route_board_tools"
+     ],
+     "source": "landscaping-routes.md: #2 Reorder stops by drag; #6 Optimise a route's order - Jobber"
+    },
+    {
+     "capability": "Copy routes and save route templates",
+     "leaders": [
+      "Yardbook"
+     ],
+     "featureIds": [
+      "route_copy"
+     ],
+     "source": "landscaping-routes.md: #10 Copy last week's route; route templates - Yardbook"
+    },
+    {
+     "capability": "Repeat jobs on custom patterns (1st and 3rd Friday, yearly)",
+     "leaders": [
+      "Jobber"
+     ],
+     "featureIds": [
+      "job_repeat_patterns"
+     ],
+     "source": "landscaping-recurring-patterns.md: #5 Nth weekday of the month; #6 Annual repeat - Jobber"
+    },
+    {
+     "capability": "Rain day: push a day's visits to a new date, with the forecast",
+     "leaders": [
+      "Yardbook"
+     ],
+     "featureIds": [
+      "rain_day_tools"
+     ],
+     "source": "landscaping-rain-day.md: #1 Push out a day's jobs; #7 Forecast-driven Reschedule Jobs - Yardbook"
+    },
+    {
+     "capability": "Map of the crew's day and a Finish Day recap",
+     "leaders": [
+      "Jobber"
+     ],
+     "featureIds": [
+      "crew_day_map"
+     ],
+     "source": "landscaping-phone-day.md: #9 Map of the day's jobs; Finish Day summary - Jobber map"
+    },
+    {
+     "capability": "Crew marks a visit not done, with a reason, for rebooking",
+     "leaders": [
+      "LMN"
+     ],
+     "featureIds": [
+      "visit_skip"
+     ],
+     "source": "landscaping-phone-day.md: #7 Skip a visit with a reason and flag it to reschedule - LMN"
+    },
+    {
+     "capability": "Materials used recorded on each visit from the phone",
+     "leaders": [
+      "LMN",
+      "Aspire",
+      "Jobber"
+     ],
+     "featureIds": [
+      "visit_materials"
+     ],
+     "source": "landscaping-phone-day.md: #8 Materials / quantities used - LMN, Aspire, Jobber"
+    },
+    {
+     "capability": "Snow pricing per push, per event or by depth bands",
+     "leaders": [
+      "Aspire"
+     ],
+     "featureIds": [
+      "snow_tools",
+      "snow_billing"
+     ],
+     "source": "landscaping-snow-storm.md: #5 Billing rules per contract: per occurrence, depth ranges - Aspire"
+    },
+    {
+     "capability": "Operating budget that sets overhead recovery and markups",
+     "leaders": [
+      "LMN"
+     ],
+     "featureIds": [
+      "company_budget"
+     ],
+     "source": "landscaping-budget-overhead.md: What LMN does - operating budget, overhead-recovery method"
+    },
+    {
+     "capability": "Visit-done message with the crew's note and after-photos",
+     "leaders": [
+      "Yardbook",
+      "Jobber"
+     ],
+     "featureIds": [
+      "visit_reports"
+     ],
+     "source": "landscaping-visit-message.md: #1 A message when a job is done (Yardbook); #2 Jobber's follow-up"
+    },
+    {
+     "capability": "Customer feedback survey after a visit",
+     "leaders": [
+      "Jobber"
+     ],
+     "featureIds": [
+      "visit_survey"
+     ],
+     "source": "landscaping-visit-message.md: #10 Customer feedback survey on close - Jobber"
+    },
+    {
+     "capability": "Preview a quote exactly as the client will see it",
+     "leaders": [
+      "Jobber"
+     ],
+     "featureIds": [
+      "quote_preview"
+     ],
+     "source": "landscaping-optional-lines.md: #9 Preview as client (Jobber capability)"
+    },
+    {
+     "capability": "Pictures on quote lines",
+     "leaders": [
+      "Jobber"
+     ],
+     "featureIds": [
+      "quote_line_images"
+     ],
+     "source": "landscaping-optional-lines.md: #10 Line images (Jobber capability)"
+    }
+   ]
+  },
+  "crm-salon": {
+   "leaders": [
+    "Fresha",
+    "Square",
+    "Vagaro"
+   ],
+   "rows": [
+    {
+     "capability": "Card on file with no-show and late-cancel fees",
+     "leaders": [
+      "Square",
+      "Fresha"
+     ],
+     "featureIds": [
+      "card_on_file"
+     ],
+     "source": "salon-card-on-file.md: Keep a client's card on file for no-show / late-cancel protection (both)"
+    },
+    {
+     "capability": "The Book as a time grid: a column per stylist, drag to move",
+     "leaders": [
+      "Fresha",
+      "Square"
+     ],
+     "featureIds": [
+      "book_grid"
+     ],
+     "source": "salon-book-grid.md: A column per team member; Drag a card (Fresha); Blocked time (Square)"
+    },
+    {
+     "capability": "Processing time: book another client while colour sets",
+     "leaders": [
+      "Fresha"
+     ],
+     "featureIds": [
+      "processing_time",
+      "service_segments"
+     ],
+     "source": "salon-processing-time.md: Another client can be booked into the gap (Fresha)"
+    },
+    {
+     "capability": "Several services in one visit, each with its own stylist",
+     "leaders": [
+      "Fresha",
+      "Square"
+     ],
+     "featureIds": [
+      "multi_service_visits"
+     ],
+     "source": "salon-multi-service.md: Each service has its own team member (Fresha, Square)"
+    },
+    {
+     "capability": "Clients book several services online at once",
+     "leaders": [
+      "Fresha",
+      "Vagaro",
+      "Square"
+     ],
+     "featureIds": [
+      "online_multi_service"
+     ],
+     "source": "salon-multi-service.md: Online booking of several services at once (Fresha, Vagaro, Square)"
+    },
+    {
+     "capability": "Clients choose their stylist when booking online",
+     "leaders": [
+      "Timely",
+      "Square"
+     ],
+     "featureIds": [
+      "client_stylist_pick"
+     ],
+     "source": "salon-online-stylist-intake.md: Client can pick a staff member (Timely); Staff bookable online (Square)"
+    },
+    {
+     "capability": "Intake and consent forms filled in when booking",
+     "leaders": [
+      "Vagaro"
+     ],
+     "featureIds": [
+      "intake_forms"
+     ],
+     "source": "salon-online-stylist-intake.md: Collect information during booking; Waivers / consent (Vagaro)"
+    },
+    {
+     "capability": "Stylist commissions, flat or tiered",
+     "leaders": [
+      "Square"
+     ],
+     "featureIds": [
+      "salon_commissions"
+     ],
+     "source": "salon-commissions.md: Commission per team member, as a flat rate or tiers (Square)"
+    },
+    {
+     "capability": "Gift cards with balance lookup and history",
+     "leaders": [
+      "Square",
+      "Fresha"
+     ],
+     "featureIds": [
+      "salon_gift_cards"
+     ],
+     "source": "salon-gift-cards.md: look up a card's balance (Square); Original and redeemed amounts (Fresha)"
+    },
+    {
+     "capability": "Retail products with stock counts and low-stock levels",
+     "leaders": [
+      "Fresha"
+     ],
+     "featureIds": [
+      "salon_retail"
+     ],
+     "source": "salon-chair-checkout.md: Retail products with a count, a low-stock level (Fresha)"
+    },
+    {
+     "capability": "Client retention reports: new vs returning, rebooked",
+     "leaders": [
+      "Timely",
+      "Fresha"
+     ],
+     "featureIds": [
+      "salon_reports"
+     ],
+     "source": "salon-reports.md: New vs returning clients (Timely, Fresha); Retention % (Timely)"
+    },
+    {
+     "capability": "Automatic rebook, birthday and win-back messages",
+     "leaders": [
+      "Fresha",
+      "Square"
+     ],
+     "featureIds": [
+      "retention_sends"
+     ],
+     "source": "salon-retention.md: Rebook reminder (Fresha); Win-back (Square); Birthday (Fresha, Square)"
+    },
+    {
+     "capability": "Clients see, move or cancel upcoming appointments in a portal",
+     "leaders": [
+      "Altegio"
+     ],
+     "featureIds": [
+      "portal_appointments"
+     ],
+     "source": "salon-portal-appointments.md: Upcoming appointments; Move or cancel (Altegio)"
+    }
+   ]
+  },
+  "crm-restaurant": {
+   "leaders": [
+    "Tripleseat",
+    "Perfect Venue"
+   ],
+   "rows": [
+    {
+     "capability": "Event proposals with menu choices, signed online",
+     "leaders": [
+      "Tripleseat",
+      "Perfect Venue"
+     ],
+     "featureIds": [
+      "event_proposals"
+     ],
+     "source": "restaurant-1-proposal-esign.md: Proposal built from the event; Drawn or typed e-signature"
+    },
+    {
+     "capability": "Contract templates with several signers",
+     "leaders": [
+      "Tripleseat",
+      "Perfect Venue"
+     ],
+     "featureIds": [
+      "event_contracts"
+     ],
+     "source": "restaurant-1-proposal-esign.md: Contract templates with merge fields; Several signers, in an order"
+    },
+    {
+     "capability": "Deposit taken at signing, then balance reminders and pay links",
+     "leaders": [
+      "Perfect Venue",
+      "Tripleseat"
+     ],
+     "featureIds": [
+      "event_payment_automation"
+     ],
+     "source": "restaurant-2-payments.md: Deposit at signing; Reminder before, on and after; A pay link per instalment"
+    },
+    {
+     "capability": "Card on file charged automatically on each due date",
+     "leaders": [
+      "Perfect Venue"
+     ],
+     "featureIds": [
+      "event_payment_automation"
+     ],
+     "source": "restaurant-2-payments.md: Card on file charged automatically on due date (Perfect Venue autopay)"
+    },
+    {
+     "capability": "Website enquiry form that opens an event lead",
+     "leaders": [
+      "Tripleseat"
+     ],
+     "featureIds": [
+      "event_web_enquiries"
+     ],
+     "source": "restaurant-3-website-form.md: Website form creates a lead tied to a guest (Tripleseat lead form)"
+    },
+    {
+     "capability": "Room calendar with holds and a waitlist",
+     "leaders": [
+      "Tripleseat",
+      "Perfect Venue"
+     ],
+     "featureIds": [
+      "event_calendar"
+     ],
+     "source": "restaurant-4-room-calendar.md: Calendar by room; Holds on a date; Waitlist for a held date"
+    },
+    {
+     "capability": "Holds that release themselves when they lapse",
+     "leaders": [
+      "Tripleseat",
+      "Perfect Venue"
+     ],
+     "featureIds": [
+      "event_hold_expiry"
+     ],
+     "source": "restaurant-4-room-calendar.md: Hold expiry on a timer with auto-release"
+    },
+    {
+     "capability": "Guest-count cutoff that locks the final number",
+     "leaders": [
+      "Tripleseat"
+     ],
+     "featureIds": [
+      "event_guarantee"
+     ],
+     "source": "restaurant-5-guarantee.md: Venue sets days before the event the count is final; Count locked"
+    },
+    {
+     "capability": "Food and beverage minimums by day, season and room",
+     "leaders": [
+      "Tripleseat"
+     ],
+     "featureIds": [
+      "event_minimums"
+     ],
+     "source": "restaurant-6-minimums.md: Minimums by day of week; by season; Per-room (Tripleseat dynamic minimums)"
+    },
+    {
+     "capability": "Event reports by lead source: enquiries, booked and value",
+     "leaders": [
+      "Tripleseat"
+     ],
+     "featureIds": [
+      "event_reports"
+     ],
+     "source": "restaurant-7-lead-source.md: Report by source: enquiries, booked, lost; Value of what booked by source"
+    },
+    {
+     "capability": "Marketing spend and cost per lead for events",
+     "leaders": [
+      "Tripleseat"
+     ],
+     "featureIds": [
+      "event_marketing_spend"
+     ],
+     "source": "restaurant-7-lead-source.md: Marketing spend / cost per lead"
+    },
+    {
+     "capability": "Kitchen stock counts, recipe costing and par reorders",
+     "leaders": [
+      "Toast",
+      "BevSpot"
+     ],
+     "featureIds": [
+      "bar_stock"
+     ],
+     "source": "restaurant-8-kitchen-stock-schedule.md: Count, receive, variance; Recipe-based usage; Auto purchase orders by par"
+    },
+    {
+     "capability": "Staff schedule with labor cost before you publish",
+     "leaders": [
+      "7shifts"
+     ],
+     "featureIds": [
+      "bar_schedule"
+     ],
+     "source": "restaurant-8-kitchen-stock-schedule.md: Schedule with labor cost before publish (7shifts scheduling)"
+    }
+   ]
+  },
+  "crm-bar": {
+   "leaders": [
+    "Toast",
+    "7shifts",
+    "Backbar"
+   ],
+   "rows": [
+    {
+     "capability": "Tip pooling by hours worked or by role percentage",
+     "leaders": [
+      "7shifts"
+     ],
+     "featureIds": [
+      "bar_tip_pooling"
+     ],
+     "source": "bar-9-tip-pooling.md: Pool rules by hours worked; Tip-out percentages by role"
+    },
+    {
+     "capability": "Nightly tip-out shown at close",
+     "leaders": [
+      "7shifts"
+     ],
+     "featureIds": [
+      "bar_tip_pooling"
+     ],
+     "source": "bar-9-tip-pooling.md: Nightly tip-out shown at close"
+    },
+    {
+     "capability": "Staff declare cash tips at clock-out",
+     "leaders": [
+      "7shifts"
+     ],
+     "featureIds": [
+      "bar_declared_tips"
+     ],
+     "source": "bar-9-tip-pooling.md: Declared (cash) tips at clock-out"
+    },
+    {
+     "capability": "Staff availability that managers approve",
+     "leaders": [
+      "7shifts"
+     ],
+     "featureIds": [
+      "bar_availability"
+     ],
+     "source": "bar-10-swaps-availability.md: Staff set weekly availability, manager approves"
+    },
+    {
+     "capability": "Shift swaps, drops and pick-ups with manager approval",
+     "leaders": [
+      "7shifts"
+     ],
+     "featureIds": [
+      "bar_shift_swaps"
+     ],
+     "source": "bar-10-swaps-availability.md: Swap / drop / pick-up with manager approval"
+    },
+    {
+     "capability": "Menu sections served by time of day, like happy hour",
+     "leaders": [
+      "Toast"
+     ],
+     "featureIds": [
+      "menu_dayparts"
+     ],
+     "source": "bar-11-menu-dayparts.md: Section served in time windows, by day (Toast menu availability)"
+    },
+    {
+     "capability": "86 an item until the next opening",
+     "leaders": [
+      "Toast"
+     ],
+     "featureIds": [
+      "menu_dayparts"
+     ],
+     "source": "bar-11-menu-dayparts.md: 86 an item until the next day/open"
+    },
+    {
+     "capability": "Item counts that count down and reset",
+     "leaders": [
+      "Toast"
+     ],
+     "featureIds": [
+      "menu_item_counts"
+     ],
+     "source": "bar-11-menu-dayparts.md: Stock quantity refresh (Toast automatic stock refresh)"
+    },
+    {
+     "capability": "Card tabs held on the counter reader",
+     "leaders": [
+      "Toast"
+     ],
+     "featureIds": [
+      "bar_tab_preauth"
+     ],
+     "source": "bar-12-card-tabs.md: Hold on a card at the reader, tab opened (Toast pre-authorization)"
+    },
+    {
+     "capability": "Close a tab with the tip captured on the card",
+     "leaders": [
+      "Toast"
+     ],
+     "featureIds": [
+      "bar_tab_preauth"
+     ],
+     "source": "bar-12-card-tabs.md: Capture on close with tip"
+    },
+    {
+     "capability": "Fill-level slider per open bottle on the count",
+     "leaders": [
+      "Backbar"
+     ],
+     "featureIds": [
+      "stock_fill_levels"
+     ],
+     "source": "bar-13-fill-levels.md: Slider per open bottle on the count (Backbar bottle slider)"
+    },
+    {
+     "capability": "Blind counts that keep the expected numbers hidden",
+     "leaders": [
+      "Backbar"
+     ],
+     "featureIds": [
+      "stock_fill_levels"
+     ],
+     "source": "bar-13-fill-levels.md: Blind count keeps expected hidden"
+    }
+   ]
+  },
+  "crm-store": {
+   "leaders": [
+    "Shopify"
+   ],
+   "rows": [
+    {
+     "capability": "Sales reports by day, product and variant, with CSV",
+     "leaders": [
+      "Shopify"
+     ],
+     "featureIds": [
+      "store_sales_reports"
+     ],
+     "source": "store.md: #1 sales over time; Sales by product; Sales by variant; CSV export"
+    },
+    {
+     "capability": "Profit and margin from each product's cost",
+     "leaders": [
+      "Shopify"
+     ],
+     "featureIds": [
+      "store_sales_reports"
+     ],
+     "source": "store.md: #1 Profit / margin from stored cost"
+    },
+    {
+     "capability": "Customer segments by spend, orders and products bought",
+     "leaders": [
+      "Shopify"
+     ],
+     "featureIds": [
+      "store_segments"
+     ],
+     "source": "store.md: #3 Segments by total spend, order count, product / category bought"
+    },
+    {
+     "capability": "Post-purchase follow-up emails",
+     "leaders": [
+      "Shopify"
+     ],
+     "featureIds": [
+      "store_followups"
+     ],
+     "source": "store.md: #3 Post-purchase automation"
+    },
+    {
+     "capability": "Low-stock levels per variant",
+     "leaders": [
+      "Shopify"
+     ],
+     "featureIds": [
+      "store_low_stock"
+     ],
+     "source": "store.md: #4 Per-variant low-stock level, Low stock filter, dashboard count"
+    },
+    {
+     "capability": "Draft a supplier reorder from low stock",
+     "leaders": [
+      "Shopify"
+     ],
+     "featureIds": [
+      "store_reorders"
+     ],
+     "source": "store.md: #4 Draft a reorder for the supplier"
+    },
+    {
+     "capability": "Shopper accounts: order history, saved addresses, reorder",
+     "leaders": [
+      "Shopify"
+     ],
+     "featureIds": [
+      "store_accounts"
+     ],
+     "source": "store.md: #7 Sign-in by emailed one-time code; Order history and status, saved addresses, reorder"
+    },
+    {
+     "capability": "Returns and exchanges with a return window and fees",
+     "leaders": [
+      "Shopify"
+     ],
+     "featureIds": [
+      "store_returns"
+     ],
+     "source": "store.md: #8 Return statuses; Return window; Refund to card and / or store credit; exchanges"
+    },
+    {
+     "capability": "Customer audiences exported for Meta and Google ads",
+     "leaders": [
+      "Shopify"
+     ],
+     "featureIds": [
+      "store_audiences"
+     ],
+     "source": "store.md: #7 Customer audiences: hashed export in Meta and Google formats"
+    },
+    {
+     "capability": "Apps and integrations page",
+     "leaders": [
+      "Shopify"
+     ],
+     "featureIds": [
+      "store_apps"
+     ],
+     "source": "store.md: #8 Apps & integrations page: connect state and settings"
+    },
+    {
+     "capability": "Store API with per-shop keys",
+     "leaders": [
+      "Shopify"
+     ],
+     "featureIds": [
+      "store_api"
+     ],
+     "source": "store.md: #8 Public store API with per-shop keys and scopes"
+    },
+    {
+     "capability": "Signed webhooks with retries and a delivery log",
+     "leaders": [
+      "Shopify"
+     ],
+     "featureIds": [
+      "store_webhooks"
+     ],
+     "source": "store.md: #8 Outgoing signed webhooks with retries and a delivery log"
+    },
+    {
+     "capability": "Stock by location, with transfers",
+     "leaders": [
+      "Shopify"
+     ],
+     "featureIds": [
+      "store_locations"
+     ],
+     "source": "store.md: Shopify's plan chart - Inventory locations"
+    },
+    {
+     "capability": "Live carrier shipping rates at checkout",
+     "leaders": [
+      "Shopify"
+     ],
+     "featureIds": [
+      "store_carrier_rates"
+     ],
+     "source": "store.md: Shopify's plan chart - Carrier rates at checkout"
+    }
+   ]
+  }
+ },
+ "prices": [
+  {
+   "product": "Jobber",
+   "price": "From $29/mo billed yearly (1 user)",
+   "url": "https://www.getjobber.com/pricing/",
+   "date": "2026-11-12"
+  },
+  {
+   "product": "Housecall Pro",
+   "price": "From $59/mo billed yearly (1 user)",
+   "url": "https://www.housecallpro.com/pricing/",
+   "date": "2026-11-12"
+  },
+  {
+   "product": "Roofr",
+   "price": "Free plan; paid from $109/mo",
+   "url": "https://roofr.com/pricing",
+   "date": "2026-11-12"
+  },
+  {
+   "product": "Vagaro",
+   "price": "From $30/mo",
+   "url": "https://www.vagaro.com/pro/pricing",
+   "date": "2026-11-12"
+  },
+  {
+   "product": "Fresha",
+   "price": "From $19.95/mo (1 team member)",
+   "url": "https://www.fresha.com/pricing",
+   "date": "2026-11-12"
+  },
+  {
+   "product": "Tripleseat",
+   "price": "From $375 a venue a month",
+   "url": "https://tripleseat.com/packages/",
+   "date": "2026-11-12"
+  },
+  {
+   "product": "Shopify",
+   "price": "From $29/mo billed yearly",
+   "url": "https://www.shopify.com/pricing",
+   "date": "2026-11-12"
+  },
+  {
+   "product": "LMN",
+   "price": "From $297/mo plus an onboarding fee",
+   "url": "https://granum.com/lmn/pricing/",
+   "date": "2026-11-12"
+  },
+  {
+   "product": "ServiceTitan",
+   "price": "Not published (quote)",
+   "url": "https://www.servicetitan.com/pricing",
+   "date": "2026-11-12"
+  },
+  {
+   "product": "AccuLynx",
+   "price": "Not published (quote)",
+   "url": "https://acculynx.com/pricing/",
+   "date": "2026-11-12"
+  },
+  {
+   "product": "JobNimbus",
+   "price": "Not published (quote)",
+   "url": "https://www.jobnimbus.com/pricing",
+   "date": "2026-11-12"
+  },
+  {
+   "product": "AlayaCare",
+   "price": "Not published (quote)",
+   "url": "https://www.alayacare.com/pricing",
+   "date": "2026-11-12"
+  },
+  {
+   "product": "WellSky Personal Care",
+   "price": "Not published (demo)",
+   "url": "https://wellsky.com/personal-care-software/",
+   "date": "2026-11-12"
+  },
+  {
+   "product": "Aspire",
+   "price": "Not published (quote)",
+   "url": "https://www.youraspire.com/aspire-plans",
+   "date": "2026-11-12"
+  }
+ ]
+}
