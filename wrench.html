@@ -237,7 +237,7 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
 .footer-links{flex-wrap:wrap}
 </style>
 </head>
-<body>
+<body data-template="crm-fieldservice">
 
 <nav>
   <a href="index.html" class="nav-logo">
@@ -266,6 +266,10 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
       <a href="/roof.html">Roof &mdash; Roofing</a>
       <a href="/wrench.html">Wrench &mdash; Trades</a>
       <a href="/care.html">Care &mdash; Home Care</a>
+      <a href="/landscaping.html">Landscaping</a>
+      <a href="/salon.html">Salon</a>
+      <a href="/restaurant.html">Restaurant &amp; Bar</a>
+      <a href="/store.html">Store</a>
       <a href="/vision.html">Vision</a>
     </section>
     <section>
@@ -273,7 +277,6 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
       <a href="/apps">Overview</a>
       <a href="https://ickthatish.com" target="_blank" rel="noopener">Ick That Ish &#8599;</a>
       <a href="https://goldstandardapp.com" target="_blank" rel="noopener">Gold Standard &#8599;</a>
-      <a href="https://whosrunningusa.com" target="_blank" rel="noopener">WhosRunningUSA &#8599;</a>
     </section>
     <section>
       <p class="mm-h">Card Collectors</p>
@@ -303,10 +306,11 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
     <div class="hero-left">
       <div class="hero-eyebrow">Built for the Trades. Not the Tech Industry.</div>
       <h1 class="hero-headline">Every Call.<br>Every Tech.<br><span class="steel-line">Every Dollar. Handled.</span></h1>
-      <p class="hero-sub">One system for <em>dispatch, booking, invoicing, your website, and marketing</em>. Know where every tech is, what every job costs, and what's coming next &mdash; without duct-taping five apps together.</p>
+      <p class="hero-sub">One system for <em>dispatch, booking, invoicing, your website, and marketing</em>. Know where every tech is, what every job costs, and what's coming next.</p>
       <div class="hero-actions">
         <a href="/signup/wrench" class="btn-primary">Launch Your System</a>
-        <a href="#features" class="btn-ghost">See What's Inside</a>
+        <a href="https://demo.twomiah.com/crm?trade=contractor" class="btn-ghost" target="_blank" rel="noopener">Try the closest demo</a>
+        <a href="#everything" class="btn-ghost">Every Feature</a>
       </div>
     </div>
     <!-- DISPATCH MOCKUP -->
@@ -362,16 +366,16 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
 <section id="problem">
   <div class="problem-inner reveal">
     <div class="problem-card">
-      <div class="problem-num">4–6</div>
-      <p class="problem-text"><strong>apps the average trade contractor juggles</strong> — scheduling here, invoicing there, website somewhere else, reviews never.</p>
+      <div class="problem-num">$99</div>
+      <p class="problem-text"><strong>a month for up to 10 users</strong> &mdash; every feature on this page and your website. $139 for 25 users, $199 for 50.</p>
     </div>
     <div class="problem-card">
-      <div class="problem-num">$300+</div>
-      <p class="problem-text"><strong>per month just for ServiceTitan</strong> — before you add a website, SEO, or any marketing. For features you're still configuring six months in.</p>
+      <div class="problem-num">$3</div>
+      <p class="problem-text"><strong>a month for a call tracking number</strong> &mdash; one for each place you advertise; calls ring your line and are logged with where they came from. Calls at cost.</p>
     </div>
     <div class="problem-card">
-      <div class="problem-num">0</div>
-      <p class="problem-text"><strong>CRM platforms bundle a real website with online booking</strong>. You pay separately for that. We include it on every plan.</p>
+      <div class="problem-num">30</div>
+      <p class="problem-text"><strong>day money-back guarantee</strong> &mdash; no contract, cancel any month.</p>
     </div>
   </div>
 </section>
@@ -385,50 +389,50 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
       <p class="section-sub">Dispatch, booking, invoicing, marketing, and your website &mdash; all connected. Change something once and it updates everywhere.</p>
     </div>
     <div class="features-grid">
-      <div class="feat-card reveal">
-        <div class="feat-icon">📋</div>
-        <div class="feat-title">Never Lose Track of a Call</div>
-        <p class="feat-desc">Every job, every note, every photo, every part &mdash; attached to the job, not scattered across texts and voicemails. Open it up and know exactly where things stand.</p>
+      <div class="feat-card reveal" data-feature="dispatch_board tech_availability skill_matching service_zones">
+        <div class="feat-icon">&#x1F4CB;</div>
+        <div class="feat-title">One Board for the Day</div>
+        <p class="feat-desc">Every job by technician on one board: assign, reassign, set status. Working hours and time off show on the board, a warning comes up when a job goes to someone without the skill, and jobs are grouped by the zones you work in.</p>
       </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon">📅</div>
-        <div class="feat-title">Know Where Every Tech Is</div>
-        <p class="feat-desc">Visual calendar with real-time locations. Drag a job onto a tech. They get notified instantly. No radio. No group text. Done.</p>
+      <div class="feat-card reveal" data-feature="online_booking portal_booking job_reminders">
+        <div class="feat-icon">&#x1F310;</div>
+        <div class="feat-title">Customers Book Themselves</div>
+        <p class="feat-desc">Online booking on your website and from the customer portal, with their details already filled in. Reminder texts and emails go out before the jobs you book.</p>
       </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon">🌐</div>
-        <div class="feat-title">Customers Book. Jobs Appear.</div>
-        <p class="feat-desc">Professional website with live booking built in. Customer picks a slot, job drops into dispatch. You didn't lift a finger.</p>
+      <div class="feat-card reveal" data-feature="tech_tracking gps_tracking">
+        <div class="feat-icon">&#x1F4CD;</div>
+        <div class="feat-title">No More &ldquo;Where&rsquo;s the Tech?&rdquo;</div>
+        <p class="feat-desc">The on-my-way text carries a private link showing where the tech is until they arrive. Crew locations and automatic clock-in at the job site from the phone app.</p>
       </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon">🔁</div>
-        <div class="feat-title">Revenue That Shows Up Every Month</div>
-        <p class="feat-desc">Maintenance agreements, seasonal tune-ups, service contracts &mdash; automated scheduling, renewal reminders, and billing. Recurring revenue you don't have to chase.</p>
+      <div class="feat-card reveal" data-feature="maintenance_contracts service_agreements plan_reports">
+        <div class="feat-icon">&#x1F501;</div>
+        <div class="feat-title">Revenue Every Month</div>
+        <p class="feat-desc">Maintenance plans whose included visits go on the schedule for each term, and reports on plans sold by rep, renewals coming due and plans that ended.</p>
       </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon">📍</div>
-        <div class="feat-title">Kill the 'Where's the Guy?' Calls</div>
-        <p class="feat-desc">Customers see their tech on a live map &mdash; like tracking a delivery. The call you used to get ten times a day? Gone.</p>
+      <div class="feat-card reveal" data-feature="quote_proposals flat_rate_pricebook quote_followup">
+        <div class="feat-icon">&#x1F4B0;</div>
+        <div class="feat-title">Quotes That Close</div>
+        <p class="feat-desc">Good / better / best options on one quote &mdash; the customer picks and signs, and the deposit follows. A flat-rate pricebook, and a follow-up email when a quote goes unanswered.</p>
       </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon">💬</div>
-        <div class="feat-title">Stop Playing Phone Tag</div>
-        <p class="feat-desc">Appointment confirmations, arrival texts, review requests, estimate follow-ups &mdash; all automated from one inbox. You focus on the work.</p>
+      <div class="feat-card reveal" data-feature="tech_mobile_view job_checklists online_payments">
+        <div class="feat-icon">&#x1F4F1;</div>
+        <div class="feat-title">The Tech&rsquo;s Phone Does the Paperwork</div>
+        <p class="feat-desc">Today&rsquo;s jobs, directions, on my way / on site / done, photos, and checklists built for each kind of job, signed by the customer on site. Invoices paid by card or bank.</p>
       </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon">🗺️</div>
-        <div class="feat-title">More Jobs. Less Windshield Time.</div>
-        <p class="feat-desc">Auto-sequence your tech's stops for the best route. Cut drive time, fit more jobs, save on gas. Your guys do more work in less time.</p>
+      <div class="feat-card reveal" data-feature="call_tracking_numbers caller_id marketing_roi">
+        <div class="feat-icon">&#x1F4DE;</div>
+        <div class="feat-title">Know Which Ads Work</div>
+        <p class="feat-desc">A tracking number for each place you advertise; when a customer calls, the office sees their open jobs and what they owe. For each lead source: the jobs and money it brought, against what you spent.</p>
       </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon">📢</div>
-        <div class="feat-title">Reviews and Leads on Autopilot</div>
-        <p class="feat-desc">After every job, a review request goes out automatically. Seasonal ad campaigns run themselves &mdash; tune-up season, winter prep, summer rush. The phone rings without you chasing it.</p>
+      <div class="feat-card reveal" data-feature="chat_to_text two_way_texting">
+        <div class="feat-icon">&#x1F4AC;</div>
+        <div class="feat-title">Texting Built In</div>
+        <p class="feat-desc">A &ldquo;Text us&rdquo; box on your website turns each message into a lead you answer by text, from one inbox. (Texting add-on: $10/mo, texts at cost.)</p>
       </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon">💰</div>
-        <div class="feat-title">Get Paid Before You Leave</div>
-        <p class="feat-desc">Pre-built pricebook for common services. Generate an invoice on the job, collect payment on the spot. No more mailing invoices and hoping.</p>
+      <div class="feat-card reveal" data-feature="google_reviews team_revenue_reports">
+        <div class="feat-icon">&#x2B50;</div>
+        <div class="feat-title">Reviews After Every Job</div>
+        <p class="feat-desc">Ask for a Google review automatically after a completed job. See revenue per tech, and how many quotes each rep and tech turns into work.</p>
       </div>
     </div>
   </div>
@@ -440,97 +444,247 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,0.06);background:
     <div class="reveal">
       <div class="section-label">Built For You</div>
       <h2 class="section-title">Your Trade.<br><span class="steel-line">Your Platform.</span></h2>
-      <p class="section-sub">Twomiah Wrench isn't generic field service software. Every template, every default, and every workflow is dialed in for your trade.</p>
+      <p class="section-sub">Twomiah Wrench is built for trades that send techs to customers &mdash; HVAC, plumbing, electrical, cleaning and other home services.</p>
     </div>
     <div class="who-grid">
-      <div class="who-card reveal">
+      <div class="who-card reveal" data-feature="equipment_tracking maintenance_contracts job_reminders">
         <div class="who-icon">❄️</div>
         <div class="who-trade">HVAC</div>
-        <p class="who-desc">Seasonal demand swings, maintenance agreements, equipment serial tracking, and the spring/fall tune-up rush — all handled.</p>
-        <div class="who-win">→ Service agreements and equipment history built in</div>
+        <p class="who-desc">Equipment on each customer&rsquo;s record, maintenance plans that schedule their own visits, and reminders before the job.</p>
+        <div class="who-win">→ Equipment and maintenance plans built in</div>
       </div>
-      <div class="who-card reveal">
+      <div class="who-card reveal" data-feature="flat_rate_pricebook warranties quote_proposals">
         <div class="who-icon">🔧</div>
         <div class="who-trade">Plumbing</div>
-        <p class="who-desc">Emergency dispatch, recurring service agreements, water heater and fixture warranties, and referral partner tracking for realtors and inspectors.</p>
-        <div class="who-win">→ Emergency job fast-track routing</div>
+        <p class="who-desc">A flat-rate pricebook for common work, warranties on what you install, and good / better / best options on the quote.</p>
+        <div class="who-win">→ Flat-rate pricing and warranties</div>
       </div>
-      <div class="who-card reveal">
+      <div class="who-card reveal" data-feature="job_checklists photo_folders job_change_orders">
         <div class="who-icon">⚡</div>
         <div class="who-trade">Electrical</div>
-        <p class="who-desc">Panel upgrades, permit job tracking, multi-phase project management, and EV charger installation workflows built right in.</p>
-        <div class="who-win">→ Project phase milestone tracking</div>
+        <p class="who-desc">Checklists for each kind of job, filled in and signed on site, photos in folders, and change orders the customer signs in their portal.</p>
+        <div class="who-win">→ Checklists, photos and change orders</div>
+      </div>
+      <div class="who-card reveal" data-feature="recurring_jobs online_booking job_reminders">
+        <div class="who-icon">🧽</div>
+        <div class="who-trade">Cleaning &amp; Other Services</div>
+        <p class="who-desc">Recurring jobs and invoices, customers booking from your website, and reminders before every visit.</p>
+        <div class="who-win">→ Recurring work on autopilot</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ VS ═══ -->
+<!-- EVERY FEATURE (generated from the Factory's feature registry: bun scripts/site-facts.ts) -->
+<section id="everything">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-label">Every Feature, Every Plan</div>
+      <h2 class="section-title">Everything<br><span class="steel-line">That's Included.</span></h2>
+      <p class="section-sub">Every feature below is in every plan &mdash; plans differ only by how many people log in. Usage-priced items are marked. There's no field service demo yet; the closest is the <a href="https://demo.twomiah.com/crm?trade=contractor" target="_blank" rel="noopener" style="color:var(--steel)">contractor demo</a> (a sample business; nothing you do there is saved).</p>
+    </div>
+<!-- facts:features crm-fieldservice -->
+<style>.fx{max-width:1100px;margin:36px auto 0;text-align:left}.fx-cat{border-top:1px solid color-mix(in srgb,currentColor 18%,transparent)}.fx-cat summary{cursor:pointer;padding:14px 4px;font-weight:700;list-style:none;display:flex;align-items:baseline;gap:10px}.fx-cat summary::-webkit-details-marker{display:none}.fx-cat summary::after{content:'+';opacity:.6;margin-left:auto}.fx-cat[open] summary::after{content:'\2212'}.fx-cat ul{list-style:none;margin:0;padding:0 4px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px 28px}.fx-cat li{font-size:14px;line-height:1.5;opacity:.85}.fx-cat li b{display:block;opacity:1}.fx-cat li i{display:block;font-size:12px;opacity:.75}.fx-n{font-weight:400;opacity:.6}.fx-h{font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin:28px 0 6px}.cx{max-width:900px;margin:0 auto;overflow-x:auto}.cx table{width:100%;border-collapse:collapse;font-size:14px;text-align:left}.cx th,.cx td{padding:10px 12px;border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent);vertical-align:top}.cx th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}.cx td.y{text-align:center;font-weight:700;white-space:nowrap}.cx .cx-note{font-size:12px;opacity:.65;margin-top:12px;line-height:1.5}.cx .cx-note a{color:inherit}@media(max-width:700px){.cx thead{display:none}.cx table,.cx tbody,.cx tr,.cx td{display:block;width:100%}.cx tr{padding:12px 0;border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent)}.cx td{border:0;padding:2px 0}.cx td:first-child{font-weight:700;padding-bottom:6px}.cx td.y{display:inline-block;width:auto;text-align:left;margin-right:14px;font-size:13px;white-space:normal}.cx td.y::before{content:attr(data-label) ' ';font-weight:400;opacity:.7}}</style>
+<div class="fx">
+<details class="fx-cat"><summary>Core <span class="fx-n">9</span></summary><ul>
+<li data-feature="contacts"><b>Contacts</b>Clients, leads and suppliers in one place</li>
+<li data-feature="jobs"><b>Jobs</b>Job tracking and management</li>
+<li data-feature="quotes"><b>Quotes</b>Professional estimates and quotes</li>
+<li data-feature="invoices"><b>Invoices</b>Invoice generation and tracking</li>
+<li data-feature="scheduling"><b>Scheduling</b>Calendar and job scheduling</li>
+<li data-feature="team"><b>Team</b>Team member management</li>
+<li data-feature="dashboard"><b>Dashboard</b>Overview dashboard</li>
+<li data-feature="owner_dashboard"><b>Owner Dashboard</b>On the home screen: what needs the owner today (quotes with no answer, bills due, jobs nobody is on, projects over budget) and who is on which job</li>
+<li data-feature="crew_dashboard"><b>Crew Dashboard</b>On the home screen for a crew member: my jobs today and next, my hours this week, my open tasks</li>
+</ul></details>
+<details class="fx-cat"><summary>Service Trade <span class="fx-n">5</span></summary><ul>
+<li data-feature="drag_drop_calendar"><b>Drag &amp; Drop Calendar</b>Drag jobs to another day or hour on the Schedule (day, week and month views)</li>
+<li data-feature="recurring_jobs"><b>Recurring Invoices</b>Invoices that bill a customer on a schedule — weekly to yearly</li>
+<li data-feature="service_agreements"><b>Service Agreements</b>Maintenance agreement management</li>
+<li data-feature="warranties"><b>Warranties</b>Warranty tracking</li>
+<li data-feature="pricebook"><b>Pricebook</b>Standardized pricing catalog</li>
+</ul></details>
+<details class="fx-cat"><summary>Scheduling <span class="fx-n">1</span></summary><ul>
+<li data-feature="online_booking"><b>Online Booking</b>Customer self-scheduling</li>
+</ul></details>
+<details class="fx-cat"><summary>Field Service <span class="fx-n">14</span></summary><ul>
+<li data-feature="photo_folders"><b>Photo Folders</b>A job’s photos in folders — before, during, after, progress, damage and more — with each folder’s count, a folder picked when a photo is added, and photos moved between them</li>
+<li data-feature="job_change_orders"><b>Change Orders on Jobs</b>A change to a job’s price agreed with the customer — sent to sign in their portal, and billed as its own line on the job’s invoice</li>
+<li data-feature="portal_booking"><b>Book from the Portal</b>Customers book a visit from their portal, with their details already filled in, and see the bookings they have made</li>
+<li data-feature="days_off"><b>Days Off</b>Holidays and other days the whole business is closed: online booking offers no time on them, a job booked on one is checked first, and a plan visit that falls on one moves to the next open day</li>
+<li data-feature="dispatch_board"><b>Dispatch Board</b>A day of jobs by technician on one board — assign, reassign and set status</li>
+<li data-feature="maintenance_contracts"><b>Maintenance Contracts</b>Maintenance plans whose included visits go on the Schedule for each term</li>
+<li data-feature="flat_rate_pricebook"><b>Flat-Rate Pricebook</b>Standard pricing for common services</li>
+<li data-feature="parts_tracking"><b>Parts &amp; Inventory</b>Track parts, stock levels, and usage</li>
+<li data-feature="tech_availability"><b>Tech Availability</b>Working hours and time off for each tech, shown on the Dispatch Board and checked when a job is given to them</li>
+<li data-feature="service_zones"><b>Service Zones</b>Name the areas you work in by ZIP code; the Dispatch Board shows each job’s zone and can show one zone at a time</li>
+<li data-feature="skill_matching"><b>Skill Matching</b>The skills each person has and each kind of job needs — a warning when a job goes to someone without them, and Find a time offers only people who have them</li>
+<li data-feature="job_checklists"><b>Job Checklists</b>Checklists you build for each kind of job, filled in on the phone and signed by the customer on site</li>
+<li data-feature="tech_tracking"><b>Where's My Tech</b>The on-my-way text carries a private link showing where the tech is until they arrive</li>
+<li data-feature="tech_mobile_view"><b>Technician / Crew Mobile View</b>Mobile-first field view: today's jobs, directions, on my way / on site / done, photos and a checklist</li>
+</ul></details>
+<details class="fx-cat"><summary>Field Operations <span class="fx-n">5</span></summary><ul>
+<li data-feature="time_tracking"><b>Time Tracking</b>Clock in and out, or log hours by hand; hours by person and day</li>
+<li data-feature="gps_tracking"><b>GPS Tracking</b>Crew locations and automatic clock-in and out at job-site fences, from the Twomiah phone app</li>
+<li data-feature="photo_capture"><b>Photo Capture</b>Job site photo documentation</li>
+<li data-feature="equipment_tracking"><b>Equipment</b>Equipment and tool tracking</li>
+<li data-feature="fleet"><b>Fleet Management</b>Vehicle fleet tracking</li>
+</ul></details>
+<details class="fx-cat"><summary>Finance <span class="fx-n">11</span></summary><ul>
+<li data-feature="online_payments"><b>Online Payments</b>Stripe payment processing — invoices and deposits paid by card, or by bank account where you turn that on in your Stripe account</li>
+<li data-feature="expense_tracking"><b>Expense Tracking</b>Expense logging and receipts</li>
+<li data-feature="job_costing"><b>Job Costing</b>Detailed job cost analysis</li>
+<li data-feature="quote_templates"><b>Quote Templates</b>Save a quote as a template, start a new quote from one, or create a quote similar to an old one</li>
+<li data-feature="quote_followup"><b>Quote Follow-up</b>Email a customer who has not answered a quote, a few days after it was sent — once per step, never after they answer or unsubscribe</li>
+<li data-feature="quote_text_lines"><b>Text lines on quotes</b>Add a line of words only to a quote — a heading or a note with no quantity or price — shown on the customer’s page and the PDF</li>
+<li data-feature="quote_preview"><b>Preview quote as client</b>Open exactly the page the customer will see for a quote — options, ticks, deposit and the sign button — read only, without sending it</li>
+<li data-feature="credit_memos"><b>Customer Credit</b>Credit you owe a customer, kept on them and used to pay any of their invoices — and a refund can be kept as credit instead</li>
+<li data-feature="quickbooks"><b>QuickBooks</b>QuickBooks sync — we integrate accounting, we do not replace it</li>
+<li data-feature="quote_proposals"><b>Good / Better / Best</b>One quote with two to six priced options, each with photos, a brand and a warranty: the customer picks one and signs, and the price and deposit follow their pick</li>
+<li data-feature="commission_tracking"><b>Commission Tracking</b>Commission plans for sales reps and crews: earned by hand or automatically when an invoice is paid, approved, paid out, with statements</li>
+</ul></details>
+<details class="fx-cat"><summary>Communication <span class="fx-n">13</span></summary><ul>
+<li data-feature="lead_map"><b>Lead Map</b>Your enquiries on a map, from the location each one gave</li>
+<li data-feature="lead_pipeline"><b>Pipeline Strip</b>One strip from new enquiry to won work, and the list of quotes still waiting on a customer, longest first</li>
+<li data-feature="caller_id"><b>Caller ID</b>When a customer calls your tracking number, the office sees who it is — their open jobs and what they owe — with their record one click away</li>
+<li data-feature="chat_to_text"><b>Website Chat-to-Text</b>A &quot;Text us&quot; box on your website: each message is a lead, and with the visitor’s OK it lands in your texting inbox so you reply by text<i>Uses the texting add-on ($10/mo, texts at cost)</i></li>
+<li data-feature="job_reminders"><b>Job Reminders</b>Automatic reminder texts and emails before the jobs you book</li>
+<li data-feature="two_way_texting"><b>Two-Way Texting</b>Unified SMS inbox — every customer conversation logged<i>Texting add-on: $10/mo, plus each text at cost</i></li>
+<li data-feature="call_tracking_numbers"><b>Tracking Numbers</b>Buy a call tracking number for each place you advertise — calls ring your line and are logged with where they came from<i>$3/mo a number; calls and recordings at cost</i></li>
+<li data-feature="call_tracking"><b>Call Tracking</b>Inbound call tracking and recording<i>Calls and recordings at cost</i></li>
+<li data-feature="google_business"><b>Google Reviews</b>Connect your Google Business Profile — see your rating and reply to reviews from the CRM</li>
+<li data-feature="branded_email"><b>Branded Email</b>support@yourdomain addresses — forward anywhere or receive replies in the CRM email inbox</li>
+<li data-feature="client_portal"><b>Client Portal</b>A customer portal by private link — quotes to approve, invoices to view and pay, and their projects where you run them</li>
+<li data-feature="lead_inbox"><b>Lead Inbox</b>Every inquiry in one inbox — marketplaces, ads, booking apps and your website</li>
+<li data-feature="support_tickets"><b>Support Tickets</b>Customer support ticket queue with statuses and assignment</li>
+</ul></details>
+<details class="fx-cat"><summary>Advanced <span class="fx-n">9</span></summary><ul>
+<li data-feature="team_revenue_reports"><b>Team Revenue Reports</b>Revenue per tech, and how many quotes each rep and tech turns into work</li>
+<li data-feature="plan_reports"><b>Plan Reports</b>Service plans sold by rep, renewals coming due and plans that ended</li>
+<li data-feature="barcode_scanning"><b>Barcode Scanning</b>Scan a part's or product's barcode with the phone's camera to find it — Stock on the phone, and the store's stock list</li>
+<li data-feature="inventory"><b>Inventory</b>Warehouse and material inventory</li>
+<li data-feature="documents"><b>Documents</b>Document management and storage</li>
+<li data-feature="reports"><b>Reports</b>Revenue, outstanding balances and work done for any period, with CSV downloads</li>
+<li data-feature="ar_aging"><b>Receivables Aging</b>Who owes what, by customer — current, 1–30, 31–60, 61–90 and over 90 days past due</li>
+<li data-feature="wip_report"><b>Work in Progress Report</b>Each open project: contract value, billed, cost to date, percent complete and over or under billing</li>
+<li data-feature="ai_receptionist"><b>AI Receptionist</b>Missed-call text-back: replies by text or email to missed calls and voicemails, with each voicemail written out<i>Uses the texting add-on ($10/mo, texts at cost)</i></li>
+</ul></details>
+<details class="fx-cat"><summary>Marketing <span class="fx-n">3</span></summary><ul>
+<li data-feature="marketing_roi"><b>Marketing ROI</b>For each lead source: the leads, the customers and jobs they became, the money they brought, against what you spent on it</li>
+<li data-feature="google_reviews"><b>Review Requests</b>Ask customers for a Google review — sent automatically after a completed job or salon visit once switched on in Reviews › Settings, or by hand from Reviews</li>
+<li data-feature="email_marketing"><b>Email Marketing</b>Drip campaigns and newsletters</li>
+</ul></details>
+<details class="fx-cat"><summary>Inventory &amp; Compliance <span class="fx-n">1</span></summary><ul>
+<li data-feature="multi_location"><b>Multi-Location</b>Run several locations from one account, with staff, stock and reporting for each location</li>
+</ul></details>
+</div>
+<!-- /facts:features -->
+  </div>
+</section>
+
 <section id="vs" style="background:var(--charcoal)">
   <div class="inner">
     <div class="reveal" style="text-align:center;margin-bottom:24px">
       <div class="section-label" style="justify-content:center">The Comparison</div>
-      <h2 class="section-title">See How We<br><span class="steel-line">Stack Up.</span></h2>
-      <p class="section-sub" style="margin:0 auto">Want the spec-by-spec breakdown? Click below.</p>
+      <h2 class="section-title">What the Leaders Sell.<br><span class="steel-line">You Get It Here Too.</span></h2>
+      <p class="section-sub" style="margin:0 auto">Features ServiceTitan, Jobber and Housecall Pro are known for, matched in Twomiah &mdash; on every plan.</p>
     </div>
-    <div class="reveal" style="text-align:center;margin-bottom:24px">
-      <button id="cmpToggleBtn" onclick="toggleCmp()" style="background:rgba(14,165,233,0.1);border:1px solid var(--steel);color:var(--steel);padding:14px 32px;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:'Barlow',sans-serif;transition:all 0.2s">Compare vs. ServiceTitan, Jobber &amp; Housecall Pro &nbsp;&darr;</button>
-    </div>
-    <div id="cmpContent" style="display:none">
-      <div class="reveal" style="display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap">
-        <button class="vs-toggle active" onclick="showCompare('servicetitan')">vs ServiceTitan</button>
-        <button class="vs-toggle" onclick="showCompare('jobber')">vs Jobber</button>
-        <button class="vs-toggle" onclick="showCompare('housecall')">vs Housecall Pro</button>
-      </div>
-      <div id="compareTable" class="reveal"></div>
-      <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Twomiah Wrench: $99&ndash;$199/mo &mdash; every feature and your website on every plan. Competitors: $300+/mo + add-ons for most features.</p>
-    </div>
+<!-- facts:compare crm-fieldservice -->
+<style>.fx{max-width:1100px;margin:36px auto 0;text-align:left}.fx-cat{border-top:1px solid color-mix(in srgb,currentColor 18%,transparent)}.fx-cat summary{cursor:pointer;padding:14px 4px;font-weight:700;list-style:none;display:flex;align-items:baseline;gap:10px}.fx-cat summary::-webkit-details-marker{display:none}.fx-cat summary::after{content:'+';opacity:.6;margin-left:auto}.fx-cat[open] summary::after{content:'\2212'}.fx-cat ul{list-style:none;margin:0;padding:0 4px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px 28px}.fx-cat li{font-size:14px;line-height:1.5;opacity:.85}.fx-cat li b{display:block;opacity:1}.fx-cat li i{display:block;font-size:12px;opacity:.75}.fx-n{font-weight:400;opacity:.6}.fx-h{font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin:28px 0 6px}.cx{max-width:900px;margin:0 auto;overflow-x:auto}.cx table{width:100%;border-collapse:collapse;font-size:14px;text-align:left}.cx th,.cx td{padding:10px 12px;border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent);vertical-align:top}.cx th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}.cx td.y{text-align:center;font-weight:700;white-space:nowrap}.cx .cx-note{font-size:12px;opacity:.65;margin-top:12px;line-height:1.5}.cx .cx-note a{color:inherit}@media(max-width:700px){.cx thead{display:none}.cx table,.cx tbody,.cx tr,.cx td{display:block;width:100%}.cx tr{padding:12px 0;border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent)}.cx td{border:0;padding:2px 0}.cx td:first-child{font-weight:700;padding-bottom:6px}.cx td.y{display:inline-block;width:auto;text-align:left;margin-right:14px;font-size:13px;white-space:normal}.cx td.y::before{content:attr(data-label) ' ';font-weight:400;opacity:.7}}</style>
+<div class="cx"><table><thead><tr><th>What the leaders sell you</th>
+<th class="y">ServiceTitan</th>
+<th class="y">Housecall Pro</th>
+<th class="y">Jobber</th>
+<th class="y">Twomiah</th></tr></thead><tbody>
+<tr data-feature="quote_proposals"><td>Good / better / best options the customer picks and signs</td>
+<td class="y" data-label="ServiceTitan">&#10003;</td>
+<td class="y" data-label="Housecall Pro">&#10003;</td>
+<td class="y" data-label="Jobber">&#10003;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="job_checklists"><td>Job checklists built per job type and filled in on the phone</td>
+<td class="y" data-label="ServiceTitan">&#10003;</td>
+<td class="y" data-label="Housecall Pro">&#10003;</td>
+<td class="y" data-label="Jobber">&#10003;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="job_checklists"><td>Customer signs the checklist on site</td>
+<td class="y" data-label="ServiceTitan">&#10003;</td>
+<td class="y" data-label="Housecall Pro">&ndash;</td>
+<td class="y" data-label="Jobber">&#10003;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="job_reminders"><td>Automatic visit reminders by text and email, with confirm</td>
+<td class="y" data-label="ServiceTitan">&ndash;</td>
+<td class="y" data-label="Housecall Pro">&ndash;</td>
+<td class="y" data-label="Jobber">&#10003;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="tech_availability dispatch_board"><td>Each tech's working hours and time off on the dispatch board</td>
+<td class="y" data-label="ServiceTitan">&#10003;</td>
+<td class="y" data-label="Housecall Pro">&ndash;</td>
+<td class="y" data-label="Jobber">&#10003;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="tech_mobile_view"><td>On my way, arrived and complete from the phone, even offline</td>
+<td class="y" data-label="ServiceTitan">&#10003;</td>
+<td class="y" data-label="Housecall Pro">&ndash;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="time_tracking"><td>Timesheet starts when the tech taps On my way or Arrive</td>
+<td class="y" data-label="ServiceTitan">&#10003;</td>
+<td class="y" data-label="Housecall Pro">&ndash;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="plan_reports"><td>Service plan reports: sold by, renewals and cancellations</td>
+<td class="y" data-label="ServiceTitan">&#10003;</td>
+<td class="y" data-label="Housecall Pro">&#10003;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="team_revenue_reports"><td>Revenue per tech and quote win rate per rep</td>
+<td class="y" data-label="ServiceTitan">&#10003;</td>
+<td class="y" data-label="Housecall Pro">&ndash;</td>
+<td class="y" data-label="Jobber">&#10003;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="dispatch_board"><td>Drag-and-drop dispatch board</td>
+<td class="y" data-label="ServiceTitan">&#10003;</td>
+<td class="y" data-label="Housecall Pro">&ndash;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="flat_rate_pricebook pricebook"><td>Flat-rate pricebook in the field</td>
+<td class="y" data-label="ServiceTitan">&#10003;</td>
+<td class="y" data-label="Housecall Pro">&ndash;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="maintenance_contracts service_agreements"><td>Maintenance memberships with visits scheduled for each term</td>
+<td class="y" data-label="ServiceTitan">&#10003;</td>
+<td class="y" data-label="Housecall Pro">&ndash;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="skill_matching"><td>Skill matching when you assign a job</td>
+<td class="y" data-label="ServiceTitan">&#10003;</td>
+<td class="y" data-label="Housecall Pro">&ndash;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="tech_tracking"><td>Where's-my-tech map link in the on-my-way text</td>
+<td class="y" data-label="ServiceTitan">&#10003;</td>
+<td class="y" data-label="Housecall Pro">&ndash;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="caller_id"><td>Caller ID: the customer's record pops up when they call</td>
+<td class="y" data-label="ServiceTitan">&#10003;</td>
+<td class="y" data-label="Housecall Pro">&ndash;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="chat_to_text"><td>Website chat that lands in your texting inbox</td>
+<td class="y" data-label="ServiceTitan">&#10003;</td>
+<td class="y" data-label="Housecall Pro">&ndash;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr><td><b>Starting price</b></td>
+<td class="y" data-label="ServiceTitan">Not published (quote)</td>
+<td class="y" data-label="Housecall Pro">From $59/mo billed yearly (1 user)</td>
+<td class="y" data-label="Jobber">From $29/mo billed yearly (1 user)</td>
+<td class="y" data-label="Twomiah">From $99/mo (up to 10 users)</td></tr></tbody></table>
+<p class="cx-note">&#10003; = the leader offers it, from its own product and help pages; &ndash; = not compared here (it may well have it), or a price we could not confirm on its own site. Twomiah: every listed feature on every plan, $99 / $139 / $199 a month for up to 10 / 25 / 50 users. Their prices: <a href="https://www.getjobber.com/pricing/" target="_blank" rel="noopener">Jobber</a> (checked 2026-11-12), <a href="https://www.housecallpro.com/pricing/" target="_blank" rel="noopener">Housecall Pro</a> (checked 2026-11-12), <a href="https://www.servicetitan.com/pricing" target="_blank" rel="noopener">ServiceTitan</a> (checked 2026-11-12).</p></div>
+<!-- /facts:compare -->
   </div>
 </section>
-<style>
-.vs-toggle{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);padding:8px 20px;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;font-family:'Barlow',sans-serif}
-.vs-toggle:hover{border-color:rgba(14,165,233,0.3);color:var(--white)}
-.vs-toggle.active{background:rgba(14,165,233,0.15);border-color:var(--steel);color:var(--steel)}
-.cmp-table{width:100%;border-collapse:collapse}
-.cmp-table th{text-align:left;padding:10px 16px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);border-bottom:1px solid rgba(255,255,255,0.06)}
-.cmp-table th:nth-child(2),.cmp-table th:nth-child(3){text-align:center}
-.cmp-table th:nth-child(3){color:var(--steel)}
-.cmp-cat td{padding:8px 16px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--steel);background:rgba(14,165,233,0.04);border-bottom:1px solid rgba(255,255,255,0.03)}
-.cmp-table tr{border-bottom:1px solid rgba(255,255,255,0.03)}
-.cmp-table td{padding:8px 16px;font-size:12px;color:rgba(255,255,255,0.5)}
-.cmp-table td:nth-child(2),.cmp-table td:nth-child(3){text-align:center;width:120px}
-.cmp-y{color:var(--steel);font-weight:700}
-.cmp-n{color:rgba(255,255,255,0.15)}
-.cmp-a{color:#fbbf24;font-size:9px;font-weight:700;letter-spacing:0.08em}
-.cmp-price td{padding:12px 16px;font-weight:700;font-size:14px;border-top:1px solid rgba(255,255,255,0.08)}
-.cmp-price td:nth-child(2){color:rgba(255,255,255,0.5)}
-.cmp-price td:nth-child(3){color:var(--steel)}
-@media(max-width:768px){.cmp-table td,.cmp-table th{padding:6px 8px;font-size:11px}.cmp-table td:nth-child(2),.cmp-table td:nth-child(3){width:80px}}
-</style>
-<script>
-var cmpData={
-servicetitan:{name:'ServiceTitan',price:'$300+/user/mo',features:{crm:1,quotes:1,invoicing:1,scheduling:1,dispatch:1,gps:1,routing:1,time:1,photo:1,equipment:'a',fleet:'a',sms:'a',email:'a',portal:1,booking:1,calltrack:'a',qb:1,pricebook:1,financing:1,inventory:'a',agreements:1,automations:1,forms:1,reporting:1,mobile:1,api:1}},
-jobber:{name:'Jobber',price:'$39+/mo',features:{crm:1,quotes:1,invoicing:1,scheduling:1,dispatch:0,gps:1,routing:1,time:1,photo:1,equipment:0,fleet:0,sms:0,email:0,portal:1,booking:1,calltrack:0,qb:1,pricebook:0,financing:0,inventory:0,agreements:0,automations:0,forms:0,reporting:0,mobile:1,api:0}},
-housecall:{name:'Housecall Pro',price:'$49+/mo',features:{crm:1,quotes:1,invoicing:1,scheduling:1,dispatch:1,gps:1,routing:0,time:1,photo:0,equipment:0,fleet:0,sms:0,email:0,portal:0,booking:1,calltrack:0,qb:1,pricebook:0,financing:0,inventory:0,agreements:0,automations:0,forms:0,reporting:0,mobile:1,api:0}}
-};
-var featureNames={crm:'CRM',quotes:'Quotes',invoicing:'Invoicing',scheduling:'Scheduling',dispatch:'Dispatch',gps:'GPS Tracking',routing:'Route Optimization',time:'Time Tracking',photo:'Photo Capture',equipment:'Equipment Tracking',fleet:'Fleet Management',sms:'SMS Marketing',email:'Email Campaigns',portal:'Customer Portal',booking:'Online Booking',calltrack:'Call Tracking',qb:'QuickBooks Integration',pricebook:'Pricebook',financing:'Financing',inventory:'Inventory',agreements:'Service Agreements',automations:'Automations',forms:'Custom Forms',reporting:'Reporting',mobile:'Mobile App',api:'Open API'};
-var cats={
-'Core':['crm','quotes','invoicing','scheduling','dispatch'],
-'Field':['gps','routing','time','photo','equipment','fleet'],
-'Communication':['sms','email','portal','booking','calltrack'],
-'Financial':['qb','pricebook','financing','inventory','agreements'],
-'Advanced':['automations','forms','reporting','mobile','api']
-};
-function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
-// Not offered by this system (the Factory's feature registry, 2026-10-23) — never claimed: the owner's rule is that nothing is advertised until it is live and working. The competitor's column still shows theirs.
-var NOT_OFFERED=['financing', 'routing', 'automations', 'forms', 'sms', 'mobile', 'api'];
-function wrenchCk(f){if(NOT_OFFERED.indexOf(f)>-1)return '<span class="cmp-n">&#10007;</span>';return '<span class="cmp-y">&#10003;</span>'}
-function toggleCmp(){var c=document.getElementById('cmpContent'),b=document.getElementById('cmpToggleBtn');if(c.style.display==='none'){c.style.display='block';b.innerHTML='Hide comparison &nbsp;&uarr;';showCompareInit('servicetitan')}else{c.style.display='none';b.innerHTML='Compare vs. ServiceTitan, Jobber &amp; Housecall Pro &nbsp;&darr;'}}
-function showCompareInit(key){document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});document.querySelector('.vs-toggle[onclick*="'+key+'"]').classList.add('active');renderCmp(key)}
-function renderCmp(key){var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Wrench</th></tr></thead><tbody>';Object.keys(cats).forEach(function(cat){h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+wrenchCk(f)+'</td></tr>'})});h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td>$99 / $139 / $199</td></tr>';h+='</tbody></table>';document.getElementById('compareTable').innerHTML=h}
-function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});event.target.classList.add('active');renderCmp(key)}
-// Comparison hidden by default; expand button initializes it.
-</script>
 
 <!-- PRICING -->
 <section id="pricing">
@@ -594,21 +748,6 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
   </div>
 </section>
 
-<!-- ═══ PROOF — see it in action ═══ -->
-<section id="proof" style="padding:96px 48px;background:rgba(0,0,0,0.3);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05)">
-  <div style="max-width:1200px;margin:0 auto">
-    <div class="reveal" style="text-align:center;margin-bottom:48px">
-      <div class="section-label" style="justify-content:center">See It In Action</div>
-      <h2 class="section-title">Real Tool.<br><span class="steel-line">Real Service Calls.</span></h2>
-      <p class="section-sub" style="max-width:560px;margin:0 auto">This is the actual Wrench pricebook running in a live HVAC shop. Not a mockup. Not a marketing render. Real flat-rate prices, real margin tracking, real techs using it on jobs.</p>
-    </div>
-    <div class="reveal" style="border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);box-shadow:0 20px 60px rgba(0,0,0,0.4);max-width:1100px;margin:0 auto">
-      <img src="images/proof-wrench.png" alt="Twomiah Wrench pricebook running at Valley HVAC — flat-rate service catalog with margin tracking" style="display:block;width:100%;height:auto" / width="1919" height="855">
-    </div>
-    <p class="reveal" style="text-align:center;margin-top:24px;font-size:13px;color:rgba(255,255,255,0.4)">Valley HVAC &mdash; flat-rate pricebook with 75% average margin tracking, 8 services across 5 categories. <em>(Customer name shown with permission.)</em></p>
-  </div>
-</section>
-
 <!-- BRIDGE LINE — sets up OWN IT as deliberate pivot -->
 <section style="padding:64px 48px 0;text-align:center">
   <p class="reveal" style="font-size:18px;color:rgba(255,255,255,0.5);max-width:680px;margin:0 auto;font-style:italic;line-height:1.6">Most platforms compete on features and pricing.<br>We took a different approach.</p>
@@ -620,7 +759,7 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
     <div class="reveal" style="text-align:center;margin-bottom:56px">
       <div class="section-label" style="justify-content:center">Own It</div>
       <h2 class="section-title">Most Software<br>Rents You Access.<br><span class="steel-line">We Let You Own It.</span></h2>
-      <p class="section-sub" style="max-width:600px;margin:0 auto">Pay monthly and we host it &mdash; or buy the source code outright and never pay us again. No other field service platform will sell you the code. We will. That's the difference.</p>
+      <p class="section-sub" style="max-width:600px;margin:0 auto">Pay monthly and we host it &mdash; or buy the source code outright and never pay us again. Own it outright if you'd rather.</p>
     </div>
     <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
       <!-- SaaS column -->
@@ -635,15 +774,15 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
         </ul>
         <a href="/signup/wrench" style="display:block;text-align:center;background:var(--steel);color:white;padding:13px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase">Get Started</a>
       </div>
-      <!-- Self-hosted column — every license = monthly SaaS × 36 (3 years equivalent) -->
+      <!-- Self-hosted column — every license = monthly SaaS × 36; updates are the $999/yr Update Subscription -->
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:32px">
         <div style="font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px">Self-Hosted &mdash; Buy Once, Own Forever</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:white;margin-bottom:24px">From $3,564<span style="font-size:14px;color:rgba(255,255,255,0.4);font-family:'Barlow',sans-serif"> once</span></div>
         <ul style="list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:8px">
           <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--steel)">&check;</span>Full source code + database schema</li>
           <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--steel)">&check;</span>Deploy on your own server &mdash; pay us nothing again</li>
-          <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--steel)">&check;</span>3 years of free updates included on every license</li>
-          <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--steel)">&check;</span>Every license = 3 years of SaaS, paid once</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--steel)">&check;</span>Updates: $999/yr Update Subscription, when you want them</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.7);display:flex;gap:8px"><span style="color:var(--steel)">&check;</span>Priced at 36 months of the plan, paid once</li>
         </ul>
         <div style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.6;margin-bottom:16px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.06)">
           Starter $3,564 &middot; Team $5,004 &middot; Business $7,164<br>
@@ -652,7 +791,6 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
         <a href="/signup/wrench?hosting=self-hosted" style="display:block;text-align:center;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);padding:13px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase">Get Self-Hosted &rarr;</a>
       </div>
     </div>
-    <p class="reveal" style="text-align:center;margin-top:32px;font-size:12px;color:rgba(255,255,255,0.35);max-width:560px;margin-left:auto;margin-right:auto">No other field service CRM &mdash; not ServiceTitan, not Jobber, not Housecall Pro &mdash; will sell you the source code. If you want to actually own your software, this is the only path.</p>
   </div>
 </section>
 
@@ -680,6 +818,10 @@ function showCompare(key){document.querySelectorAll('.vs-toggle').forEach(functi
       <a href="roof.html">Roof</a>
       <a href="wrench.html">Wrench</a>
       <a href="care.html">Care</a>
+      <a href="landscaping.html">Landscaping</a>
+      <a href="salon.html">Salon</a>
+      <a href="restaurant.html">Restaurant &amp; Bar</a>
+      <a href="store.html">Store</a>
       <a href="vision.html">Vision</a>
       <a href="https://ickthatish.com" target="_blank" rel="noopener">Ick That Ish ↗</a>
       <a href="https://cardshop.twomiah.com" target="_blank" rel="noopener">Card Shop ↗</a>

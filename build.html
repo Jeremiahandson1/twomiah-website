@@ -226,7 +226,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
 @media(max-width:640px){.own-grid{grid-template-columns:1fr !important}.own-addons{grid-template-columns:repeat(2,1fr) !important}}
 </style>
 </head>
-<body>
+<body data-template="crm">
 
 <nav>
   <a href="index.html" class="nav-logo">
@@ -256,6 +256,10 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
       <a href="/roof.html">Roof &mdash; Roofing</a>
       <a href="/wrench.html">Wrench &mdash; Trades</a>
       <a href="/care.html">Care &mdash; Home Care</a>
+      <a href="/landscaping.html">Landscaping</a>
+      <a href="/salon.html">Salon</a>
+      <a href="/restaurant.html">Restaurant &amp; Bar</a>
+      <a href="/store.html">Store</a>
       <a href="/vision.html">Vision</a>
     </section>
     <section>
@@ -263,7 +267,6 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
       <a href="/apps">Overview</a>
       <a href="https://ickthatish.com" target="_blank" rel="noopener">Ick That Ish &#8599;</a>
       <a href="https://goldstandardapp.com" target="_blank" rel="noopener">Gold Standard &#8599;</a>
-      <a href="https://whosrunningusa.com" target="_blank" rel="noopener">WhosRunningUSA &#8599;</a>
     </section>
     <section>
       <p class="mm-h">Card Collectors</p>
@@ -295,7 +298,8 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
     <p class="hero-sub">Never lose a lead again. Know exactly what's happening on every job without calling anyone. <em>Leads, jobs, crews, invoices, your website, and marketing</em> &mdash; all in one place. No spreadsheets. No missed calls. No chaos.</p>
     <div class="hero-actions">
       <a href="/signup/build" class="btn-primary">Launch Your System</a>
-      <a href="#stack" class="btn-ghost">See What's Inside</a>
+      <a href="https://demo.twomiah.com/crm?trade=contractor" class="btn-ghost" target="_blank" rel="noopener">Try the demo</a>
+      <a href="#everything" class="btn-ghost">Every Feature</a>
     </div>
   </div>
   <div class="hero-right">
@@ -357,9 +361,9 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
       </div>
       <div class="stack-card reveal">
         <div class="stack-icon">&#x1F3E0;</div>
-        <div class="stack-name">Home Visualizer</div>
-        <p class="stack-desc">Show homeowners their house with your work on it. Close deals on the spot.</p>
-        <div class="stack-price">$49<span>/mo</span></div>
+        <div class="stack-name">Exterior Visualizer</div>
+        <p class="stack-desc">Show homeowners their house in new siding, roofing or paint colours. An optional add-on.</p>
+        <div class="stack-price">$59<span>/mo</span></div>
       </div>
     </div>
   </div>
@@ -373,13 +377,159 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
       <h2 class="section-title">Stop Managing.<br><span class="fire-line">Start Operating.</span></h2>
     </div>
     <div class="features-grid">
-      <div class="feat reveal"><div class="feat-icon">&#x1F4CB;</div><div class="feat-title">Never Lose Track of a Job</div><p class="feat-desc">Every job has a clear status from first contact to final payment. Open your phone and know exactly where things stand &mdash; without calling anyone.</p></div>
-      <div class="feat reveal"><div class="feat-icon">&#x1F465;</div><div class="feat-title">Every Client. Every Detail.</div><p class="feat-desc">Full history, follow-up reminders, and notes for every client. That lead from three months ago? You'll know exactly where you left off.</p></div>
-      <div class="feat reveal"><div class="feat-icon">&#x1F9FE;</div><div class="feat-title">Get Paid Faster</div><p class="feat-desc">Build an estimate on site, convert it to an invoice in one click, and get paid before you leave the driveway. No more chasing checks.</p></div>
-      <div class="feat reveal"><div class="feat-icon">&#x1F4C5;</div><div class="feat-title">No More Phone Tag</div><p class="feat-desc">See who's where and when. Schedule crews across multiple jobs without double-booking. Your guys get notified instantly &mdash; no group texts needed.</p></div>
-      <div class="feat reveal"><div class="feat-icon">&#x1F4CA;</div><div class="feat-title">Know Your Numbers</div><p class="feat-desc">Revenue pipeline, job margins, crew utilization &mdash; at a glance. Stop guessing whether you're making money. Know it.</p></div>
-      <div class="feat reveal"><div class="feat-icon">&#x1F4F1;</div><div class="feat-title">Run It From Your Truck</div><p class="feat-desc">Pull up a job on site. Update a status from the cab. Send an invoice from the driveway. Your entire operation fits in your pocket.</p></div>
+      <div class="feat reveal" data-feature="lead_inbox lead_site_visit lead_pipeline"><div class="feat-icon">&#x1F4E5;</div><div class="feat-title">Every Lead, Then the Visit</div><p class="feat-desc">Every enquiry lands in one inbox &mdash; your website, ads, marketplaces. Book the site visit straight onto the schedule, and one strip shows each stage from new enquiry to won work, with the quotes still waiting on a customer, longest first.</p></div>
+      <div class="feat reveal" data-feature="quote_proposals quote_formulas quote_templates quote_followup"><div class="feat-icon">&#x1F4D0;</div><div class="feat-title">Estimates That Sell</div><p class="feat-desc">Two to six priced options on one quote &mdash; the customer picks one and signs, and the deposit follows. Formulas over square feet, wall height and openings; templates; and a follow-up email when a quote goes unanswered.</p></div>
+      <div class="feat reveal" data-feature="gantt_charts task_links daily_logs selections change_orders"><div class="feat-icon">&#x1F4C5;</div><div class="feat-title">The Schedule Holds Together</div><p class="feat-desc">A Gantt chart with linked tasks: move one and the tasks waiting on it move too. Daily logs, selections and change orders sit on the project.</p></div>
+      <div class="feat reveal" data-feature="job_costing cost_by_code wip_report ar_aging"><div class="feat-icon">&#x1F4CA;</div><div class="feat-title">Know Your Numbers</div><p class="feat-desc">Time, expenses and vendor bills filed by cost code, so each budget line shows its real cost and profit. A work-in-progress report and receivables aging by customer.</p></div>
+      <div class="feat reveal" data-feature="online_payments payment_plans draw_schedules aia_forms lien_waivers"><div class="feat-icon">&#x1F4B3;</div><div class="feat-title">Get Paid on Schedule</div><p class="feat-desc">Invoices paid online by card or bank, installments with their own due dates, construction-loan draws, AIA G702/G703 billing and lien waivers per payment.</p></div>
+      <div class="feat reveal" data-feature="contractor_phone client_portal_plus bid_packages vendor_portal"><div class="feat-icon">&#x1F4F1;</div><div class="feat-title">Run It From the Job</div><p class="feat-desc">The phone app opens each project &mdash; daily log with photos, punch list, change orders, inspections &mdash; and saves with no signal. Clients see what you choose in their portal; subs price bids and acknowledge POs in theirs.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- EVERY FEATURE (generated from the Factory's feature registry: bun scripts/site-facts.ts) -->
+<section id="everything">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-label">Every Feature, Every Plan</div>
+      <h2 class="section-title">Everything<br><span class="fire-line">That's Included.</span></h2>
+      <p class="section-sub">Every feature below is in every plan &mdash; plans differ only by how many people log in. Open a group to see what's in it, or <a href="https://demo.twomiah.com/crm?trade=contractor" target="_blank" rel="noopener" style="color:var(--fire)">try the contractor demo</a> (a sample business; nothing you do there is saved).</p>
+    </div>
+<!-- facts:features crm -->
+<style>.fx{max-width:1100px;margin:36px auto 0;text-align:left}.fx-cat{border-top:1px solid color-mix(in srgb,currentColor 18%,transparent)}.fx-cat summary{cursor:pointer;padding:14px 4px;font-weight:700;list-style:none;display:flex;align-items:baseline;gap:10px}.fx-cat summary::-webkit-details-marker{display:none}.fx-cat summary::after{content:'+';opacity:.6;margin-left:auto}.fx-cat[open] summary::after{content:'\2212'}.fx-cat ul{list-style:none;margin:0;padding:0 4px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px 28px}.fx-cat li{font-size:14px;line-height:1.5;opacity:.85}.fx-cat li b{display:block;opacity:1}.fx-cat li i{display:block;font-size:12px;opacity:.75}.fx-n{font-weight:400;opacity:.6}.fx-h{font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin:28px 0 6px}.cx{max-width:900px;margin:0 auto;overflow-x:auto}.cx table{width:100%;border-collapse:collapse;font-size:14px;text-align:left}.cx th,.cx td{padding:10px 12px;border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent);vertical-align:top}.cx th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}.cx td.y{text-align:center;font-weight:700;white-space:nowrap}.cx .cx-note{font-size:12px;opacity:.65;margin-top:12px;line-height:1.5}.cx .cx-note a{color:inherit}@media(max-width:700px){.cx thead{display:none}.cx table,.cx tbody,.cx tr,.cx td{display:block;width:100%}.cx tr{padding:12px 0;border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent)}.cx td{border:0;padding:2px 0}.cx td:first-child{font-weight:700;padding-bottom:6px}.cx td.y{display:inline-block;width:auto;text-align:left;margin-right:14px;font-size:13px;white-space:normal}.cx td.y::before{content:attr(data-label) ' ';font-weight:400;opacity:.7}}</style>
+<div class="fx">
+<details class="fx-cat"><summary>Core <span class="fx-n">9</span></summary><ul>
+<li data-feature="contacts"><b>Contacts</b>Clients, leads and suppliers in one place</li>
+<li data-feature="jobs"><b>Jobs</b>Job tracking and management</li>
+<li data-feature="quotes"><b>Quotes</b>Professional estimates and quotes</li>
+<li data-feature="invoices"><b>Invoices</b>Invoice generation and tracking</li>
+<li data-feature="scheduling"><b>Scheduling</b>Calendar and job scheduling</li>
+<li data-feature="team"><b>Team</b>Team member management</li>
+<li data-feature="dashboard"><b>Dashboard</b>Overview dashboard</li>
+<li data-feature="owner_dashboard"><b>Owner Dashboard</b>On the home screen: what needs the owner today (quotes with no answer, bills due, jobs nobody is on, projects over budget) and who is on which job</li>
+<li data-feature="crew_dashboard"><b>Crew Dashboard</b>On the home screen for a crew member: my jobs today and next, my hours this week, my open tasks</li>
+</ul></details>
+<details class="fx-cat"><summary>Construction <span class="fx-n">26</span></summary><ul>
+<li data-feature="projects"><b>Projects</b>Multi-phase project management</li>
+<li data-feature="rfis"><b>RFIs</b>Request for information tracking</li>
+<li data-feature="submittals"><b>Submittals</b>Product submittal and approval workflow tracking</li>
+<li data-feature="change_orders"><b>Change Orders</b>Change order management</li>
+<li data-feature="punch_lists"><b>Punch Lists</b>Punch list tracking</li>
+<li data-feature="shared_allowances"><b>Shared allowances</b>One allowance covers several selections; what they go over is raised as a change order and shows on the revised budget and the WIP report</li>
+<li data-feature="template_parts"><b>Templates: budget, selections and links</b>A project template also keeps the budget lines, the selections and allowances and the links between tasks; tick which parts to keep and which to bring in</li>
+<li data-feature="task_links"><b>Task links on the schedule</b>Link a task to the one it waits on (after it ends, or when it starts, plus a lag); move a task and the tasks linked to it move with it</li>
+<li data-feature="quote_formulas"><b>Formula estimating</b>Parameters on a job or quote (square feet, wall height, openings); line quantities and prices as formulas over them and other lines, worked out again when a parameter changes</li>
+<li data-feature="client_portal_plus"><b>Client portal: schedule, daily logs, to-dos and more</b>Choose per project what the client sees in their portal — the schedule, the daily logs and photos you share, their to-dos, the payment schedule, documents to sign — and what they are emailed about</li>
+<li data-feature="contractor_phone"><b>Projects on the phone</b>The phone app opens each project: today’s daily log with photos, the punch list, to-dos, change orders, selections, files and inspections, saved with no signal; and the clock takes a project and a cost code</li>
+<li data-feature="nav_rail"><b>Collapse the menu to icons</b>Each person can fold the left menu down to a narrow rail of icons, and it stays that way for them</li>
+<li data-feature="project_templates"><b>Project Templates</b>Save a project as a template — its schedule and starter punch list — and start the next one from it</li>
+<li data-feature="daily_logs"><b>Daily Logs</b>Field daily log reports</li>
+<li data-feature="inspections"><b>Inspections</b>Quality inspections</li>
+<li data-feature="inspection_checklists"><b>Inspection Checklists</b>Checklists for each inspection — pass, fail or not applicable with a note and photos; a failed line adds a punch-list item</li>
+<li data-feature="phone_inspections"><b>Inspections on the Phone</b>Crew answer an inspection's checklist and add photos from the phone, on the jobs they are on</li>
+<li data-feature="inspection_signature"><b>Inspection Sign-off</b>The customer signs an inspection checklist on the phone, with the same record a signed quote keeps</li>
+<li data-feature="inspection_auto_checklists"><b>Automatic Inspection Checklists</b>A new inspection gets the right checklist by itself, by its type and the kinds of job on the project</li>
+<li data-feature="bid_management"><b>Bid Management</b>Bid tracking and submission</li>
+<li data-feature="takeoff_tools"><b>Takeoff Tools</b>Material takeoff calculations</li>
+<li data-feature="selections"><b>Selections</b>Client material selections portal</li>
+<li data-feature="lien_waivers"><b>Lien Waivers</b>Conditional and unconditional lien waiver tracking per payment</li>
+<li data-feature="draw_schedules"><b>Draw Schedules</b>Construction-loan draw schedules and draw requests</li>
+<li data-feature="aia_forms"><b>AIA G702/G703 Billing</b>Application and certificate for payment with continuation sheet</li>
+<li data-feature="gantt_charts"><b>Gantt Chart</b>Project schedule as a Gantt chart with dependencies</li>
+</ul></details>
+<details class="fx-cat"><summary>Projects <span class="fx-n">3</span></summary><ul>
+<li data-feature="schedule_baseline"><b>Schedule Baseline</b>Save a project’s schedule as its baseline, then see each task’s plan against where it stands — days late or early, and the finish</li>
+<li data-feature="builders_risk"><b>Builder's Risk &amp; Square Footage</b>Each project's square footage — price and budget per square foot — and its builder's risk policy, flagged as it nears its end</li>
+<li data-feature="bid_packages"><b>Bid Packages</b>Send a scope of work to your subs to price in their portal, compare the bids line by line, and turn the winner into a purchase order</li>
+</ul></details>
+<details class="fx-cat"><summary>Finance <span class="fx-n">20</span></summary><ul>
+<li data-feature="payment_method_choice"><b>Card, bank or both, per invoice</b>Choose on each invoice whether the customer pays online by card, by bank (ACH) or either</li>
+<li data-feature="invoice_tips"><b>Tips on invoices</b>Customers can add a tip when they pay an invoice online; it is kept apart from what the invoice owes</li>
+<li data-feature="payment_plans"><b>Invoice installments</b>Split an invoice into installments with their own due dates; customers pay each from their portal and are reminded of each</li>
+<li data-feature="online_payments"><b>Online Payments</b>Stripe payment processing — invoices and deposits paid by card, or by bank account where you turn that on in your Stripe account</li>
+<li data-feature="expense_tracking"><b>Expense Tracking</b>Expense logging and receipts</li>
+<li data-feature="job_costing"><b>Job Costing</b>Detailed job cost analysis</li>
+<li data-feature="job_budgets"><b>Project Budgets</b>A project's budget by cost code, set by its approved quotes, beside what its jobs have cost so far</li>
+<li data-feature="cost_by_code"><b>Cost by Cost Code</b>File time, expenses and vendor bills under a cost code, so each budget line shows what it really cost and the profit it will make</li>
+<li data-feature="quote_templates"><b>Quote Templates</b>Save a quote as a template, start a new quote from one, or create a quote similar to an old one</li>
+<li data-feature="quote_followup"><b>Quote Follow-up</b>Email a customer who has not answered a quote, a few days after it was sent — once per step, never after they answer or unsubscribe</li>
+<li data-feature="markup_defaults"><b>Markup Defaults</b>Set your usual markup for labour, material and the rest; a quote line with a cost fills it in, and the quote shows your margin as you build it</li>
+<li data-feature="quote_line_images"><b>Pictures on Quote Lines</b>Put a picture on a quote line so the customer sees what they are choosing</li>
+<li data-feature="quote_text_lines"><b>Text lines on quotes</b>Add a line of words only to a quote — a heading or a note with no quantity or price — shown on the customer’s page and the PDF</li>
+<li data-feature="quote_preview"><b>Preview quote as client</b>Open exactly the page the customer will see for a quote — options, ticks, deposit and the sign button — read only, without sending it</li>
+<li data-feature="purchase_orders"><b>Purchase Orders</b>Commit spend with vendors per job — sent, acknowledged, received, billed</li>
+<li data-feature="vendor_bills"><b>Bills &amp; Payables</b>Vendor bills with due dates, payments, and committed-vs-billed job rollups</li>
+<li data-feature="credit_memos"><b>Customer Credit</b>Credit you owe a customer, kept on them and used to pay any of their invoices — and a refund can be kept as credit instead</li>
+<li data-feature="quickbooks"><b>QuickBooks</b>QuickBooks sync — we integrate accounting, we do not replace it</li>
+<li data-feature="quote_proposals"><b>Good / Better / Best</b>One quote with two to six priced options, each with photos, a brand and a warranty: the customer picks one and signs, and the price and deposit follow their pick</li>
+<li data-feature="commission_tracking"><b>Commission Tracking</b>Commission plans for sales reps and crews: earned by hand or automatically when an invoice is paid, approved, paid out, with statements</li>
+</ul></details>
+<details class="fx-cat"><summary>Service Trade <span class="fx-n">5</span></summary><ul>
+<li data-feature="drag_drop_calendar"><b>Drag &amp; Drop Calendar</b>Drag jobs to another day or hour on the Schedule (day, week and month views)</li>
+<li data-feature="recurring_jobs"><b>Recurring Invoices</b>Invoices that bill a customer on a schedule — weekly to yearly</li>
+<li data-feature="service_agreements"><b>Service Agreements</b>Maintenance agreement management</li>
+<li data-feature="warranties"><b>Warranties</b>Warranty tracking</li>
+<li data-feature="pricebook"><b>Pricebook</b>Standardized pricing catalog</li>
+</ul></details>
+<details class="fx-cat"><summary>Scheduling <span class="fx-n">1</span></summary><ul>
+<li data-feature="online_booking"><b>Online Booking</b>Customer self-scheduling</li>
+</ul></details>
+<details class="fx-cat"><summary>Service &amp; Dispatch <span class="fx-n">4</span></summary><ul>
+<li data-feature="photo_folders"><b>Photo Folders</b>A job’s photos in folders — before, during, after, progress, damage and more — with each folder’s count, a folder picked when a photo is added, and photos moved between them</li>
+<li data-feature="days_off"><b>Days Off</b>Holidays and other days the whole business is closed: online booking offers no time on them, a job booked on one is checked first, and a plan visit that falls on one moves to the next open day</li>
+<li data-feature="dispatch_board"><b>Dispatch Board</b>A day of jobs by technician on one board — assign, reassign and set status</li>
+<li data-feature="tech_mobile_view"><b>Technician / Crew Mobile View</b>Mobile-first field view: today's jobs, directions, on my way / on site / done, photos and a checklist</li>
+</ul></details>
+<details class="fx-cat"><summary>Field Operations <span class="fx-n">5</span></summary><ul>
+<li data-feature="time_tracking"><b>Time Tracking</b>Clock in and out, or log hours by hand; hours by person and day</li>
+<li data-feature="gps_tracking"><b>GPS Tracking</b>Crew locations and automatic clock-in and out at job-site fences, from the Twomiah phone app</li>
+<li data-feature="photo_capture"><b>Photo Capture</b>Job site photo documentation</li>
+<li data-feature="equipment_tracking"><b>Equipment</b>Equipment and tool tracking</li>
+<li data-feature="fleet"><b>Fleet Management</b>Vehicle fleet tracking</li>
+</ul></details>
+<details class="fx-cat"><summary>Communication <span class="fx-n">14</span></summary><ul>
+<li data-feature="lead_lost"><b>Lost Leads</b>Mark an enquiry Lost with the reason (price, hired someone else, not ready…), so the owner can see why work is not coming in</li>
+<li data-feature="lead_site_visit"><b>Site Visits</b>Book the visit to look at the work from an enquiry, straight onto the schedule, and move or cancel it</li>
+<li data-feature="weekly_client_update"><b>Weekly Client Update</b>One email a week to each client listing what's new in their portal — daily logs, photos, files, reports — and whether they opened it</li>
+<li data-feature="lead_map"><b>Lead Map</b>Your enquiries on a map, from the location each one gave</li>
+<li data-feature="lead_pipeline"><b>Pipeline Strip</b>One strip from new enquiry to won work, and the list of quotes still waiting on a customer, longest first</li>
+<li data-feature="vendor_portal"><b>Vendor Portal</b>Subs and suppliers acknowledge POs and submit invoices through a private link</li>
+<li data-feature="two_way_texting"><b>Two-Way Texting</b>Unified SMS inbox — every customer conversation logged<i>Texting add-on: $10/mo, plus each text at cost</i></li>
+<li data-feature="call_tracking_numbers"><b>Tracking Numbers</b>Buy a call tracking number for each place you advertise — calls ring your line and are logged with where they came from<i>$3/mo a number; calls and recordings at cost</i></li>
+<li data-feature="call_tracking"><b>Call Tracking</b>Inbound call tracking and recording<i>Calls and recordings at cost</i></li>
+<li data-feature="google_business"><b>Google Reviews</b>Connect your Google Business Profile — see your rating and reply to reviews from the CRM</li>
+<li data-feature="branded_email"><b>Branded Email</b>support@yourdomain addresses — forward anywhere or receive replies in the CRM email inbox</li>
+<li data-feature="client_portal"><b>Client Portal</b>A customer portal by private link — quotes to approve, invoices to view and pay, and their projects where you run them</li>
+<li data-feature="lead_inbox"><b>Lead Inbox</b>Every inquiry in one inbox — marketplaces, ads, booking apps and your website</li>
+<li data-feature="support_tickets"><b>Support Tickets</b>Customer support ticket queue with statuses and assignment</li>
+</ul></details>
+<details class="fx-cat"><summary>Marketing <span class="fx-n">2</span></summary><ul>
+<li data-feature="google_reviews"><b>Review Requests</b>Ask customers for a Google review — sent automatically after a completed job or salon visit once switched on in Reviews › Settings, or by hand from Reviews</li>
+<li data-feature="email_marketing"><b>Email Marketing</b>Drip campaigns and newsletters</li>
+</ul></details>
+<details class="fx-cat"><summary>Advanced <span class="fx-n">7</span></summary><ul>
+<li data-feature="barcode_scanning"><b>Barcode Scanning</b>Scan a part's or product's barcode with the phone's camera to find it — Stock on the phone, and the store's stock list</li>
+<li data-feature="inventory"><b>Inventory</b>Warehouse and material inventory</li>
+<li data-feature="documents"><b>Documents</b>Document management and storage</li>
+<li data-feature="reports"><b>Reports</b>Revenue, outstanding balances and work done for any period, with CSV downloads</li>
+<li data-feature="ar_aging"><b>Receivables Aging</b>Who owes what, by customer — current, 1–30, 31–60, 61–90 and over 90 days past due</li>
+<li data-feature="wip_report"><b>Work in Progress Report</b>Each open project: contract value, billed, cost to date, percent complete and over or under billing</li>
+<li data-feature="ai_receptionist"><b>AI Receptionist</b>Missed-call text-back: replies by text or email to missed calls and voicemails, with each voicemail written out<i>Uses the texting add-on ($10/mo, texts at cost)</i></li>
+</ul></details>
+<details class="fx-cat"><summary>Payments &amp; Photos <span class="fx-n">4</span></summary><ul>
+<li data-feature="card_surcharge"><b>Card surcharge</b>Pass the card fee on to customers who pay by credit card, where your state allows it: capped by state, never on debit or prepaid cards, shown before they pay and on the receipt</li>
+<li data-feature="payments_overview"><b>Payments and payouts</b>See what is on its way to your bank and your recent payouts from Stripe, inside the CRM</li>
+<li data-feature="invoice_text_requests"><b>Text invoices and payment receipts</b>Text an invoice’s pay link now or on a schedule, again every few days until it is paid, and email a receipt to the homeowner and the rep for every payment</li>
+<li data-feature="portal_pay_options"><b>Pay any amount, pay from the estimate</b>The homeowner chooses how much to pay on an invoice, and pays toward an approved estimate from its page</li>
+</ul></details>
+<details class="fx-cat"><summary>Inventory &amp; Compliance <span class="fx-n">1</span></summary><ul>
+<li data-feature="multi_location"><b>Multi-Location</b>Run several locations from one account, with staff, stock and reporting for each location</li>
+</ul></details>
+<details class="fx-cat"><summary>Add-on Products <span class="fx-n">1</span></summary><ul>
+<li data-feature="visualizer"><b>Exterior Visualizer</b>Paid add-on (extra cost) — AI-powered exterior visualization for siding, roofing, paint colors<i>Add-on: $59/mo</i></li>
+</ul></details>
+</div>
+<!-- /facts:features -->
   </div>
 </section>
 
@@ -388,87 +538,95 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:40
   <div class="inner">
     <div class="reveal" style="text-align:center;margin-bottom:24px">
       <div class="section-label" style="justify-content:center">The Comparison</div>
-      <h2 class="section-title">See How We<br><span class="fire-line">Stack Up.</span></h2>
-      <p class="section-sub" style="margin:0 auto">Want the spec-by-spec breakdown? Click below.</p>
+      <h2 class="section-title">What the Leaders Sell.<br><span class="fire-line">You Get It Here Too.</span></h2>
+      <p class="section-sub" style="margin:0 auto">Features Buildertrend, JobTread and Jobber are known for, matched in Twomiah &mdash; on every plan.</p>
     </div>
-    <div class="reveal" style="text-align:center;margin-bottom:24px">
-      <button id="cmpToggleBtn" onclick="toggleCmp()" style="background:rgba(255,61,0,0.1);border:1px solid var(--fire);color:var(--fire);padding:14px 32px;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:'Barlow',sans-serif;transition:all 0.2s">Compare Build vs. Buildertrend, Procore &amp; CoConstruct &nbsp;&darr;</button>
-    </div>
-    <div id="cmpContent" style="display:none">
-      <div class="reveal" style="display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap">
-        <button class="vs-toggle active" onclick="showCompare('buildertrend')">vs Buildertrend</button>
-        <button class="vs-toggle" onclick="showCompare('procore')">vs Procore</button>
-        <button class="vs-toggle" onclick="showCompare('coconstruct')">vs CoConstruct</button>
-      </div>
-      <div id="compareTable" class="reveal"></div>
-      <p style="text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,0.25)">Build: $99&ndash;$199/mo &mdash; every feature on every plan. Competitors charge more for less.</p>
-    </div>
+<!-- facts:compare crm -->
+<style>.fx{max-width:1100px;margin:36px auto 0;text-align:left}.fx-cat{border-top:1px solid color-mix(in srgb,currentColor 18%,transparent)}.fx-cat summary{cursor:pointer;padding:14px 4px;font-weight:700;list-style:none;display:flex;align-items:baseline;gap:10px}.fx-cat summary::-webkit-details-marker{display:none}.fx-cat summary::after{content:'+';opacity:.6;margin-left:auto}.fx-cat[open] summary::after{content:'\2212'}.fx-cat ul{list-style:none;margin:0;padding:0 4px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px 28px}.fx-cat li{font-size:14px;line-height:1.5;opacity:.85}.fx-cat li b{display:block;opacity:1}.fx-cat li i{display:block;font-size:12px;opacity:.75}.fx-n{font-weight:400;opacity:.6}.fx-h{font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin:28px 0 6px}.cx{max-width:900px;margin:0 auto;overflow-x:auto}.cx table{width:100%;border-collapse:collapse;font-size:14px;text-align:left}.cx th,.cx td{padding:10px 12px;border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent);vertical-align:top}.cx th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}.cx td.y{text-align:center;font-weight:700;white-space:nowrap}.cx .cx-note{font-size:12px;opacity:.65;margin-top:12px;line-height:1.5}.cx .cx-note a{color:inherit}@media(max-width:700px){.cx thead{display:none}.cx table,.cx tbody,.cx tr,.cx td{display:block;width:100%}.cx tr{padding:12px 0;border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent)}.cx td{border:0;padding:2px 0}.cx td:first-child{font-weight:700;padding-bottom:6px}.cx td.y{display:inline-block;width:auto;text-align:left;margin-right:14px;font-size:13px;white-space:normal}.cx td.y::before{content:attr(data-label) ' ';font-weight:400;opacity:.7}}</style>
+<div class="cx"><table><thead><tr><th>What the leaders sell you</th>
+<th class="y">Buildertrend</th>
+<th class="y">JobTread</th>
+<th class="y">Jobber</th>
+<th class="y">Twomiah</th></tr></thead><tbody>
+<tr data-feature="online_payments"><td>Card and bank (ACH) payments on every invoice</td>
+<td class="y" data-label="Buildertrend">&#10003;</td>
+<td class="y" data-label="JobTread">&#10003;</td>
+<td class="y" data-label="Jobber">&#10003;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="payment_method_choice"><td>Choose card, bank or both for each invoice</td>
+<td class="y" data-label="Buildertrend">&ndash;</td>
+<td class="y" data-label="JobTread">&ndash;</td>
+<td class="y" data-label="Jobber">&#10003;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="portal_pay_options"><td>Clients pay part of an invoice online</td>
+<td class="y" data-label="Buildertrend">&ndash;</td>
+<td class="y" data-label="JobTread">&ndash;</td>
+<td class="y" data-label="Jobber">&#10003;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="invoice_tips"><td>Tips on invoices</td>
+<td class="y" data-label="Buildertrend">&ndash;</td>
+<td class="y" data-label="JobTread">&ndash;</td>
+<td class="y" data-label="Jobber">&#10003;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="client_portal"><td>Clients approve and e-sign quotes and pick options in their portal</td>
+<td class="y" data-label="Buildertrend">&#10003;</td>
+<td class="y" data-label="JobTread">&#10003;</td>
+<td class="y" data-label="Jobber">&#10003;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="client_portal_plus"><td>Client portal shows the schedule, daily logs and shared photos</td>
+<td class="y" data-label="Buildertrend">&#10003;</td>
+<td class="y" data-label="JobTread">&#10003;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="client_portal_plus"><td>Clients pay scheduled draws from their portal</td>
+<td class="y" data-label="Buildertrend">&#10003;</td>
+<td class="y" data-label="JobTread">&ndash;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="client_portal_plus"><td>Clients e-sign contracts and documents in their portal</td>
+<td class="y" data-label="Buildertrend">&#10003;</td>
+<td class="y" data-label="JobTread">&ndash;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="change_orders"><td>Change orders the client approves or declines</td>
+<td class="y" data-label="Buildertrend">&#10003;</td>
+<td class="y" data-label="JobTread">&#10003;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="selections"><td>Selections chosen against allowances</td>
+<td class="y" data-label="Buildertrend">&#10003;</td>
+<td class="y" data-label="JobTread">&ndash;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="contractor_phone daily_logs punch_lists"><td>Projects on the phone: daily logs, punch lists and to-dos</td>
+<td class="y" data-label="Buildertrend">&#10003;</td>
+<td class="y" data-label="JobTread">&#10003;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="quote_formulas"><td>Formula-based estimating</td>
+<td class="y" data-label="Buildertrend">&ndash;</td>
+<td class="y" data-label="JobTread">&#10003;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="bid_packages"><td>Bid packages: send scopes to subs and compare their bids</td>
+<td class="y" data-label="Buildertrend">&#10003;</td>
+<td class="y" data-label="JobTread">&ndash;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr data-feature="schedule_baseline"><td>Schedule baseline against actual dates</td>
+<td class="y" data-label="Buildertrend">&#10003;</td>
+<td class="y" data-label="JobTread">&ndash;</td>
+<td class="y" data-label="Jobber">&ndash;</td>
+<td class="y" data-label="Twomiah">&#10003;</td></tr>
+<tr><td><b>Starting price</b></td>
+<td class="y" data-label="Buildertrend">&ndash;</td>
+<td class="y" data-label="JobTread">$199/mo + $20 per extra user</td>
+<td class="y" data-label="Jobber">From $29/mo billed yearly (1 user)</td>
+<td class="y" data-label="Twomiah">From $99/mo (up to 10 users)</td></tr></tbody></table>
+<p class="cx-note">&#10003; = the leader offers it, from its own product and help pages; &ndash; = not compared here (it may well have it), or a price we could not confirm on its own site. Twomiah: every listed feature on every plan, $99 / $139 / $199 a month for up to 10 / 25 / 50 users. Their prices: <a href="https://www.getjobber.com/pricing/" target="_blank" rel="noopener">Jobber</a> (checked 2026-11-12), <a href="https://www.jobtread.com/pricing" target="_blank" rel="noopener">JobTread</a> (checked 2026-11-12).</p></div>
+<!-- /facts:compare -->
   </div>
 </section>
-<style>
-.vs-toggle{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);padding:8px 20px;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;font-family:'Barlow',sans-serif}
-.vs-toggle:hover{border-color:rgba(255,61,0,0.3);color:var(--white)}
-.vs-toggle.active{background:rgba(255,61,0,0.15);border-color:var(--fire);color:var(--fire)}
-.cmp-table{width:100%;border-collapse:collapse}
-.cmp-table th{text-align:left;padding:10px 16px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);border-bottom:1px solid rgba(255,255,255,0.06)}
-.cmp-table th:nth-child(2),.cmp-table th:nth-child(3){text-align:center}
-.cmp-table th:nth-child(3){color:var(--fire)}
-.cmp-cat td{padding:8px 16px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--ember);background:rgba(255,109,0,0.04);border-bottom:1px solid rgba(255,255,255,0.03)}
-.cmp-table tr{border-bottom:1px solid rgba(255,255,255,0.03)}
-.cmp-table td{padding:8px 16px;font-size:12px;color:rgba(255,255,255,0.5)}
-.cmp-table td:nth-child(2),.cmp-table td:nth-child(3){text-align:center;width:120px}
-.cmp-y{color:var(--fire);font-weight:700}
-.cmp-n{color:rgba(255,255,255,0.15)}
-.cmp-a{color:#fbbf24;font-size:9px;font-weight:700;letter-spacing:0.08em}
-.cmp-price td{padding:12px 16px;font-weight:700;font-size:14px;border-top:1px solid rgba(255,255,255,0.08)}
-.cmp-price td:nth-child(2){color:rgba(255,255,255,0.5)}
-.cmp-price td:nth-child(3){color:var(--fire)}
-@media(max-width:768px){.cmp-table td,.cmp-table th{padding:6px 8px;font-size:11px}.cmp-table td:nth-child(2),.cmp-table td:nth-child(3){width:80px}}
-</style>
-<script>
-var cmpData={
-buildertrend:{name:'Buildertrend',price:'$199+/mo',features:{crm:1,quotes:1,invoicing:1,scheduling:1,time_tracking:1,project_mgmt:1,change_orders:1,rfis:1,daily_logs:1,punch_lists:1,gantt:1,submittals:1,drawings:1,bidding:0,takeoffs:'a',customer_portal:1,sub_portal:1,selections:1,online_approval:0,sms:0,email_campaigns:0,gps:0,routing:0,photo_capture:1,quickbooks:1,budget_tracking:1,financing:0,pricebook:0,job_costing:0,mobile_app:1,api:0,visualizer:0,automations:0}},
-procore:{name:'Procore',price:'$375+/mo',features:{crm:0,quotes:0,invoicing:0,scheduling:1,time_tracking:0,project_mgmt:1,change_orders:1,rfis:1,daily_logs:1,punch_lists:1,gantt:1,submittals:1,drawings:1,bidding:1,takeoffs:0,customer_portal:0,sub_portal:0,selections:0,online_approval:0,sms:0,email_campaigns:0,gps:0,routing:0,photo_capture:0,quickbooks:1,budget_tracking:1,financing:0,pricebook:0,job_costing:0,mobile_app:1,api:1,visualizer:0,automations:0}},
-coconstruct:{name:'CoConstruct',price:'$99+/mo',features:{crm:1,quotes:1,invoicing:1,scheduling:1,time_tracking:1,project_mgmt:1,change_orders:1,rfis:0,daily_logs:0,punch_lists:0,gantt:0,submittals:0,drawings:0,bidding:0,takeoffs:0,customer_portal:1,sub_portal:0,selections:1,online_approval:0,sms:0,email_campaigns:0,gps:0,routing:0,photo_capture:0,quickbooks:1,budget_tracking:1,financing:0,pricebook:0,job_costing:0,mobile_app:1,api:0,visualizer:0,automations:0}}
-};
-var featureNames={crm:'CRM',quotes:'Quotes & Estimates',invoicing:'Invoicing',scheduling:'Scheduling',time_tracking:'Time Tracking',project_mgmt:'Project Management',change_orders:'Change Orders',rfis:'RFIs',daily_logs:'Daily Logs',punch_lists:'Punch Lists',gantt:'Gantt Charts',submittals:'Submittals',drawings:'Drawings',bidding:'Bidding',takeoffs:'Takeoffs',customer_portal:'Customer Portal',sub_portal:'Subcontractor Portal',selections:'Selections',online_approval:'Online Approval',sms:'SMS Marketing',email_campaigns:'Email Campaigns',gps:'GPS Field Tracking',routing:'Route Optimization',photo_capture:'Photo Capture',quickbooks:'QuickBooks Integration',budget_tracking:'Budget Tracking',financing:'Financing',pricebook:'Pricebook',job_costing:'Job Costing',mobile_app:'Mobile App',api:'Open API',visualizer:'Exterior Visualizer',automations:'Automations'};
-var cats={
-'Core':['crm','quotes','invoicing','scheduling','time_tracking'],
-'Construction PM':['project_mgmt','change_orders','rfis','daily_logs','punch_lists','gantt','submittals','drawings','bidding','takeoffs'],
-'Client':['customer_portal','sub_portal','selections','online_approval'],
-'Communication':['sms','email_campaigns','gps','routing','photo_capture'],
-'Financial':['quickbooks','budget_tracking','financing','pricebook','job_costing'],
-'Platform':['mobile_app','api','visualizer','automations']
-};
-function ck(v){return v===1?'<span class="cmp-y">&#10003;</span>':v==='a'?'<span class="cmp-a">ADD-ON</span>':'<span class="cmp-n">&#10007;</span>'}
-// Not offered by this system (the Factory's feature registry, 2026-10-23) — never claimed: the owner's rule is that nothing is advertised until it is live and working. The competitor's column still shows theirs.
-var NOT_OFFERED=['financing', 'routing', 'api', 'automations', 'sms', 'mobile_app'];
-function buildCk(f){if(NOT_OFFERED.indexOf(f)>-1)return '<span class="cmp-n">&#10007;</span>';if(['visualizer'].indexOf(f)>-1)return '<span class="cmp-a">SEPARATE</span>';return '<span class="cmp-y">&#10003;</span>'}
-function toggleCmp(){
-var c=document.getElementById('cmpContent'),b=document.getElementById('cmpToggleBtn');
-if(c.style.display==='none'){c.style.display='block';b.innerHTML='Hide comparison &nbsp;&uarr;';showCompareInit('buildertrend')}
-else{c.style.display='none';b.innerHTML='Compare Build vs. Buildertrend, Procore &amp; CoConstruct &nbsp;&darr;'}
-}
-function showCompareInit(key){
-document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});
-document.querySelector('.vs-toggle[onclick*="'+key+'"]').classList.add('active');
-var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Build</th></tr></thead><tbody>';
-Object.keys(cats).forEach(function(cat){h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+buildCk(f)+'</td></tr>'})});
-h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td>$99 / $139 / $199</td></tr>';
-h+='</tbody></table>';document.getElementById('compareTable').innerHTML=h}
-function showCompare(key){
-document.querySelectorAll('.vs-toggle').forEach(function(b){b.classList.remove('active')});
-event.target.classList.add('active');
-var c=cmpData[key],h='<table class="cmp-table"><thead><tr><th>Feature</th><th>'+c.name+'</th><th>Build</th></tr></thead><tbody>';
-Object.keys(cats).forEach(function(cat){
-h+='<tr class="cmp-cat"><td colspan="3">'+cat+'</td></tr>';
-cats[cat].forEach(function(f){h+='<tr><td>'+featureNames[f]+'</td><td>'+ck(c.features[f])+'</td><td>'+buildCk(f)+'</td></tr>'});
-});
-h+='<tr class="cmp-price"><td>Starting Price</td><td>'+c.price+'</td><td>$99 / $139 / $199</td></tr>';
-h+='</tbody></table>';
-document.getElementById('compareTable').innerHTML=h}
-// Comparison hidden by default; clicking the expand button initializes it.
-</script>
 
 <!-- PRICING -->
 <section id="pricing">
@@ -529,21 +687,6 @@ document.getElementById('compareTable').innerHTML=h}
   </div>
 </section>
 
-<!-- ═══ PROOF — see it in action ═══ -->
-<section id="proof" style="padding:96px 48px;background:var(--charcoal)">
-  <div style="max-width:1200px;margin:0 auto">
-    <div class="reveal" style="text-align:center;margin-bottom:48px">
-      <div class="section-label" style="justify-content:center">See It In Action</div>
-      <h2 class="section-title">Real Tool.<br><span class="fire-line">Real Builds.</span></h2>
-      <p class="section-sub" style="max-width:580px;margin:0 auto">This is the actual Build CRM running at a working general contractor. Real jobs, real quotes, real invoices &mdash; with RFIs, Change Orders, Punch Lists, Daily Logs, Inspections, and Bids built in. Not retrofitted from a generic CRM.</p>
-    </div>
-    <div class="reveal" style="border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);box-shadow:0 20px 60px rgba(0,0,0,0.4);max-width:1100px;margin:0 auto">
-      <img src="images/proof-build.png" alt="Twomiah Build dashboard at Andson Builders — 5 contacts, 1 active project, recent jobs (Electrical Rough-In, Demo and Prep Work, Kitchen Remodel), pending quote, and the full construction sidebar with RFIs, Change Orders, Punch Lists, Daily Logs, Inspections, and Bids" style="display:block;width:100%;height:auto" / width="1918" height="910">
-    </div>
-    <p class="reveal" style="text-align:center;margin-top:24px;font-size:13px;color:rgba(255,255,255,0.4)">Andson Builders &mdash; live dashboard with active jobs, recent quotes, and the full construction toolkit (RFIs, change orders, punch lists, daily logs, inspections, bids). <em>(Customer name shown with permission.)</em></p>
-  </div>
-</section>
-
 <!-- BRIDGE LINE — sets up OWN IT as deliberate pivot, not tangent -->
 <section style="padding:48px 48px 0;text-align:center">
   <p class="reveal" style="font-size:18px;color:rgba(255,255,255,0.5);max-width:680px;margin:0 auto;font-style:italic">Most platforms compete on features and pricing.<br>We took a different approach.</p>
@@ -555,7 +698,7 @@ document.getElementById('compareTable').innerHTML=h}
     <div class="reveal" style="margin-bottom:56px;text-align:center">
       <div class="section-label" style="justify-content:center">Own It</div>
       <h2 class="section-title">Most Software<br>Rents You Access.<br><span class="fire-line">We Let You Own It.</span></h2>
-      <p class="section-sub" style="max-width:600px;margin:0 auto">Pay monthly and we host it &mdash; or buy the source code outright and never pay us again. No other CRM in this space will sell you the code. We will. That's the difference.</p>
+      <p class="section-sub" style="max-width:600px;margin:0 auto">Pay monthly and we host it &mdash; or buy the source code outright and never pay us again. Own it outright if you'd rather.</p>
     </div>
 
     <div class="own-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px">
@@ -571,14 +714,14 @@ document.getElementById('compareTable').innerHTML=h}
         <a href="/signup/build" style="display:block;text-align:center;background:var(--fire);color:white;padding:13px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase">Get Started</a>
       </div>
 
-      <!-- Self-hosted column — every license = monthly SaaS × 36, includes 3 years of updates -->
+      <!-- Self-hosted column — every license = monthly SaaS × 36; updates are the $999/yr Update Subscription -->
       <div class="reveal" style="display:flex;flex-direction:column;gap:10px">
         <div class="own-label" style="color:rgba(255,255,255,0.3);margin-bottom:0">Self-Hosted &mdash; Buy Once, Own Forever</div>
-        <div class="own-row"><div><div class="own-tier" style="color:rgba(255,255,255,0.3)">Starter License</div><div class="own-detail">Up to 10 users &middot; 3 yrs updates</div></div><div class="own-price" style="color:rgba(255,255,255,0.7)">$3,564<span> once</span></div></div>
-        <div class="own-row"><div><div class="own-tier" style="color:rgba(255,255,255,0.3)">Team License</div><div class="own-detail">Up to 25 users &middot; 3 yrs updates</div></div><div class="own-price" style="color:rgba(255,255,255,0.7)">$5,004<span> once</span></div></div>
-        <div class="own-row"><div><div class="own-tier" style="color:rgba(255,255,255,0.3)">Business License</div><div class="own-detail">Up to 50 users &middot; 3 yrs updates</div></div><div class="own-price" style="color:rgba(255,255,255,0.7)">$7,164<span> once</span></div></div>
+        <div class="own-row"><div><div class="own-tier" style="color:rgba(255,255,255,0.3)">Starter License</div><div class="own-detail">Up to 10 users</div></div><div class="own-price" style="color:rgba(255,255,255,0.7)">$3,564<span> once</span></div></div>
+        <div class="own-row"><div><div class="own-tier" style="color:rgba(255,255,255,0.3)">Team License</div><div class="own-detail">Up to 25 users</div></div><div class="own-price" style="color:rgba(255,255,255,0.7)">$5,004<span> once</span></div></div>
+        <div class="own-row"><div><div class="own-tier" style="color:rgba(255,255,255,0.3)">Business License</div><div class="own-detail">Up to 50 users</div></div><div class="own-price" style="color:rgba(255,255,255,0.7)">$7,164<span> once</span></div></div>
         <div style="background:var(--charcoal);border:1px solid rgba(255,255,255,0.05);border-radius:4px;padding:16px 24px">
-          <div style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.7">&check; Full source code + database schema<br>&check; Deploy on your own server &mdash; pay us nothing again<br>&check; 3 years of free updates included on every license<br>&check; Every license = 3 years of SaaS, paid once</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.7">&check; Full source code + database schema<br>&check; Deploy on your own server &mdash; pay us nothing again<br>&check; Updates: $999/yr Update Subscription, when you want them<br>&check; Priced at 36 months of the plan, paid once</div>
         </div>
         <a href="/signup/build?hosting=self-hosted" style="display:block;text-align:center;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);padding:13px;border-radius:3px;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s">Get Self-Hosted &rarr;</a>
       </div>
@@ -620,6 +763,10 @@ document.getElementById('compareTable').innerHTML=h}
       <a href="roof.html">Roof</a>
       <a href="wrench.html">Wrench</a>
       <a href="care.html">Care</a>
+      <a href="landscaping.html">Landscaping</a>
+      <a href="salon.html">Salon</a>
+      <a href="restaurant.html">Restaurant &amp; Bar</a>
+      <a href="store.html">Store</a>
       <a href="vision.html">Vision</a>
       <a href="https://ickthatish.com" target="_blank" rel="noopener">Ick That Ish ↗</a>
       <a href="https://cardshop.twomiah.com" target="_blank" rel="noopener">Card Shop ↗</a>

@@ -5,7 +5,9 @@
   "description": "Static marketing site for Twomiah Software Ventures.",
   "scripts": {
     "og": "node scripts/generate-og-images.js",
-    "screenshot": "node scripts/screenshot.js"
+    "screenshot": "node scripts/screenshot.js",
+    "facts": "bun scripts/site-facts.ts ../site-facts",
+    "facts:check": "bun scripts/site-facts.ts ../site-facts --check"
   },
   "devDependencies": {
     "puppeteer": "^24.0.0",
