@@ -50,6 +50,11 @@ Custom build: $499 — One time: we tailor your website and set-up to your busin
 ## Not hidden, but its own description says "not yet available" — left off the site
 
 
+## Not hidden, but waits on a provider Twomiah has not connected — left off, or described without that part
+
+- `aerial_detect` — left off: needs an aerial imagery provider (data/aerialDetect.ts) — not connected
+- `storm_data_tools` — described as: Score each storm lead by the storm, where they are, their roof’s age and whether they are a past customer — from NOAA’s storm reports
+
 ## Demo (apps/unified/demo/trades.ts)
 
 https://demo.twomiah.com — sample businesses; nothing is saved.
@@ -297,7 +302,7 @@ Not sold (not on the site): veterinary, RV / powersports, dispensary.
 - `crew_scheduling` **Crew scheduling and on site** — Sent work orders on the schedule, the crew texted when one moves, I’m here / Leaving for now with office alerts, an on-site checklist, an in-progress status, and each crew’s trades and certificates with their expiry
 - `work_order_send_options` **Work order sending options** — Send a work order by email with CC as well as text, show the crew page in Spanish with your Spanish scope, ask for approval per crew or per order, and set how long the sub sees it and whether they see the materials and photos
 - `work_order_tools` **Work orders from the proposal, and scope templates** — Fill a work order’s scope and materials from the signed proposal (no prices), save scopes as templates, and bring in CompanyCam photos once your account is connected
-- `storm_data_tools` **Hail swaths and storm lead scores** — Bring in hail swaths from a hail-data provider (date, severity, hail, wind, rainfall) and score each storm lead by the storm, where they are, their roof’s age and whether they are a past customer
+- `storm_data_tools` **Hail swaths and storm lead scores** — Score each storm lead by the storm, where they are, their roof’s age and whether they are a past customer — from NOAA’s storm reports
 - `territory_boundaries` **Territories from ZIP, city, county or state** — Make a territory from a ZIP, city, county or state boundary (US Census outlines), shown on the map before you save it
 - `territory_tools` **Territories: import, nesting, redraw and the phone warning** — Import territories from a KML file, put a territory inside another, redraw a boundary on the map, and warn a rep on the phone when they knock outside their territory
 - `portal_posts_packets` **Portal messages, company documents and packets** — A message thread on each job in the homeowner’s portal, company documents (warranty terms, brochures) every homeowner sees, and sharing several files in one go
@@ -488,7 +493,7 @@ Not sold (not on the site): veterinary, RV / powersports, dispensary.
 - `care_open_shift_offers` **Open shift offers: decline, deadlines, series and a message record** — A caregiver can decline an open shift with a reason or hide it; each offer shows Not sent, Pending, Accepted, Declined, Expired or Closed with response counts and an answer-by time; the agency chooses what caregivers see and how many days ahead; offers go by app, text and email with each person's notification settings honoured and every message kept with how it ended; a whole recurring series can be offered at once
 - `care_offline_saves` **Safe saves from the phone without signal** — A task, a medicine entry or a photo saved on the phone without signal and sent later is recorded once, at the time it was made, and a dose someone else already recorded is refused in plain words
 
-### crm-landscaping — 89 features
+### crm-landscaping — 88 features
 
 **Core**
 
@@ -520,7 +525,6 @@ Not sold (not on the site): veterinary, RV / powersports, dispensary.
 - `area_pricing` **Area-Based Pricing** — Price services by measured property square footage
 - `route_board_tools` **Route Board: seasons, drag and crew clashes** — A season for each route with next season’s renewal, drag stops into order, a new stop’s visits made at once, the best order worked out from your yard, and a warning when the crew is already booked
 - `plan_takeoffs` **Plan takeoffs** — Upload a site plan (PDF or picture), set its scale, measure areas, lengths and counts on it, and put them on a quote
-- `aerial_detect` **Find areas from the air** — Outline the lawn, beds and hardscape on the satellite map automatically, to check and adjust before saving
 - `company_budget` **Budget, overhead and markup** — Build the year’s operating budget — sales, field labour with burden and overtime, equipment, materials, subs and overhead with your own salary — choose how overhead is recovered (MORS, FLH or SORS), lock the active budget, and price quotes from it
 - `route_copy` **Copy routes and route templates** — Copy a route — its stops in order, crew, start time, billing and season — to another day or as a new route, and save a route as a template to make routes from
 - `job_repeat_patterns` **More repeat patterns** — Repeat a job every few days with days to skip, on the 1st and 3rd Friday of the month, or every year; a series of up to a year of visits; and change this visit and every later one at once

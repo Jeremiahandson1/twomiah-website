@@ -76,8 +76,22 @@ const CATEGORY_AS: Record<string, Record<string, string>> = {
   'crm-basic': { 'Field Service': 'Service & Dispatch' },
   'crm-restaurant': { Bar: 'Staff, Stock & Tips' },
 }
+// Not hidden in the registry, but a part of it waits on a provider Twomiah has not connected — read in the Factory's code,
+// not guessed. Re-check each before a release; remove an entry once its provider is live.
+//   · aerial_detect: data/aerialDetect.ts providerFor() answers no provider in production ("THE STEP LEFT: an account and
+//     contract with an imagery/detection provider"); the landscaping live test expected "not connected". Left off the site.
+//   · storm_data_tools: hail swaths wait on a hail-data provider (data/hailSwaths.ts, "THE STEP LEFT"); the storm-lead
+//     score works from NOAA's free reports (data/spcReports.ts). Described without the swaths.
+const NO_PROVIDER_YET: Record<string, string> = {
+  aerial_detect: 'needs an aerial imagery provider (data/aerialDetect.ts) — not connected',
+}
+const DESCRIBED_AS: Record<string, string> = {
+  storm_data_tools: 'Score each storm lead by the storm, where they are, their roof’s age and whether they are a past customer — from NOAA’s storm reports',
+}
 const advertisable = (t: string): F[] =>
-  offered(t).filter((f) => !NOT_AVAILABLE.test(f.description)).map((f) => ({ ...f, category: CATEGORY_AS[t]?.[f.category] ?? f.category }))
+  offered(t)
+    .filter((f) => !NOT_AVAILABLE.test(f.description) && !NO_PROVIDER_YET[f.id])
+    .map((f) => ({ ...f, description: DESCRIBED_AS[f.id] ?? f.description, category: CATEGORY_AS[t]?.[f.category] ?? f.category }))
 const notAvailable = (t: string): F[] => offered(t).filter((f) => NOT_AVAILABLE.test(f.description))
 const hidden: { id: string; name: string; words: string[] }[] = reg.FEATURE_REGISTRY.filter((f: any) => f.hidden).map((f: any) => ({ id: f.id, name: f.name, words: f.words ?? [] }))
 
@@ -128,6 +142,9 @@ function factSheet(factoryRef: string): string {
   for (const h of hidden) L.push(`- \`${h.id}\` — ${h.name}${h.words.length ? ` (words: ${h.words.join(', ')})` : ''}`)
   L.push('', '## Not hidden, but its own description says "not yet available" — left off the site', '')
   for (const t of TRADES.flatMap((x) => x.templates)) for (const f of notAvailable(t)) L.push(`- ${t}: \`${f.id}\` — ${f.name}: ${f.description}`)
+  L.push('', '## Not hidden, but waits on a provider Twomiah has not connected — left off, or described without that part', '')
+  for (const [id, why] of Object.entries(NO_PROVIDER_YET)) L.push(`- \`${id}\` — left off: ${why}`)
+  for (const [id, d] of Object.entries(DESCRIBED_AS)) L.push(`- \`${id}\` — described as: ${d}`)
   L.push('', '## Demo (apps/unified/demo/trades.ts)', '', `${DEMO} — sample businesses; nothing is saved.`, '')
   for (const d of DEMO_TRADES) L.push(`- ${d.label}: ${demoUrl(d.id)}`)
   L.push('', '## Trades sold, and where each lives on the site', '')

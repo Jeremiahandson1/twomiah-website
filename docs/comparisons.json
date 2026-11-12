@@ -470,6 +470,26 @@
       "tech_tracking"
      ],
      "source": "fieldservice-servicetitan.md: Live where's my tech map for the customer - built 11/10"
+    },
+    {
+     "capability": "Caller ID: the customer's record pops up when they call",
+     "leaders": [
+      "ServiceTitan"
+     ],
+     "featureIds": [
+      "caller_id"
+     ],
+     "source": "fieldservice-servicetitan.md:56 (ServiceTitan list; built 11/10, live test docs/live-tests/parity-tier2-3.md step 11)"
+    },
+    {
+     "capability": "Website chat that lands in your texting inbox",
+     "leaders": [
+      "ServiceTitan"
+     ],
+     "featureIds": [
+      "chat_to_text"
+     ],
+     "source": "fieldservice-servicetitan.md:58 (built 11/10, live test parity-tier2-3.md step 12)"
     }
    ]
   },
@@ -771,6 +791,26 @@
       "quote_line_images"
      ],
      "source": "landscaping-optional-lines.md: #10 Line images (Jobber capability)"
+    },
+    {
+     "capability": "Each crew member's own timer, and a Crew Score against budget hours",
+     "leaders": [
+      "LMN"
+     ],
+     "featureIds": [
+      "crew_timers"
+     ],
+     "source": "landscaping-phone-day.md:70-72 (LMN Crew Score; live test landscaping.md step 31)"
+    },
+    {
+     "capability": "Measure on an uploaded site plan and put it on the quote",
+     "leaders": [
+      "Aspire"
+     ],
+     "featureIds": [
+      "plan_takeoffs"
+     ],
+     "source": "landscaping-measure.md:16 (Aspire takeoffs; live test landscaping.md section E)"
     }
    ]
   },
@@ -1427,6 +1467,24 @@
    "product": "Aspire",
    "price": "Not published (quote)",
    "url": "https://www.youraspire.com/aspire-plans",
+   "date": "2026-11-12"
+  },
+  {
+   "product": "JobTread",
+   "price": "$199/mo + $20 per extra user",
+   "url": "https://www.jobtread.com/pricing",
+   "date": "2026-11-12"
+  },
+  {
+   "product": "Perfect Venue",
+   "price": "Free plan; paid from $199 a location a month, billed yearly",
+   "url": "https://www.perfectvenue.com/pricing",
+   "date": "2026-11-12"
+  },
+  {
+   "product": "Backbar",
+   "price": "Free plan (1 location)",
+   "url": "https://www.getbackbar.com/pricing",
    "date": "2026-11-12"
   }
  ]
