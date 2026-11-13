@@ -104,39 +104,6 @@ section{padding:100px 48px;position:relative}
 .local-cta{display:block;text-align:center;background:var(--fire);color:var(--white);padding:14px;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background 0.2s}
 .local-cta:hover{background:var(--ember)}
 
-/* INTAKE FORM */
-.intake-form-wrap{max-width:760px;margin:64px auto 0;padding:48px 40px;background:var(--charcoal);border:1px solid rgba(255,255,255,0.08);border-radius:8px;position:relative;z-index:1;scroll-margin-top:96px}
-.intake-header{margin-bottom:32px}
-.intake-form{display:flex;flex-direction:column;gap:18px}
-.intake-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.intake-field label{display:block;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px}
-.intake-field input,.intake-field textarea{width:100%;padding:12px 14px;background:var(--dark);border:1px solid rgba(255,255,255,0.12);border-radius:4px;color:var(--white);font-family:'Barlow',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s}
-.intake-field input:focus,.intake-field textarea:focus{border-color:var(--ember)}
-.intake-field input::placeholder,.intake-field textarea::placeholder{color:rgba(255,255,255,0.25)}
-.intake-field input.error,.intake-field textarea.error{border-color:#ff4444}
-.intake-field textarea{resize:vertical;min-height:90px;font-family:'Barlow',sans-serif}
-.intake-facts-head{margin-top:10px;padding-top:22px;border-top:1px solid rgba(255,255,255,0.08)}
-.intake-facts-head h3{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:0.04em;color:var(--white);margin:0 0 6px}
-.intake-facts-head p,.intake-hint{font-size:13px;line-height:1.5;color:rgba(255,255,255,0.62);margin:0}
-.intake-hint{margin-top:6px}
-.intake-field label.intake-check{display:flex;gap:10px;align-items:center;font-size:14px;font-weight:400;letter-spacing:0;text-transform:none;color:rgba(255,255,255,0.8);cursor:pointer;margin:0;padding-top:30px}
-.intake-field .intake-check input{width:auto;padding:0;accent-color:var(--ember)}
-@media(max-width:640px){.intake-field label.intake-check{padding-top:0}}
-.intake-submit{margin-top:14px;background:var(--fire);color:var(--white);padding:14px;border:none;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;font-family:'Barlow',sans-serif}
-.intake-submit:hover{background:var(--ember)}
-.intake-submit:disabled{opacity:0.5;cursor:wait}
-.intake-foot{font-size:12px;color:rgba(255,255,255,0.4);text-align:center;margin-top:4px}
-.intake-file{display:flex;align-items:center;gap:10px;padding:11px 14px;background:var(--dark);border:1px dashed rgba(255,255,255,0.22);border-radius:4px;font-size:13px;color:rgba(255,255,255,0.5);cursor:pointer;transition:border-color 0.2s,background 0.2s}
-.intake-file:hover{border-color:rgba(255,109,0,0.5);background:rgba(255,109,0,0.04);color:var(--white)}
-.intake-file input[type="file"]{display:none}
-.intake-file-label{flex:1}
-.intake-file-label.intake-file-name{color:var(--ember);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.04em;font-weight:600}
-.intake-status{margin-top:6px;padding:14px 16px;border-radius:4px;font-size:14px;line-height:1.5;display:none}
-.intake-status.show{display:block}
-.intake-status.success{background:rgba(40,200,64,0.08);border:1px solid rgba(40,200,64,0.25);color:#7adb8d}
-.intake-status.error{background:rgba(255,68,68,0.08);border:1px solid rgba(255,68,68,0.3);color:#ff8a8a}
-@media(max-width:640px){.intake-row{grid-template-columns:1fr}.intake-form-wrap{padding:36px 24px}}
-
 /* CASE STUDY — Potato-Potahto before/after */
 #case-study{padding:120px 48px;background:var(--dark);position:relative;overflow:hidden}
 #case-study::before{content:'';position:absolute;top:50%;left:-15%;width:50%;height:60%;background:radial-gradient(ellipse at center,rgba(255,109,0,0.04) 0%,transparent 60%);pointer-events:none;transform:translateY(-50%)}
@@ -433,7 +400,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
         <div class="local-feats">
           <div class="local-feat">
             <span class="local-feat-bullet">01</span>
-            <p class="local-feat-text"><strong>Built to look like your business, not a template.</strong> Real photography, real copy, a real brand. Not a stock theme with your logo dropped in the corner.</p>
+            <p class="local-feat-text"><strong>Written about your business, not filler.</strong> Your services, your town and your own words. Nothing is made up: no invented reviews, prices or credentials.</p>
           </div>
           <div class="local-feat">
             <span class="local-feat-bullet">02</span>
@@ -441,7 +408,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
           </div>
           <div class="local-feat">
             <span class="local-feat-bullet">03</span>
-            <p class="local-feat-text"><strong>Done in about a week.</strong> Not three months of "we'll get back to you." Send us the basics, see a draft in days, ship the site, move on with your life.</p>
+            <p class="local-feat-text"><strong>Live the same day.</strong> Not three months of "we'll get back to you." Sign up, answer a few questions about your business, and your site is built while you wait — usually 10 to 20 minutes.</p>
           </div>
           <div class="local-feat">
             <span class="local-feat-bullet">04</span>
@@ -469,159 +436,16 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
 
         <div class="local-pricing-includes">What's Included</div>
         <ul class="local-pricing-list">
-          <li>Custom-designed site, not a template</li>
+          <li>A site written for your business from your answers</li>
           <li>Mobile, tablet, desktop — all real</li>
           <li>Your domain, branded email forwarding, your photos</li>
           <li>Contact form, hours, map, basics</li>
           <li>Hosting, backups, security, SSL</li>
-          <li>Edits within 48 hours, no extra cost</li>
+          <li>Change it yourself any time in the website editor</li>
         </ul>
 
-        <a href="#local-intake" class="local-cta">Tell us about your business →</a>
+        <a href="/signup" class="local-cta">Start your site →</a>
       </div>
-    </div>
-
-    <div class="intake-form-wrap reveal" id="local-intake">
-      <div class="intake-header">
-        <div class="section-label">Get Started</div>
-        <h3 class="bucket-title" style="margin-top:14px;margin-bottom:14px">Tell us about<br><span>your business.</span></h3>
-        <p class="bucket-intro">Fill out what you can — we'll respond within a business day with a few clarifying questions and a starter direction. No pressure.</p>
-      </div>
-
-      <form class="intake-form" id="intakeForm" novalidate>
-        <div class="intake-row">
-          <div class="intake-field">
-            <label for="businessName">Business Name *</label>
-            <input type="text" id="businessName" name="businessName" required placeholder="Potato-Potahto">
-          </div>
-          <div class="intake-field">
-            <label for="businessType">Type of Business *</label>
-            <input type="text" id="businessType" name="businessType" required placeholder="Restaurant, salon, contractor, etc.">
-          </div>
-        </div>
-
-        <div class="intake-row">
-          <div class="intake-field">
-            <label for="contactEmail">Email *</label>
-            <input type="email" id="contactEmail" name="contactEmail" required placeholder="you@example.com">
-          </div>
-          <div class="intake-field">
-            <label for="contactPhone">Phone (optional)</label>
-            <input type="tel" id="contactPhone" name="contactPhone" placeholder="(715) 555-1234">
-          </div>
-        </div>
-
-        <div class="intake-field">
-          <label for="currentSite">Current Website (if any)</label>
-          <input type="url" id="currentSite" name="currentSite" placeholder="https://yoursite.com">
-        </div>
-
-        <div class="intake-field">
-          <label for="brandColors">Brand Colors / Style (optional)</label>
-          <input type="text" id="brandColors" name="brandColors" placeholder="Blue, gold, dark teal — whatever feels right">
-        </div>
-
-        <div class="intake-row">
-          <div class="intake-field">
-            <label for="city">City (optional)</label>
-            <input type="text" id="city" name="city" placeholder="Madison">
-          </div>
-          <div class="intake-field">
-            <label for="state">State (optional)</label>
-            <input type="text" id="state" name="state" placeholder="WI">
-          </div>
-        </div>
-
-        <div class="intake-row">
-          <div class="intake-field">
-            <label for="ownerName">Owner Name (optional)</label>
-            <input type="text" id="ownerName" name="ownerName" placeholder="Jordan Smith">
-          </div>
-          <div class="intake-field">
-            <label for="serviceRegion">Primary Service Area (optional)</label>
-            <input type="text" id="serviceRegion" name="serviceRegion" placeholder="Greater Madison">
-          </div>
-        </div>
-
-        <div class="intake-field">
-          <label for="serviceAreas">Cities / Towns You Serve (optional)</label>
-          <textarea id="serviceAreas" name="serviceAreas" rows="2" placeholder="Sun Prairie, Fitchburg, Verona, Middleton — one per line or comma-separated. We'll use these as your service areas (otherwise we show placeholders)."></textarea>
-        </div>
-
-        <div class="intake-field">
-          <label for="services">Services You Offer (optional)</label>
-          <textarea id="services" name="services" rows="3" placeholder="Drain cleaning, water heater repair, emergency plumbing — one per line or comma-separated. These become your service cards."></textarea>
-        </div>
-
-        <div class="intake-row">
-          <div class="intake-field">
-            <label for="logo">Logo (optional)</label>
-            <label class="intake-file">
-              <input type="file" id="logo" name="logo" accept="image/png,image/jpeg,image/webp,image/svg+xml,image/gif">
-              <span class="intake-file-label" data-default="Choose a file (PNG, JPG, SVG, WEBP)">Choose a file (PNG, JPG, SVG, WEBP)</span>
-            </label>
-          </div>
-          <div class="intake-field">
-            <label for="photos">Photos of Your Own Work (optional, up to 5)</label>
-            <label class="intake-file">
-              <input type="file" id="photos" name="photos[]" accept="image/*" multiple>
-              <span class="intake-file-label" data-default="Choose files (up to 5)">Choose files (up to 5)</span>
-            </label>
-            <p class="intake-hint">Real jobs you did — these become your gallery. Not inspiration pictures.</p>
-          </div>
-        </div>
-
-        <!-- Owner-supplied facts. The composed site states ONLY facts given here or in
-             the fields above — no invented prices, reviews, years or credentials — so each
-             one adds a section the site would otherwise leave out. All optional. -->
-        <div class="intake-facts-head">
-          <h3>The facts (all optional)</h3>
-          <p>Your site only states what you tell us — we never make up prices, reviews or credentials. Each answer here adds something real to it.</p>
-        </div>
-
-        <div class="intake-row">
-          <div class="intake-field">
-            <label for="yearFounded">Year You Started</label>
-            <input type="number" id="yearFounded" name="yearFounded" min="1800" max="2100" inputmode="numeric" placeholder="2014">
-          </div>
-          <div class="intake-field">
-            <label class="intake-check" for="freeEstimates">
-              <input type="checkbox" id="freeEstimates" name="freeEstimates" value="yes">
-              <span>We give free estimates</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="intake-row">
-          <div class="intake-field">
-            <label for="credentials">Licenses, Insurance, Certifications</label>
-            <input type="text" id="credentials" name="credentials" placeholder="Licensed, insured, bonded, GAF Master Elite">
-          </div>
-          <div class="intake-field">
-            <label for="hours">Business Hours</label>
-            <input type="text" id="hours" name="hours" placeholder="Mon–Fri 7am–5pm, Sat by appointment">
-          </div>
-        </div>
-
-        <div class="intake-field">
-          <label for="pricing">Prices or Starting Prices</label>
-          <textarea id="pricing" name="pricing" rows="2" placeholder="Kitchen remodels usually start around $30k. Drain cleaning $189. Leave blank and your site won't show prices."></textarea>
-        </div>
-
-        <div class="intake-field">
-          <label for="testimonials">Customer Reviews</label>
-          <textarea id="testimonials" name="testimonials" rows="5" placeholder="Paste one or two real reviews. Put a blank line between reviews, and the customer's name on its own line starting with a dash:&#10;&#10;They finished on time and cleaned up every day.&#10;— Dana R."></textarea>
-        </div>
-
-        <div class="intake-field">
-          <label for="notes">Anything else?</label>
-          <textarea id="notes" name="notes" rows="4" placeholder="What does success look like? Sites you like? Anything weird about your business we should know? What does done look like?"></textarea>
-        </div>
-
-        <button type="submit" class="intake-submit">Send to Twomiah →</button>
-        <div class="intake-status" id="intakeStatus" role="status" aria-live="polite"></div>
-        <p class="intake-foot">We'll respond within one business day from <strong>support@twomiah.com</strong>.</p>
-      </form>
     </div>
   </div>
 </section>
@@ -780,98 +604,6 @@ const obs = new IntersectionObserver((entries) => {
   entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),i*60) });
 },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-// Intake form — POST multipart/form-data to the Factory API. Lead lands in
-// the tenants table with status='intake' and the team gets an email with
-// signed URLs to any uploaded logo / reference photos.
-var INTAKE_API = 'https://twomiah-factory-api.onrender.com/api/v1/factory/public/intake';
-var intakeForm = document.getElementById('intakeForm');
-var intakeStatus = document.getElementById('intakeStatus');
-
-function showIntakeStatus(msg, kind) {
-  if (!intakeStatus) return;
-  intakeStatus.textContent = msg;
-  intakeStatus.className = 'intake-status show ' + (kind || 'success');
-}
-function hideIntakeStatus() {
-  if (intakeStatus) intakeStatus.className = 'intake-status';
-}
-
-// File-input label updates so users see what they selected
-document.querySelectorAll('.intake-file input[type="file"]').forEach(function(input) {
-  input.addEventListener('change', function() {
-    var labelSpan = input.parentElement.querySelector('.intake-file-label');
-    if (!labelSpan) return;
-    if (input.files && input.files.length) {
-      labelSpan.textContent = input.multiple && input.files.length > 1
-        ? input.files.length + ' files selected'
-        : input.files[0].name;
-      labelSpan.classList.add('intake-file-name');
-    } else {
-      labelSpan.textContent = labelSpan.getAttribute('data-default') || 'Choose a file';
-      labelSpan.classList.remove('intake-file-name');
-    }
-  });
-});
-
-if (intakeForm) {
-  intakeForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    var f = e.target;
-
-    var valid = true;
-    ['businessName', 'businessType', 'contactEmail'].forEach(function(id) {
-      var field = f.querySelector('#' + id);
-      if (!field.value.trim()) { field.classList.add('error'); valid = false; }
-      else { field.classList.remove('error'); }
-    });
-    if (!valid) {
-      showIntakeStatus('Please fill in business name, type of business, and email.', 'error');
-      return;
-    }
-
-    // 5-photo cap matches the server. If a user picks more, fail fast client-side.
-    var photoInput = f.querySelector('#photos');
-    if (photoInput && photoInput.files && photoInput.files.length > 5) {
-      showIntakeStatus('Please select up to 5 photos of your work.', 'error');
-      return;
-    }
-
-    var btn = f.querySelector('.intake-submit');
-    var originalText = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-    hideIntakeStatus();
-
-    fetch(INTAKE_API, { method: 'POST', body: new FormData(f) })
-      .then(function(res) {
-        return res.json().then(function(d) { return { ok: res.ok, data: d }; }).catch(function() {
-          return { ok: false, data: { error: 'Server returned an unexpected response.' } };
-        });
-      })
-      .then(function(r) {
-        if (r.ok && r.data && r.data.success) {
-          showIntakeStatus(r.data.message || "Thanks! We'll respond within one business day.", 'success');
-          f.reset();
-          f.querySelectorAll('.intake-file-label').forEach(function(s) {
-            s.textContent = s.getAttribute('data-default') || 'Choose a file';
-            s.classList.remove('intake-file-name');
-          });
-          btn.textContent = 'Sent ✓';
-          // Keep button disabled so the user doesn't double-submit on success
-        } else {
-          showIntakeStatus((r.data && r.data.error) || 'Something went wrong. Try again, or email support@twomiah.com directly.', 'error');
-          btn.disabled = false;
-          btn.textContent = originalText;
-        }
-      })
-      .catch(function() {
-        showIntakeStatus('Network error. Try again, or email support@twomiah.com directly.', 'error');
-        btn.disabled = false;
-        btn.textContent = originalText;
-      });
-  });
-}
 </script>
 <script src="/cookie-banner.js" defer></script>
 <script>
