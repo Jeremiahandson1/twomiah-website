@@ -140,6 +140,19 @@ select.bl-input{appearance:auto;cursor:pointer}
 /* DIFFERENT */
 #different{padding:120px 48px;background:var(--charcoal);overflow:hidden}
 #different::before{content:'';position:absolute;top:0;left:-15%;width:55%;height:100%;background:radial-gradient(ellipse at left center,rgba(255,61,0,0.05) 0%,transparent 60%);pointer-events:none}
+#demo{padding:110px 48px;background:var(--dark);border-top:1px solid rgba(255,255,255,0.06)}
+.demo-head{max-width:760px;margin:0 auto 48px;text-align:center}
+.demo-head .section-sub{margin:0 auto}
+.demo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1100px;margin:0 auto}
+.demo-card{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--white);background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:26px 24px 22px;transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s}
+.demo-card:hover,.demo-card:focus-visible{border-color:var(--fire);transform:translateY(-3px);box-shadow:0 14px 40px rgba(255,109,0,0.16)}
+.demo-card .dc-go{margin-top:auto;padding-top:10px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ember)}
+.demo-note{max-width:760px;margin:28px auto 0;text-align:center;font-size:14px;line-height:1.7;color:rgba(255,255,255,0.64)}
+.demo-note a{color:var(--ember)}
+.hero-demo{display:inline-block;margin:26px auto 0}
+.hero-demo-wrap{text-align:center}
+@media(max-width:900px){.demo-grid{grid-template-columns:1fr 1fr}#demo{padding:80px 20px}}
+@media(max-width:560px){.demo-grid{grid-template-columns:1fr}}
 .diff-head{max-width:760px;margin:0 auto 56px;text-align:center;position:relative;z-index:1}
 .diff-head .section-sub{margin:0 auto}
 .diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1200px;margin:0 auto;position:relative;z-index:1}
@@ -373,6 +386,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
   <ul class="nav-links">
     <li><a href="#build-live">Websites</a></li>
     <li><a href="#crm">CRM</a></li>
+    <li><a href="#demo">Live demo</a></li>
     <li><a href="#doors">Pricing</a></li>
     <li><a href="#proof">Our work</a></li>
     <li><a href="#build-live" class="nav-cta" id="navStart">Get started</a></li>
@@ -405,8 +419,57 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
         <span class="hc-go">Show me the CRM &rarr;</span>
       </a>
     </div>
-    <p class="hero-custom"><a href="https://demo.twomiah.com" target="_blank" rel="noopener"><b>Try the demo &rarr;</b></a> &mdash; click around a sample business for your trade; nothing is saved. &middot; Have something unique in mind? <a href="#custom">Custom sites &rarr;</a></p>
+    <div class="hero-demo-wrap"><a href="#demo" class="btn-primary hero-demo">Try the CRM live &mdash; no sign-up &rarr;</a></div>
+    <p class="hero-custom">Have something unique in mind? <a href="#custom">Custom sites &rarr;</a></p>
   </div>
+</section>
+
+<!-- THE CRM DEMO — the real software with a sample business in it (demo.twomiah.com; nothing is saved) -->
+<section id="demo">
+  <div class="demo-head reveal">
+    <div class="section-label center">Try before you buy</div>
+    <h2 class="section-title">Click around the real CRM.<br><span>No sign-up. Nothing saved.</span></h2>
+    <p class="section-sub">This is the actual software with a sample business loaded &mdash; leads, quotes, jobs, the schedule, invoices and reports. Pick your trade and use it like it's yours, on a computer or your phone.</p>
+  </div>
+  <div class="demo-grid">
+    <a class="demo-card reveal" href="https://demo.twomiah.com/crm?trade=contractor" target="_blank" rel="noopener">
+      <span class="hc-tag">Contractors</span>
+      <span class="hc-title">Sample Ridge Remodeling</span>
+      <span class="hc-desc">Leads, quotes, jobs and invoices for a remodeling crew.</span>
+      <span class="dc-go">Open the demo &rarr;</span>
+    </a>
+    <a class="demo-card reveal" href="https://demo.twomiah.com/crm?trade=roofing" target="_blank" rel="noopener">
+      <span class="hc-tag">Roofing</span>
+      <span class="hc-title">Sample Peak Roofing</span>
+      <span class="hc-desc">Storm leads, roof quotes, crews and the canvasser view.</span>
+      <span class="dc-go">Open the demo &rarr;</span>
+    </a>
+    <a class="demo-card reveal" href="https://demo.twomiah.com/crm?trade=homecare" target="_blank" rel="noopener">
+      <span class="hc-tag">Home care</span>
+      <span class="hc-title">Sample Harbor Home Care</span>
+      <span class="hc-desc">Clients, caregivers, visits and billing for a home care agency.</span>
+      <span class="dc-go">Open the demo &rarr;</span>
+    </a>
+    <a class="demo-card reveal" href="https://demo.twomiah.com/crm?trade=salon" target="_blank" rel="noopener">
+      <span class="hc-tag">Salons</span>
+      <span class="hc-title">Sample Willow Salon</span>
+      <span class="hc-desc">The book, the service menu, clients and rebooking.</span>
+      <span class="dc-go">Open the demo &rarr;</span>
+    </a>
+    <a class="demo-card reveal" href="https://demo.twomiah.com/crm?trade=restaurant-bar" target="_blank" rel="noopener">
+      <span class="hc-tag">Restaurants &amp; bars</span>
+      <span class="hc-title">Sample Corner Tap &amp; Table</span>
+      <span class="hc-desc">Tonight, the menu, private events and the kitchen.</span>
+      <span class="dc-go">Open the demo &rarr;</span>
+    </a>
+    <a class="demo-card reveal" href="https://demo.twomiah.com/crm?trade=store" target="_blank" rel="noopener">
+      <span class="hc-tag">Online stores</span>
+      <span class="hc-title">Sample Maple Mercantile</span>
+      <span class="hc-desc">Orders, products, customers and shipping for an online shop.</span>
+      <span class="dc-go">Open the demo &rarr;</span>
+    </a>
+  </div>
+  <p class="demo-note reveal">HVAC, plumbing, electrical, cleaning or landscaping? Open the <a href="https://demo.twomiah.com/crm?trade=contractor" target="_blank" rel="noopener">contractor demo</a> &mdash; the same leads, quotes, scheduling, jobs and invoicing &mdash; or <a href="https://demo.twomiah.com" target="_blank" rel="noopener">see every demo</a>.</p>
 </section>
 
 <!-- LIVE BUILD DEMO — the real factory render (POST /public/preview), not a mock-up -->
@@ -524,7 +587,7 @@ footer{background:#090909;border-top:1px solid rgba(255,255,255,0.05);padding:56
       <p class="hub-price"><b>$99/mo</b> for all of it, up to 10 users &mdash; your website included. Every feature included. Turn on what you use, turn off what you don't.</p>
       <div class="hub-ctas">
         <a href="/signup.html?plan=starter10" class="btn-primary">Start &mdash; $99/mo &rarr;</a>
-        <a href="https://demo.twomiah.com" class="btn-ghost" target="_blank" rel="noopener">Try the demo</a>
+        <a href="#demo" class="btn-ghost">Try the live demo</a>
         <a href="#build-live" class="btn-ghost">See the website you'd also get</a>
       </div>
     </div>
